@@ -2,11 +2,11 @@
 site_name: 陈裕杰的个人网站 # 左上角标题
 site_url: https://codezhxs.github.io
 site_author: 陈裕杰
-site_description: emmm
+site_description: 陈裕杰的个人网站
 
 # [Navigtion]
 nav:
-  - 讲稿:
+  - 算法:
     - LECTURE/index.md 
     - Linux:
       - Linux讲座: LECTURE/Linux/linux.md
