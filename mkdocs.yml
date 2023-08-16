@@ -8,6 +8,8 @@ site_description: 陈裕杰的个人网站
 nav:
   - 算法:
     - index.md 
+    - AtCode题解:
+      - ABC310 A-G: algorithm/abc310.md
   - 开发:
     - index.md 
   - 折腾:
