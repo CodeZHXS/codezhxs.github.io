@@ -9,8 +9,7 @@ nav:
   - 算法:
     - algorithm/index.md 
     - AtCoder个人题解:
-      - ABC310: algorithm/index.md
-      # - ABC310: algorithm/AtCoder/abc310.md
+      - ABC310(A-F): algorithm/AtCoder/abc310.md
   - 开发:
     - index.md
   - 折腾:
