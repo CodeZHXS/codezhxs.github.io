@@ -9,7 +9,7 @@ nav:
   - 算法:
     - algorithm/index.md 
     - AtCoder:
-      - ABC310: algorithm/ATCODER/abc310.md
+      - ABC310: algorithm/AtCoder/abc310.md
   - 开发:
     - index.md
   - 折腾:
