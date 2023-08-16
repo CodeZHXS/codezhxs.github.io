@@ -7,9 +7,9 @@ site_description: 陈裕杰的个人网站
 # [Navigtion]
 nav:
   - 算法:
-    - ALGORITHM/index.md 
+    - algorithm/index.md 
     - AtCoder:
-      - ABC310: ALGORITHM/AtCoder/abc310.md
+      - ABC310: algorithm/AtCoder/abc310.md
   - 开发:
     - index.md
   - 折腾:
