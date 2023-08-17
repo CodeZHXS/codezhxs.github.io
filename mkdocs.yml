@@ -9,6 +9,10 @@ nav:
   - 算法:
     - algorithm/index.md
     - ABC310(A-F): algorithm/AtCoder/abc310.md
+  - 其他:
+    - others/index.md
+    - Latex公式整理: others/latex.md
+
 
 # [UI]
 ## [top]
