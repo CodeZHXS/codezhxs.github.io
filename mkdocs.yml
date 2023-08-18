@@ -8,7 +8,7 @@ site_description: 陈裕杰的个人网站
 nav:
   - 算法:
     - algorithm/index.md
-    - ABC311(题目翻译): algorithm/AtCoder/abc311.md
+    - ABC311(A-G): algorithm/AtCoder/abc311.md
     - ABC310(A-F): algorithm/AtCoder/abc310.md
   - 其他:
     - others/index.md
