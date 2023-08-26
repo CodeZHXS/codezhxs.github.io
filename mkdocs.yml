@@ -10,6 +10,10 @@ nav:
     - algorithm/index.md
     - ABC311(A-G): algorithm/AtCoder/abc311.md
     - ABC310(A-F): algorithm/AtCoder/abc310.md
+  - 开发:
+    - dev/index.md
+    - CPP:
+      - 第1章 开始: dev/cpp/ch1.md
   - 其他:
     - others/index.md
     - Latex公式整理: others/latex.md
