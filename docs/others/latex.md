@@ -59,6 +59,7 @@
 |`\cdot`  | $\cdot$ |
 | `\div` | $\div$ |
 | `\bmod` | $\bmod$ |
+| `\oplus` | $\oplus$ |
 |  `\cap`| $\cap$ |
 |  `\cup`| $\cup$ |
 | `\wedge` `\land` | $\land$ |
