@@ -10,6 +10,7 @@ nav:
     - algorithm/index.md
     - ABC311(A-G): algorithm/AtCoder/abc311.md
     - ABC310(A-F): algorithm/AtCoder/abc310.md
+    - ABC309(A-F): algorithm/AtCoder/abc309.md
   - 开发:
     - dev/index.md
     - CPP:
