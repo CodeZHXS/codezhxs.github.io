@@ -8,15 +8,15 @@ site_description: 陈裕杰的个人网站
 nav:
   - 算法:
     - algorithm/index.md
-    - AVC312(A-F): algorithm/AtCoder/abc312.md
+    - ABC312(A-F): algorithm/AtCoder/abc312.md
     - ABC311(A-G): algorithm/AtCoder/abc311.md
     - ABC310(A-F): algorithm/AtCoder/abc310.md
     - ABC309(A-F): algorithm/AtCoder/abc309.md
     - ABC308(A-G): algorithm/AtCoder/abc308.md
   - 开发:
     - dev/index.md
-    - CPP:
-      - 第1章 开始: dev/cpp/ch1.md
+    # - CPP:
+      # - 第1章 开始: dev/cpp/ch1.md
   - 其他:
     - others/index.md
     - Latex公式整理: others/latex.md
