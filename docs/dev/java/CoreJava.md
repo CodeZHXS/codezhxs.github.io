@@ -102,7 +102,7 @@ Hello, World!
 Hello, World!
 ```
 
-上述指令指定了 `bin` 作为 `CLASSPATH` ,   这样就会在 `bin` 目录下寻找 `.class` 文件，咋一看这种方式和 `cd` 没有区别，但是， `-cp` 可以指定多个路径作为 `CLASSPATH`，（在Linux中）只需要将多个路径用 `:` 隔开，并且可以设置全局的 `CLASSPATH` 环境变量（但不推荐这样做）。
+上述指令指定了 `bin` 作为 `CLASSPATH` ,   这样就会在 `bin` 目录下寻找 `.class` 文件，咋一看这种方式和 `cd` 没有区别，但是， `-cp` 可以指定多个路径作为 `CLASSPATH`，（在Linux中可以用 `:` 将多个路径隔开），并且可以设置全局的 `CLASSPATH` 环境变量（但不推荐这样做）。
 
 ### **IDE** 如何简化以上流程？
 
@@ -123,4 +123,3 @@ answer ==> 42
 jshell> Math.log10(0.001)
 $4 ==> -3.0
 ```
-
