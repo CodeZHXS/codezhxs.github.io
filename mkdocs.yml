@@ -17,6 +17,8 @@ nav:
     - dev/index.md
     # - CPP:
       # - 第1章 开始: dev/cpp/ch1.md
+    - Java:
+      - 《Java核心技术》笔记: dev/java/CoreJava.md
   - 其他:
     - others/index.md
     - Latex公式整理: others/latex.md

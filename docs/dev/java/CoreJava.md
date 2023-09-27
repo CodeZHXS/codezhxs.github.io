@@ -1,0 +1,126 @@
+## 第2章 Java程序设计环境
+
+### 下载JDK
+
+[Latest Releases | Adoptium](https://adoptium.net/zh-CN/temurin/releases/?os=linux&arch=x64)
+
+### 设置环境变量
+
+```bash
+export JAVA_HOME=/usr/local/jdk-11.0.20.1+1 #jdk包的位置
+export PATH=$JAVA_HOME/bin:$PATH #添加命令行工具
+
+# 这个变量是用于全局的寻找CLASS的路径 不建议开启
+# export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+```
+
+```bash
+❯ java --version
+openjdk 11.0.20.1 2023-08-24
+OpenJDK Runtime Environment Temurin-11.0.20.1+1 (build 11.0.20.1+1)
+OpenJDK 64-Bit Server VM Temurin-11.0.20.1+1 (build 11.0.20.1+1, mixed mode)
+```
+
+### 编译运行
+
+通常认为 `java` 是介于 `编译型` 和 `解释型` 之间的编程语言。具体来说，可以使用 `javac` 命令将 `.java` 文件编译成 `.class` 文件， `.class` 是字节码，不是二进制可执行文件，而是要使用 `java` 命令，将 `.class` 交给 `JVM` 解释执行。
+
+新建一个 `Hello.java` 文件：
+
+```java
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+```
+
+执行以下指令：
+
+```bash
+❯ javac Hello.java
+❯ ls
+Hello.class  Hello.java
+❯ java Hello      
+Hello, World!
+```
+
+### CLASSPATH
+
+上面的程序虽然可以直接使用 `java` 命令直接运行：
+
+```bash
+❯ ls
+Hello.java
+❯ java Hello.java                   
+Hello, World!
+```
+
+但是，只有包含main函数、且类依赖关系非常简单的文件才可以这样做。大多数情况下，都是使用 `javac` 命令生成 `.class` 文件，然后用 `java` 命令执行。
+
+在使用 `javac` 命令而不指定 `-d` 参数时，生成的 `.class` 文件会默认生成在当前目录下。比较好的习惯是将项目的源代码和二进制文件分开存放，可以用 `-d` 参数指定 `.class` 文件的存放的路径，例如这个项目路径：
+
+```
+.
+├── bin
+├── lib
+└── src
+    └── Hello.java
+```
+
+在这个项目结构中，`src` 存放所有源代码文件，`bin` 存放所有 `.class` 文件。
+
+使用 `javac -d` 在指定目录中生成 `.class` 文件：
+
+```bash
+❯ javac src/Hello.java -d bin/ 
+```
+
+ 此时文件结构变成
+
+```
+.
+├── bin
+│   └── Hello.class
+├── lib
+└── src
+    └── Hello.java
+```
+
+可以 `cd` 到 `bin` 中然后再 `java` 执行（注：可以尝试一下，是不能直接在外面 `java bin/Hello` 的，原因是 `java` 命令严格按照 `1级包名/2级包名/.../类名` 的格式解析，所以这条命令会将`bin/`解析为一个包(`package`)的名字, 而`Hello.java` 中并没有没有指定任何`package` ）：
+
+```bash
+❯ cd bin
+❯ java Hello
+Hello, World!
+```
+
+另一种方法是指定 `CLASSPATH`，只需要在执行 `java` 命令时增加 `-cp` 参数：
+
+```ba
+❯ java -cp bin Hello  
+Hello, World!
+```
+
+上述指令指定了 `bin` 作为 `CLASSPATH` ,   这样就会在 `bin` 目录下寻找 `.class` 文件，咋一看这种方式和 `cd` 没有区别，但是， `-cp` 可以指定多个路径作为 `CLASSPATH`，（在Linux中）只需要将多个路径用 `:` 隔开，并且可以设置全局的 `CLASSPATH` 环境变量（但不推荐这样做）。
+
+### **IDE** 如何简化以上流程？
+
+许多现代的 **IDE** 可以简化上述的流程，例如，为每个项目添加 `CLASSPATH`，并且随着文件的改动 `自动编译`，相当于帮我们动态的执行 `javac -d bin ...` ，也能 `自动管理文件` ，例如清理不再依赖的类等。我们只需要点击 `run` 按钮，就会自动执行 `java -cp bin ...` 的命令。当然，**IDE** 能做的不止这些，常见的 `java` **IDE** 有 `IDEA`、`Eclipse` 等，使用 `VSCode` 并配置一些插件也可以达到 **IDE** 的开发体验。
+
+### JShell
+
+从 `Java 9` 开始，在命令行输入 `jshell` 即可进入交互式编程环境：
+
+```bash
+❯ jshell
+jshell> "Core Java".length()
+$1 ==> 9
+jshell> 5 * $1 - 3
+$2 ==> 42
+jshell> int answer = 5 * $1 - 3
+answer ==> 42
+jshell> Math.log10(0.001)
+$4 ==> -3.0
+```
+
