@@ -13,16 +13,24 @@ nav:
     - ABC310(A-F): algorithm/AtCoder/abc310.md
     - ABC309(A-F): algorithm/AtCoder/abc309.md
     - ABC308(A-G): algorithm/AtCoder/abc308.md
+  
   - 开发:
     - dev/index.md
     # - CPP:
       # - 第1章 开始: dev/cpp/ch1.md
     - Java:
       - 《Java核心技术》笔记: dev/java/CoreJava.md
+    - hydro OJ运维: others/myoj.md
+  - 网站:
+    - website/index.md
+    - Material for MkDocs文档中文翻译:
+      - Getting Started:
+        # - Installation(安装): website/mkdocs_ch/GettingStart/hhh.md
+        - Installation(安装): website/mkdocs_ch/GettingStart/Installation.md
   - 其他:
     - others/index.md
     - Latex公式整理: others/latex.md
-    - hydro OJ运维: others/myoj.md
+    - 老高: others/BJ_food.md
 
 
 # [UI]
