@@ -1,0 +1,37 @@
+site_name: My Docs
+theme:
+  name: material
+  palette:
+    # 日间模式设置
+    - scheme: default # 鼠标悬停提示
+      primary: indigo # 上方的颜色 默认indigo
+      accent: indigo # 链接等可交互元件的高亮色 默认indigo
+      toggle:
+        icon: material/brightness-7 # 显示的图标
+        name: Switch to dark mode # 鼠标悬停提示 name属性还可以作为跳转的标签
+
+    # 夜间模式设置
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  language: zh # 一些提示性的文字会变成中文
+
+  # 图标都可以更换 见 https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#logo-icon-bundled
+  # 在这里可以搜索内置的图标 https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#search
+  icon:
+    logo: material/library #左上角图标
+
+  # favicon就是网站在浏览器标签页中的图标
+  # 在顶级域名后面加一个 /favicon.ico 可以获取网站的favicon
+  # favicon: images/favicon.png  
+
+
+# 左上角的按钮重定向的地址 
+# 默认就是网站的url 所以不用设置
+# extra:
+#   homepage: https://codezhxs.github.io/
+
+
