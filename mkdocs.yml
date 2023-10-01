@@ -45,15 +45,17 @@ theme:
         icon: material/weather-sunny
         name: 切换至日间模式
   features:
-    # - navigation.instant
+    - navigation.instant # 内置的网页会加载更快
     - navigation.tabs # 使用Tab来进行分类
     - navigation.top # 返回顶部的按钮 在上滑时出现
     - navigation.indexes # Tab会有一个index.md 而不是在打开Tab时打开第一篇文章
     - navigation.expand # 打开Tab时左侧目录全部展开
+    - navigation.footer
     - search.suggest # 搜索输入一些字母时推荐补全整个单词
     - search.highlight # 搜索出的文章关键词加入高亮
     - content.code.copy # 可以通过按钮复制代码
     - content.action.edit # 点击按钮跳转到编辑页面  需要结合 edit_uri 一起使用
+
 
   language: zh # 一些提示性的文字会变成中文
   icon:
@@ -81,7 +83,7 @@ plugins:
     # insider已经支持中文的分词搜索了 https://squidfunk.github.io/mkdocs-material/blog/2022/chinese-search-support/
       lang:
         - en
-        - ja
+        - ch
   - tags # 给单篇文章添加标签 https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/?h=tags
 markdown_extensions:
   - pymdownx.arithmatex: # latex支持

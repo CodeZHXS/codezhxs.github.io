@@ -17,21 +17,41 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
-  language: zh # 一些提示性的文字会变成中文
+  language: zh # 网站的语言 这个会影响一些自动参数
+  features:
+    - navigation.instant # 内置的网页会加载更快
+    - navigation.tabs # 顶层的Tab
+    - navigation.expand # 打开Tab时左侧目录全部展开
+    - navigation.indexes # Tab会有一个index.md 而不是在打开Tab时打开第一篇文章
+    - navigation.top # 在上滑时出现一个返回顶部的按钮
+    - search.suggest # 搜索建议和补全
+    - search.highlight # 搜索出的文章关键词加入高亮
 
   # 图标都可以更换 见 https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#logo-icon-bundled
   # 在这里可以搜索内置的图标 https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#search
   icon:
-    logo: material/library #左上角图标
+    logo: material/library # 左上角图标
 
   # favicon就是网站在浏览器标签页中的图标
   # 在顶级域名后面加一个 /favicon.ico 可以获取网站的favicon
   # favicon: images/favicon.png  
 
+plugins:
+  - search: # 搜索功能
+      lang: # 设置支持搜索的语言
+        - ch # 还可以换成Jieba字典 见 https://squidfunk.github.io/mkdocs-material/plugins/search/#config.jieba_dict
+        - en
+  # 有时间的话配置一下博客插件 https://squidfunk.github.io/mkdocs-material/plugins/blog/
 
 # 左上角的按钮重定向的地址 
 # 默认就是网站的url 所以不用设置
 # extra:
 #   homepage: https://codezhxs.github.io/
+
+
+# extra_javascript:
+  # 增加网站的快捷键 见 https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#keyboard-shortcuts-mkdocsyml
+  # - javascripts/shortcuts.js 
+
 
 
