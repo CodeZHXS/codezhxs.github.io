@@ -1,4 +1,4 @@
-# [Info]
+# 网站信息
 site_name: 陈裕杰的个人网站 # 左上角标题
 site_url: https://codezhxs.github.io
 site_author: 陈裕杰
@@ -26,17 +26,16 @@ nav:
     - Latex公式整理: others/latex.md
     - 老高: others/BJ_food.md
 
-
 # [UI]
 ## [top]
 theme:
   name: material
   palette:
     - scheme: default # 日间模式
-      primary: indigo # 上方的
-      accent: orange # 链接等可交互元件的高亮色
+      primary: indigo # 上方的颜色
+      accent: orange # 链接等可交互元件的高亮色 默认indigo
       toggle:
-        icon: material/weather-night # 图标
+        icon: material/weather-night # 显示的图标
         name: 切换至夜间模式 # 鼠标悬浮提示
     - scheme: slate # 夜间模式
       primary: indigo
@@ -44,28 +43,35 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: 切换至日间模式
+  language: zh # 网站的语言 会影响一些自动参数
   features:
     - navigation.instant # 内置的网页会加载更快
-    - navigation.tabs # 使用Tab来进行分类
-    - navigation.top # 返回顶部的按钮 在上滑时出现
-    - navigation.indexes # Tab会有一个index.md 而不是在打开Tab时打开第一篇文章
+    - navigation.tabs # 顶层的Tab
     - navigation.expand # 打开Tab时左侧目录全部展开
-    - navigation.footer
-    - search.suggest # 搜索输入一些字母时推荐补全整个单词
+    - navigation.indexes # Tab会有一个index.md 而不是在打开Tab时打开第一篇文章
+    - navigation.top # 在上滑时出现一个返回顶部的按钮
+    # - navigation.footer # 底部的翻页按钮
+    - search.suggest # 搜索建议和补全
     - search.highlight # 搜索出的文章关键词加入高亮
-    - content.code.copy # 可以通过按钮复制代码
     - content.action.edit # 点击按钮跳转到编辑页面  需要结合 edit_uri 一起使用
-
-
-  language: zh # 一些提示性的文字会变成中文
+    - content.code.copy # 代码块右上角会有一个复制按钮
+  
+  # 图标都可以更换 见 https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#logo-icon-bundled
+  # 在这里可以搜索内置的图标 https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#search
   icon:
-    repo: fontawesome/brands/github
-edit_uri: edit/main/docs # 编辑按钮跳转的链接
-## [top-right corner]
-repo_url: https://github.com/CodeZHXS/codezhxs.github.io # 右上角点击跳转的链接
+    logo: material/library # 左上角图标
+    repo: fontawesome/brands/github #右上角github图标
+  # favicon就是网站在浏览器标签页中的图标
+  # 在顶级域名后面加一个 /favicon.ico 可以获取网站的favicon
+  # favicon: images/favicon.png  
+
+# 右上角的github仓库
+repo_url: https://github.com/CodeZHXS/codezhxs.github.io # 跳转的链接
 repo_name: codezhxs.github.io # 右上角的名字
-## [bottom-left corner]
-# copyright: 杨希杰 CC-BY-4.0 # 左下角的版权声明
+
+edit_uri: edit/main/docs/ #文章的编辑按钮跳转到github仓库的路径
+
+copyright: 陈裕杰 CC-BY-4.0 # 左下角的版权声明
 
 extra:
   social: # [右下角的图标链接]
@@ -76,30 +82,41 @@ extra:
       link: https://github.com/CodeZHXS
       name: GitHub | CodeZHXS
 
+# extra_javascript:
+  # 有时间弄一下快捷键提示
+  # 这里可以增加网站的快捷键 https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#keyboard-shortcuts-mkdocsyml
+  # - javascripts/shortcuts.js 
+
 # [Extensions]
 plugins:
-  - search: # 现在还不支持中文搜索 支持之后可以设置语言
-    # insider已经支持中文的分词搜索了 https://squidfunk.github.io/mkdocs-material/blog/2022/chinese-search-support/
-      lang:
+  - search: # 搜索功能
+      lang: # 设置支持搜索的语言
+        - ch # 还可以换成Jieba字典 见 https://squidfunk.github.io/mkdocs-material/plugins/search/#config.jieba_dict
         - en
-        - ch
   - git-revision-date-localized:
-      enable_creation_date: true #在文章下方显示创建时间
-  - tags # 给单篇文章添加标签 https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/?h=tags
+      enable_creation_date: true #在文章下方显示创建时间和更新时间
+      type: iso_date # 日期的格式
+  # 有时间的话配置一下博客插件 https://squidfunk.github.io/mkdocs-material/plugins/blog/
+  
 markdown_extensions:
+  - def_list # 启用有序和无序列表
+  - pymdownx.tasklist:
+      custom_checkbox: true # 任务列表的图标变得更漂亮
+  - attr_list # 提供图片左中右对齐以及大小调整功能
+  - md_in_html # 图片居中时的可以添加注解
+  - toc:
+      toc_depth: 6 # 文章目录展开的级数 默认为6 0表示不显示目录
+      permalink: true # 各级标题旁边都有一个固定按钮
+  - pymdownx.superfences # 代码块高亮的依赖插件
+  # - pymdownx.highlight: # 代码块高亮设置
+  #     linenums: true # 在代码块左侧添加行号
+  #     auto_title: true # 显示编程语言名称
+  - pymdownx.tabbed: 
+      alternate_style: true # 启用标签功能
   - pymdownx.arithmatex: # latex支持
       generic: true
-  - attr_list # 给图片后面添加{width="300"}设置大小
-  - toc:
-      permalink: true # 固定标题位置为当前位置
-  # 代码块高亮
-  - pymdownx.highlight: 
-      # linenums: true # 显示行号
-      # auto_title: true # 显示编程语言名称
-  - pymdownx.superfences # 代码块高亮插件
-  - meta # 支持Markdown文件上方自定义标题标签等
-  - admonition # https://squidfunk.github.io/mkdocs-material/reference/admonitions/#inline-blocks
-  - pymdownx.details # admonition需要
+  - admonition # 警告等 见 https://squidfunk.github.io/mkdocs-material/reference/admonitions/#inline-blocks
+  - pymdownx.details # admonition的依赖
 
 extra_javascript:
   # latex支持
@@ -108,6 +125,5 @@ extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
-extra_css:
-  # - mkdocs/css/no-footer.css # 不使用底部的翻页
-  - mkdocs/css/unordered-list-symbols.css # multiplt unordered list symbols
+# extra_css:
+  # - mkdocs/css/unordered-list-symbols.css # multiplt unordered list symbols

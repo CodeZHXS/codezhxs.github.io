@@ -15,7 +15,6 @@ jobs: # 工作流的具体内容
         with:
           python-version: 3.x
       # 使用pip包管理工具安装mkdocs-material和插件
-      - run: pip install mkdocs-material
-      - run: pip install mkdocs-git-revision-date-localized-plugin
-
+      - run: pip install  mkdocs-material \
+                          mkdocs-git-revision-date-localized-plugin \
       - run: mkdocs gh-deploy --force # 使用mkdocs-material部署gh-pages分支
