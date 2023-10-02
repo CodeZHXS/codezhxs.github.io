@@ -24,30 +24,46 @@ theme:
     - navigation.expand # 打开Tab时左侧目录全部展开
     - navigation.indexes # Tab会有一个index.md 而不是在打开Tab时打开第一篇文章
     - navigation.top # 在上滑时出现一个返回顶部的按钮
-    - navigation.footer
+    - navigation.footer # 底部可以跳转到下一页或者上一页
     - search.suggest # 搜索建议和补全
     - search.highlight # 搜索出的文章关键词加入高亮
+    - content.action.edit # 点击按钮跳转到编辑页面  需要结合 edit_uri 一起使用
 
   # 图标都可以更换 见 https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#logo-icon-bundled
   # 在这里可以搜索内置的图标 https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#search
   icon:
     logo: material/library # 左上角图标
+    repo: fontawesome/brands/github #右上角github图标
 
   # favicon就是网站在浏览器标签页中的图标
   # 在顶级域名后面加一个 /favicon.ico 可以获取网站的favicon
   # favicon: images/favicon.png  
+
+# 右上角的github仓库
+repo_url: https://github.com/CodeZHXS/codezhxs.github.io # 右上角点击跳转的链接
+repo_name: codezhxs.github.io # 右上角的名字
+
+edit_uri: edit/main/docs/ #文章右上角的编辑按钮会跳转到github仓库的路径
+
 
 plugins:
   - search: # 搜索功能
       lang: # 设置支持搜索的语言
         - ch # 还可以换成Jieba字典 见 https://squidfunk.github.io/mkdocs-material/plugins/search/#config.jieba_dict
         - en
+  - git-revision-date-localized:
+      enable_creation_date: true #在文章下方显示创建时间
+
   # 有时间的话配置一下博客插件 https://squidfunk.github.io/mkdocs-material/plugins/blog/
 
-# 左上角的按钮重定向的地址 
-# 默认就是网站的url 所以不用设置
-# extra:
-#   homepage: https://codezhxs.github.io/
+extra:
+  social: # [右下角的图标链接]
+    - icon: fontawesome/brands/bilibili
+      link: https://space.bilibili.com/12519995
+      name: Bilibili | Jay朝花夕拾杯中酒 # 鼠标悬浮提示
+    - icon: fontawesome/brands/github
+      link: https://github.com/CodeZHXS
+      name: GitHub | CodeZHXS
 
 
 # extra_javascript:

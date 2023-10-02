@@ -30,7 +30,7 @@ nav:
 # [UI]
 ## [top]
 theme:
-  name: material 
+  name: material
   palette:
     - scheme: default # 日间模式
       primary: indigo # 上方的
@@ -67,15 +67,14 @@ repo_name: codezhxs.github.io # 右上角的名字
 ## [bottom-left corner]
 # copyright: 杨希杰 CC-BY-4.0 # 左下角的版权声明
 
-## [bottom-right corner]
-# extra:
-#   social: # icons
-#     - icon: fontawesome/brands/bilibili
-#       link: https://space.bilibili.com/24502827
-#       name: Bilibili | 杨希杰619 # 鼠标悬浮提示
-#     - icon: fontawesome/brands/github
-#       link: https://github.com/Yang-Xijie
-#       name: GitHub | Yang-Xijie
+extra:
+  social: # [右下角的图标链接]
+    - icon: fontawesome/brands/bilibili
+      link: https://space.bilibili.com/12519995
+      name: Bilibili | Jay朝花夕拾杯中酒 # 鼠标悬浮提示
+    - icon: fontawesome/brands/github
+      link: https://github.com/CodeZHXS
+      name: GitHub | CodeZHXS
 
 # [Extensions]
 plugins:
@@ -84,6 +83,8 @@ plugins:
       lang:
         - en
         - ch
+  - git-revision-date-localized:
+      enable_creation_date: true #在文章下方显示创建时间
   - tags # 给单篇文章添加标签 https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/?h=tags
 markdown_extensions:
   - pymdownx.arithmatex: # latex支持
