@@ -6,6 +6,7 @@ site_description: 陈裕杰的个人网站
 
 # [Navigtion]
 nav:
+  - index.md
   - 算法:
     - algorithm/index.md
     - ABC312(A-F): algorithm/AtCoder/abc312.md
@@ -121,6 +122,9 @@ markdown_extensions:
   - pymdownx.caret # 启用高亮、下划线、删除线
   - pymdownx.mark  # 启用高亮、下划线、删除线
   - pymdownx.tilde # 启用高亮、下划线、删除线
+  - pymdownx.emoji: # 启用emoji和icon
+      emoji_index: !!python/name:material.extensions.emoji.twemoji 
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 
 extra_javascript:

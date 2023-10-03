@@ -4,7 +4,7 @@
 - 点击餐馆名可直达老高的B站视频。由于我时间有限，许多店铺没有品尝过，建议在决定去某一家店之前点进视频链接，参照老高以及评论区的评价决定。
 - 有 :white_check_mark: 图标表示我吃过，会留下短评。
 - 本贴的餐厅列表动态删除，如果老高评价低，或者用我的餐体验差，就会删除。被删除的餐厅在 [这里](./BJ_food_delete.md) 。
-- 如果您恰好看了这个贴，并去过其中的店铺，可以告诉我用餐的体验如何，我会将评价附在表中。
+- 如果您去过其中的店铺，可以告诉我用餐的体验如何，我会将评价附在表中。
 
 ## 京菜
 
@@ -22,13 +22,13 @@
 | [提督](https://www.bilibili.com/video/BV1ER4y187dH/?spm_id_from=333.999.0.0) |        连锁        |                                                              |
 | [花家怡园](https://www.bilibili.com/video/BV1BT411p732/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |                                                              |
 | [小荣酒家](https://www.bilibili.com/video/BV1ss4y197CS/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |       朝阳区       |                                                              |
-| [大鸭梨]([在北京开了26年的大鸭梨味道怎么样？_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1qo4y1A7bK/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523)) |        连锁        |                                                              |
+| [大鸭梨](https://www.bilibili.com/video/BV1qo4y1A7bK/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523)) |        连锁        |                                                              |
 | [小吊梨汤](https://www.bilibili.com/video/BV1yz4y1873r/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |                                                              |
 | [晟永兴](https://www.bilibili.com/video/BV1wj411D7dh/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |                                                              |
 | [荣府宴](https://www.bilibili.com/video/BV1ax4y1R7nD/?spm_id_from=333.999.0.0) |       门头沟       |                                                              |
 | [羊大爷涮肉](https://www.bilibili.com/video/BV1Nh4y117m8/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 海淀区<br />朝阳区 |                                                              |
 | [北平楼](https://www.bilibili.com/video/BV1ar4y1R7Bj/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |                                                              |
-| [新拾玖 新京菜](https://www.bilibili.com/video/BV11N4y1Z7jo/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |       朝阳区       |               
+| [新拾玖 新京菜](https://www.bilibili.com/video/BV11N4y1Z7jo/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |       朝阳区       |                                                              |
 
 ---
 
@@ -39,7 +39,7 @@
 |                             店名                             |        位置        | 评价 |
 | :----------------------------------------------------------: | :----------------: | :--: |
 | [粤小馆](https://www.bilibili.com/video/BV1Hg411E71a/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |       东城区       |      |
-| [蔡澜港式点心]([这么有名的茶餐厅竟然连奶茶都做不好！？_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV17K411z7QN/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523)) |        连锁        |      |
+| [蔡澜港式点心](https://www.bilibili.com/video/BV17K411z7QN/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |      |
 | [陶陶居](https://www.bilibili.com/video/BV1P44y1f7PK/?spm_id_from=333.999.0.0) | 朝阳区<br />西城区 |      |
 | [金鼎轩](https://www.bilibili.com/video/BV1t14y1g7J2/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |      |
 | [北京厨房](https://www.bilibili.com/video/BV1ST411974A/?spm_id_from=333.999.0.0) |       朝阳区       |      |
@@ -66,7 +66,7 @@
 | [贡院蜀楼 川办餐厅](https://www.bilibili.com/video/BV1rs4y1n7RZ/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 东城区 |                                                              |
 | [新川办餐厅](https://www.bilibili.com/video/BV1Jh411V79G/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 朝阳区 |                                                              |
 | [四川饭店](https://www.bilibili.com/video/BV1mM4y1C7PW/?spm_id_from=333.999.0.0) |  连锁  |                                                              |
-| [许家菜]([198的麻婆豆腐什么味道——许家菜_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Ko4y147dW/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523)) | 朝阳区 |                                                              |
+| [许家菜](https://www.bilibili.com/video/BV1Ko4y147dW/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 朝阳区 |                                                              |
 | [泸州幺妹私房菜](https://www.bilibili.com/video/BV1Vo4y1577h/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 朝阳区 |                                                              |
 | [天下盐](https://www.bilibili.com/video/BV1mP411C7dM/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 东城区 |                                                              |
 | [龙人居 水煮鱼](https://www.bilibili.com/video/BV12x4y197sK/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |  连锁  |                                                              |
@@ -160,8 +160,8 @@
 | :----------------------------------------------------------: | :------: | :----------------: | :--: |
 | [集室](https://www.bilibili.com/video/BV1Cg411q7sA/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |   薄饼   |       朝阳区       |      |
 | [元古云境](https://www.bilibili.com/video/BV1cG411c7TH/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |   甜品   |       朝阳区       |      |
-| [Shake Shack]([他家汉堡做减脂餐挺合适的_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1YK411q7Dg/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523)) |   汉堡   |        连锁        |      |
-| [河沿肉饼]([过年了，导演带我吃Beijing Pie_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1HG4y1X7Gh/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523)) | 北京肉饼 | 西城区<br />东城区 |      |
+| [Shake Shack](https://www.bilibili.com/video/BV1YK411q7Dg/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |   汉堡   |        连锁        |      |
+| [河沿肉饼](https://www.bilibili.com/video/BV1HG4y1X7Gh/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 北京肉饼 | 西城区<br />东城区 |      |
 | [喜鼎海胆水饺](https://www.bilibili.com/video/BV1kM411q7Ks/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |   水饺   |       朝阳区       |      |
 | [钟久夫肠粉王](https://www.bilibili.com/video/BV13M4y147Qo/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |   肠粉   |       朝阳区       |      |
 
