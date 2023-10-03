@@ -20,7 +20,7 @@ nav:
       # - 第1章 开始: dev/cpp/ch1.md
     - Java:
       - 《Java核心技术》笔记: dev/java/CoreJava.md
-    - hydro OJ运维: others/myoj.md
+    - hydro OJ运维: dev/myoj.md
   - 其他:
     - others/index.md
     - Latex公式整理: others/latex.md
@@ -116,8 +116,10 @@ markdown_extensions:
       alternate_style: true # 启用标签功能
   - pymdownx.arithmatex: # latex支持
       generic: true
+  - tables # 启用表格
   - admonition # 警告等 见 https://squidfunk.github.io/mkdocs-material/reference/admonitions/#inline-blocks
   - pymdownx.details # admonition的依赖
+
 
 extra_javascript:
   # latex支持
