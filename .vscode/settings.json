@@ -1,8 +1,8 @@
 {
     // 在写mkdocs.yaml文件时支持自动补全和纠错
-    "yaml.schemas": {
-      "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
-    },
+    // "yaml.schemas": {
+    //   "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml",
+    // },
     "yaml.customTags": [ 
       "!ENV scalar",
       "!ENV sequence",

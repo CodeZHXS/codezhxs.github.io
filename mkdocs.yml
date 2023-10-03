@@ -6,7 +6,6 @@ site_description: 陈裕杰的个人网站
 
 # [Navigtion]
 nav:
-  - index.md
   - 算法:
     - algorithm/index.md
     - ABC312(A-F): algorithm/AtCoder/abc312.md
@@ -26,6 +25,15 @@ nav:
     - others/index.md
     - Latex公式整理: others/latex.md
     - 老高: others/BJ_food.md
+
+# 不会渲染的页面
+exclude_docs: |
+  /dev/cpp/
+
+# 会渲染但隐藏起来页面 可以避免nav警告
+not_in_nav: |
+  index.md
+  /others/BJ_food_delete.md
 
 # [UI]
 ## [top]
@@ -47,6 +55,7 @@ theme:
   language: zh # 网站的语言 会影响一些自动参数
   features:
     - navigation.instant # 内置的网页会加载更快
+    - navigation.instant.progress # 页面加载进度条
     - navigation.tabs # 顶层的Tab
     - navigation.expand # 打开Tab时左侧目录全部展开
     - navigation.indexes # Tab会有一个index.md 而不是在打开Tab时打开第一篇文章
