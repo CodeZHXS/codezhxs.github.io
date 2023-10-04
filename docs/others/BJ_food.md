@@ -22,7 +22,7 @@
 | [提督](https://www.bilibili.com/video/BV1ER4y187dH/?spm_id_from=333.999.0.0) |        连锁        |                                                              |
 | [花家怡园](https://www.bilibili.com/video/BV1BT411p732/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |                                                              |
 | [小荣酒家](https://www.bilibili.com/video/BV1ss4y197CS/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |       朝阳区       |                                                              |
-| [大鸭梨](https://www.bilibili.com/video/BV1qo4y1A7bK/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523)) |        连锁        |                                                              |
+| [大鸭梨](https://www.bilibili.com/video/BV1qo4y1A7bK/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |                                                              |
 | [小吊梨汤](https://www.bilibili.com/video/BV1yz4y1873r/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |                                                              |
 | [晟永兴](https://www.bilibili.com/video/BV1wj411D7dh/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |                                                              |
 | [荣府宴](https://www.bilibili.com/video/BV1ax4y1R7nD/?spm_id_from=333.999.0.0) |       门头沟       |                                                              |
@@ -190,9 +190,9 @@
 ## 西餐
 | 店名 | 位置 | 评价 |
 | :--: | :--: | :--: |
-| [牛排家](https://www.bilibili.com/video/BV16v4y1s7pS/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |      |
-| [安妮意大利餐厅](https://www.bilibili.com/video/BV1zY41117Wf/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |    连锁        |                                                              |
-| [萨莉亚](https://www.bilibili.com/video/BV1ms4y1J7NW/?spm_id_from=333.999.0.0) |   西餐   |        连锁        |
+| [牛排家](https://www.bilibili.com/video/BV16v4y1s7pS/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 连锁 |      |
+| [安妮意大利餐厅](https://www.bilibili.com/video/BV1zY41117Wf/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 连锁 |      |
+| [萨莉亚](https://www.bilibili.com/video/BV1ms4y1J7NW/?spm_id_from=333.999.0.0) |连锁  | |
 | [THE TACO BAR](https://www.bilibili.com/video/BV1jX4y1m7kg/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 朝阳区<br />东城区 |                                                              |
 | [意库](https://www.bilibili.com/video/BV1rh4y1L78N/?spm_id_from=333.999.0.0) | 朝阳区 | |
 

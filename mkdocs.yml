@@ -30,7 +30,7 @@ nav:
 exclude_docs: |
   /dev/cpp/
 
-# 会渲染但隐藏起来页面 可以避免nav警告
+# 会渲染但隐藏起来的页面 可以避免nav警告
 not_in_nav: |
   index.md
   /others/BJ_food_delete.md
