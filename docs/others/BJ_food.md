@@ -3,8 +3,10 @@
 - 按照菜系分类。
 - 点击餐馆名可直达老高的B站视频。由于我时间有限，许多店铺没有品尝过，建议在决定去某一家店之前点进视频链接，参照老高以及评论区的评价决定。
 - 有 :white_check_mark: 图标表示我吃过，会留下短评。
-- 本贴的餐厅列表动态删除，如果老高评价低，或者用我的餐体验差，就会删除。被删除的餐厅在 [这里](./BJ_food_delete.md) 。
+- 本贴的餐厅列表动态删除，被删除的餐厅在 [这里](./BJ_food_delete.md) 。
 - 如果您去过其中的店铺，可以告诉我用餐的体验如何，我会将评价附在表中。
+
+---
 
 ## 京菜
 
@@ -12,7 +14,7 @@
 
 |                             店名                             |        位置        |                             评价                             |
 | :----------------------------------------------------------: | :----------------: | :----------------------------------------------------------: |
-| [便宜坊](https://www.bilibili.com/video/BV1Gx4y1772s/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        | :white_check_mark: 23.09.29世纪金源店 记得在 `美味不用等` 取号，价格小贵，味道不错。 |
+| [便宜坊](https://www.bilibili.com/video/BV1Gx4y1772s/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |      连锁       | :white_check_mark: 23.09.29世纪金源店 记得在 `美味不用等` 取号，价格小贵，味道不错。 |
 | [四季民福](https://www.bilibili.com/video/BV1Ge4y1j7eM/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |                                                              |
 | [全聚德](https://www.bilibili.com/video/BV1r8411J78A/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |                                                              |
 | [仿膳饭庄](https://www.bilibili.com/video/BV1414y1w72q/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 西城区<br />东城区 |                                                              |
@@ -29,7 +31,6 @@
 | [羊大爷涮肉](https://www.bilibili.com/video/BV1Nh4y117m8/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 海淀区<br />朝阳区 |                                                              |
 | [北平楼](https://www.bilibili.com/video/BV1ar4y1R7Bj/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |                                                              |
 | [新拾玖 新京菜](https://www.bilibili.com/video/BV11N4y1Z7jo/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |       朝阳区       |                                                              |
-
 ---
 
 ## 粤菜
