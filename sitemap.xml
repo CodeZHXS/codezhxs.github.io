@@ -46,7 +46,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://codezhxs.github.io/dev/java/CoreJava/</loc>
+         <loc>https://codezhxs.github.io/dev/java/CoreJava/ch02/</loc>
+         <lastmod>2023-10-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://codezhxs.github.io/dev/java/CoreJava/ch03/</loc>
+         <lastmod>2023-10-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://codezhxs.github.io/dev/java/CoreJava/ch04/</loc>
          <lastmod>2023-10-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
