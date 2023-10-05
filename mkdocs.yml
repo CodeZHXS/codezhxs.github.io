@@ -24,7 +24,7 @@ nav:
   - 其他:
     - others/index.md
     - Latex公式整理: others/latex.md
-    - 老高: others/BJ_food.md
+    - 北京干饭参考表 : others/BJ_food.md
 
 # 不会渲染的页面
 exclude_docs: |
