@@ -19,7 +19,10 @@ nav:
     # - CPP:
       # - 第1章 开始: dev/cpp/ch1.md
     - Java:
-      - 《Java核心技术》笔记: dev/java/CoreJava.md
+      - 《Java核心技术》笔记:
+        - 第2章 Java程序设计环境: dev/java/CoreJava/ch02.md
+        - 第3章 Java的基本程序设计结构: dev/java/CoreJava/ch03.md
+        - 第4章 对象与类: dev/java/CoreJava/ch04.md
     - hydro OJ运维: dev/myoj.md
   - 其他:
     - others/index.md

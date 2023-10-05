@@ -11,7 +11,7 @@ ps: 点击搜索栏左边那个按钮可以切换dark mode
 最近更新：
 
 
-- (20231005) [《Java核心技术》笔记 第4章](./dev/java/CoreJava.md/)
+- (20231005) [《Java核心技术》笔记 第4章](./dev/java/CoreJava/ch04.md)
 - (20231004) [北京干饭参考表](./others/BJ_food.md)
 
 
