@@ -10,10 +10,10 @@
 
 最近更新：
 
+- (20231011) [日记 231011](./essay/diary/231011.md)
 - (20231009) [《Java核心技术》笔记 第5章](./dev/java/CoreJava/ch05.md)
 - (20231005) [《Java核心技术》笔记 第4章](./dev/java/CoreJava/ch04.md)
 - (20231004) [北京干饭参考表](./others/BJ_food.md)
 - (20230928) [《Java核心技术》笔记 第3章](./dev/java/CoreJava/ch03.md)
-- (20230927) [《Java核心技术》笔记 第2章](./dev/java/CoreJava/ch02.md)
 
 

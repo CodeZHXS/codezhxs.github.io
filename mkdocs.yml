@@ -25,6 +25,10 @@ nav:
         - 第4章 对象与类: dev/java/CoreJava/ch04.md
         - 第5章 继承: dev/java/CoreJava/ch05.md
     - hydro OJ运维: dev/myoj.md
+  - 随笔:
+    - essay/index.md
+    - 日记:
+      - 231011 皮一下很开心: essay/diary/231011.md
   - 其他:
     - others/index.md
     - Latex公式整理: others/latex.md
