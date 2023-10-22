@@ -58,6 +58,7 @@
 |                             店名                             |  位置  |                             评价                             |
 | :----------------------------------------------------------: | :----: | :----------------------------------------------------------: |
 | [宜宾招待所](https://www.bilibili.com/video/BV1RW4y1N7uT/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 西城区 | :white_check_mark: 23.10.01 国庆人很多，等了两小时，出品略有降低，总体满意。 |
+| [天下盐](https://www.bilibili.com/video/BV1mP411C7dM/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 东城区 | :white_check_mark: 23.10.21 比较正宗的川菜，黄氏牛肉好吃，人均100。 |
 | [麻六记](https://www.bilibili.com/video/BV1gK411r783/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |  连锁  |                                                              |
 | [俏江南](https://www.bilibili.com/video/BV1LG4y1C7ba/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |  连锁  |                                                              |
 | [锦府盐帮](https://www.bilibili.com/video/BV1zs4y1Y7Zu/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |  连锁  |                                                              |
@@ -69,7 +70,6 @@
 | [四川饭店](https://www.bilibili.com/video/BV1mM4y1C7PW/?spm_id_from=333.999.0.0) |  连锁  |                                                              |
 | [许家菜](https://www.bilibili.com/video/BV1Ko4y147dW/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 朝阳区 |                                                              |
 | [泸州幺妹私房菜](https://www.bilibili.com/video/BV1Vo4y1577h/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 朝阳区 |                                                              |
-| [天下盐](https://www.bilibili.com/video/BV1mP411C7dM/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 东城区 |                                                              |
 | [龙人居 水煮鱼](https://www.bilibili.com/video/BV12x4y197sK/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |  连锁  |                                                              |
 
 ---
