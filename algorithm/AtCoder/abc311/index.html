@@ -1529,7 +1529,7 @@
 <p>不过既然能想到<code>len</code>之间的关联，dp几乎是呼之欲出的，只需要稍作修改就可以了。</p>
 <p><span class="arithmatex">\(dp[i][j]\)</span>：以 <span class="arithmatex">\((i, j)\)</span> 为右下角的没有洞的正方形的最大边长。</p>
 <p>转移也比较直观，如图，<code>dp[i-1][j-1], dp[i-1][j], dp[i][j-1]</code>叠加取最小值即可得到<code>dp[i][j]</code></p>
-<p><img alt="" src="media/ABC311/F1.png" width:_300_="width:&quot;300%&quot;" /></p>
+<p><img alt="" src="../media/ABC311/F1.png" width:_300_="width:&quot;300%&quot;" /></p>
 <div class="arithmatex">\[
 dp[i][j] = \left\{
 \begin{matrix}
