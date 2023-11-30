@@ -4,9 +4,7 @@ The photos I took in 2023.06.![hyd1](./media/hyd1.jpg){width:"300%"}
 
 ![hyd2](./media/hyd2.jpg){width:"300%"}
 
-![hyd3](https://i0.hdslb.com/bfs/new_dyn/aa0fe87556b2c9ba51e59735c7d0288b316332572.jpg@!web-comment-note.webp)
-
-Here are some photos I found on the Internet,  you can see Hongya Cave from different perspectives Through these them.
+Here are some photos I found on the Internet,  you can see Hongya Cave from different perspectives Through them.
 
 ![hyd](https://th.bing.com/th/id/R.91ac04ca6d5bb2338b63e1557448b327?rik=qoE37BIQ98KM7Q&riu=http%3a%2f%2fimg95.699pic.com%2fphoto%2f50065%2f5691.jpg_wh860.jpg&ehk=xsEZ30sVIcdfkgD6%2fcm8w9pXg5IfRWmTberAu10uAtU%3d&risl=&pid=ImgRaw&r=0)
 
