@@ -1,8 +1,8 @@
 # Some Photes of Hongya Cave
 
-The photos I took in 2023.06.![hyd1](./media/hyd1.jpg)
+The photos I took in 2023.06.![hyd1](./media/hyd1.jpg){width:"300%"}
 
-![hyd2](./media/hyd2.jpg)
+![hyd2](./media/hyd2.jpg){width:"300%"}
 
 ![hyd3](https://i0.hdslb.com/bfs/new_dyn/aa0fe87556b2c9ba51e59735c7d0288b316332572.jpg@!web-comment-note.webp)
 
