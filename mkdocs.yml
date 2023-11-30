@@ -44,6 +44,7 @@ exclude_docs: |
 not_in_nav: |
   index.md
   /others/BJ_food_delete.md
+  /others/Hongya_cave.md
 
 # [UI]
 ## [top]
