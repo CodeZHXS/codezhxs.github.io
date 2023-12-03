@@ -1755,6 +1755,7 @@
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 
 <span class="w">        </span><span class="c1">// 如果所有的子类都有相同的相等性语义，就使用 instanceof 检测</span>
+<span class="w">        </span><span class="c1">// 这种情况下应该将 equals 方法设置为 final </span>
 <span class="w">        </span><span class="c1">// if (!(otherObject instanceof Employee))</span>
 <span class="w">        </span><span class="c1">//     return false;</span>
 <span class="w">        </span><span class="c1">// 这里因为 equals 的语义可以在子类中改变，所以用了 getClass 检测</span>
@@ -1861,7 +1862,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-30</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-03</span>
       
         <br>
         创建日期:
