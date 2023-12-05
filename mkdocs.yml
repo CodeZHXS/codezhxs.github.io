@@ -24,6 +24,7 @@ nav:
         - 第3章 Java的基本程序设计结构: dev/java/CoreJava/ch03.md
         - 第4章 对象与类: dev/java/CoreJava/ch04.md
         - 第5章 继承: dev/java/CoreJava/ch05.md
+        - 第6章 接口、lambda表达式与内部类: dev/java/CoreJava/ch06.md
     - hydro OJ运维: dev/myoj.md
   - 随笔:
     - essay/index.md
