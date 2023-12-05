@@ -15,6 +15,10 @@
         <link rel="canonical" href="https://codezhxs.github.io/dev/java/CoreJava/ch06/">
       
       
+        <link rel="prev" href="../ch05/">
+      
+      
+        <link rel="next" href="../../../myoj/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -22,7 +26,7 @@
     
     
       
-        <title>Ch06 - 陈裕杰的个人网站</title>
+        <title>第6章 接口、lambda表达式与内部类 - 陈裕杰的个人网站</title>
       
     
     
@@ -111,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ch06
+              第6章 接口、lambda表达式与内部类
             
           </span>
         </div>
@@ -235,10 +239,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../../" class="md-tabs__link">
           
   
@@ -521,6 +527,8 @@
       
   
   
+    
+  
   
   
     
@@ -541,14 +549,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           
@@ -570,7 +576,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             开发
@@ -583,8 +589,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -594,14 +602,12 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
@@ -615,7 +621,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             Java
@@ -626,8 +632,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -639,18 +647,18 @@
       
         
       
+        
+      
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" checked>
         
           
           <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
@@ -664,7 +672,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2_1">
             <span class="md-nav__icon md-icon"></span>
             《Java核心技术》笔记
@@ -750,6 +758,156 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    第6章 接口、lambda表达式与内部类
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    第6章 接口、lambda表达式与内部类
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      接口
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="接口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      接口的属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      默认方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      解决默认方法冲突
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      标记接口
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda 表达式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="lambda 表达式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      函数式接口
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      方法引用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      变量作用域
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1212,6 +1370,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      方法引用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      变量作用域
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1240,7 +1416,7 @@
   
 
 
-  <h1>Ch06</h1>
+  <h1>第6章 接口、lambda表达式与内部类</h1>
 
 <h2 id="_1">接口<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>如果实现了某个接口，就能使用这个接口的方法和变量。</p>
@@ -1321,13 +1497,61 @@
 <div class="highlight"><pre><span></span><code><span class="c1">// 只有在 null 时才执行第二个参数</span>
 <span class="n">LocalDate</span><span class="w"> </span><span class="n">hireDay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Objects</span><span class="p">.</span><span class="na">requireNonNullOrElseGet</span><span class="p">(</span><span class="n">day</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LocalDate</span><span class="p">(</span><span class="mi">1970</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
 </code></pre></div>
+<h3 id="_7">方法引用<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><code>lambda</code> 表达式可以进一步简化成一个方法引用，有以下三种用法：</p>
+<ol>
+<li><code>object::instanceMethod</code>，例如在创建定时任务的参数中使用 <code>System.out::println</code>：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Timer</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">::</span><span class="n">println</span><span class="p">);</span>
+</code></pre></div>
+<p><code>System.out::println</code> 有 10 个重载，系统会自动匹配最接近的重载，在这个例子中，最接近的是 <code>println(Object event)</code> 的方法，相当于：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Timer</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">event</span><span class="p">));</span>
+</code></pre></div>
+<ol>
+<li><code>Class::instanceMethod</code>，例如在对字符串数组排序时，想忽略字母的大小写：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">planets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Mercury&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Venus&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Earth&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Mars&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Jupiter&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Saturn&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Uranus&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Neptune&quot;</span><span class="w"> </span><span class="p">};</span>
+<span class="n">Arrays</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">planets</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="p">::</span><span class="n">compareToIgnoreCase</span><span class="p">);</span>
+</code></pre></div>
+<p>这种情况下，第 1 个参数会成为方法的隐式参数，相当于：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Arrays</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">planets</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="na">compareToIgnoreCase</span><span class="p">(</span><span class="n">y</span><span class="p">));</span>
+</code></pre></div>
+<ol>
+<li><code>Class::staticMethod</code>，例如 <code>Math::pow</code>，这种情况下所有的参数都会传递到静态方法当中，相当于 <code>(x, y) -&gt; Math.pow(x, y)</code></li>
+</ol>
+<details class="info" open="open">
+<summary>Info</summary>
+<p>注意，只有当 <code>lambda</code> 表达式的结构时只调用一个方法而不做其他操作时，才能把 lambda 表达式重写为方法引用。例如:
+<div class="highlight"><pre><span></span><code><span class="n">s</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span>
+</code></pre></div>
+这里除了一个方法调用之外还有一个比较，所以不能使用方法引用。</p>
+</details>
+<h3 id="_8">变量作用域<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>lambda</code> 表达式可以自动捕获外围作用域的变量（不需要手动添加捕获）。</li>
+<li><code>lambda</code> 表达式只能引用不会改变的变量，被捕获的变量既不能在内部改变，也不能在外部改变，否则报错。</li>
+<li>在 <code>lambda</code> 表达式中声明与一个局部变量同名的参数或局部变量是不合法的。</li>
+<li>在 <code>lambda</code> 表达式中使用 <code>this</code> 关键字时，是指创建这个 <code>lambda</code> 表达式的方法的 <code>this</code> 参数。例如：</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Application</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">init</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ActionListener</span><span class="w"> </span><span class="n">liStener</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+<span class="w">            </span><span class="p">......</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="p">......</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>表达式 <code>this .toString()</code> 会调用 <code>Application</code> 对象的 <code>toString</code> 方法，而不是 <code>ActionListener</code> 实例的方法。</p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-04</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-05</span>
       
         <br>
         创建日期:
@@ -1358,6 +1582,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../ch05/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第5章 继承">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                第5章 继承
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../myoj/" class="md-footer__link md-footer__link--next" aria-label="下一页: hydro OJ运维">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                hydro OJ运维
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
