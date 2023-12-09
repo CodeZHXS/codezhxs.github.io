@@ -10,6 +10,7 @@
 
 最近更新：
 
+- (23231209) [我的PowerShell配置](./dev/my_powershell.md)
 - (23231205) [第6章 接口、lambda表达式与内部类](./dev/java/CoreJava/ch06.md)
 - (20231201) [我的PC配置](./others/pc.md)
 

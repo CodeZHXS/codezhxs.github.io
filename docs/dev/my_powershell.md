@@ -332,6 +332,12 @@ function whereis ($command) {
 }
 ```
 
+## 适配 vscode 终端
+
+> 解决 vscode 终端缺失字体的问题
+
+在设置中搜索 `Font`，将 `Terminal > Integrated: Font Family` 设置为 `FiraCode Nerd Font` 即可。
+
 ## 我的最终配置文件
 
 ### `$PROFILE` 文件
