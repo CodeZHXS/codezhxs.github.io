@@ -1,0 +1,2052 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="陈裕杰的个人网站">
+      
+      
+        <meta name="author" content="陈裕杰">
+      
+      
+        <link rel="canonical" href="https://codezhxs.github.io/dev/my_powershell/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.1">
+    
+    
+      
+        <title>My powershell - 陈裕杰的个人网站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.45e1311d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#windows-terminal" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="陈裕杰的个人网站" class="md-header__button md-logo" aria-label="陈裕杰的个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            陈裕杰的个人网站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              My powershell
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/CodeZHXS/codezhxs.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    codezhxs.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../algorithm/" class="md-tabs__link">
+          
+  
+    
+  
+  算法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
+          
+  
+    
+  
+  开发
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../essay/" class="md-tabs__link">
+          
+  
+    
+  
+  随笔
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../others/" class="md-tabs__link">
+          
+  
+    
+  
+  其他
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="陈裕杰的个人网站" class="md-nav__button md-logo" aria-label="陈裕杰的个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    陈裕杰的个人网站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/CodeZHXS/codezhxs.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    codezhxs.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../algorithm/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    算法
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            算法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/AtCoder/abc312/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ABC312(A-F)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/AtCoder/abc311/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ABC311(A-G)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/AtCoder/abc310/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ABC310(A-F)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/AtCoder/abc309/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ABC309(A-F)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/AtCoder/abc308/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ABC308(A-G)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    开发
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            开发
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Java
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Java
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    《Java核心技术》笔记
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            《Java核心技术》笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/CoreJava/ch02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第2章 Java程序设计环境
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/CoreJava/ch03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第3章 Java的基本程序设计结构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/CoreJava/ch04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第4章 对象与类
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/CoreJava/ch05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第5章 继承
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/CoreJava/ch06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第6章 接口、lambda表达式与内部类
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../myoj/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    hydro OJ运维
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../essay/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    随笔
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            随笔
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    日记
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            日记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../essay/diary/2023-12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    日记 | 2023-12
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../essay/diary/2023-10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    日记 | 2023-10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../others/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    其他
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            其他
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/latex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latex公式整理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/BJ_food/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    北京干饭参考表
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/pc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    我的PC配置
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#windows-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows Terminal 配置
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Windows Terminal 配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      启动
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      外观
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      配色方案
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      配置文件-默认值-外观
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      配置文件-PowerShell
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      更改 PowerShell 语法颜色
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="更改 PowerShell 语法颜色">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#powershell_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      PowerShell 配置文件路径
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#psreadline-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用 PSReadLine 修改 PowerShell 字体颜色
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    <span class="md-ellipsis">
+      Git 命令补全、状态显示
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Git 命令补全、状态显示">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装 Git
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#posh-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装 Posh-Git
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oh-my-posh" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用 oh-my-posh 美化命令提示符
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="使用 oh-my-posh 美化命令提示符">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oh-my-posh_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装 oh-my-posh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      选择主题：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      设置主题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      修改主题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="修改主题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      去除用户名显示
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      修改部分字体颜色
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powershell-zsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      让 PowerShell 更加接近 zsh
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="让 PowerShell 更加接近 zsh">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#z" class="md-nav__link">
+    <span class="md-ellipsis">
+      z ：自动跳转
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terminal-icons" class="md-nav__link">
+    <span class="md-ellipsis">
+      Terminal-Icons：终端图标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-alias" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用 Set-Alias 给命令起别名
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="使用 Set-Alias 给命令起别名">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open" class="md-nav__link">
+    <span class="md-ellipsis">
+      open 命令
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用函数创建类似的命令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="使用函数创建类似的命令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#whereis" class="md-nav__link">
+    <span class="md-ellipsis">
+      whereis命令
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      我的最终配置文件
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="我的最终配置文件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      $PROFILE 文件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#my_pureompjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      my_pure.omp.json 文件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/CodeZHXS/codezhxs.github.io/edit/main/docs/dev/my_powershell.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>My powershell</h1>
+
+<h2 id="windows-terminal">Windows Terminal 配置<a class="headerlink" href="#windows-terminal" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>在微软商店安装 <a href="https://apps.microsoft.com/detail/9MZ1SNWT0N5D?hl=zh-cn&amp;gl=CN">PowerShell</a> 和 <a href="https://apps.microsoft.com/detail/9N0DX20HK701?hl=zh-cn&amp;gl=cn">Windows Terminal </a></p>
+</blockquote>
+<p>打开终端按照如下设置。</p>
+<h3 id="_1">启动<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">设置项</th>
+<th style="text-align: center;">设置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">默认配置文件</td>
+<td style="text-align: center;">PowerShell</td>
+</tr>
+<tr>
+<td style="text-align: center;">默认终端应用程序</td>
+<td style="text-align: center;">Windows 终端</td>
+</tr>
+<tr>
+<td style="text-align: center;">启动大小</td>
+<td style="text-align: center;">列：95 <br />行：30</td>
+</tr>
+<tr>
+<td style="text-align: center;">启动参数</td>
+<td style="text-align: center;">在启动时居中</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_2">外观<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">设置项</th>
+<th style="text-align: center;">设置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">在选项卡中使用亚克力材料</td>
+<td style="text-align: center;">开</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">配色方案<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>使用 <code>Snazzy</code>,参考 <a href="https://github.com/Richienb/windows-terminal-snazzy?tab=readme-ov-file">Richienb/windows-terminal-snazzy: Elegant Windows Terminal theme with bright colors (github.com)</a> 的安装步骤：</p>
+<ol>
+<li>
+<p>在设置中打开JSON文件。</p>
+</li>
+<li>
+<p>在 <code>schemes</code> 中添加如下：</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;background&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#282A36&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;black&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#282A36&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;blue&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#57C7FF&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;brightBlack&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#686868&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;brightBlue&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#57C7FF&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;brightCyan&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#9AEDFE&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;brightGreen&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#5AF78E&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;brightPurple&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#FF6AC1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;brightRed&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#FF5C57&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;brightWhite&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#EFF0EB&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;brightYellow&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#F3F99D&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;cursorColor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#97979B&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;cyan&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#9AEDFE&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;foreground&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#EFF0EB&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;green&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#5AF78E&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Snazzy&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;purple&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#FF6AC1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;red&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#FF5C57&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;selectionBackground&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#3E404A&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;white&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#F1F1F0&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;yellow&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#F3F99D&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+</code></pre></div>
+<ol>
+<li>在 <strong>设置-配色方案</strong> 中选择 <code>Snazzy</code> 主题。</li>
+</ol>
+<h3 id="_4">操作<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>快捷键根据自己需求设置。</p>
+<h3 id="-">配置文件-默认值-外观<a class="headerlink" href="#-" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">设置项</th>
+<th style="text-align: center;">设置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">配色方案</td>
+<td style="text-align: center;">Snazzy</td>
+</tr>
+<tr>
+<td style="text-align: center;">字体</td>
+<td style="text-align: center;">FiraCode Nerd Font Mono<br /><a href="https://www.nerdfonts.com/font-downloads">下载链接</a></td>
+</tr>
+<tr>
+<td style="text-align: center;">字号</td>
+<td style="text-align: center;">14</td>
+</tr>
+<tr>
+<td style="text-align: center;">背景不透明度</td>
+<td style="text-align: center;">90%</td>
+</tr>
+<tr>
+<td style="text-align: center;">启用亚克力材料</td>
+<td style="text-align: center;">开</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-powershell">配置文件-PowerShell<a class="headerlink" href="#-powershell" title="Permanent link">&para;</a></h3>
+<p>调换一下顺序</p>
+<ol>
+<li>在设置中打开JSON文件。</li>
+<li>在 <code>profiles</code> - <code>list</code> 中，将 <code>PowerShell</code> 的部分移动到最前面。</li>
+</ol>
+<hr />
+<h2 id="powershell">更改 PowerShell 语法颜色<a class="headerlink" href="#powershell" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>默认情况下，powershell 中某些语法颜色很奇怪，例如 <code>git -v</code> 的 <code>-v</code> 显示的颜色非常浅，<code>git</code> 的颜色也是黄色，这和 zsh 不太一样。</p>
+</blockquote>
+<h3 id="powershell_1">PowerShell 配置文件路径<a class="headerlink" href="#powershell_1" title="Permanent link">&para;</a></h3>
+<p>zsh 在启动时会执行 <code>~/.zshrc</code> 中的所有语句，用于 zsh 。 同样的，powershell 也有类似的文件，在终端中输入以下命令：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo </span><span class="nv">$PROFILE</span>
+</code></pre></div>
+<p>输出为：</p>
+<div class="highlight"><pre><span></span><code>~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+</code></pre></div>
+<p>变量 <code>$PROFILE</code> 存储的是当前用户当前主机的 powershell 配置文件，等价于 <code>$PROFILE.CurrentUserCurrentHost</code>，<code>$PROFILE</code> 具有以下值：</p>
+<ul>
+<li>当前用户，当前主机 - <code>$PROFILE</code></li>
+<li>当前用户，当前主机 - <code>$PROFILE.CurrentUserCurrentHost</code></li>
+<li>当前用户，所有主机 - <code>$PROFILE.CurrentUserAllHosts</code></li>
+<li>所有用户，当前主机 - <code>$PROFILE.AllUsersCurrentHost</code></li>
+<li>所有用户，所有主机 - <code>$PROFILE.AllUsersAllHosts</code></li>
+</ul>
+<h3 id="psreadline-powershell">使用 PSReadLine 修改 PowerShell 字体颜色<a class="headerlink" href="#psreadline-powershell" title="Permanent link">&para;</a></h3>
+<p>PSReadLine 是 powershell 自带的命令行自定义模块，提供以下功能：</p>
+<ul>
+<li><strong>命令行语法着色</strong></li>
+<li>语法错误的直观指示</li>
+<li>更好的多行体验（编辑和历史记录）</li>
+<li>可自定义的键绑定</li>
+<li>Cmd 和 Emacs 模式</li>
+<li>许多配置选项</li>
+<li>Bash 风格补全（Cmd 模式下为可选，Emacs 模式下为默认）</li>
+<li>Emacs yank/kill-ring</li>
+<li>基于 PowerShell 标记的“单词”移动和删除</li>
+<li>预测 IntelliSense</li>
+<li>在控制台中动态显示帮助，而不会丢失在命令行中的位置</li>
+</ul>
+<p>第一个功能就是修改命令行语法颜色，下面进行修改</p>
+<p>首先输入以下命令查看 PSReadLine 的默认设置：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-PSReadLineOption</span>
+</code></pre></div>
+<p>可以看到最后一部分是带有颜色的字体，有关字体颜色以及输出的相关知识，可以参考 <a href="https://blog.csdn.net/gjmjack/article/details/121179867">PowerShell : 如何设置输出颜色，Format-Color让黑乎乎的窗口丰富起来_powershell字体不变色-CSDN博客</a> 。</p>
+<p>下面修改语法着色的部分，参考官方的 <a href="https://learn.microsoft.com/zh-cn/powershell/module/psreadline/set-psreadlineoption?view=powershell-7.4">Set-PSReadLineOption (PSReadLine) - PowerShell | Microsoft Learn</a> 。</p>
+<p>首先打开配置文件 </p>
+<div class="highlight"><pre><span></span><code><span class="n">code</span> <span class="nv">$PROFILE</span>
+</code></pre></div>
+<p>添加语法颜色修改的配置，使其更接近 zsh 的语法着色：</p>
+<div class="highlight"><pre><span></span><code><span class="c"># $PROFILE</span>
+<span class="nb">Set-PSReadLineOption</span> <span class="n">-Colors</span> <span class="p">@{</span>
+    <span class="n">Command</span>     <span class="p">=</span> <span class="s1">&#39;Green&#39;</span>
+    <span class="k">Parameter</span>   <span class="p">=</span> <span class="s1">&#39;White&#39;</span>
+    <span class="n">String</span>      <span class="p">=</span> <span class="s1">&#39;Yellow&#39;</span>
+    <span class="n">Variable</span>    <span class="p">=</span> <span class="s1">&#39;White&#39;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>右侧的值可以选择以下之一（应该也支持 ANSI 和 RBG，未测试）</p>
+<ul>
+<li><code>Black</code></li>
+<li><code>DarkBlue</code></li>
+<li><code>DarkGreen</code></li>
+<li><code>DarkCyan</code></li>
+<li><code>DarkRed</code></li>
+<li><code>DarkMagenta</code></li>
+<li><code>DarkYellow</code></li>
+<li><code>Gray</code></li>
+<li><code>DarkGray</code></li>
+<li><code>Blue</code></li>
+<li><code>Green</code></li>
+<li><code>Cyan</code></li>
+<li><code>Red</code></li>
+<li><code>Magenta</code></li>
+<li><code>Yellow</code></li>
+<li><code>White</code></li>
+</ul>
+<hr />
+<h2 id="git">Git 命令补全、状态显示<a class="headerlink" href="#git" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>目前命令行针对 <code>git</code> 相关的命令不能补全，也不能显示当前分支。</p>
+</blockquote>
+<h3 id="git_1">安装 Git<a class="headerlink" href="#git_1" title="Permanent link">&para;</a></h3>
+<p>下载链接：<a href="https://git-scm.com/download/win">Git - Downloading Package (git-scm.com)</a>，开始安装。</p>
+<p>安装选项中，最好勾上 “Add a Git Bash Profile to Windows Terminal”，因为以后有可能在终端打开 Git Bash。</p>
+<p>其他的选项根据喜好选择。</p>
+<h3 id="posh-git">安装 Posh-Git<a class="headerlink" href="#posh-git" title="Permanent link">&para;</a></h3>
+<p>Posh-Git 提供针对 <code>git</code> 命令的补全，以及显示当前分支等功能。</p>
+<p>输入以下命令开始安装：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">Install-Module</span> <span class="n">posh-git</span>
+</code></pre></div>
+<p>安装完成后，在 <code>$PROFILE</code> 中添加：</p>
+<div class="highlight"><pre><span></span><code><span class="c"># $PROFILE</span>
+<span class="nb">Import-Module</span> <span class="n">Posh-Git</span>
+</code></pre></div>
+<p>随后新建一个 powershell，就支持命令补全以及状态显示了。（目前状态显示的字体有点问题，等一下会修改。）</p>
+<h2 id="oh-my-posh">使用 oh-my-posh 美化命令提示符<a class="headerlink" href="#oh-my-posh" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>目前的命令提示符还不够美观，并且缺乏命令执行时间等功能。微软官方推荐使用 <code>oh-my-posh</code> 来美化命令提示符以及拓展相关的功能。</p>
+</blockquote>
+<h3 id="oh-my-posh_1">安装 oh-my-posh<a class="headerlink" href="#oh-my-posh_1" title="Permanent link">&para;</a></h3>
+<p>微软商店直接安装：<a href="https://apps.microsoft.com/detail/XP8K0HKJFRXGCK?hl=zh-cn&amp;gl=CN">oh-my-posh - Microsoft Apps</a></p>
+<h3 id="_5">选择主题：<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>oh-my-posh 提供许多现成的主题，具体可以参考 <a href="https://ohmyposh.dev/docs/themes">Themes | Oh My Posh</a>、</p>
+<p>不同的主题有不同的美化效果，还提供一些额外的功能，例如：</p>
+<ul>
+<li>显示当前路径</li>
+<li>
+<p>显示 git 分支、版本号等</p>
+</li>
+<li>
+<p>显示当前用户名、主机名</p>
+</li>
+<li>显示当前时间</li>
+<li>显示电脑内存</li>
+<li>显示上一条命令执行的时间</li>
+</ul>
+<p>选择喜欢的主题，并记下主题名。</p>
+<h3 id="_6">设置主题<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>我在 Unix 系统下的 zsh 使用的是 <a href="https://github.com/sindresorhus/pure#oh-my-zsh">pure</a> 主题，因此这里也选择 <code>pure</code> 主题。</p>
+</blockquote>
+<p>在 <code>$PROFILE</code> 的第一行添加：</p>
+<div class="highlight"><pre><span></span><code><span class="c"># $PROFILE</span>
+<span class="n">oh-my-posh</span> <span class="n">init</span> <span class="n">pwsh</span> <span class="p">-</span><span class="n">-config</span> <span class="s2">&quot;$env:POSH_THEMES_PATH/pure.omp.json&quot;</span> <span class="p">|</span> <span class="nb">Invoke-Expression</span>
+</code></pre></div>
+<p>将 <code>pure</code> 换成其他的主题名即可。</p>
+<p>设置完成后，新建一个终端，命令提示符样式就会发生改变。</p>
+<h3 id="_7">修改主题<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>oh-my-posh 的 pure 主题和 zsh 的 pure 主题并不是完全相似的，具体来说有以下 2 点不同：</p>
+<ol>
+<li>oh-my-posh 的 pure 主题默认显示用户名，但 zsh 的 pure 主题在本地连接的情况下并不会显示用户名。</li>
+<li>oh-my-posh 的 pure 主题某些部分的字体颜色和 zsh 的 pure 主题不一致。</li>
+</ol>
+<p>修改主题之前，需要复制原有主题的一个副本，执行以下命令（这里我将其复制到和 <code>$PROFILE</code> 的同一目录下）：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">mv </span><span class="nv">$env:POSH_THEMES_PATH</span><span class="p">/</span><span class="n">pure</span><span class="p">.</span><span class="n">omp</span><span class="p">.</span><span class="n">json</span> <span class="p">~/</span><span class="n">Documents</span><span class="p">/</span><span class="n">PowerShell</span><span class="p">/</span><span class="n">my_pure</span><span class="p">.</span><span class="n">omp</span><span class="p">.</span><span class="n">json</span>
+</code></pre></div>
+<p>修改 <code>my_pure.omp.json</code> 就能修改主题了，主题可修改的内容很多，参考 <a href="https://ohmyposh.dev/docs">Introduction | Oh My Posh</a>。</p>
+<p>针对我的 2 个需求，修改方法如下：</p>
+<h4 id="_8">去除用户名显示<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>这个很简单，直接删掉有 <code>segments</code> 里带有 <code>{{ .UserName}}</code> 的那一段就好了。</p>
+<h4 id="_9">修改部分字体颜色<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>使用 vscode 打开配置文件，带有 <code>foreground</code> 的标签就是字体的颜色，直接修改就好。</p>
+<p>字体的颜色是 RGB 格式，比较麻烦的是要如何知道修改成什么颜色，例如我想要改成和 zsh 的 pure 主题一样的字体颜色，就必须获得 zsh 的 pure 主题的颜色值。解决的办法有两个，一是直接查阅 zsh 的 pure 主题的源码，直接在 github 上搜索。二是直接捕获屏幕的像素点的值，我用的是 <code>PowerToys</code> 提供的颜色选取工具 <a href="https://learn.microsoft.com/zh-cn/windows/powertoys/color-picker">PowerToys适用于 Windows 的 ColorPicker 实用工具 | Microsoft Learn</a>。用法也很简单，首先在 windows 终端 ssh 到一台配好了 zsh 和 pure 主题的 Unix 系统上（云服务器、虚拟机、WSL 都可以） ，然后使用 <code>CTRL+滚轮</code> 放大终端，最后用快捷键直接捕捉屏幕像素点的 RGB 值就可以了，简单快捷。</p>
+<p>最终我修改了 pure 主题这些部分的字体颜色：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">type</th>
+<th style="text-align: center;">修改前</th>
+<th style="text-align: center;">修改后</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">path</td>
+<td style="text-align: center;">#81A1C1</td>
+<td style="text-align: center;">#57C7FF</td>
+</tr>
+<tr>
+<td style="text-align: center;">executiontime</td>
+<td style="text-align: center;">#A3BE8C</td>
+<td style="text-align: center;">#F3F99D</td>
+</tr>
+<tr>
+<td style="text-align: center;">status</td>
+<td style="text-align: center;">#B48EAD</td>
+<td style="text-align: center;">#FF6AC1</td>
+</tr>
+</tbody>
+</table>
+<p>改了这三个就和 zsh 的 pure 主题差不多了。</p>
+<h2 id="powershell-zsh">让 PowerShell 更加接近 zsh<a class="headerlink" href="#powershell-zsh" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>配置一些插件让 powershell 更加美观、更加好用。此外，powershell 的命令名称和 zsh 不太一致，可以通过添加别名实现。</p>
+</blockquote>
+<h3 id="z">z ：自动跳转<a class="headerlink" href="#z" title="Permanent link">&para;</a></h3>
+<p>类似于 zsh 的自动跳转插件，输入以下命令安装：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">Install-Module</span> <span class="n">z</span>
+</code></pre></div>
+<p>然后在 <code>$PROFILE</code> 添加：</p>
+<div class="highlight"><pre><span></span><code><span class="c"># $PROFILE</span>
+<span class="nb">Import-Module</span> <span class="n">z</span>
+</code></pre></div>
+<h3 id="terminal-icons">Terminal-Icons：终端图标<a class="headerlink" href="#terminal-icons" title="Permanent link">&para;</a></h3>
+<p>在 <code>ls</code> 的时候文件前附加图标显示（不然的话默认情况下文件夹的高亮显示不太好看），输入以下命令安装：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">Install-Module</span> <span class="n">Terminal-Icons</span>
+</code></pre></div>
+<p>然后在 <code>$PROFILE</code> 添加：</p>
+<div class="highlight"><pre><span></span><code><span class="c"># $PROFILE</span>
+<span class="nb">Import-Module</span> <span class="n">Terminal-Icons</span>
+</code></pre></div>
+<h3 id="set-alias">使用 Set-Alias 给命令起别名<a class="headerlink" href="#set-alias" title="Permanent link">&para;</a></h3>
+<h4 id="open">open 命令<a class="headerlink" href="#open" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nb">Set-Alias</span> <span class="n">open</span> <span class="nb">ii</span>
+</code></pre></div>
+<h3 id="_10">使用函数创建类似的命令<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h4 id="whereis">whereis命令<a class="headerlink" href="#whereis" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c"># 既能查文件也能查命令</span>
+<span class="k">function</span> <span class="n">whereis</span> <span class="p">(</span><span class="nv">$command</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">Get-Command</span> <span class="n">-Name</span> <span class="nv">$command</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span> <span class="p">|</span> 
+    <span class="nb">Select-Object</span> <span class="n">-ExpandProperty</span> <span class="n">Path</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_11">我的最终配置文件<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h3 id="profile"><code>$PROFILE</code> 文件<a class="headerlink" href="#profile" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c"># oh-my-posh init pwsh --config &quot;$env:POSH_THEMES_PATH/clean-detailed.omp.json&quot; | Invoke-Expression</span>
+<span class="n">oh-my-posh</span> <span class="n">init</span> <span class="n">pwsh</span> <span class="p">-</span><span class="n">-config</span> <span class="s2">&quot;~/Documents/PowerShell/my_pure.omp.json&quot;</span> <span class="p">|</span> <span class="nb">Invoke-Expression</span>
+<span class="nb">Set-PSReadLineOption</span> <span class="n">-Colors</span> <span class="p">@{</span>
+    <span class="n">Command</span>     <span class="p">=</span> <span class="s1">&#39;Green&#39;</span>
+    <span class="k">Parameter</span>   <span class="p">=</span> <span class="s1">&#39;White&#39;</span>
+    <span class="n">String</span>      <span class="p">=</span> <span class="s1">&#39;Yellow&#39;</span>
+    <span class="n">Variable</span>    <span class="p">=</span> <span class="s1">&#39;White&#39;</span>
+<span class="p">}</span>
+
+<span class="nb">Import-Module</span> <span class="n">Posh-Git</span>
+<span class="nb">Import-Module</span> <span class="n">Terminal-Icons</span>
+<span class="nb">Import-Module</span> <span class="n">z</span>
+
+<span class="nb">Set-Alias</span> <span class="n">open</span> <span class="nb">ii</span>
+
+<span class="k">function</span> <span class="n">clash</span> <span class="p">{</span>
+    <span class="nv">$Env:http_proxy</span> <span class="p">=</span> <span class="s2">&quot;http://127.0.0.1:7890&quot;</span>
+    <span class="nv">$Env:https_proxy</span> <span class="p">=</span> <span class="s2">&quot;http://127.0.0.1:7890&quot;</span>
+<span class="p">}</span>
+<span class="k">function</span> <span class="n">clash-off</span> <span class="p">{</span>
+    <span class="nv">$Env:http_proxy</span> <span class="p">=</span> <span class="nv">$Env:https_proxy</span> <span class="p">=</span> <span class="nv">$null</span>
+<span class="p">}</span>
+
+<span class="c"># 既能查文件也能查命令</span>
+<span class="k">function</span> <span class="n">whereis</span> <span class="p">(</span><span class="nv">$command</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">Get-Command</span> <span class="n">-Name</span> <span class="nv">$command</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span> <span class="p">|</span> 
+    <span class="nb">Select-Object</span> <span class="n">-ExpandProperty</span> <span class="n">Path</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="my_pureompjson"><code>my_pure.omp.json</code> 文件<a class="headerlink" href="#my_pureompjson" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;blocks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;prompt&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;alignment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;newline&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;segments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;foreground&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#57C7FF&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;full&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;plain&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;template&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{{ .Path }} &quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;path&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;prompt&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;alignment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;segments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;foreground&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#6C6C6C&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;branch_ahead_icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;#88C0D0&gt;\u21e1 &lt;/&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;branch_behind_icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;#88C0D0&gt;\u21e3 &lt;/&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;branch_icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;fetch_stash_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;fetch_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;fetch_upstream_icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;github_icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;plain&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;template&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}&lt;#FFAFD7&gt;*&lt;/&gt;{{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} &quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;git&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;alignment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;segments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;foreground&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#F3F99D&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;austin&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;plain&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;template&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; {{ .FormattedMs }} &quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;executiontime&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;prompt&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;prompt&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;alignment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;newline&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;segments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;foreground&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#FF6AC1&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;foreground_templates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;{{ if gt .Code 0 }}#BF616A{{ end }}&quot;</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;always_enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;plain&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;template&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\u276f &quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;status&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;console_title_template&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{{if .Root}}(Admin){{end}} {{.PWD}}&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-09</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-09</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      陈裕杰 CC-BY-4.0
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://space.bilibili.com/12519995" target="_blank" rel="noopener" title="Bilibili | Jay朝花夕拾杯中酒" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92.02c-26.45-.8-48.21-9.8-65.28-27.2C9.682 419.4.767 396.5 0 368.2V169.8c.767-26 9.682-47.6 26.74-65.7C43.81 87.75 65.57 78.77 92.02 78h29.38L96.05 52.19c-5.75-5.73-8.63-13-8.63-21.79 0-8.8 2.88-16.06 8.63-21.797C101.8 2.868 109.1 0 117.9 0s16.1 2.868 21.9 8.603L213.1 78h88l74.5-69.397C381.7 2.868 389.2 0 398 0c8.8 0 16.1 2.868 21.9 8.603 5.7 5.737 8.6 12.997 8.6 21.797 0 8.79-2.9 16.06-8.6 21.79L394.6 78h29.3c26.4.77 48 9.75 64.7 26.1zm-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96.05c-9.59.4-17.45 3.7-23.58 9.8-6.14 6.1-9.4 13.9-9.78 23.5v194.4c0 9.2 3.26 17 9.78 23.5s14.38 9.8 23.58 9.8H416.4c9.2 0 17-3.3 23.3-9.8 6.3-6.5 9.7-14.3 10.1-23.5V173.8zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5-9.6 0-17.5-3.2-23.6-9.5-6.1-6.3-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2 6.3-6.3 13.2-9.6 23.3-10 9.2.4 17 3.7 23.3 10zm191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.1 6.3-14 9.5-23.6 9.5-9.6 0-17.4-3.2-23.6-9.5-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2 6.3-6.3 14.1-9.6 23.3-10 9.2.4 17 3.7 23.3 10z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/CodeZHXS" target="_blank" rel="noopener" title="GitHub | CodeZHXS" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.expand", "navigation.indexes", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.action.edit", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../mkdocs/javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
