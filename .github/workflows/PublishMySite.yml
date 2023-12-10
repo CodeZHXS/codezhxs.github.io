@@ -27,8 +27,9 @@ jobs: # 工作流的具体内容
           restore-keys: |
             mkdocs-material-
       # 使用pip包管理工具安装mkdocs-material和插件
-      - run: pip install  mkdocs-material \
-                          mkdocs-git-revision-date-localized-plugin \
+      # 注意要用 9.4.2
+      - run: pip install  mkdocs-material=="9.4.2"\
+                          mkdocs-git-revision-date-localized-plugin\
       - run: mkdocs gh-deploy --force # 使用mkdocs-material部署gh-pages分支
 
 

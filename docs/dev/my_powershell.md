@@ -24,9 +24,7 @@
 使用 `Snazzy`,参考 [Richienb/windows-terminal-snazzy: Elegant Windows Terminal theme with bright colors (github.com)](https://github.com/Richienb/windows-terminal-snazzy?tab=readme-ov-file) 的安装步骤：
 
 1. 在设置中打开JSON文件。
-
 2. 在 `schemes` 中添加如下：
-
 ```json
         {
             "background": "#282A36",
@@ -52,7 +50,6 @@
             "yellow": "#F3F99D"
         },
 ```
-
 3. 在 **设置-配色方案** 中选择 `Snazzy` 主题。
 
 ### 操作
