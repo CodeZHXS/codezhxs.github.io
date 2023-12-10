@@ -244,6 +244,7 @@ oh-my-posh 的 pure 主题和 zsh 的 pure 主题并不是完全相似的，具�
 
 1. oh-my-posh 的 pure 主题默认显示用户名，但 zsh 的 pure 主题在本地连接的情况下并不会显示用户名。
 2. oh-my-posh 的 pure 主题某些部分的字体颜色和 zsh 的 pure 主题不一致。
+3. oh-my-posh 的 pure 主题无法显示 python 虚拟环境。
 
 修改主题之前，需要复制原有主题的一个副本，执行以下命令（这里我将其复制到和 `$PROFILE` 的同一目录下）：
 
@@ -274,6 +275,12 @@ mv $env:POSH_THEMES_PATH/pure.omp.json ~/Documents/PowerShell/my_pure.omp.json
 |    status     | #B48EAD  | \#FF6AC1 |
 
 改了这三个就和 zsh 的 pure 主题差不多了。
+
+#### 增加 python 虚拟环境提示
+
+参考 [Python | Oh My Posh](https://ohmyposh.dev/docs/segments/python)。
+
+注意虚拟环境的名字不能为 `.venv` 或者 `venv`，否则实际显示的时候会变成上一级目录的名字。
 
 ## 让 PowerShell 更加接近 zsh
 
@@ -340,7 +347,7 @@ function whereis ($command) {
 ### `$PROFILE` 文件
 
 ```powershell
-# oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/clean-detailed.omp.json" | Invoke-Expression
+# oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/aliens.omp.json" | Invoke-Expression
 oh-my-posh init pwsh --config "~/Documents/PowerShell/my_pure.omp.json" | Invoke-Expression
 Set-PSReadLineOption -Colors @{
     Command     = 'Green'
@@ -348,6 +355,9 @@ Set-PSReadLineOption -Colors @{
     String      = 'Yellow'
     Variable    = 'White'
 }
+
+# 关闭python自带的虚拟环境提示
+$Env:VIRTUAL_ENV_DISABLE_PROMPT=1
 
 Import-Module Posh-Git
 Import-Module Terminal-Icons
@@ -434,6 +444,20 @@ function whereis ($command) {
       "alignment": "left",
       "newline": true,
       "segments": [
+        {
+          "type": "python",
+          "style": "plain",
+          "foreground": "#6C6C6C",
+          "template": "{{ .Venv }} ",
+          "properties": {
+            "home_enabled": false,       
+            "fetch_virtual_env": true,
+            "display_default": true,
+            "fetch_version": true,
+            "missing_command_text": "",
+            "display_mode": "environment"
+          }
+        },
         {
           "foreground": "#FF6AC1",
           "foreground_templates": [
