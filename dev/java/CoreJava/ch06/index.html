@@ -18,7 +18,7 @@
         <link rel="prev" href="../ch05/">
       
       
-        <link rel="next" href="../../../my_powershell/">
+        <link rel="next" href="../ch07/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -642,6 +642,8 @@
       
         
       
+        
+      
     
     
     
@@ -878,6 +880,26 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第7章 异常、断言和日志
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1380,8 +1402,7 @@
 <h3 id="_4">解决默认方法冲突<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>超类与接口冲突，超类优先。接口与接口冲突，必须覆盖解决冲突。</p>
 <ol>
-<li>超类优先规则：如果子类继承了超类的方法，同时实现了接口，接口中有方法（<strong>无论这个方法是否为默认方法</strong>）与超类中的方法冲突，则超类的方法优先。例如：</li>
-</ol>
+<li>超类优先规则：如果子类继承了超类的方法，同时实现了接口，接口中有方法（<strong>无论这个方法是否为默认方法</strong>）与超类中的方法冲突，则超类的方法优先。例如：
 <div class="highlight"><pre><span></span><code><span class="kd">interface</span> <span class="nc">myInterface</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">default</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">method</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Interface - method&quot;</span><span class="p">);</span>
@@ -1402,8 +1423,7 @@
 <span class="w">        </span><span class="n">a</span><span class="p">.</span><span class="na">method</span><span class="p">();</span><span class="w"> </span><span class="c1">// 会输出 baseClass - method</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-<ol>
+</code></pre></div></li>
 <li>接口冲突：如果一个接口提供了一个默认方法，另一个接口提供了一个同名而且参数类型相同的方法（无论这个方法是否为默认方法），必须覆盖这个方法来解决冲突。</li>
 </ol>
 <h3 id="_5">标记接口<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
@@ -1416,47 +1436,37 @@
 <p>可以将 <code>lambda</code> 表达式作为某个实现了函数式接口的对象传入参数中，这样可以避免创建对象等繁琐的流程。</p>
 <p>在传入 <code>lambda</code> 表达式时，参数的类型以及返回类型都会自动推导，例如：</p>
 <ol>
-<li>将字符串数组按字符串长度排序，<code>Arrays.sort()</code> 的第二个参数接收一个实现了 <code>Comparable&lt;T&gt;</code> 接口的对象。</li>
-</ol>
+<li>将字符串数组按字符串长度排序，<code>Arrays.sort()</code> 的第二个参数接收一个实现了 <code>Comparable&lt;T&gt;</code> 接口的对象。
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">planets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Mercury&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Venus&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Earth&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Mars&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Jupiter&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Saturn&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Uranus&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Neptune&quot;</span><span class="w"> </span><span class="p">};</span>
 <span class="n">Arrays</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">planets</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="na">length</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y</span><span class="p">.</span><span class="na">length</span><span class="p">());</span>
-</code></pre></div>
-<ol>
-<li>创建定时任务，<code>Timer()</code> 的第二个参数接收一个实现了 <code>ActionListener</code> 接口的对象。</li>
-</ol>
+</code></pre></div></li>
+<li>创建定时任务，<code>Timer()</code> 的第二个参数接收一个实现了 <code>ActionListener</code> 接口的对象。
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Timer</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The time is &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">()));</span>
-</code></pre></div>
-<ol>
-<li><code>ArrayList</code> 中的 <code>removeIf()</code> 方法，能够根据条件删除元素，其参数接收一个实现了 <code>Predicate&lt;T&gt;</code> 接口的对象。</li>
-</ol>
+</code></pre></div></li>
+<li><code>ArrayList</code> 中的 <code>removeIf()</code> 方法，能够根据条件删除元素，其参数接收一个实现了 <code>Predicate&lt;T&gt;</code> 接口的对象。
 <div class="highlight"><pre><span></span><code><span class="n">list</span><span class="p">.</span><span class="na">removeIf</span><span class="p">(</span><span class="n">e</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span>
-</code></pre></div>
-<ol>
-<li><code>Supplier&lt;T&gt;</code> 接口提供了懒计算功能。</li>
-</ol>
+</code></pre></div></li>
+<li><code>Supplier&lt;T&gt;</code> 接口提供了懒计算功能。
 <div class="highlight"><pre><span></span><code><span class="c1">// 只有在 null 时才执行第二个参数</span>
 <span class="n">LocalDate</span><span class="w"> </span><span class="n">hireDay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Objects</span><span class="p">.</span><span class="na">requireNonNullOrElseGet</span><span class="p">(</span><span class="n">day</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LocalDate</span><span class="p">(</span><span class="mi">1970</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
-</code></pre></div>
+</code></pre></div></li>
+</ol>
 <h3 id="_7">方法引用<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p><code>lambda</code> 表达式可以进一步简化成一个方法引用，有以下三种用法：</p>
 <ol>
-<li><code>object::instanceMethod</code>，例如在创建定时任务的参数中使用 <code>System.out::println</code>：</li>
-</ol>
+<li><code>object::instanceMethod</code>，例如在创建定时任务的参数中使用 <code>System.out::println</code>：
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Timer</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">::</span><span class="n">println</span><span class="p">);</span>
 </code></pre></div>
-<p><code>System.out::println</code> 有 10 个重载，系统会自动匹配最接近的重载，在这个例子中，最接近的是 <code>println(Object event)</code> 的方法，相当于：</p>
+<code>System.out::println</code> 有 10 个重载，系统会自动匹配最接近的重载，在这个例子中，最接近的是 <code>println(Object event)</code> 的方法，相当于：
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Timer</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">event</span><span class="p">));</span>
-</code></pre></div>
-<ol>
-<li><code>Class::instanceMethod</code>，例如在对字符串数组排序时，想忽略字母的大小写：</li>
-</ol>
+</code></pre></div></li>
+<li><code>Class::instanceMethod</code>，例如在对字符串数组排序时，想忽略字母的大小写：
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">planets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Mercury&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Venus&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Earth&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Mars&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Jupiter&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Saturn&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Uranus&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Neptune&quot;</span><span class="w"> </span><span class="p">};</span>
 <span class="n">Arrays</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">planets</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="p">::</span><span class="n">compareToIgnoreCase</span><span class="p">);</span>
 </code></pre></div>
-<p>这种情况下，第 1 个参数会成为方法的隐式参数，相当于：</p>
+这种情况下，第 1 个参数会成为方法的隐式参数，相当于：
 <div class="highlight"><pre><span></span><code><span class="n">Arrays</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">planets</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="na">compareToIgnoreCase</span><span class="p">(</span><span class="n">y</span><span class="p">));</span>
-</code></pre></div>
-<ol>
+</code></pre></div></li>
 <li><code>Class::staticMethod</code>，例如 <code>Math::pow</code>，这种情况下所有的参数都会传递到静态方法当中，相当于 <code>(x, y) -&gt; Math.pow(x, y)</code></li>
 </ol>
 <details class="info" open="open">
@@ -1491,7 +1501,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-05</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-10</span>
       
         <br>
         创建日期:
@@ -1544,13 +1554,13 @@
         
         
           
-          <a href="../../../my_powershell/" class="md-footer__link md-footer__link--next" aria-label="下一页: 我的PowerShell配置">
+          <a href="../ch07/" class="md-footer__link md-footer__link--next" aria-label="下一页: 第7章 异常、断言和日志">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                我的PowerShell配置
+                第7章 异常、断言和日志
               </div>
             </div>
             <div class="md-footer__button md-icon">

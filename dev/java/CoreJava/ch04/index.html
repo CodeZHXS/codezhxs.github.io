@@ -642,6 +642,8 @@
       
         
       
+        
+      
     
     
     
@@ -929,6 +931,26 @@
   
   <span class="md-ellipsis">
     第6章 接口、lambda表达式与内部类
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第7章 异常、断言和日志
   </span>
   
 
@@ -1551,19 +1573,17 @@
 <p>一个类可以使用所属包中的所有类，以及其他包中的公共类。</p>
 <p>有两种方法访问其他包中的公共类：</p>
 <ol>
-<li>使用完全限定名，例如：</li>
-</ol>
+<li>使用完全限定名，例如：
 <div class="highlight"><pre><span></span><code><span class="n">java</span><span class="p">.</span><span class="na">time</span><span class="p">.</span><span class="na">LocalDate</span><span class="w"> </span><span class="n">today</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">time</span><span class="p">.</span><span class="na">LocalDate</span><span class="p">.</span><span class="na">now</span><span class="p">();</span>
-</code></pre></div>
-<ol>
-<li>使用 <code>import</code> 导入整个包或者特定的类，例如：</li>
-</ol>
+</code></pre></div></li>
+<li>使用 <code>import</code> 导入整个包或者特定的类，例如：
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalDate</span><span class="p">;</span><span class="w"> </span><span class="c1">//导入特定的类</span>
 </code></pre></div>
-<p>或者：</p>
+或者：
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.*</span><span class="w"> </span><span class="c1">//导入整个包</span>
 </code></pre></div>
-<p>注意只能使用使用 <code>*</code> 导入一个包，例如不能使用 <code>import java.*</code> ，因为 <code>java.*</code> 不止一个包。</p>
+注意只能使用使用 <code>*</code> 导入一个包，例如不能使用 <code>import java.*</code> ，因为 <code>java.*</code> 不止一个包。</li>
+</ol>
 <p><code>java</code> 中的 <code>import</code> 类似于 <code>C++</code> 中的 <code>using namespace</code> ，因为 <code>java</code> 编译器可以查看其他文件的内容，而 <code>C++</code> 编译器不行，所以在 <code>C++</code> 中需要使用 <code>#include</code> 。</p>
 <h3 id="_10">静态导入<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>使用 <code>import static</code> 可以导入静态方法和静态字段，例如：</p>
@@ -1602,7 +1622,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-05</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-10</span>
       
         <br>
         创建日期:

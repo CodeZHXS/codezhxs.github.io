@@ -15,6 +15,10 @@
         <link rel="canonical" href="https://codezhxs.github.io/dev/java/CoreJava/ch07/">
       
       
+        <link rel="prev" href="../ch06/">
+      
+      
+        <link rel="next" href="../../../my_powershell/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -22,7 +26,7 @@
     
     
       
-        <title>Ch07 - 陈裕杰的个人网站</title>
+        <title>第7章 异常、断言和日志 - 陈裕杰的个人网站</title>
       
     
     
@@ -111,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ch07
+              第7章 异常、断言和日志
             
           </span>
         </div>
@@ -235,10 +239,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../../" class="md-tabs__link">
           
   
@@ -515,6 +521,8 @@
       
   
   
+    
+  
   
     
     
@@ -536,14 +544,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           
@@ -565,7 +571,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             开发
@@ -578,6 +584,8 @@
                 
   
   
+    
+  
   
     
     
@@ -588,14 +596,12 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
@@ -609,7 +615,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             Java
@@ -620,6 +626,8 @@
                 
   
   
+    
+  
   
     
     
@@ -634,18 +642,18 @@
       
         
       
+        
+      
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" checked>
         
           
           <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
@@ -659,7 +667,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2_1">
             <span class="md-nav__icon md-icon"></span>
             《Java核心技术》笔记
@@ -761,6 +769,89 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    第7章 异常、断言和日志
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    第7章 异常、断言和日志
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    抛出异常
+  </a>
+  
+    <nav class="md-nav" aria-label="抛出异常">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    声明检查型异常
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    使用断言
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1161,6 +1252,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    使用断言
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1184,8 +1282,14 @@
   
 
 
-  <h1>Ch07</h1>
+  <h1>第7章 异常、断言和日志</h1>
 
+<p><code>Java</code> 中有 3 种处理系统错误的机制：</p>
+<ul>
+<li>抛出一个异常。</li>
+<li>使用断言。</li>
+<li>日志。</li>
+</ul>
 <h2 id="_1">抛出异常<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <h3 id="_2">声明检查型异常<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>派生于 <code>Error</code> 类或 <code>RuntimeException</code> 类的所有异常称为<strong>非检查型</strong>异常，所有其他的异常称为 <strong>检查型</strong>异常。</p>
@@ -1201,13 +1305,20 @@
 </li>
 </ol>
 <p>一个方法必须声明所有可能抛出的检查型异常（也就是前两种情况），因为如果处理器没有捕获这个异常，当前执行的线程就会终止。如果在方法中没有声明所有可能发生的检查型异常，编译器就会发出一个错误消息。</p>
+<h2 id="_3">使用断言<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>什么时候使用断言：</p>
+<ul>
+<li>断言检查只是在开发和测试阶段打开。</li>
+<li>断言失败时，程序的行为是难以预料的。</li>
+</ul>
+<p>通常使用的断言完成 <strong>参数检查</strong> 和 <strong>提供假设文档</strong></p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-05</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-12</span>
       
         <br>
         创建日期:
@@ -1238,6 +1349,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../ch06/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第6章 接口、lambda表达式与内部类">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                第6章 接口、lambda表达式与内部类
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../my_powershell/" class="md-footer__link md-footer__link--next" aria-label="下一页: 我的PowerShell配置">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                我的PowerShell配置
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

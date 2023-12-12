@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://codezhxs.github.io/dev/my_powershell/">
       
       
-        <link rel="prev" href="../java/CoreJava/ch06/">
+        <link rel="prev" href="../java/CoreJava/ch07/">
       
       
         <link rel="next" href="../myoj/">
@@ -640,6 +640,8 @@
       
         
       
+        
+      
     
     
     
@@ -763,6 +765,26 @@
   
   <span class="md-ellipsis">
     第6章 接口、lambda表达式与内部类
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/CoreJava/ch07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第7章 异常、断言和日志
   </span>
   
 
@@ -991,6 +1013,13 @@
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     修改部分字体颜色
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    增加 python 虚拟环境提示
   </a>
   
 </li>
@@ -1614,6 +1643,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    增加 python 虚拟环境提示
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1995,6 +2031,7 @@
 <ol>
 <li>oh-my-posh 的 pure 主题默认显示用户名，但 zsh 的 pure 主题在本地连接的情况下并不会显示用户名。</li>
 <li>oh-my-posh 的 pure 主题某些部分的字体颜色和 zsh 的 pure 主题不一致。</li>
+<li>oh-my-posh 的 pure 主题无法显示 python 虚拟环境。</li>
 </ol>
 <p>修改主题之前，需要复制原有主题的一个副本，执行以下命令（这里我将其复制到和 <code>$PROFILE</code> 的同一目录下）：</p>
 <div class="highlight"><pre><span></span><code><span class="nb">mv </span><span class="nv">$env:POSH_THEMES_PATH</span><span class="p">/</span><span class="n">pure</span><span class="p">.</span><span class="n">omp</span><span class="p">.</span><span class="n">json</span> <span class="p">~/</span><span class="n">Documents</span><span class="p">/</span><span class="n">PowerShell</span><span class="p">/</span><span class="n">my_pure</span><span class="p">.</span><span class="n">omp</span><span class="p">.</span><span class="n">json</span>
@@ -2034,6 +2071,9 @@
 </tbody>
 </table>
 <p>改了这三个就和 zsh 的 pure 主题差不多了。</p>
+<h4 id="python">增加 python 虚拟环境提示<a class="headerlink" href="#python" title="Permanent link">&para;</a></h4>
+<p>参考 <a href="https://ohmyposh.dev/docs/segments/python">Python | Oh My Posh</a>。</p>
+<p>注意虚拟环境的名字不能为 <code>.venv</code> 或者 <code>venv</code>，否则实际显示的时候会变成上一级目录的名字。</p>
 <h2 id="powershell-zsh">让 PowerShell 更加接近 zsh<a class="headerlink" href="#powershell-zsh" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>配置一些插件让 powershell 更加美观、更加好用。此外，powershell 的命令名称和 zsh 不太一致，可以通过添加别名实现。</p>
@@ -2073,7 +2113,7 @@
 <p>在设置中搜索 <code>Font</code>，将 <code>Terminal &gt; Integrated: Font Family</code> 设置为 <code>FiraCode Nerd Font</code> 即可。</p>
 <h2 id="_11">我的最终配置文件<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <h3 id="profile"><code>$PROFILE</code> 文件<a class="headerlink" href="#profile" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c"># oh-my-posh init pwsh --config &quot;$env:POSH_THEMES_PATH/clean-detailed.omp.json&quot; | Invoke-Expression</span>
+<div class="highlight"><pre><span></span><code><span class="c"># oh-my-posh init pwsh --config &quot;$env:POSH_THEMES_PATH/aliens.omp.json&quot; | Invoke-Expression</span>
 <span class="n">oh-my-posh</span> <span class="n">init</span> <span class="n">pwsh</span> <span class="p">-</span><span class="n">-config</span> <span class="s2">&quot;~/Documents/PowerShell/my_pure.omp.json&quot;</span> <span class="p">|</span> <span class="nb">Invoke-Expression</span>
 <span class="nb">Set-PSReadLineOption</span> <span class="n">-Colors</span> <span class="p">@{</span>
     <span class="n">Command</span>     <span class="p">=</span> <span class="s1">&#39;Green&#39;</span>
@@ -2081,6 +2121,9 @@
     <span class="n">String</span>      <span class="p">=</span> <span class="s1">&#39;Yellow&#39;</span>
     <span class="n">Variable</span>    <span class="p">=</span> <span class="s1">&#39;White&#39;</span>
 <span class="p">}</span>
+
+<span class="c"># 关闭python自带的虚拟环境提示</span>
+<span class="nv">$Env:VIRTUAL_ENV_DISABLE_PROMPT</span><span class="p">=</span><span class="n">1</span>
 
 <span class="nb">Import-Module</span> <span class="n">Posh-Git</span>
 <span class="nb">Import-Module</span> <span class="n">Terminal-Icons</span>
@@ -2165,6 +2208,20 @@
 <span class="w">      </span><span class="nt">&quot;newline&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;segments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;plain&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;foreground&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#6C6C6C&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;template&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{{ .Venv }} &quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;home_enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">       </span>
+<span class="w">            </span><span class="nt">&quot;fetch_virtual_env&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;display_default&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;fetch_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;missing_command_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;display_mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;environment&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
 <span class="w">          </span><span class="nt">&quot;foreground&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#FF6AC1&quot;</span><span class="p">,</span>
 <span class="w">          </span><span class="nt">&quot;foreground_templates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="s2">&quot;{{ if gt .Code 0 }}#BF616A{{ end }}&quot;</span>
@@ -2224,7 +2281,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../java/CoreJava/ch06/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第6章 接口、lambda表达式与内部类">
+          <a href="../java/CoreJava/ch07/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第7章 异常、断言和日志">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -2234,7 +2291,7 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                第6章 接口、lambda表达式与内部类
+                第7章 异常、断言和日志
               </div>
             </div>
           </a>
