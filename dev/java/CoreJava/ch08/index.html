@@ -1185,6 +1185,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    泛型的限制与局限性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#java-c" class="md-nav__link">
     Java 泛型和 C++ 模板类的区别
   </a>
@@ -1256,10 +1263,55 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<h2 id="_4">泛型的限制与局限性<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>不能用基本类型实例化类型参数
+  类型会被擦除，擦除之后的类型（例如 <code>Object</code> ）不能存储 <code>int</code> 等基本类型。</p>
+</li>
+<li>
+<p>运行时类型查询只适用于原始类型。
+     不能使用 <code>instanceof</code> 查询一个对象是否属于某个泛型类型，编译器会报错，如果使用强制类型转换来查询，则会得到一个警告。
+     对泛型变量使用 <code>getClass</code> 总是返回原始类型。</p>
+</li>
+<li>
+<p>不能使用 <code>new</code> 实例化一个参数化类型的数组。</p>
+<p>例如下面代码就是非法的：
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Pair</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;[</span><span class="mi">10</span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="c1">// 错误</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>!!! note &quot;注意&quot;
+
+    声明 `Pair&lt;String, String&gt;[]` 是合法的，仅仅是不能用 Pair&lt;String, String&gt;[10] 初始化这个变量。
+</code></pre></div></p>
+</li>
+<li>
+<p>变长参数与泛型共用警告</p>
+<p>会导致堆污染，因此会得到一个警告。</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="nf">getMiddle</span><span class="p">(</span><span class="n">T</span><span class="p">...</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="c1">//警告</span>
+<span class="p">{</span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="o">[</span><span class="n">a</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="o">]</span><span class="p">;}</span>
+</code></pre></div>
+<p>​   可以改成数组：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="nf">getMiddle</span><span class="p">(</span><span class="n">T</span><span class="o">[]</span><span class="w"> </span><span class="n">a</span><span class="p">)</span>
+<span class="p">{</span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="o">[</span><span class="n">a</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="o">]</span><span class="p">;}</span>
+</code></pre></div>
+<ol>
+<li>不能实例化类型变量</li>
+</ol>
+<p>不能在类似 <code>new T(...)</code> 的表达式中使用类型变量</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="nf">Pair</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">T</span><span class="p">();</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">U</span><span class="p">();}</span><span class="w"> </span><span class="c1">// 错误</span>
+</code></pre></div>
+<p>这同样是因为类型被擦除后 <code>T()</code> 将变成 <code>Object()</code>。</p>
+<p>解决的办法是让调用者提供一个构造器表达式。</p>
+<ol>
+<li></li>
+</ol>
 <h2 id="java-c">Java 泛型和 C++ 模板类的区别<a class="headerlink" href="#java-c" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>Java</code> 泛型可以对泛型的类型加以限制，而 <code>C++</code> 不行。</li>
 <li><code>Java</code> 虚拟机没有泛型类型对象，类型变量会被“擦除”，并替换为限定类型（如果是无限定类型的变量则替换为 <code>Object</code>）。而 <code>C++</code> 会为每个模板的实例化产生不同的类型，导致“模板代码膨胀”。</li>
+<li><code>Java</code> 中不能用基本类型实例化类型参数。</li>
 </ul>
 
   <hr>
@@ -1267,7 +1319,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-12</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-13</span>
       
         <br>
         创建日期:
