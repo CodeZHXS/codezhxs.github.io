@@ -10,6 +10,8 @@
 
 最近更新：
 
+- (23231216) [日记 | 12月16日](./essay/diary/2023-12.md)
+- (23231216) [HashMap源码分析](./dev/java/SourceCode/HashMap.md)
 - (23231213) [第8章 泛型程序设计](./dev/java/CoreJava/ch08.md)
 - (23231212) [第7章 异常、断言和日志](./dev/java/CoreJava/ch07.md)
 - (23231209) [我的PowerShell配置](./dev/my_powershell.md)
