@@ -15,6 +15,10 @@
         <link rel="canonical" href="https://codezhxs.github.io/dev/java/SourceCode/HashMap/">
       
       
+        <link rel="prev" href="../../CoreJava/ch08/">
+      
+      
+        <link rel="next" href="../../../my_powershell/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -22,7 +26,7 @@
     
     
       
-        <title>HashMap - 陈裕杰的个人网站</title>
+        <title>HashMap源码分析 - 陈裕杰的个人网站</title>
       
     
     
@@ -111,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              HashMap
+              HashMap源码分析
             
           </span>
         </div>
@@ -235,10 +239,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../../" class="md-tabs__link">
           
   
@@ -515,6 +521,8 @@
       
   
   
+    
+  
   
     
     
@@ -536,14 +544,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           
@@ -565,7 +571,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             开发
@@ -578,24 +584,26 @@
                 
   
   
+    
+  
   
     
     
       
         
       
+        
+      
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
@@ -609,7 +617,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             Java
@@ -805,6 +813,221 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    源码分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            源码分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    HashMap源码分析
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    HashMap源码分析
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    术语说明
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    省流版
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    字段说明
+  </a>
+  
+    <nav class="md-nav" aria-label="字段说明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    常量字段
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    变量字段
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    源码分析
+  </a>
+  
+    <nav class="md-nav" aria-label="源码分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    构造器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    添加元素
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    扩容
+  </a>
+  
+    <nav class="md-nav" aria-label="扩容">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    前置知识
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    源码分析
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    查找元素
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    删除元素
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1187,13 +1410,47 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    字段说明
+    术语说明
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    省流版
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    字段说明
+  </a>
+  
+    <nav class="md-nav" aria-label="字段说明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    常量字段
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    变量字段
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     源码分析
   </a>
   
@@ -1201,15 +1458,56 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     构造器
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
+    添加元素
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
     扩容
+  </a>
+  
+    <nav class="md-nav" aria-label="扩容">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    前置知识
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    源码分析
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    查找元素
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    删除元素
   </a>
   
 </li>
@@ -1242,19 +1540,121 @@
   
 
 
-  <h1>HashMap</h1>
+  <h1>HashMap源码分析</h1>
 
-<h2 id="_1">字段说明<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="_1">术语说明<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">术语</th>
+<th style="text-align: center;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">节点</td>
+<td style="text-align: center;">哈希表中的一对 <code>&lt;key, value&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">哈希值</td>
+<td style="text-align: center;">令<code>int h = key.hashCode()</code> <br />则 <code>h ^ (h &gt;&gt;&gt; 16)</code> 表示 <code>key</code> 的哈希值</td>
+</tr>
+<tr>
+<td style="text-align: center;">桶</td>
+<td style="text-align: center;">相同哈希值的节点放在同一个桶中。</td>
+</tr>
+<tr>
+<td style="text-align: center;">桶数组</td>
+<td style="text-align: center;">多个桶用数组表示：<code>Node&lt;K,V&gt;[] table</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">桶下标</td>
+<td style="text-align: center;">节点 <code>&lt;key, value&gt;</code> 的桶下标为： <code>key.hashCode() % table.length</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">容量</td>
+<td style="text-align: center;">桶数组的长度。</td>
+</tr>
+<tr>
+<td style="text-align: center;">表的大小</td>
+<td style="text-align: center;">表中存储的节点数量</td>
+</tr>
+<tr>
+<td style="text-align: center;">装填因子</td>
+<td style="text-align: center;">固定值，用于计算扩容阈值。<br />扩容阈值 = 装填因子 * 容量</td>
+</tr>
+<tr>
+<td style="text-align: center;">扩容阈值</td>
+<td style="text-align: center;">如果表的大小超过了扩容阈值，就进行扩容。</td>
+</tr>
+<tr>
+<td style="text-align: center;">扩容</td>
+<td style="text-align: center;">扩充桶数组的长度，扩容会导致节点的位置发生改变。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">省流版<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>底层数据结构：<strong>数组 + 链表/红黑树</strong></p>
+</li>
+<li>
+<p>默认装填因子：<span class="arithmatex">\(0.75\)</span></p>
+</li>
+<li>
+<p>默认初始容量：<span class="arithmatex">\(16\)</span></p>
+</li>
+<li>
+<p>链表组织成红黑树的条件：<strong>容量</strong> <span class="arithmatex">\(\ge 64\)</span> 且 <strong>链表长度</strong> <span class="arithmatex">\(\ge 8\)</span></p>
+</li>
+<li>
+<p>扩容机制：<span class="arithmatex">\(2\)</span> 倍扩容，会将一个桶的节点分到两个桶中（证明见 <a href="#前置知识">前置知识</a> ）</p>
+</li>
+<li>
+<p>扩容条件：</p>
+<ul>
+<li>
+<p>添加元素时表为空。</p>
+</li>
+<li>
+<p>添加元素后 <strong>链表长度</strong> <span class="arithmatex">\(\ge 8\)</span> 且 <strong>容量</strong> <span class="arithmatex">\(&lt; 64\)</span></p>
+</li>
+<li>添加元素后 <strong>表大小</strong> <span class="arithmatex">\(&gt;\)</span> <strong>装填因子</strong></li>
+</ul>
+</li>
+<li>
+<p>红黑树退化成链表的条件：在扩容时，红黑树分成 <span class="arithmatex">\(2\)</span> 个子链，如果 <strong>子链长度</strong> <span class="arithmatex">\(\le 6\)</span>，则退化成链表。否则保持红黑树。</p>
+</li>
+</ul>
+<h2 id="_3">字段说明<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="_4">常量字段<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AbstractMap</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="o">=</span><span class="kd">implements</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">Cloneable</span><span class="p">,</span><span class="w"> </span><span class="n">Serializable</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">DEFAULT_LOAD_FACTOR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.75f</span><span class="p">;</span><span class="w"> </span><span class="c1">// 默认装填因子</span>
+<span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">DEFAULT_INITIAL_CAPACITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="c1">// 默认初始容量</span>
+
+<span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAXIMUM_CAPACITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">30</span><span class="p">;</span><span class="w"> </span><span class="c1">// 最大容量</span>
+<span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">TREEIFY_THRESHOLD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="c1">// 链表长度大于 8 时扩容或将链表组织成红黑树</span>
+<span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MIN_TREEIFY_CAPACITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span><span class="p">;</span><span class="w"> </span><span class="c1">// 容量小于 64 就扩容，否则组织成红黑树</span>
+<span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">UNTREEIFY_THRESHOLD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="w"> </span><span class="c1">// 红黑树分裂的子链如果小于等于 6 则退化成链表</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_5">变量字段<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AbstractMap</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="o">=</span><span class="kd">implements</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">Cloneable</span><span class="p">,</span><span class="w"> </span><span class="n">Serializable</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">transient</span><span class="w"> </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">table</span><span class="p">;</span><span class="w"> </span><span class="c1">// 桶，用数组表示</span>
 <span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">loadFactor</span><span class="p">;</span><span class="w"> </span><span class="c1">// 装填因子</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">threshold</span><span class="p">;</span><span class="w"> </span><span class="c1">// 初始的桶数组容量。数组第一次分配后，这个变量表示下一次扩容的阈值</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">threshold</span><span class="p">;</span><span class="w"> </span><span class="c1">// 数组未分配时 threshold 表示初始容量，数组第一次分配后，threshold 表示扩容阈值</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="c1">// 表大小</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="_2">源码分析<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h3 id="_3">构造器<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>可以设置的量只有 2 个：初始容量和装载因子。</p>
+<h2 id="_6">源码分析<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="_7">构造器<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>可以指定的量只有 2 个：初始容量和装载因子。</p>
+<ul>
+<li><code>initialCapacity</code> ：表示初始容量，如果不指定默认为 <span class="arithmatex">\(16\)</span></li>
+<li><code>loadFactor</code> ：表示装填因子，如果不指定默认为 <span class="arithmatex">\(0.75\)</span></li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="nf">HashMap</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">initialCapacity</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">loadFactor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">initialCapacity</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">&quot;Illegal initial capacity: &quot;</span><span class="w"> </span><span class="o">+</span>
@@ -1266,32 +1666,166 @@
 <span class="w">                                           </span><span class="n">loadFactor</span><span class="p">);</span>
 <span class="w">    </span><span class="c1">// 前面都是参数判断 下面进行赋值</span>
 <span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">loadFactor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loadFactor</span><span class="p">;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tableSizeFor</span><span class="p">(</span><span class="n">initialCapacity</span><span class="p">);</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tableSizeFor</span><span class="p">(</span><span class="n">initialCapacity</span><span class="p">);</span><span class="w"> </span><span class="c1">// 初始容量下一个大于等于initialCapacity的 2 的幂</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="_4">扩容<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>其中装填因子是直接赋值，初始容量会经过 <code>tableSizeFor()</code> 修改为下一个 <span class="arithmatex">\(2\)</span> 的幂的值，具体来说：</p>
+<ul>
+<li>如果 <code>initialCapacity &lt; 0</code> ，那么初始容量设置成 <span class="arithmatex">\(1\)</span></li>
+<li>如果 <code>initialCapacity &gt;= MAXIMUM_CAPACITY</code> ，其中 <code>MAXIMUM_CAPACITY</code> 是一个常数 <span class="arithmatex">\(2^{30}\)</span>，那么初始容量设置成 <span class="arithmatex">\(2 ^ {30}\)</span></li>
+<li>其他情况，初始容量设置为下一个大于等于 <code>initialCapacity</code> 的 <span class="arithmatex">\(2\)</span> 的幂</li>
+</ul>
+<h3 id="_8">添加元素<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>使用 <code>put()</code> 方法添加一个元素，第一层封装为：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="nf">put</span><span class="p">(</span><span class="n">K</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">putVal</span><span class="p">(</span><span class="n">hash</span><span class="p">(</span><span class="n">key</span><span class="p">),</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>putVal</code> 的实现为：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 第四个参数 onlyIfAbsent 如果为 false，则添加相同的 key 时不覆盖 value</span>
+
+<span class="kd">final</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="nf">putVal</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">hash</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">onlyIfAbsent</span><span class="p">,</span>
+<span class="w">               </span><span class="kt">boolean</span><span class="w"> </span><span class="n">evict</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// tab: 桶数组</span>
+<span class="w">    </span><span class="c1">// n: 当前容量</span>
+<span class="w">    </span><span class="c1">// i: 节点的桶下标</span>
+<span class="w">    </span><span class="c1">// p: 第i个桶的第一个节点</span>
+<span class="w">    </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">tab</span><span class="p">;</span><span class="w"> </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">tab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tab</span><span class="p">.</span><span class="na">length</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">// 如果表为空，扩容</span>
+<span class="w">        </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">tab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">resize</span><span class="p">()).</span><span class="na">length</span><span class="p">;</span><span class="w"> </span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tab</span><span class="o">[</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">hash</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="c1">// n-1 相当于掩码（全1），与运算相当于mod</span>
+<span class="w">        </span><span class="n">tab</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newNode</span><span class="p">(</span><span class="n">hash</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span><span class="w"> </span><span class="c1">// 如果这个桶是空的话，直接插入</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 否则，桶中至少有一个元素</span>
+<span class="w">        </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="n">e</span><span class="p">;</span><span class="w"> </span><span class="n">K</span><span class="w"> </span><span class="n">k</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">hash</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">hash</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">            </span><span class="p">((</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">key</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">key</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">k</span><span class="p">))))</span><span class="w"> </span>
+<span class="w">            </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"> </span><span class="c1">// 如果桶的元素等于key</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">TreeNode</span><span class="p">)</span><span class="w"> </span><span class="c1">// 如果这个桶是红黑树，将元素插入红黑树中</span>
+<span class="w">            </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">TreeNode</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="p">)</span><span class="n">p</span><span class="p">).</span><span class="na">putTreeVal</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">tab</span><span class="p">,</span><span class="w"> </span><span class="n">hash</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// 这个循环会遍历这个桶的链表</span>
+<span class="w">            </span><span class="c1">// binCount 表示遍历的下标，具体来说，binCount 表示 p 的下标</span>
+<span class="w">            </span><span class="c1">// binCount+1 表示 e = p.next 的下标</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">binCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">binCount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">next</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 如果遍历完链表没有发现相同的key</span>
+<span class="w">                    </span><span class="n">p</span><span class="p">.</span><span class="na">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newNode</span><span class="p">(</span><span class="n">hash</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span><span class="w"> </span><span class="c1">// 将节点插入到链表尾</span>
+<span class="w">                    </span><span class="c1">// 此时 p.next 的下标为 binCount + 1</span>
+
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">binCount</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">TREEIFY_THRESHOLD</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="c1">// 如果binCount大于等于7（链的长度大于等于8）</span>
+<span class="w">                        </span><span class="n">treeifyBin</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span><span class="w"> </span><span class="n">hash</span><span class="p">);</span><span class="w"> </span><span class="c1">// treeifyBin：扩容或者将链表组织成红黑树，等会展开讲</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="na">hash</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">hash</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">                    </span><span class="p">((</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">key</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">key</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">k</span><span class="p">))))</span><span class="w"> </span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="c1">// 如果发现了相同的 key </span>
+<span class="w">                </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">;</span><span class="w"> </span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// 遍历结束后，e = p.next 表示新节点的位置</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// e != null 表示原来有这个 key</span>
+<span class="w">            </span><span class="n">V</span><span class="w"> </span><span class="n">oldValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">value</span><span class="p">;</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">onlyIfAbsent</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">oldValue</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">                </span><span class="n">e</span><span class="p">.</span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"> </span><span class="c1">// 替换新 value</span>
+<span class="w">            </span><span class="n">afterNodeAccess</span><span class="p">(</span><span class="n">e</span><span class="p">);</span><span class="w"> </span><span class="c1">// 一个回调函数</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">oldValue</span><span class="p">;</span><span class="w"> </span><span class="c1">// 返回旧值</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="o">++</span><span class="n">modCount</span><span class="p">;</span><span class="w"> </span><span class="c1">// 整个表的修改次数</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">++</span><span class="n">size</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">threshold</span><span class="p">)</span><span class="w"> </span><span class="c1">// 如果表大小超过扩容阈值，就扩容</span>
+<span class="w">        </span><span class="n">resize</span><span class="p">();</span><span class="w"> </span><span class="c1">// 扩容函数，等会展开讲</span>
+<span class="w">    </span><span class="n">afterNodeInsertion</span><span class="p">(</span><span class="n">evict</span><span class="p">);</span><span class="w"> </span><span class="c1">// 一个回调函数</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>在添加元素元素之后如果链表的长度达到 <span class="arithmatex">\(8\)</span> 或更长，会触发 <code>treeifyBin()</code> 进行扩容或者将链表组织成红黑树，这个函数的实现为：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">final</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">treeifyBin</span><span class="p">(</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">tab</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">hash</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">;</span><span class="w"> </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tab</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tab</span><span class="p">.</span><span class="na">length</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MIN_TREEIFY_CAPACITY</span><span class="p">)</span>
+<span class="w">        </span><span class="n">resize</span><span class="p">();</span><span class="w"> </span><span class="c1">// 如果容量小于 64 就扩容</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tab</span><span class="o">[</span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">hash</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 如果容量大于等于 64，将链表组织成红黑树</span>
+<span class="w">        </span><span class="n">TreeNode</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="n">hd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="n">tl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">        </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">TreeNode</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">replacementTreeNode</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tl</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">                </span><span class="n">hd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">p</span><span class="p">.</span><span class="na">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tl</span><span class="p">;</span>
+<span class="w">                </span><span class="n">tl</span><span class="p">.</span><span class="na">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">tl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">next</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">tab</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hd</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">            </span><span class="n">hd</span><span class="p">.</span><span class="na">treeify</span><span class="p">(</span><span class="n">tab</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<details class="note">
+<summary>小结</summary>
+<p><code>HashMap</code> 的底层数据结构为 <strong>数组+链表/红黑树</strong>，添加元素后如果链表长度大于 <span class="arithmatex">\(8\)</span>，有两种情况：</p>
+<ul>
+<li><strong>容量</strong> <span class="arithmatex">\(&lt; 64\)</span>，扩容。</li>
+<li><strong>容量</strong> <span class="arithmatex">\(\ge 64\)</span>，将这条链表组织成红黑树。</li>
+</ul>
+</details>
+<h3 id="_9">扩容<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>由上一节可知，添加元素时三种情况会导致扩容：</p>
+<ul>
+<li>
+<p>添加元素时表为空。</p>
+</li>
+<li>
+<p>添加元素后 <strong>链表长度</strong> <span class="arithmatex">\(\ge 8\)</span> 且 <strong>容量</strong> <span class="arithmatex">\(&lt; 64\)</span></p>
+</li>
+<li>添加元素后 <strong>表大小</strong> <span class="arithmatex">\(&gt;\)</span> <strong>装填因子</strong></li>
+</ul>
+<h4 id="_10">前置知识<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p><code>HashMap</code> 的扩容是 <span class="arithmatex">\(2\)</span> 倍扩容，假设当前容量为 <span class="arithmatex">\(C\)</span>，对于第 <span class="arithmatex">\(j\)</span> 个桶，其中的节点满足：
+$$
+hash(key) \equiv j \bmod C \
+$$
+这表明：
+$$
+hash(key) = j + KC
+$$
+考虑 <span class="arithmatex">\(K\)</span> 的奇偶性，不难发现：
+$$
+\left{\begin{matrix} 
+hash(key) &amp; \equiv&amp; j &amp;     \bmod 2C, &amp; K \% 2 = 0  \<br />
+hash(key) &amp; \equiv&amp; j + C &amp; \bmod 2C, &amp; K \% 2 = 1
+\end{matrix}\right.
+$$
+结论：在扩容后，第 <span class="arithmatex">\(j\)</span> 个桶的节点要么仍然在第 <span class="arithmatex">\(j\)</span> 个桶，要么在第 <span class="arithmatex">\(j + C\)</span> 个桶。</p>
+<p>在后面的源码中，称第 <span class="arithmatex">\(j\)</span> 个桶的链为 <code>lo</code>，第 <span class="arithmatex">\(j+C\)</span> 个桶为 <code>hi</code></p>
+<h4 id="_11">源码分析<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kd">final</span><span class="w"> </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;[]</span><span class="w"> </span><span class="nf">resize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// oldTab 扩容前桶数组</span>
+<span class="w">    </span><span class="c1">// oldCap 扩容前容量</span>
+<span class="w">    </span><span class="c1">// oldThr 扩容前装填因子(如果容量为0，则 oldThr 表示初始初始容量)</span>
+<span class="w">    </span><span class="c1">// newCap 扩容后容量</span>
+<span class="w">    </span><span class="c1">// newThr 扩容后装填因子</span>
 <span class="w">    </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">oldTab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">oldCap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">oldTab</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">oldTab</span><span class="p">.</span><span class="na">length</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">oldThr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">threshold</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">newCap</span><span class="p">,</span><span class="w"> </span><span class="n">newThr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">oldCap</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">oldCap</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">MAXIMUM_CAPACITY</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">oldCap</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 如果扩容前桶数组非空</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">oldCap</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">MAXIMUM_CAPACITY</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">            </span><span class="n">threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">;</span><span class="w"> </span><span class="c1">// 如果容量达到上限，仅调整装填因子</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">oldTab</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">newCap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oldCap</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MAXIMUM_CAPACITY</span><span class="w"> </span><span class="o">&amp;&amp;</span>
 <span class="w">                 </span><span class="n">oldCap</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">DEFAULT_INITIAL_CAPACITY</span><span class="p">)</span>
-<span class="w">            </span><span class="n">newThr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oldThr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// double threshold</span>
+<span class="w">            </span><span class="n">newThr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oldThr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// 两倍扩容</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">oldThr</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">// initial capacity was placed in threshold</span>
-<span class="w">        </span><span class="n">newCap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oldThr</span><span class="p">;</span>
-<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">               </span><span class="c1">// zero initial threshold signifies using defaults</span>
-<span class="w">        </span><span class="n">newCap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DEFAULT_INITIAL_CAPACITY</span><span class="p">;</span>
-<span class="w">        </span><span class="n">newThr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">DEFAULT_LOAD_FACTOR</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">DEFAULT_INITIAL_CAPACITY</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">oldThr</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">// 如果容量为0，则 oldThr 表示初始初始容量</span>
+<span class="w">        </span><span class="n">newCap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oldThr</span><span class="p">;</span><span class="w"> </span><span class="c1">// 按照初始容量扩容</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">               </span><span class="c1">// 如果 oldThr 为 0</span>
+<span class="w">        </span><span class="n">newCap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DEFAULT_INITIAL_CAPACITY</span><span class="p">;</span><span class="w"> </span><span class="c1">// 按照默认初始容量扩容</span>
+<span class="w">        </span><span class="n">newThr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">DEFAULT_LOAD_FACTOR</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">DEFAULT_INITIAL_CAPACITY</span><span class="p">);</span><span class="w"> </span><span class="c1">// 计算装填因子</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// 上面的分支会计算出 newCap 和 newThr</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">newThr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">ft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">newCap</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">loadFactor</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">ft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">newCap</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">loadFactor</span><span class="p">;</span><span class="w"> </span><span class="c1">// 计算装填因子</span>
 <span class="w">        </span><span class="n">newThr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">newCap</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MAXIMUM_CAPACITY</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">ft</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">MAXIMUM_CAPACITY</span><span class="w"> </span><span class="o">?</span>
 <span class="w">                  </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">ft</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
@@ -1300,26 +1834,29 @@
 <span class="w">    </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">newTab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;[]</span><span class="p">)</span><span class="k">new</span><span class="w"> </span><span class="n">Node</span><span class="o">[</span><span class="n">newCap</span><span class="o">]</span><span class="p">;</span>
 <span class="w">    </span><span class="n">table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newTab</span><span class="p">;</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">oldTab</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 遍历旧的桶数组</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">oldCap</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oldTab</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="n">oldTab</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="na">next</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">                </span><span class="n">oldTab</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"> </span><span class="c1">// 设置成 null，e 往后移动之后就会垃圾回收</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="na">next</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="c1">// 如果这条链只有 1 个元素，直接放到新桶中</span>
 <span class="w">                    </span><span class="n">newTab</span><span class="o">[</span><span class="n">e</span><span class="p">.</span><span class="na">hash</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">newCap</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
 <span class="w">                </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">TreeNode</span><span class="p">)</span>
-<span class="w">                    </span><span class="p">((</span><span class="n">TreeNode</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="p">)</span><span class="n">e</span><span class="p">).</span><span class="na">split</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">newTab</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">oldCap</span><span class="p">);</span>
+<span class="w">                    </span><span class="p">((</span><span class="n">TreeNode</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="p">)</span><span class="n">e</span><span class="p">).</span><span class="na">split</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">newTab</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">oldCap</span><span class="p">);</span><span class="w"> </span><span class="c1">// 将红黑树分裂到 2 个桶中，等会展开讲</span>
 <span class="w">                </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// preserve order</span>
 <span class="w">                    </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="n">loHead</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="n">loTail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
 <span class="w">                    </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="n">hiHead</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="n">hiTail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
 <span class="w">                    </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="n">next</span><span class="p">;</span>
+<span class="w">                    </span><span class="c1">// 遍历这条链的所有节点</span>
 <span class="w">                    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                        </span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">next</span><span class="p">;</span>
+<span class="w">                        </span><span class="c1">// 第 oldCap 位能检验出 K % C 是 0 还是 1</span>
 <span class="w">                        </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">e</span><span class="p">.</span><span class="na">hash</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">oldCap</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">loTail</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
 <span class="w">                                </span><span class="n">loHead</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
 <span class="w">                            </span><span class="k">else</span>
 <span class="w">                                </span><span class="n">loTail</span><span class="p">.</span><span class="na">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
-<span class="w">                            </span><span class="n">loTail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
+<span class="w">                            </span><span class="n">loTail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">;</span><span class="w"> </span><span class="c1">// 其实就是尾插法</span>
 <span class="w">                        </span><span class="p">}</span>
 <span class="w">                        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hiTail</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
@@ -1344,13 +1881,140 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">newTab</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
+<p>正如前置知识中所推倒的过程一样，扩容实际就是将第 <span class="arithmatex">\(j\)</span> 条个桶的链表拆成 <span class="arithmatex">\(j\)</span> 和 <span class="arithmatex">\(j + C\)</span> 的两个桶的链表。而如果第 <span class="arithmatex">\(j\)</span> 个桶是红黑树，则使用 <code>split(this, newTab, j, oldCap)</code> 进行分裂</p>
+<div class="highlight"><pre><span></span><code><span class="kd">final</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">split</span><span class="p">(</span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="n">map</span><span class="p">,</span><span class="w"> </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">tab</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">bit</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">TreeNode</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TreeNode</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="n">loHead</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="n">loTail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TreeNode</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="n">hiHead</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="n">hiTail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">lc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">hc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// 树分裂时还需要统计链表长度</span>
+<span class="w">    </span><span class="c1">// 遍历红黑树的所有点，</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">TreeNode</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">next</span><span class="p">;</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">TreeNode</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="p">)</span><span class="n">e</span><span class="p">.</span><span class="na">next</span><span class="p">;</span>
+<span class="w">        </span><span class="n">e</span><span class="p">.</span><span class="na">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">e</span><span class="p">.</span><span class="na">hash</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">bit</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">e</span><span class="p">.</span><span class="na">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loTail</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">                </span><span class="n">loHead</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
+<span class="w">            </span><span class="k">else</span>
+<span class="w">                </span><span class="n">loTail</span><span class="p">.</span><span class="na">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
+<span class="w">            </span><span class="n">loTail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
+<span class="w">            </span><span class="o">++</span><span class="n">lc</span><span class="p">;</span><span class="w"> </span><span class="c1">// 用尾插法分成 2 条链，同时统计长度</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">e</span><span class="p">.</span><span class="na">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hiTail</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">                </span><span class="n">hiHead</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
+<span class="w">            </span><span class="k">else</span>
+<span class="w">                </span><span class="n">hiTail</span><span class="p">.</span><span class="na">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
+<span class="w">            </span><span class="n">hiTail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
+<span class="w">            </span><span class="o">++</span><span class="n">hc</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">loHead</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lc</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">UNTREEIFY_THRESHOLD</span><span class="p">)</span><span class="w"> </span><span class="c1">// 如果子链的长度小于等于6，退化成链表</span>
+<span class="w">            </span><span class="n">tab</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loHead</span><span class="p">.</span><span class="na">untreeify</span><span class="p">(</span><span class="n">map</span><span class="p">);</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 否则，这条链仍然保持成红黑树</span>
+<span class="w">            </span><span class="n">tab</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loHead</span><span class="p">;</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hiHead</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="c1">// (else is already treeified)</span>
+<span class="w">                </span><span class="n">loHead</span><span class="p">.</span><span class="na">treeify</span><span class="p">(</span><span class="n">tab</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hiHead</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hc</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">UNTREEIFY_THRESHOLD</span><span class="p">)</span>
+<span class="w">            </span><span class="n">tab</span><span class="o">[</span><span class="n">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bit</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hiHead</span><span class="p">.</span><span class="na">untreeify</span><span class="p">(</span><span class="n">map</span><span class="p">);</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">tab</span><span class="o">[</span><span class="n">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bit</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hiHead</span><span class="p">;</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">loHead</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">                </span><span class="n">hiHead</span><span class="p">.</span><span class="na">treeify</span><span class="p">(</span><span class="n">tab</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_12">查找元素<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNode</span><span class="p">(</span><span class="n">hash</span><span class="p">(</span><span class="n">key</span><span class="p">),</span><span class="w"> </span><span class="n">key</span><span class="p">))</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">value</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>封装在 <code>getNode()</code> 中, 代码也比较简单，无非就是找到第几个桶，然后在链表或者红黑树中查找是否有相同的 <code>key</code> 就可以了。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">final</span><span class="w"> </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getNode</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">hash</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">tab</span><span class="p">;</span><span class="w"> </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">K</span><span class="w"> </span><span class="n">k</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">tab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tab</span><span class="p">.</span><span class="na">length</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">        </span><span class="p">(</span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tab</span><span class="o">[</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">hash</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">first</span><span class="p">.</span><span class="na">hash</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">hash</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">            </span><span class="p">((</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">first</span><span class="p">.</span><span class="na">key</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">key</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">k</span><span class="p">))))</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">first</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">first</span><span class="p">.</span><span class="na">next</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">first</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">TreeNode</span><span class="p">)</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="p">((</span><span class="n">TreeNode</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="p">)</span><span class="n">first</span><span class="p">).</span><span class="na">getTreeNode</span><span class="p">(</span><span class="n">hash</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">);</span>
+<span class="w">            </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="na">hash</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">hash</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">                    </span><span class="p">((</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">key</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">key</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">k</span><span class="p">))))</span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">next</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_13">删除元素<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">removeNode</span><span class="p">(</span><span class="n">hash</span><span class="p">(</span><span class="n">key</span><span class="p">),</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">))</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">?</span>
+<span class="w">        </span><span class="kc">null</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">value</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>封装在 <code>removeNode()</code> 中，查找元素的部分和之前一样，主要关注删除的部分。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">final</span><span class="w"> </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">removeNode</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">hash</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">value</span><span class="p">,</span>
+<span class="w">                           </span><span class="kt">boolean</span><span class="w"> </span><span class="n">matchValue</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">movable</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">tab</span><span class="p">;</span><span class="w"> </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">tab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tab</span><span class="p">.</span><span class="na">length</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">        </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tab</span><span class="o">[</span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">hash</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">;</span><span class="w"> </span><span class="n">K</span><span class="w"> </span><span class="n">k</span><span class="p">;</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">hash</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">hash</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">            </span><span class="p">((</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">key</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">key</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">k</span><span class="p">))))</span>
+<span class="w">            </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">next</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">TreeNode</span><span class="p">)</span>
+<span class="w">                </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">TreeNode</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="p">)</span><span class="n">p</span><span class="p">).</span><span class="na">getTreeNode</span><span class="p">(</span><span class="n">hash</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">);</span>
+<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="na">hash</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">hash</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">                        </span><span class="p">((</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">key</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">||</span>
+<span class="w">                         </span><span class="p">(</span><span class="n">key</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">k</span><span class="p">))))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
+<span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">next</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// 上面就是查找元素，将待删除的元素赋值给 node</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">node</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">matchValue</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="na">value</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">||</span>
+<span class="w">                             </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">value</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">v</span><span class="p">))))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">node</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">TreeNode</span><span class="p">)</span><span class="w"> </span><span class="c1">// 如果在红黑树中就用红黑树的删除方法</span>
+<span class="w">                </span><span class="p">((</span><span class="n">TreeNode</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;</span><span class="p">)</span><span class="n">node</span><span class="p">).</span><span class="na">removeTreeNode</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">tab</span><span class="p">,</span><span class="w"> </span><span class="n">movable</span><span class="p">);</span>
+<span class="w">            </span><span class="c1">// p 是 node 的前一个节点</span>
+<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">node</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w">  </span><span class="c1">// 如果 node 是链表头节点</span>
+<span class="w">                </span><span class="n">tab</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="na">next</span><span class="p">;</span>
+<span class="w">            </span><span class="k">else</span>
+<span class="w">                </span><span class="n">p</span><span class="p">.</span><span class="na">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w"> </span>
+<span class="w">            </span><span class="o">++</span><span class="n">modCount</span><span class="p">;</span>
+<span class="w">            </span><span class="o">--</span><span class="n">size</span><span class="p">;</span><span class="w"> </span>
+<span class="w">            </span><span class="n">afterNodeRemoval</span><span class="p">(</span><span class="n">node</span><span class="p">);</span><span class="w"> </span><span class="c1">// 回调函数</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">node</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>可以看到删除节点也是比较简单的，没有缩容的机制。</p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-14</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-16</span>
       
         <br>
         创建日期:
@@ -1381,6 +2045,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../../CoreJava/ch08/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第8章 泛型程序设计">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                第8章 泛型程序设计
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../my_powershell/" class="md-footer__link md-footer__link--next" aria-label="下一页: 我的PowerShell配置">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                我的PowerShell配置
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
