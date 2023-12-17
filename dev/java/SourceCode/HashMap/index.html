@@ -1557,7 +1557,7 @@
 </tr>
 <tr>
 <td style="text-align: center;">哈希值</td>
-<td style="text-align: center;">令<code>int h = key.hashCode()</code> <br />则 <code>h ^ (h &gt;&gt;&gt; 16)</code> 表示 <code>key</code> 的哈希值</td>
+<td style="text-align: center;">用 <code>hash(key)</code> 表示 <code>key</code> 的哈希值<br />令<code>int h = key.hashCode();</code> <br />则 <code>hash(key) = h ^ (h &gt;&gt;&gt; 16)</code></td>
 </tr>
 <tr>
 <td style="text-align: center;">桶</td>
@@ -1762,12 +1762,11 @@
 </code></pre></div>
 <details class="note">
 <summary>小结</summary>
-<p><code>HashMap</code> 的底层数据结构为 <strong>数组+链表/红黑树</strong>，添加元素后如果链表长度大于 <span class="arithmatex">\(8\)</span>，有两种情况：</p>
-<ul>
-<li><strong>容量</strong> <span class="arithmatex">\(&lt; 64\)</span>，扩容。</li>
-<li><strong>容量</strong> <span class="arithmatex">\(\ge 64\)</span>，将这条链表组织成红黑树。</li>
-</ul>
 </details>
+<p>​   <code>HashMap</code> 的底层数据结构为 <strong>数组+链表/红黑树</strong>，添加元素后如果链表长度大于 <span class="arithmatex">\(8\)</span>，有两种情况：</p>
+<pre><code>- **容量** $&lt; 64$，扩容。
+- **容量** $\ge 64$，将这条链表组织成红黑树。
+</code></pre>
 <h3 id="_9">扩容<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>由上一节可知，添加元素时三种情况会导致扩容：</p>
 <ul>
@@ -2014,7 +2013,7 @@ $$
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-16</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-17</span>
       
         <br>
         创建日期:

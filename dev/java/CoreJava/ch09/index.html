@@ -1333,6 +1333,68 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    红黑树
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    队列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    优先队列
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#treemap-hashmap" class="md-nav__link">
+    TreeMap 和 HashMap 补充
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    算法
+  </a>
+  
+    <nav class="md-nav" aria-label="算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    排序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    洗牌
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    二分查找
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1423,7 +1485,7 @@
 </tr>
 <tr>
 <td style="text-align: center;"><code>LinkedHashMap</code></td>
-<td style="text-align: center;">哈希表（链表实现）</td>
+<td style="text-align: center;">哈希表（节点间链表连接，可以记住插入顺序）</td>
 </tr>
 <tr>
 <td style="text-align: center;"><code>WeakhashMap</code></td>
@@ -1454,22 +1516,137 @@
 <h3 id="_6">动态数组<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p><code>ArrayList</code> 线程不安全，如果要线程安全的动态数组，用 <code>Vector</code></p>
 <h3 id="_7">哈希表<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>哈希表的 <code>K</code> 必须重写 <code>hashCode()</code> 方法和 <code>equals()</code> 方法。最好加上 <code>@override</code> 标记提醒自己。</p>
 <ul>
-<li>底层数据结构：数组当桶，冲突的元素用链表/红黑树。</li>
-<li>
-<p>当链表长度大于 <span class="arithmatex">\(8\)</span> 且数组长度（桶的数量）超过 </p>
-</li>
-<li>
-<p>默认容量：16。</p>
-</li>
+<li><a href="../../SourceCode/HashMap/">HashMap源码分析</a></li>
 </ul>
+<h3 id="_8">红黑树<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>使用红黑树 <code>TreeSet</code> 和 <code>TeeeMap</code> 的 <code>K</code> 必须实现 <code>Comparable&lt;T&gt;</code> 接口，或者 <code>Comparator</code> 接口。</p>
+<h3 id="_9">队列<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>队列 <code>Queue&lt;T&gt;</code> 和双端队列 <code>Deque&lt;T&gt;</code> 是接口，<code>ArrayQueue&lt;T&gt;</code> 和 <code>LinkedList&lt;T&gt;</code> 都实现了这两个接口，其中 <code>ArrayQueue&lt;T&gt;</code> 是基于循环队列的实现，<code>LinkedList&lt;T&gt;</code> 是基于双向链表的实现。 </p>
+<p>队列的方法及其比较：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">方法名</th>
+<th style="text-align: center;">描述</th>
+<th style="text-align: center;">异常行为</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>boolean add(E)</code></td>
+<td style="text-align: center;">将元素 <code>E</code> 入队</td>
+<td style="text-align: center;">如果队列已满，会抛出异常</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>E remove()</code></td>
+<td style="text-align: center;">将队头元素出队并返回</td>
+<td style="text-align: center;">如果队列为空，会抛出异常</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>E element()</code></td>
+<td style="text-align: center;">返回队头元素</td>
+<td style="text-align: center;">如果队列为空，会抛出异常</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>boolean offer(E)</code></td>
+<td style="text-align: center;">将元素 <code>E</code> 入队</td>
+<td style="text-align: center;">如果队列已满，会返回 <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>E poll()</code></td>
+<td style="text-align: center;">将队头元素出队并返回</td>
+<td style="text-align: center;">如果队列已满，会返回 <code>null</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>E peek()</code></td>
+<td style="text-align: center;">返回队头元素</td>
+<td style="text-align: center;">如果队列已满，会返回 <code>null</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10">优先队列<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>和红黑树一样， 必须实现 <code>Comparable&lt;T&gt;</code> 接口，或者 <code>Comparator</code> 接口。</p>
+<h2 id="treemap-hashmap">TreeMap 和 HashMap 补充<a class="headerlink" href="#treemap-hashmap" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>Java</code> 的红黑树迭代器不太灵活，不能像 <code>C++ STL</code> 那样二分出迭代器，只能二分出键值对。而且在迭代之前就要想清楚到底是只要值还是键值都要。</li>
+<li>两种 <code>Map</code> 都不能用范围 <code>for</code>，可以用 <code>forEach()</code> 方法，参数是函数式接口，例如 <code>map.forEach((k, v) -&gt; System.out.println("key=" + k + ", value=" + v));</code> 或者得到视图再开始枚举。</li>
+<li>不能像 <code>C++</code> 中 <code>map[key]++</code>，这种情况要用 <code>merge()</code> 方法。</li>
+</ul>
+<h2 id="_11">算法<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h3 id="_12">排序<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p><code>Arrays.sort()</code> 用于对数组排序，而如果要对 <code>ArrayList</code> 或者 <code>LinkedList</code> 排序，则需要调用对象的 <code>sort()</code> 方法。</p>
+<p><code>sort()</code> 方法是稳定排序。</p>
+<p>前置代码：一个简单的 <code>Pair</code> 泛型类</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Pair</span><span class="o">&lt;</span><span class="n">F</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">F</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">S</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Pair</span><span class="o">&lt;</span><span class="n">F</span><span class="p">,</span><span class="w"> </span><span class="n">S</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="n">first</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="n">second</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Pair</span><span class="p">(</span><span class="n">F</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">;</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">;}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="nf">getFirst</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="k">return</span><span class="w"> </span><span class="n">first</span><span class="p">;}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="nf">getSecond</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="k">return</span><span class="w"> </span><span class="n">second</span><span class="p">;}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setFirst</span><span class="p">(</span><span class="n">F</span><span class="w"> </span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">;}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setSecond</span><span class="p">(</span><span class="n">S</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">;}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">compareTo</span><span class="p">(</span><span class="n">Pair</span><span class="o">&lt;</span><span class="n">F</span><span class="p">,</span><span class="w"> </span><span class="n">S</span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">first</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="na">first</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">second</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="na">second</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">toString</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="k">return</span><span class="w"> </span><span class="s">&quot;[&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;]&quot;</span><span class="p">;}</span>
+<span class="p">}</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Pair</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="p">...</span><span class="w"> </span><span class="c1">// 给 a 添加数据</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>下面开始介绍 <code>a.sort()</code> 方法，函数参数接受一个 <code>Comparator</code> 接口：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 不要用 a.sort(null), 用 Comparator.naturalOrder() 可以提醒是否实现了 Comparable 接口</span>
+<span class="n">a</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">Comparator</span><span class="p">.</span><span class="na">naturalOrder</span><span class="p">());</span><span class="w"> </span><span class="c1">// 用 compareTo() 比较</span>
+<span class="n">a</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">Comparator</span><span class="p">.</span><span class="na">reverseOrder</span><span class="p">());</span><span class="w"> </span><span class="c1">// 逆序</span>
+<span class="n">a</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">Comparator</span><span class="p">.</span><span class="na">comparing</span><span class="p">(</span><span class="n">Pair</span><span class="p">::</span><span class="n">getSecond</span><span class="p">));</span><span class="w"> </span><span class="c1">// 用 getSecond() 比较</span>
+<span class="n">a</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">Comparator</span><span class="p">.</span><span class="na">comparing</span><span class="p">(</span><span class="n">Pair</span><span class="p">::</span><span class="n">getSecond</span><span class="p">,</span><span class="w"> </span><span class="n">Comparator</span><span class="p">.</span><span class="na">reverseOrder</span><span class="p">()));</span><span class="w"> </span><span class="c1">// 用 getSecond() 比较，逆序</span>
+<span class="n">a</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">Comparator</span><span class="p">.</span><span class="na">comparing</span><span class="p">(</span><span class="n">Pair</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">::</span><span class="n">getSecond</span><span class="p">,</span><span class="w"> </span><span class="n">Comparator</span><span class="p">.</span><span class="na">reverseOrder</span><span class="p">())</span>
+<span class="w">    </span><span class="p">.</span><span class="na">thenComparing</span><span class="p">(</span><span class="n">Pair</span><span class="p">::</span><span class="n">getFirst</span><span class="p">));</span><span class="w"> </span><span class="c1">// 先比较 getSecond() 降序，如果相同就比较 getFirst() 升序 注意这种情况要注明 Pair类型</span>
+
+<span class="n">a</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">Comparator</span><span class="p">.</span><span class="na">comparing</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">getFirst</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">getSecond</span><span class="p">()));</span><span class="w"> </span><span class="c1">// 使用 lambda 表达式比较 getFirst() + getSecond()</span>
+</code></pre></div>
+<h3 id="_13">洗牌<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>使用 <code>Collections.shuffle(); 对</code>ArrayList` 类型随机打乱：
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">49</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="n">numbers</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="n">Collections</span><span class="p">.</span><span class="na">shuffle</span><span class="p">(</span><span class="n">numbers</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="_14">二分查找<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p><code>Collections.binarySearch()</code> 查找一个元素是否出现在表中：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">13</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="n">numbers</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">49</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="n">numbers</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Collections</span><span class="p">.</span><span class="na">binarySearch</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">)</span><span class="w"> </span><span class="c1">// pos = -14</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span>
+</code></pre></div>
+<p>如果返回负数表示查询失败，<code>-pos-1</code> 表示这个元素应该插入的位置。</p>
+<p>如果返回证书表示查询成功，<code>pos</code> 表示元素的位置。</p>
+<p><code>Java</code> 中没有类似 <code>C++</code> 的 <code>lower+bound()</code> 方法。</p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-14</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-17</span>
       
         <br>
         创建日期:
