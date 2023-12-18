@@ -27,6 +27,8 @@ nav:
         - 第6章 接口、lambda表达式与内部类: dev/java/CoreJava/ch06.md
         - 第7章 异常、断言和日志: dev/java/CoreJava/ch07.md
         - 第8章 泛型程序设计: dev/java/CoreJava/ch08.md
+      - 源码分析:
+        - HashMap源码分析: dev/java/SourceCode/HashMap.md
     - 我的PowerShell配置: dev/my_powershell.md
     - hydro OJ运维: dev/myoj.md
   - 随笔:
