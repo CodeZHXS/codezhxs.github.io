@@ -13,7 +13,10 @@ public class HashMap<K,V> extends AbstractMap<K,V>
 
 ### 构造器
 
-可以设置的量只有 2 个：初始容量和装载因子。
+可以指定的量只有 2 个：初始容量和装载因子。
+
+-    `initialCapacity` ：表示初始容量，如果不指定默认为 $16$
+-    `loadFactor` ：表示装填因子，如果不指定默认为 $0.75$
 
 ```java
 public HashMap(int initialCapacity, float loadFactor) {
@@ -27,9 +30,15 @@ public HashMap(int initialCapacity, float loadFactor) {
                                            loadFactor);
     // 前面都是参数判断 下面进行赋值
     this.loadFactor = loadFactor;
-    this.threshold = tableSizeFor(initialCapacity);
+    this.threshold = tableSizeFor(initialCapacity); // 初始容量下一个大于等于initialCapacity的2的幂
 }
 ```
+
+其中装填因子是直接赋值，初始容量会经过 `tableSizeFor()` 方法修改为下一个 $2$ 的幂的值，具体来说：
+
+-   如果 `initialCapacity < 0` ，那么初始容量设置成 $1$
+-   如果 `initialCapacity >= MAXIMUM_CAPACITY` ，其中`MAXIMUM_CAPACITY` 是一个常数 $2^{30}$, 那么初始容量设置成 $2 ^ {30}$
+-   其他情况，初始容量设置为下一个大于等于 `initialCapacity` 的2的幂
 
 ### 扩容
 
