@@ -71,7 +71,6 @@ theme:
         name: 切换至日间模式
   language: zh # 网站的语言 会影响一些自动参数
   features:
-    - navigation.instant # 内置的网页会加载更快
     - navigation.instant.progress # 页面加载进度条
     - navigation.tabs # 顶层的Tab
     - navigation.expand # 打开Tab时左侧目录全部展开
