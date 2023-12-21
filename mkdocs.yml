@@ -159,11 +159,18 @@ markdown_extensions:
 
 
 extra_javascript:
-  # latex支持
+  # latex支持 
   # https://squidfunk.github.io/mkdocs-material/reference/mathjax/?h=math
-  - mkdocs/javascripts/mathjax.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - mkdocs/javascripts/katex.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+  # 用mathjax经常加载不出来，所以换了KaTeX
+  # - mkdocs/javascripts/mathjax.js 
+  # - https://polyfill.io/v3/polyfill.min.js?features=es6
+  # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  
+  # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
 
-# extra_css:
+extra_css:
   - mkdocs/css/unordered-list-symbols.css # multiplt unordered list symbols
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
