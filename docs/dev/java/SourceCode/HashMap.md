@@ -6,7 +6,7 @@
 |  哈希值  | 用 `hash(key)` 表示 `key` 的哈希值<br />令`int h = key.hashCode();` <br />则 `hash(key) = h ^ (h >>> 16)` |
 |    桶    |               相同哈希值的节点放在同一个桶中。               |
 |  桶数组  |            多个桶用数组表示：`Node<K,V>[] table`             |
-|  桶下标  | 节点 `<key, value>` 的桶下标为： `key.hashCode() % table.length` |
+|  桶下标  | 节点 `<key, value>` 的桶下标为： `hash(key) % table.length` |
 |   容量   |                        桶数组的长度。                        |
 | 表的大小 |                      表中存储的节点数量                      |
 | 装填因子 |  固定值，用于计算扩容阈值。<br />扩容阈值 = 装填因子 * 容量  |
@@ -23,7 +23,7 @@
 
 -   链表组织成红黑树的条件：**容量** $\ge 64$ 且 **链表长度** $\ge 8$
 
--   扩容机制：$2$ 倍扩容，会将一个桶的节点分到两个桶中（证明见 [前置知识](#前置知识) ）
+-   扩容机制：$2$ 倍扩容，会将一个桶的节点分到两个桶中（证明见 **前置知识** ）
 
 -   扩容条件：
 
@@ -43,7 +43,6 @@ public class HashMap<K,V> extends AbstractMap<K,V>
     =implements Map<K,V>, Cloneable, Serializable {
     static final float DEFAULT_LOAD_FACTOR = 0.75f; // 默认装填因子
     static final int DEFAULT_INITIAL_CAPACITY = 1 << 4; // 默认初始容量
-
     static final int MAXIMUM_CAPACITY = 1 << 30; // 最大容量
     static final int TREEIFY_THRESHOLD = 8; // 链表长度大于 8 时扩容或将链表组织成红黑树
     static final int MIN_TREEIFY_CAPACITY = 64; // 容量小于 64 就扩容，否则组织成红黑树
@@ -100,20 +99,26 @@ public HashMap(int initialCapacity, float loadFactor) {
 #### 前置知识
 
 `HashMap` 的扩容是 $2$ 倍扩容，假设当前容量为 $C$，对于第 $j$ 个桶，其中的节点满足：
+
 $$
-hash(key) \equiv j \bmod C \\
+hash(key) \equiv j \bmod C
 $$
+
 这表明：
+
 $$
 hash(key) = j + KC
 $$
+
 考虑 $K$ 的奇偶性，不难发现：
+
 $$
 \left\{\begin{matrix} 
 hash(key) & \equiv& j & 	\bmod 2C, & K \% 2 = 0  \\  
 hash(key) & \equiv& j + C & \bmod 2C, & K \% 2 = 1
 \end{matrix}\right.
 $$
+
 结论：在扩容后，第 $j$ 个桶的节点要么仍然在第 $j$ 个桶，要么在第 $j + C$ 个桶。
 
 在后面的源码中，称第 $j$ 个桶的链为 `lo`，第 $j+C$ 个桶为 `hi`
@@ -205,7 +210,7 @@ final Node<K,V>[] resize() {
 }
 ```
 
-正如前置知识中所推倒的过程一样，扩容实际就是将第 $j$ 条个桶的链表拆成 $j$ 和 $j + C$ 的两个桶的链表。而如果第 $j$ 个桶是红黑树，则使用 `split(this, newTab, j, oldCap)` 进行分裂
+正如前置知识中所推导的一样，扩容实际就是将第 $j$ 条个桶的链表拆成 $j$ 和 $j + C$ 的两个桶的链表。而如果第 $j$ 个桶是红黑树，则使用 `split(this, newTab, j, oldCap)` 进行分裂。
 
 ```java
 final void split(HashMap<K,V> map, Node<K,V>[] tab, int index, int bit) {
