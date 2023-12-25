@@ -14,7 +14,7 @@
 
 |                             店名                             |        位置        |                             评价                             |
 | :----------------------------------------------------------: | :----------------: | :----------------------------------------------------------: |
-| [便宜坊](https://www.bilibili.com/video/BV1Gx4y1772s/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |      连锁       | :white_check_mark: 23.09.29世纪金源店 记得在 `美味不用等` 取号，价格小贵，味道不错。 |
+| [便宜坊](https://www.bilibili.com/video/BV1Gx4y1772s/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        | :white_check_mark: 23.09.29世纪金源店 记得在 `美味不用等` 取号，价格小贵，味道不错。 |
 | [四季民福](https://www.bilibili.com/video/BV1Ge4y1j7eM/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |                                                              |
 | [全聚德](https://www.bilibili.com/video/BV1r8411J78A/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |                                                              |
 | [仿膳饭庄](https://www.bilibili.com/video/BV1414y1w72q/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 西城区<br />东城区 |                                                              |
@@ -26,11 +26,12 @@
 | [小荣酒家](https://www.bilibili.com/video/BV1ss4y197CS/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |       朝阳区       |                                                              |
 | [大鸭梨](https://www.bilibili.com/video/BV1qo4y1A7bK/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |                                                              |
 | [小吊梨汤](https://www.bilibili.com/video/BV1yz4y1873r/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |                                                              |
-| [晟永兴](https://www.bilibili.com/video/BV1wj411D7dh/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |                                                              |
+| [晟永兴](https://www.bilibili.com/video/BV1wj411D7dh/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 海淀区<br />朝阳区 |                                                              |
 | [荣府宴](https://www.bilibili.com/video/BV1ax4y1R7nD/?spm_id_from=333.999.0.0) |       门头沟       |                                                              |
 | [羊大爷涮肉](https://www.bilibili.com/video/BV1Nh4y117m8/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 海淀区<br />朝阳区 |                                                              |
 | [北平楼](https://www.bilibili.com/video/BV1ar4y1R7Bj/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |                                                              |
 | [新拾玖 新京菜](https://www.bilibili.com/video/BV11N4y1Z7jo/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |       朝阳区       |                                                              |
+| [三清谭烧鹅](https://www.bilibili.com/video/BV1iH4y117Ky/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |       朝阳区       |                                                              |
 ---
 
 ## 粤菜
@@ -75,11 +76,11 @@
 ---
 
 ## 湘菜
-|                             店名                             |  位置  |                             评价                             |
-| :----------------------------------------------------------: | :----: | :----------------------------------------------------------: |
+|                             店名                             |        位置        |                             评价                             |
+| :----------------------------------------------------------: | :----------------: | :----------------------------------------------------------: |
 | [潇湘阁](https://www.bilibili.com/video/BV1mx4y1374r/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        | :white_check_mark: 23.09.23北苑店 很不错，价格还行，服务也棒。 |
 | [隐厨](https://www.bilibili.com/video/BV1gx4y177MX/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 朝阳区<br />大兴区 |                                                              |
-| [费大厨辣椒炒肉](https://www.bilibili.com/video/BV1cm4y1h77w/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |    
+| [费大厨辣椒炒肉](https://www.bilibili.com/video/BV1cm4y1h77w/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |                                                              |
 
 ---
 
@@ -123,8 +124,8 @@
 
 |                             店名                             |  位置  | 评价 |
 | :----------------------------------------------------------: | :----: | :--: |
-| [莆田餐厅(闽菜)](https://www.bilibili.com/video/BV1Co4y1c7r6/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523)<br />[老高二探莆田餐厅](https://www.bilibili.com/video/BV1Co4y1c7r6/?spm_id_from=333.999.0.0) |  连锁  |      |
-| [八闽食府](https://www.bilibili.com/video/BV1Go4y1W7hc/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 朝阳区 |      |                                               |
+| [莆田餐厅](https://www.bilibili.com/video/BV1Co4y1c7r6/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523)<br />[老高二探莆田餐厅](https://www.bilibili.com/video/BV1Co4y1c7r6/?spm_id_from=333.999.0.0) |  连锁  |      |
+| [八闽食府](https://www.bilibili.com/video/BV1Go4y1W7hc/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 朝阳区 |      |
 
 ---
 
@@ -193,7 +194,7 @@
 | :--: | :--: | :--: |
 | [牛排家](https://www.bilibili.com/video/BV16v4y1s7pS/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 连锁 |      |
 | [安妮意大利餐厅](https://www.bilibili.com/video/BV1zY41117Wf/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 连锁 |      |
-| [萨莉亚](https://www.bilibili.com/video/BV1ms4y1J7NW/?spm_id_from=333.999.0.0) |连锁  | |
+| [萨莉亚](https://www.bilibili.com/video/BV1ms4y1J7NW/?spm_id_from=333.999.0.0) |连锁  | :white_check_mark:23.12.18昌平回龙观店 可能之前（在其他城市）吃多了，没有感觉很出彩。 |
 | [THE TACO BAR](https://www.bilibili.com/video/BV1jX4y1m7kg/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 朝阳区<br />东城区 |                                                              |
 | [意库](https://www.bilibili.com/video/BV1rh4y1L78N/?spm_id_from=333.999.0.0) | 朝阳区 | |
 

@@ -10,8 +10,8 @@
 
 最近更新：
 
-- (20231213) [第9章 集合](./dev/java/CoreJava/ch09.md)
-- (20231216) [日记 | 12月16日](./essay/diary/2023-12.md)
+- (20231222) [日记 | 12月22日](./essay/diary/2023-12.md)
+- (20231217) [第9章 集合](./dev/java/CoreJava/ch09.md)
 - (20231216) [HashMap源码分析](./dev/java/SourceCode/HashMap.md)
 - (20231213) [第8章 泛型程序设计](./dev/java/CoreJava/ch08.md)
 - (20231212) [第7章 异常、断言和日志](./dev/java/CoreJava/ch07.md)
