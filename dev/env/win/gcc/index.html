@@ -12,28 +12,24 @@
         <meta name="author" content="陈裕杰">
       
       
-        <link rel="canonical" href="https://codezhxs.github.io/essay/diary/2023-12/">
+        <link rel="canonical" href="https://codezhxs.github.io/dev/env/win/gcc/">
       
       
-        <link rel="prev" href="../../">
       
       
-        <link rel="next" href="../2023-10/">
-      
-      
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.2">
     
     
       
-        <title>日记 | 2023-12 - 陈裕杰的个人网站</title>
+        <title>Gcc - 陈裕杰的个人网站</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.d451bc0e.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.d451bc0e.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a5377069.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.a5377069.min.css">
       
       
 
@@ -52,11 +48,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../mkdocs/css/unordered-list-symbols.css">
+      <link rel="stylesheet" href="../../../../mkdocs/css/unordered-list-symbols.css">
     
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -85,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#231206" class="md-skip">
+        <a href="#mingw" class="md-skip">
           跳转至
         </a>
       
@@ -99,7 +95,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../.." title="陈裕杰的个人网站" class="md-header__button md-logo" aria-label="陈裕杰的个人网站" data-md-component="logo">
+    <a href="../../../.." title="陈裕杰的个人网站" class="md-header__button md-logo" aria-label="陈裕杰的个人网站" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -119,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              日记 | 2023-12
+              Gcc
             
           </span>
         </div>
@@ -227,7 +223,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../algorithm/" class="md-tabs__link">
+        <a href="../../../../algorithm/" class="md-tabs__link">
           
   
     
@@ -247,7 +243,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../dev/" class="md-tabs__link">
+        <a href="../../../" class="md-tabs__link">
           
   
     
@@ -263,13 +259,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../../essay/" class="md-tabs__link">
           
   
     
@@ -289,7 +283,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../others/" class="md-tabs__link">
+        <a href="../../../../others/" class="md-tabs__link">
           
   
     
@@ -324,7 +318,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="陈裕杰的个人网站" class="md-nav__button md-logo" aria-label="陈裕杰的个人网站" data-md-component="logo">
+    <a href="../../../.." title="陈裕杰的个人网站" class="md-nav__button md-logo" aria-label="陈裕杰的个人网站" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -388,7 +382,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../algorithm/" class="md-nav__link ">
+            <a href="../../../../algorithm/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -420,7 +414,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/AtCoder/abc312/" class="md-nav__link">
+      <a href="../../../../algorithm/AtCoder/abc312/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -440,7 +434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/AtCoder/abc311/" class="md-nav__link">
+      <a href="../../../../algorithm/AtCoder/abc311/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -460,7 +454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/AtCoder/abc310/" class="md-nav__link">
+      <a href="../../../../algorithm/AtCoder/abc310/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -480,7 +474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/AtCoder/abc309/" class="md-nav__link">
+      <a href="../../../../algorithm/AtCoder/abc309/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -500,7 +494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/AtCoder/abc308/" class="md-nav__link">
+      <a href="../../../../algorithm/AtCoder/abc308/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -558,7 +552,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../dev/" class="md-nav__link ">
+            <a href="../../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -690,7 +684,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev/java/CoreJava/ch02/" class="md-nav__link">
+      <a href="../../../java/CoreJava/ch02/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -710,7 +704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev/java/CoreJava/ch03/" class="md-nav__link">
+      <a href="../../../java/CoreJava/ch03/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -730,7 +724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev/java/CoreJava/ch04/" class="md-nav__link">
+      <a href="../../../java/CoreJava/ch04/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -750,7 +744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev/java/CoreJava/ch05/" class="md-nav__link">
+      <a href="../../../java/CoreJava/ch05/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -770,7 +764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev/java/CoreJava/ch06/" class="md-nav__link">
+      <a href="../../../java/CoreJava/ch06/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -790,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev/java/CoreJava/ch07/" class="md-nav__link">
+      <a href="../../../java/CoreJava/ch07/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -810,7 +804,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev/java/CoreJava/ch08/" class="md-nav__link">
+      <a href="../../../java/CoreJava/ch08/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -830,7 +824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev/java/CoreJava/ch09/" class="md-nav__link">
+      <a href="../../../java/CoreJava/ch09/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -900,7 +894,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev/java/SourceCode/HashMap/" class="md-nav__link">
+      <a href="../../../java/SourceCode/HashMap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -936,7 +930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev/my_powershell/" class="md-nav__link">
+      <a href="../../../my_powershell/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -956,7 +950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev/myoj/" class="md-nav__link">
+      <a href="../../../myoj/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -981,8 +975,6 @@
       
   
   
-    
-  
   
     
     
@@ -1000,17 +992,19 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../../../essay/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1027,7 +1021,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             随笔
@@ -1040,8 +1034,6 @@
                 
   
   
-    
-  
   
     
     
@@ -1054,12 +1046,14 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
         
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
@@ -1073,7 +1067,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             日记
@@ -1084,27 +1078,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    日记 | 2023-12
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../../essay/diary/2023-12/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1113,52 +1089,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#231206" class="md-nav__link">
-    231206
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#231211" class="md-nav__link">
-    231211 第一次见到雪
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#231216" class="md-nav__link">
-    231216 寒冷记忆
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#231222" class="md-nav__link">
-    231222 冬至
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1170,7 +1100,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2023-10/" class="md-nav__link">
+      <a href="../../../../essay/diary/2023-10/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1236,7 +1166,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../others/" class="md-nav__link ">
+            <a href="../../../../others/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1268,7 +1198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../others/latex/" class="md-nav__link">
+      <a href="../../../../others/latex/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1288,7 +1218,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../others/BJ_food/" class="md-nav__link">
+      <a href="../../../../others/BJ_food/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1308,7 +1238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../others/pc/" class="md-nav__link">
+      <a href="../../../../others/pc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1354,29 +1284,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#231206" class="md-nav__link">
-    231206
+  <a href="#mingw" class="md-nav__link">
+    下载 MinGW 安装包
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#231211" class="md-nav__link">
-    231211 第一次见到雪
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#231216" class="md-nav__link">
-    231216 寒冷记忆
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#231222" class="md-nav__link">
-    231222 冬至
+  <a href="#_1" class="md-nav__link">
+    环境变量
   </a>
   
 </li>
@@ -1396,7 +1312,7 @@
                   
 
   
-    <a href="https://github.com/CodeZHXS/codezhxs.github.io/edit/main/docs/essay/diary/2023-12.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/CodeZHXS/codezhxs.github.io/edit/main/docs/dev/env/win/gcc.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1404,27 +1320,25 @@
   
 
 
-  <h1>日记 | 2023-12</h1>
+  <h1>Gcc</h1>
 
-<h2 id="231206">231206<a class="headerlink" href="#231206" title="Permanent link">&para;</a></h2>
-<p>好久没看海贼王了，下载了 <span class="arithmatex">\(12\)</span> 集一直没时间看，今晚看个痛快！</p>
-<p>明年暑假一定要去实习！</p>
-<hr />
-<h2 id="231211">231211 第一次见到雪<a class="headerlink" href="#231211" title="Permanent link">&para;</a></h2>
-<p>昨晚舍友回来的时候说外面下雪了。</p>
-<p>今天是周一，有早八，<span class="arithmatex">\(7\)</span> 点醒来的时候往阳台一看，发现地上雪皑皑一片，怎么说呢，那种感觉很奇妙？顺手就拿手机拍下来然后发了朋友圈（我已经记不得多久没发朋友圈了...）。</p>
-<p>出门的时候踩在地上也很奇妙，有点滑，也有点软。路上拿手机拍照的同学数不胜数。</p>
-<p>还看到扫雪的工作人员。</p>
-<p>唯一令我比较诧异的是下雪的时候不是很冷，和前几天差不多。</p>
-<h2 id="231216">231216 寒冷记忆<a class="headerlink" href="#231216" title="Permanent link">&para;</a></h2>
-<p>据说今年是华北地区 <span class="arithmatex">\(70\)</span> 多年来的历史最低温（足足 <span class="arithmatex">\(-17^{\circ}\)</span> ），而我作为一个在南方生活了 <span class="arithmatex">\(20\)</span> 多年的人，在北京见到了人生的第一次雪。</p>
-<p>大学以前我一直在广东居住，几乎没有感受过寒冷。只记得在初中的某一年，广东有一次寒潮，当时的温度也忘记了，反正多穿几件衣服就抗过去了，印象中那是我第一次穿秋裤，此后在广东就没遇到那么冷的场景了。</p>
-<p>本科期间呢，我去了重庆。重庆很湿冷，每年 <span class="arithmatex">\(10\)</span> 月开始，整天都在下雨，一个月几乎没有几天晴的，气温下降的非常快，最低能到 <span class="arithmatex">\(0^{\circ}\)</span>。在上大学之前我的对衣服的认知是没有羽绒服的，毕竟广东的冬天随便穿一件外套就够了，在重庆也是我第一次接触羽绒服（包括羽绒服的参数），冬天穿秋裤也是标配。此外，重庆虽然没有暖气，但空调带有制热功能，自习的时候我通常都会选择小教室，这样暖气开起来非常暖和。</p>
-<p>今年是我第一年来北京读研，第一年就见到了雪。北京很干，也很冷，所以我买了一件非常厚的羽绒服，这件衣服抗风性能也很棒，在羽绒服内部不需要穿很多就保暖。所以我认为：湿冷地区（例如重庆以及广东）要多穿衣服，而像北京这种干冷地区，最重要的是外套要厚，也要能防风。</p>
-<p>北京风真的很大，大概在 <span class="arithmatex">\(10\)</span> 月的时候我发现骑车时手很冷，于是买了一个手套。而到现在这种气温，即使穿上手套也要把手揣在兜里才行。</p>
-<p>这几天的温度真的很可怕，让我完全丧失了外出的欲望。好在宿舍有暖气，嗯，暖气真爽！</p>
-<h2 id="231222">231222 冬至<a class="headerlink" href="#231222" title="Permanent link">&para;</a></h2>
-<p>差不多冬至，一早一晚还是有雨......</p>
+<p>Windows 系统的 gcc/g++ 可以安装微软官方的 Visual Studio，也可以自己安装 MinGW，由于我平时编写 C/C++ 都是在 VSCode上，所以选择后者。</p>
+<p>网上大多数教程都停留在 MinGW 8 的版本，太老了，这是我记录这篇博客的原因。</p>
+<h2 id="mingw">下载 MinGW 安装包<a class="headerlink" href="#mingw" title="Permanent link">&para;</a></h2>
+<p>进入 <a href="https://www.mingw-w64.org/downloads/">Downloads - MinGW-w64</a>，选择 <a href="https://www.mingw-w64.org/downloads/#mingw-builds">Mingw-builds</a>，会跳转到 github</p>
+<p>选择一个 Release，这里我选的是 x86_64-13.2.0-release-posix-seh-ucrt-rt_v11-rev1.7z</p>
+<p>解释一下各个文件的不同：</p>
+<ol>
+<li><code>x64-64</code> 和 <code>i686</code>：<code>x64-64</code> 表示 64 位， <code>i686</code> 表示 32 位。选 64 就好。</li>
+<li><code>13.2.0-release</code>：版本号，选最新的就好。</li>
+<li><code>win32</code> 、<code>posix</code>、<code>mcf</code>：多线程模型，其实没啥区别，选哪个都一样，据说 <code>posix</code> 启用了  c++11/c11的多线程功能。</li>
+<li><code>seh</code> 和 <code>draft</code>：结构化异常处理的东西，<code>seh</code> 性能好一些支持 64 位，<code>draft</code> 兼容性好一些些，64 和 32 都支持。</li>
+<li><code>ucrt</code> 和 <code>msvcrt</code> ：<code>ucrt</code> 新一点。</li>
+</ol>
+<h2 id="_1">环境变量<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>找个解压路径解压，例如 <code>C:\Program Files</code>，然后添加环境变量：</p>
+<p>此电脑（右键) | 属性 | 高级系统设置 | 高级 | 环境变量 | 系统变量（或者用户变量）| Path（双击）| 新建 | <code>C:\Program Files\mingw64\bin</code></p>
+<p>打开终端，输入 <code>gcc -v</code> 即可</p>
 
   <hr>
 <div class="md-source-file">
@@ -1435,7 +1349,7 @@
       
         <br>
         创建日期:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-06</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-25</span>
       
     
   </small>
@@ -1462,44 +1376,6 @@
       
         <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="页脚" >
-        
-          
-          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="上一页: 随笔">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                上一页
-              </span>
-              <div class="md-ellipsis">
-                随笔
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../2023-10/" class="md-footer__link md-footer__link--next" aria-label="下一页: 日记 | 2023-10">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              <div class="md-ellipsis">
-                日记 | 2023-10
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
   
   <div class="md-footer-meta md-typeset">
@@ -1547,12 +1423,12 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant.progress", "navigation.tabs", "navigation.expand", "navigation.indexes", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.action.edit", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant.progress", "navigation.tabs", "navigation.expand", "navigation.indexes", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.action.edit", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.726fbb30.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.726fbb30.min.js"></script>
       
-        <script src="../../../mkdocs/javascripts/katex.js"></script>
+        <script src="../../../../mkdocs/javascripts/katex.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
       
