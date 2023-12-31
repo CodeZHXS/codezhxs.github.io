@@ -183,7 +183,8 @@
 |`\ell`  | $\ell$ |
 |`\partial`  | $\partial$ |
 | `\infty` | $\infty$ |
-|`\varnothing` `\emptyset`  | $\emptyset$ |
+| `\varnothing` | $\varnothing$ |
+|`\emptyset`  | $\emptyset$ |
 | `\forall` | $\forall$ |
 | `\exists` | $\exists$ |
 | `\triangle` | $\triangle$  |
@@ -273,7 +274,7 @@
 \right]
 ```
 
-$$ 
+$$
 \left[
     \begin{array}{cc|c}
       1 & 2 & 3 \\
