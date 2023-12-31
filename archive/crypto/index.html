@@ -1958,13 +1958,130 @@ $$
 </li>
 </ol>
 <p>​   因此首先枚举所有 <span class="arithmatex">\(a_0\)</span>，将 <span class="arithmatex">\(hg^{- a_0}\)</span> 加入哈希表中。然后枚举所有的 <span class="arithmatex">\(a_1\)</span>，计算 <span class="arithmatex">\(g^{ra_1}\)</span> 是否出现在表中，在不考虑幂运算的情况下，时间复杂度为 <span class="arithmatex">\(O(\sqrt{p})\)</span></p>
+<hr />
+<h1 id="8">第 <span class="arithmatex">\(8\)</span> 章 数字签名技术<a class="headerlink" href="#8" title="Permanent link">&para;</a></h1>
+<p>判断选择</p>
+<p>01-05   ❎❎❎❎❎</p>
+<p>06-10   ❎❎✅❎✅</p>
+<p>11-15   ✅✅✅✅❎</p>
+<p>01-05   DACBD</p>
+<p>06-10   ADCDB</p>
+<p>11-14   BADC</p>
+<h2 id="_20">填空题<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<ol>
+<li>完整性 认证性</li>
+<li>密钥生成算法 签名算法 验证算法</li>
+<li>ElGamma签名方案 Schnorr签名方案</li>
+<li>有序多重数字签名 广播多重数字签名</li>
+<li>匿名性 不关联性</li>
+<li>匿名性 不可追踪性</li>
+<li>完全委托的代理签名 部分授权的代理签名 带授权书的代理签名</li>
+<li>不可否认算法</li>
+<li>环签名 多重签名</li>
+<li>签名组合算法</li>
+</ol>
+<h2 id="_21">简答题<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>数字签名与传统的手写签名相比有哪些区别？</p>
+</li>
+<li>
+<p>简述数字签名的原理。</p>
+</li>
+<li>
+<p>简述消息认证码和数字签名的区别。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;">消息认证码</th>
+<th style="text-align: center;">数字签名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">发送者</td>
+<td style="text-align: center;">用对称密钥计算MAC</td>
+<td style="text-align: center;">用私钥生成签名</td>
+</tr>
+<tr>
+<td style="text-align: center;">接受者</td>
+<td style="text-align: center;">用对称密钥计算MAC</td>
+<td style="text-align: center;">用公钥验证签名</td>
+</tr>
+<tr>
+<td style="text-align: center;">密钥分发问题</td>
+<td style="text-align: center;">存在</td>
+<td style="text-align: center;">不存在</td>
+</tr>
+<tr>
+<td style="text-align: center;">效率</td>
+<td style="text-align: center;">高</td>
+<td style="text-align: center;">低</td>
+</tr>
+<tr>
+<td style="text-align: center;">完整性</td>
+<td style="text-align: center;">支持</td>
+<td style="text-align: center;">支持</td>
+</tr>
+<tr>
+<td style="text-align: center;">认证性</td>
+<td style="text-align: center;">支持（仅限通信双方）</td>
+<td style="text-align: center;">支持（可适用于第三方）</td>
+</tr>
+<tr>
+<td style="text-align: center;">不可否认性</td>
+<td style="text-align: center;">不支持（双方都能发）</td>
+<td style="text-align: center;">支持</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<hr />
+<h1 id="10">第 <span class="arithmatex">\(10\)</span> 章 密钥管理<a class="headerlink" href="#10" title="Permanent link">&para;</a></h1>
+<p>判断选择</p>
+<p>01-05   ✅✅✅❎❎</p>
+<p>06-10   ✅❎✅✅❎</p>
+<p>11-15   ❎✅✅❎❎</p>
+<p>16-17   ✅✅</p>
+<p>01-05   CACCB</p>
+<p>06-10   CBACB</p>
+<p>11-14   CDCD</p>
+<h2 id="_22">填空题<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
+<ol>
+<li>主密钥 密钥加密密钥 会话密钥</li>
+<li>密钥分配 密钥协商</li>
+<li>使用前状态 使用状态 使用后状态 过期状态</li>
+<li>密钥存档 密钥销毁</li>
+<li>无密钥密钥分配 有密钥密钥分配</li>
+<li>生成的密钥是由一方生成的还是双方各自生成部分密钥后协商生成密钥</li>
+<li>中间人攻击</li>
+<li>CA 的签名</li>
+<li>核实申请证书的用户的信息</li>
+<li>证书到期 因安全原因提前终止证书的使用 证书扩展内容发生重大变化</li>
+<li>用户安全成分 密钥托管成分 数据恢复成分</li>
+<li>拉格朗日插值</li>
+<li>中国剩余  </li>
+</ol>
+<h1 id="11">第 <span class="arithmatex">\(11\)</span> 章 网络安全协议<a class="headerlink" href="#11" title="Permanent link">&para;</a></h1>
+<p>判断选择</p>
+<p>01-04   ✅❎❎✅</p>
+<p>01-05   CDAD</p>
+<h2 id="_23">填空题<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h2>
+<ol>
+<li>握手协议 记录协议</li>
+<li><span class="arithmatex">\(4\)</span> <span class="arithmatex">\(2\)</span></li>
+<li>机密性 完整性 认证性</li>
+<li>匿名SSL连接 对等安全服务 网上交易</li>
+</ol>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-28</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-31</span>
       
         <br>
         创建日期:
