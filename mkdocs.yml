@@ -13,6 +13,7 @@ nav:
     - ABC310(A-F): algorithm/AtCoder/abc310.md
     - ABC309(A-F): algorithm/AtCoder/abc309.md
     - ABC308(A-G): algorithm/AtCoder/abc308.md
+    - 笔记: algorithm/note.md
   
   - 开发:
     - dev/index.md
@@ -30,7 +31,10 @@ nav:
         - 第9章 集合: dev/java/CoreJava/ch09.md
       - 源码分析:
         - HashMap源码分析: dev/java/SourceCode/HashMap.md
-    - 我的PowerShell配置: dev/my_powershell.md
+    - 开发环境配置: 
+      - 我的PowerShell配置: dev/env/win/my_powershell.md
+      - 在Windows中安装gcc: dev/env/win/gcc.md
+      - VMware安装Linux教程: dev/env/win/vmware.md
     - hydro OJ运维: dev/myoj.md
   - 随笔:
     - essay/index.md
