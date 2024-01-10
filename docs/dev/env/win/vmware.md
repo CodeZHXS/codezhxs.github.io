@@ -404,3 +404,27 @@ vi ~/.ssh/authorized_keys
      ```bash
      source ~/.zshrc
      ```
+
+## 扩容磁盘
+
+参考：[LVM : 扩展文件系统的容量 - sparkdev - 博客园 (cnblogs.com)](https://www.cnblogs.com/sparkdev/p/10142629.html)
+
+这两条命令会查看挂载信息
+
+```bash
+pvs
+lvdisplay
+```
+
+这条命令挂载所有空间
+
+```bash
+lvextend -L 37G /dev/ubuntu-vg/ubuntu-lv
+```
+
+然后动态扩容
+
+```bash
+resize2fs /dev/ubuntu-vg/ubuntu-lv
+```
+
