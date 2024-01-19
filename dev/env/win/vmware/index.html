@@ -1216,6 +1216,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    扩容磁盘
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1777,6 +1784,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    扩容磁盘
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2125,13 +2139,25 @@ vi<span class="w"> </span>~/.ssh/authorized_keys
 </code></pre></div>
 </li>
 </ol>
+<h2 id="_7">扩容磁盘<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>参考：<a href="https://www.cnblogs.com/sparkdev/p/10142629.html">LVM : 扩展文件系统的容量 - sparkdev - 博客园 (cnblogs.com)</a></p>
+<p>这两条命令会查看挂载信息</p>
+<div class="highlight"><pre><span></span><code>pvs
+lvdisplay
+</code></pre></div>
+<p>这条命令挂载所有空间</p>
+<div class="highlight"><pre><span></span><code>lvextend<span class="w"> </span>-L<span class="w"> </span>37G<span class="w"> </span>/dev/ubuntu-vg/ubuntu-lv
+</code></pre></div>
+<p>然后动态扩容</p>
+<div class="highlight"><pre><span></span><code>resize2fs<span class="w"> </span>/dev/ubuntu-vg/ubuntu-lv
+</code></pre></div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-04</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-10</span>
       
         <br>
         创建日期:

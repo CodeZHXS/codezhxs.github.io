@@ -1861,7 +1861,7 @@
 <li>
 <p>添加元素后 <strong>链表长度</strong> <span class="arithmatex">\(\ge 8\)</span> 且 <strong>容量</strong> <span class="arithmatex">\(&lt; 64\)</span></p>
 </li>
-<li>添加元素后 <strong>表大小</strong> <span class="arithmatex">\(&gt;\)</span> <strong>装填因子</strong></li>
+<li>添加元素后 <strong>表大小</strong> <span class="arithmatex">\(&gt;\)</span> <strong>扩容阈值</strong></li>
 </ul>
 </li>
 <li>
@@ -1919,7 +1919,7 @@
 <li>
 <p>添加元素后 <strong>链表长度</strong> <span class="arithmatex">\(\ge 8\)</span> 且 <strong>容量</strong> <span class="arithmatex">\(&lt; 64\)</span></p>
 </li>
-<li>添加元素后 <strong>表大小</strong> <span class="arithmatex">\(&gt;\)</span> <strong>装填因子</strong></li>
+<li>添加元素后 <strong>表大小</strong> <span class="arithmatex">\(&gt;\)</span> <strong>扩容阈值</strong></li>
 </ul>
 <h4 id="_9">前置知识<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p><code>HashMap</code> 的扩容是 <span class="arithmatex">\(2\)</span> 倍扩容，假设当前容量为 <span class="arithmatex">\(C\)</span>，对于第 <span class="arithmatex">\(j\)</span> 个桶，其中的节点满足：</p>
@@ -2156,7 +2156,7 @@ hash(key) &amp; \equiv&amp; j + C &amp; \bmod 2C, &amp; K \% 2 = 1
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-22</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-19</span>
       
         <br>
         创建日期:
