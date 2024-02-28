@@ -8,6 +8,7 @@ site_description: 陈裕杰的个人网站
 nav:
   - 算法:
     - algorithm/index.md
+    - ABC335(A-F): algorithm/AtCoder/abc335.md
     - ABC312(A-F): algorithm/AtCoder/abc312.md
     - ABC311(A-G): algorithm/AtCoder/abc311.md
     - ABC310(A-F): algorithm/AtCoder/abc310.md
@@ -89,6 +90,7 @@ theme:
     - search.highlight # 搜索出的文章关键词加入高亮
     - content.action.edit # 点击按钮跳转到编辑页面  需要结合 edit_uri 一起使用
     - content.code.copy # 代码块右上角会有一个复制按钮
+    - content.tabs.link # 标签可以一次性切换
   
   # 图标都可以更换 见 https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#logo-icon-bundled
   # 在这里可以搜索内置的图标 https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#search
