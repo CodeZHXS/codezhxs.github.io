@@ -13,7 +13,7 @@ int s = sup;
 do {
     ... // 对子集的处理
     s = (s - 1) & sup;
-} while(s != sup);s
+} while(s != sup);
 ```
 
 ### 枚举大小为 $k$ 的子集
