@@ -18,7 +18,7 @@
         <link rel="prev" href="../abc334/">
       
       
-        <link rel="next" href="../abc312/">
+        <link rel="next" href="../abc332/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -399,6 +399,8 @@
       
         
       
+        
+      
     
     
     
@@ -582,6 +584,26 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abc332/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ABC332(A-F)
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1865,7 +1887,7 @@
 <h2 id="c-repunit-trio"><a href="https://atcoder.jp/contests/abc333/tasks/abc333_c">C - Repunit Trio</a><a class="headerlink" href="#c-repunit-trio" title="Permanent link">&para;</a></h2>
 <details class="abstract" open="open">
 <summary>题目大意</summary>
-<p>我们称 <span class="arithmatex">\(1, 11, 111, 1111, \cdots\)</span> 为 <strong>repunit </strong>数列，选择三个 <strong>repunit ** 数列的数（允许重复选择），将三个数字相加得到的数称为 </strong>3-repunit ** 数。给你一个整数 <span class="arithmatex">\(N(1 \le N \le 333)\)</span>，问，第 <span class="arithmatex">\(N\)</span> 小的 <strong>3-repunit </strong>数是多少？</p>
+<p>我们称 <span class="arithmatex">\(1, 11, 111, 1111, \cdots\)</span> 为 <strong>repunit</strong>数列，选择三个 <strong>repunit</strong> 数列的数（允许重复选择），将三个数字相加得到的数称为 <strong>3-repunit</strong> 数。给你一个整数 <span class="arithmatex">\(N(1 \le N \le 333)\)</span>，问，第 <span class="arithmatex">\(N\)</span> 小的 <strong>3-repunit </strong>数是多少？</p>
 </details>
 <details class="note">
 <summary>解题思路</summary>
@@ -2079,7 +2101,7 @@
 <h2 id="e-takahashi-quest"><a href="https://atcoder.jp/contests/abc333/tasks/abc333_e">E - Takahashi Quest</a><a class="headerlink" href="#e-takahashi-quest" title="Permanent link">&para;</a></h2>
 <details class="abstract" open="open">
 <summary>题目大意</summary>
-<p>你正在进行一场冒险，在这个冒险中有 <span class="arithmatex">\(N\)</span> 个事件，事件有两种，<code>1 x</code> 表示你遇到了一瓶类型为 <span class="arithmatex">\(x\)</span> 魔法药水，你可以选择拾取这个药水，这会占用你背包的 <span class="arithmatex">\(1\)</span> 单位体积。<code>2 x</code> 表示你遇到了一直怪物，需要使用一瓶类型为 <span class="arithmatex">\(x\)</span> 魔法药水才能战胜它。用过的魔法药水瓶可以丢弃，不再占用背包的体积。同种类型的魔法药水可以拾取多瓶。问：为了战胜所有的怪物，最少需要多大容量的背包？如果无法战胜所有的怪物，输出 <span class="arithmatex">\(-1\)</span>。如果可以战胜所有的怪物，第一行输出最小的背包容量，第二行输出遇到每个药水的时候是否拾取（<code>1</code> 表示拾取，<code>0</code> 拾取）。</p>
+<p>你正在进行一场冒险，在这个冒险中有 <span class="arithmatex">\(N\)</span> 个事件，事件有两种，<code>1 x</code> 表示你遇到了一瓶类型为 <span class="arithmatex">\(x\)</span> 魔法药水，你可以选择拾取这个药水，这会占用你背包的 <span class="arithmatex">\(1\)</span> 单位体积。<code>2 x</code> 表示你遇到了一直怪物，需要使用一瓶类型为 <span class="arithmatex">\(x\)</span> 魔法药水才能战胜它。一瓶魔法药水瓶只能用一次，用过之后可以丢弃，不再占用背包的体积。同种类型的魔法药水可以拾取多瓶。问：为了战胜所有的怪物，最少需要多大容量的背包？如果无法战胜所有的怪物，输出 <span class="arithmatex">\(-1\)</span>。如果可以战胜所有的怪物，第一行输出最小的背包容量，第二行输出遇到每个药水的时候是否拾取（<code>1</code> 表示拾取，<code>0</code> 表示不拾取）。</p>
 </details>
 <details class="note">
 <summary>解题思路</summary>
@@ -2227,7 +2249,7 @@ dp[i][j] = \left\{
 \end{matrix}
 \right.
 \]</div>
-<p>这个转移式有个问题，算出 <span class="arithmatex">\(dp[i][1]\)</span> 需要引用 <span class="arithmatex">\(dp[i][i]\)</span>，而需要算出 <span class="arithmatex">\(dp[i][2]\)</span> 需要引用 <span class="arithmatex">\(dp[i][1]\)</span>，<span class="arithmatex">\(\cdots \cdots\)</span> ，这是一种循环引用的关系，不能直接递推。</p>
+<p>这个转移式有个问题，算出 <span class="arithmatex">\(dp[i][1]\)</span> 需要引用 <span class="arithmatex">\(dp[i][i]\)</span>，而算出 <span class="arithmatex">\(dp[i][2]\)</span> 需要引用 <span class="arithmatex">\(dp[i][1]\)</span>，<span class="arithmatex">\(\cdots \cdots\)</span> ，这是一种循环引用的关系，不能直接递推。</p>
 <p>仿照解方程的方法，设 <span class="arithmatex">\(dp[i][1], dp[i][2], \cdots, dp[i][i]\)</span> 为 <span class="arithmatex">\(x_1, x_2, \cdots, x_i\)</span>，根据转移式，有 <span class="arithmatex">\(i\)</span> 个方程，<span class="arithmatex">\(i\)</span> 个变量，解方程的话是肯定可以解出来的。但是使用高斯消元解方程的复杂度达到 <span class="arithmatex">\(O(n^3)\)</span>，必定超时。</p>
 <p>注意到这里的方程是很简单的形式，所以可以优化。</p>
 <p>观察 <strong>dp转移式</strong>，当 <span class="arithmatex">\(j &gt; 1\)</span> 时，<span class="arithmatex">\(\frac{1}{2} * dp[i-1][j-1]\)</span> 的部分实际是一个常数，上一层就已经算出来了。而 <span class="arithmatex">\(\frac{1}{2}dp[i][j-1]\)</span> 是上一个变量的线性倍，即：<span class="arithmatex">\(x_i = ax_{i-1} + b\)</span>，这就可以通过一种简便的方法来解方程。</p>
@@ -2397,7 +2419,7 @@ public static void main(String[] args) {
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-04</span>
       
         <br>
         创建日期:
@@ -2452,13 +2474,13 @@ public static void main(String[] args) {
         
         
           
-          <a href="../abc312/" class="md-footer__link md-footer__link--next" aria-label="下一页: ABC312(A-F)">
+          <a href="../abc332/" class="md-footer__link md-footer__link--next" aria-label="下一页: ABC332(A-F)">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                ABC312(A-F)
+                ABC332(A-F)
               </div>
             </div>
             <div class="md-footer__button md-icon">
