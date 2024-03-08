@@ -18,7 +18,7 @@
         <link rel="prev" href="../../">
       
       
-        <link rel="next" href="../abc335/">
+        <link rel="next" href="../abc342/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>ABC343(A-F) - 陈裕杰的个人网站</title>
+        <title>ABC343(A-G) - 陈裕杰的个人网站</title>
       
     
     
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ABC343(A-F)
+              ABC343(A-G)
             
           </span>
         </div>
@@ -403,6 +403,8 @@
       
         
       
+        
+      
     
     
     
@@ -463,7 +465,7 @@
           
   
   <span class="md-ellipsis">
-    ABC343(A-F)
+    ABC343(A-G)
   </span>
   
 
@@ -474,7 +476,7 @@
         
   
   <span class="md-ellipsis">
-    ABC343(A-F)
+    ABC343(A-G)
   </span>
   
 
@@ -557,6 +559,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../abc342/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ABC342(A-G)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../abc335/" class="md-nav__link">
         
   
@@ -621,7 +643,7 @@
         
   
   <span class="md-ellipsis">
-    ABC332(A-F)
+    ABC332(A-G)
   </span>
   
 
@@ -1786,7 +1808,7 @@
   
 
 
-  <h1>ABC343(A-F)</h1>
+  <h1>ABC343(A-G)</h1>
 
 <h2 id="a-wrong-answer"><a href="https://atcoder.jp/contests/abc343/tasks/abc343_a">A - Wrong Answer</a><a class="headerlink" href="#a-wrong-answer" title="Permanent link">&para;</a></h2>
 <details class="abstract" open="open">
@@ -2531,7 +2553,7 @@ V_{3'} = 7^3 - V_{1-3} - V_{2-3} - V_3 \\
 <details class="note">
 <summary>解题思路</summary>
 <p>如果 <span class="arithmatex">\(S_i\)</span> 包含了 <span class="arithmatex">\(S_j\)</span>，则可以不考虑 <span class="arithmatex">\(S_j\)</span>，直接将其删除。</p>
-<p>假设有字符串 <span class="arithmatex">\(X\)</span> 和字符串 <span class="arithmatex">\(Y\)</span>，要将其压缩成一个最短的字符串 <span class="arithmatex">\(Z\)</span>，这个问题可以用 <strong>kmp</strong> 或者 字符串哈希在 <span class="arithmatex">\(O(|X|+|Y|)\)</span> 的时间内解决。以 <strong>kmp</strong> 为例：在求子串匹配时，我们将两个字符串拼接成 <span class="arithmatex">\(Y\#X\)</span>，然后不断算出 <strong>前缀函数</strong> 的值，而 <strong>前缀函数</strong> 的定义 <span class="arithmatex">\(ne[i]\)</span> 表示 <span class="arithmatex">\([0, i]\)</span> 这段字符串中真前缀与真后缀相等的最大长度，这意味着匹配到最后时（假设此时的前缀函数值为 <span class="arithmatex">\(j\)</span>，<span class="arithmatex">\(|X| = n\)</span>，<span class="arithmatex">\(|Y| = m\)</span>），此时有 <span class="arithmatex">\(Y_0Y_1\cdots Y_{j-1} = X_{n-j+1}X_{n-j+2}\cdots{X_n}\)</span>，于是就可以压缩成 <span class="arithmatex">\(X_0X_1 \cdots X_{n-j+1}X_{n-j+2}\cdots{X_n}Y_jY_{j+1} \cdots Y_{m-1}\)</span>，这样一定是最短的。</p>
+<p>假设有字符串 <span class="arithmatex">\(X\)</span> 和字符串 <span class="arithmatex">\(Y\)</span>，要将其压缩成一个最短的字符串 <span class="arithmatex">\(Z\)</span>，这个问题可以用 <strong>kmp</strong> 或者 <strong>字符串哈希</strong> 在 <span class="arithmatex">\(O(|X|+|Y|)\)</span> 的时间内解决。以 <strong>kmp</strong> 为例：在求子串匹配时，我们将两个字符串拼接成 <span class="arithmatex">\(Y\#X\)</span>，然后不断算出 <strong>前缀函数</strong> 的值，而 <strong>前缀函数</strong> 的定义 <span class="arithmatex">\(ne[i]\)</span> 表示 <span class="arithmatex">\([0, i]\)</span> 这段字符串中真前缀与真后缀相等的最大长度，这意味着匹配到最后时（假设此时的前缀函数值为 <span class="arithmatex">\(j\)</span>，<span class="arithmatex">\(|X| = n\)</span>，<span class="arithmatex">\(|Y| = m\)</span>），此时有 <span class="arithmatex">\(Y_0Y_1\cdots Y_{j-1} = X_{n-j+1}X_{n-j+2}\cdots{X_n}\)</span>，于是就可以压缩成 <span class="arithmatex">\(X_0X_1 \cdots X_{n-j+1}X_{n-j+2}\cdots{X_n}Y_jY_{j+1} \cdots Y_{m-1}\)</span>，这样一定是最短的。</p>
 <p>由于 <span class="arithmatex">\(N \le 20\)</span>，我们可以两两处理字符串，处理出一个二维数组 <span class="arithmatex">\(cost[i][j]\)</span>，表示将第 <span class="arithmatex">\(j\)</span> 个字符串拼接在第 <span class="arithmatex">\(i\)</span> 个字符串后所增加的字符个数，这个值在 <strong>kmp</strong> 结束时可以算出是 <span class="arithmatex">\(m-j\)</span>。预处理出所有的 <span class="arithmatex">\(cost[i][j]\)</span> 的时间复杂度是 <span class="arithmatex">\(O(N\times \sum|S_i|)\)</span></p>
 <p>如何构造出最短的答案？考虑 <strong>状压dp</strong>，定义 <span class="arithmatex">\(dp[s][j]\)</span>：已经构造出了集合 <span class="arithmatex">\(s\)</span> 中的字符串，且最后一个字符串是 <span class="arithmatex">\(j\)</span> 的所有方案中的最短长度，转移时只需要枚举上一步是哪个字符串 <span class="arithmatex">\(i\)</span>，则有：
 $$
@@ -2735,7 +2757,7 @@ $$
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-05</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-08</span>
       
         <br>
         创建日期:
@@ -2790,13 +2812,13 @@ $$
         
         
           
-          <a href="../abc335/" class="md-footer__link md-footer__link--next" aria-label="下一页: ABC335(A-F)">
+          <a href="../abc342/" class="md-footer__link md-footer__link--next" aria-label="下一页: ABC342(A-G)">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                ABC335(A-F)
+                ABC342(A-G)
               </div>
             </div>
             <div class="md-footer__button md-icon">
