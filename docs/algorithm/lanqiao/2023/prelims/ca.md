@@ -1,6 +1,6 @@
 ## [A - 幸运数](https://www.lanqiao.cn/problems/3491/learning/?page=1&first_category_id=1&name=幸运数)
 
-??? Note "解题思路"
+???+ Note "解题思路"
 
 $10^8$ 个数，暴力枚举即可。
 
@@ -51,7 +51,7 @@ $10^8$ 个数，暴力枚举即可。
 
 ## [B - 有奖问答](https://www.lanqiao.cn/problems/3497/learning/?page=1&first_category_id=1&name=有奖问答)
 
-??? Note "解题思路"
+???+ Note "解题思路"
 
 定义 $dp[i][j]$：前 $i$ 次问题答完后，得到的分数为 $10j$ 的情况数。
 
@@ -105,7 +105,7 @@ $$
 
 ## [C - 平方差](https://www.lanqiao.cn/problems/3213/learning/?page=1&first_category_id=1&name=平方差)
 
-??? Note "解题思路"
+???+ Note "解题思路"
 
 高精度，用了别人的板子。
 
@@ -265,34 +265,193 @@ $$
 
 ---
 
-## 
+## [D - 更小的数](https://www.lanqiao.cn/problems/3503/learning/?page=1&first_category_id=1&name=更小的数)
 
-??? Note "解题思路"
+???+ Note "解题思路"
 
+如果一个区间逆序的字典序更小，那么反转这个区间就能得到更小的数字。
 
+暴力枚举所有的 $l$ 和 $r$，比较 $[l, r]$ 的正序和逆序的字典序（双指针即可），时间复杂度是 $O(n^3)$，所以需要优化最后一层。
+
+-   如果 $s[l] < s[r]$，正序字典序更小。
+-   如果 $s[l] > s[r]$​，逆序字典序更小。
+-   如果 $s[l] = s[r]$，在双指针的过程中我们会同时向内移动双指针，于是就变成了判断 $[l+1, r-1]$ 的子问题。
+
+理所当然的就有区间 $dp[l][r]$：如果 $[l, r]$ 的逆序更小，则为 $1$，否则为 $0$。
+
+转移方程为：
+$$
+dp[l][r] = \left\{
+\begin{matrix}
+0, & l = r\\
+0, & r-l=1 \land s[l] \le s[r]\\
+1, & r-l=1 \land s[l] > s[r]\\
+0, & r-l>1 \land s[l] < s[r]\\
+1, & r-l>1 \land s[l] > s[r]\\
+dp[i+1][j-1], & r-l>1 \land s[l] = s[r]\\
+\end{matrix}
+\right.
+$$
+按照区间 **dp** 的顺序枚举，时间复杂度 $O(n^2)$
 
 ??? Success "参考代码"
 
     === "C++"
     
         ```c++
+        #include <iostream>
+        #include <cstdio>
+        #include <algorithm>
+        #include <cstring>
     
+        using namespace std;
+    
+        const int maxn = 5000 + 10;
+        int n;
+        char s[maxn];
+        bool dp[maxn][maxn];
+    
+        int main()
+        {
+            cin >> s;
+            n = strlen(s);
+            int ans = 0;
+            for(int i = 0; i + 1 < n; i++)
+            {
+                dp[i][i+1] = s[i] > s[i+1];
+                ans += dp[i][i+1];
+            }
+            for(int k = 3; k <= n; k++)
+                for(int l = 0, r = k-1; r < n; l++, r++)
+                {
+                    dp[l][r] = s[l] == s[r] ? dp[l+1][r-1] : s[l] > s[r];
+                    ans += dp[l][r];
+                }
+            cout << ans << endl;
+            return 0;
+        }
         ```
 
 ---
 
-## 
+## [E - 颜色平衡树](https://www.lanqiao.cn/problems/3504/learning/)
 
-??? Note "解题思路"
+???+ Note "解题思路"
 
+枚举所子树的时间复杂度是 $O(n^2)$，可以通过 $60\%$ 数据。
 
+事实上这道题就是 [树上启发式合并 - OI Wiki (oi-wiki.org)](https://oi-wiki.org/graph/dsu-on-tree/#算法内容) 的模板题，几乎一摸一样，只需要统计每个颜色出现的次数，以及相同频率出现的次数即可，询问答案相当于相同的频率是否只有一个。时间复杂度就是 $O(nlogn)$。
 
 ??? Success "参考代码"
 
     === "C++"
     
         ```c++
+        #include <iostream>
+        #include <cstdio>
+        #include <algorithm>
+        #include <cstring>
     
+        using namespace std;
+    
+        const int maxn = 2E5 + 10;
+        const int maxm = 2E5 + 10;
+        int head[maxn], edge[maxm], ne[maxm], idx = 1;
+        void add(int u, int v)
+        {
+            edge[idx] = v;
+            ne[idx] = head[u];
+            head[u] = idx++;
+        }
+    
+        struct Data {
+            int cnt[maxn] = {}, freq[maxn] = {}, k = 0;
+            void add(int col)
+            {
+                int f = cnt[col];
+                if(f && --freq[f] == 0)
+                    k--;
+                f = ++cnt[col];
+                if(freq[f] == 0)
+                    k++;
+                freq[f]++;
+            }
+            void del(int col)
+            {
+                int f = cnt[col];
+                if(--freq[f] == 0)
+                    k--;
+                f = --cnt[col];
+                if(!f)
+                    return;
+                if(freq[f] == 0)
+                    k++;
+                freq[f]++;
+            }
+            bool check()
+            {return k == 1;}
+        }d;
+    
+        int n, col[maxn], L[maxn], R[maxn], ord[maxn], sz[maxn], son[maxn], ti, ans;
+    
+        void dfs1(int u)
+        {
+            L[u] = ++ti;
+            ord[ti] = u;
+            sz[u] = 1;
+            for(int i = head[u]; i; i = ne[i])
+            {
+                int v = edge[i];
+                dfs1(v);
+                sz[u] += sz[v];
+                if(sz[v] > sz[son[u]])
+                    son[u] = v;
+            }
+            R[u] = ti;
+        }
+    
+        void dfs2(int u, bool keep)
+        {
+            for(int i = head[u]; i; i = ne[i])
+            {
+                int v = edge[i];
+                if(v == son[u])
+                    continue;
+                dfs2(v, 0);
+            }
+            if(son[u])
+                dfs2(son[u], 1);
+            for(int i = head[u]; i; i = ne[i])
+            {
+                int v = edge[i];
+                if(v == son[u])
+                    continue;
+                for(int j = L[v]; j <= R[v]; j++)
+                    d.add(col[ord[j]]);
+            }
+            d.add(col[u]);
+            ans += d.check();
+            if(!keep)
+            {
+                for(int i = L[u]; i <= R[u]; i++)
+                    d.del(col[ord[i]]);
+            }
+        }
+    
+    
+        int main()
+        {   
+            cin >> n;
+            for(int i = 1, f; i <= n; i++)
+            {
+                scanf("%d %d", &col[i], &f);
+                add(f, i);
+            }
+            dfs1(1);
+            dfs2(1, 0);
+            cout << ans << endl;
+            return 0;
+        }
         ```
 
 ---
