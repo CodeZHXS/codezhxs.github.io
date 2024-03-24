@@ -1963,16 +1963,16 @@
 <details class="note">
 <summary>解题思路</summary>
 <p>定义 <span class="arithmatex">\(dp[i]\)</span> 表示选中数字 <span class="arithmatex">\(i\)</span>，同时将 <span class="arithmatex">\(i\)</span> 后续分裂的所有数字都递归执行操作，直到无法执行任何操作所需要的花费。</p>
-<p>则有：
-$$
-dp[i] = \left{
+<p>则有：</p>
+<div class="arithmatex">\[
+dp[i] = \left\{
 \begin{matrix}
-0, &amp; i = 1\
+0, &amp; i = 1\\
 i + dp[\frac{i}{2}] + dp[\frac{i+1}{2}], &amp; i \ge 2
 \end{matrix}
 \right.
-$$
-考虑到 <span class="arithmatex">\(N \le 10^{17}\)</span> 显然不能从前往后算，注意到计算某个 <span class="arithmatex">\(dp[i]\)</span> 的值实际上不会遍历所有点，所以记忆化搜索即可。</p>
+\]</div>
+<p>考虑到 <span class="arithmatex">\(N \le 10^{17}\)</span> 显然不能从前往后算，注意到计算某个 <span class="arithmatex">\(dp[i]\)</span> 的值实际上不会遍历所有点，所以记忆化搜索即可。</p>
 </details>
 <details class="success">
 <summary>参考代码</summary>
@@ -2380,11 +2380,11 @@ $$
 </details>
 <details class="note">
 <summary>解题思路</summary>
-<p>原点到点 <span class="arithmatex">\((X, Y)\)</span> 的直线为 <span class="arithmatex">\(Yx - Xy = 0\)</span>，设 <span class="arithmatex">\((A, B)\)</span> 到这条直线的距离为 <span class="arithmatex">\(d\)</span>，则有：
-$$
-d = \frac{|YA-XB|}{\sqrt{X<sup>2+Y</sup>2}}
-$$
-又因为 <span class="arithmatex">\(\sqrt{X^2+Y^2}\)</span> 表示原点到 <span class="arithmatex">\((X, Y)\)</span> 的距离，即 <span class="arithmatex">\(d\sqrt{X^2+Y^2} = 2\)</span>。</p>
+<p>原点到点 <span class="arithmatex">\((X, Y)\)</span> 的直线为 <span class="arithmatex">\(Yx - Xy = 0\)</span>，设 <span class="arithmatex">\((A, B)\)</span> 到这条直线的距离为 <span class="arithmatex">\(d\)</span>，则有：</p>
+<div class="arithmatex">\[
+d = \frac{|YA-XB|}{\sqrt{X^2+Y^2}}
+\]</div>
+<p>又因为 <span class="arithmatex">\(\sqrt{X^2+Y^2}\)</span> 表示原点到 <span class="arithmatex">\((X, Y)\)</span> 的距离，即 <span class="arithmatex">\(d\sqrt{X^2+Y^2} = 2\)</span>。</p>
 <p>问题转化为 <span class="arithmatex">\(|YA-XB|=2\)</span> 在 <span class="arithmatex">\(-10^{18} \le A, B \le 10^{18}\)</span> 上是否有解。</p>
 <p>不失一般性，考虑 <span class="arithmatex">\(YA-XB=2\)</span> 是否有解，令 <span class="arithmatex">\(P = |Y|\)</span>，<span class="arithmatex">\(Q = |-X|\)</span>，即求不定方程 <span class="arithmatex">\(Pa+Qb = 2\)</span> 是否有解。</p>
 <p>拓展欧几里得算法可以求出形如这样的 <span class="arithmatex">\(Pa+Qb = \gcd(P, Q)\)</span> 的一组解，显然，本题的条件下首先需要满足 <span class="arithmatex">\(\gcd(P, Q)\)</span> 等于 <span class="arithmatex">\(1\)</span> 或者 <span class="arithmatex">\(2\)</span>，否则无解。</p>
@@ -2489,7 +2489,7 @@ $$
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-16</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-24</span>
       
         <br>
         创建日期:
