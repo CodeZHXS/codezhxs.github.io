@@ -2386,6 +2386,36 @@
 <li>也可以看看 <a href="https://www.bilibili.com/video/BV1Ee411q7Et/?spm_id_from=333.999.0.0&amp;vd_source=d5f565a3bfab469f3f3ab91fe4c39523">这个视频</a>。</li>
 </ul>
 <h2 id="on">离线 <span class="arithmatex">\(O(n)\)</span> 做法<a class="headerlink" href="#on" title="Permanent link">&para;</a></h2>
+<p>考虑下面这种情况：</p>
+<ol>
+<li>假设当前的分界线是 <span class="arithmatex">\(mid\)</span>。 </li>
+<li>降序操作 <span class="arithmatex">\([1, x]\)</span>，其中 <span class="arithmatex">\(x&gt;mid\)</span>，操作后，<span class="arithmatex">\(b\)</span> 数组增加 <span class="arithmatex">\(x-mid\)</span> 个 <span class="arithmatex">\(0\)</span>，<span class="arithmatex">\(mid=x\)</span>。</li>
+<li>升序操作 <span class="arithmatex">\([y, n]\)</span>，其中 <span class="arithmatex">\(y≤x\)</span>，操作后，<span class="arithmatex">\(b\)</span> 数组减少 <span class="arithmatex">\(x-y+1\)</span> 个 <span class="arithmatex">\(0\)</span>，<span class="arithmatex">\(mid=y-1\)</span>。</li>
+<li>
+<p>降序操作 <span class="arithmatex">\([1, z]\)</span>，其中 <span class="arithmatex">\(z&gt;y-1\)</span>，操作后，<span class="arithmatex">\(b\)</span> 数组增加 <span class="arithmatex">\(z-y+1\)</span> 个 <span class="arithmatex">\(0\)</span>，<span class="arithmatex">\(mid=z\)</span>。</p>
+</li>
+<li>
+<p>一来一回，总共增加 <span class="arithmatex">\(x-mid-(x-y+1)+z-y+1=z-mid\)</span> 个 <span class="arithmatex">\(0\)</span>。</p>
+</li>
+<li>
+<p>如果 <span class="arithmatex">\(z&gt;x\)</span>​，同样是增加，第 4 步比第 2 步增加的更多，相当于第 2 步和第 3 步没做过。</p>
+</li>
+</ol>
+<p>有效操作的性质：</p>
+<ul>
+<li>
+<p>升序降序交替操作。</p>
+</li>
+<li>
+<p>降序不会出现 <span class="arithmatex">\(z&gt;x\)</span> 的情况，升序不会出现 <span class="arithmatex">\(z&lt;x\)</span> 的情况。</p>
+</li>
+</ul>
+<p>考虑下面这种情况：</p>
+<ol>
+<li>假设初始序列 <span class="arithmatex">\(a=(1,2, ⋯,n)\)</span>。</li>
+<li>降序操作 <span class="arithmatex">\([1, x]\)</span>，由于下一次降序不会出现 <span class="arithmatex">\(z&gt;x\)</span>，所以 <span class="arithmatex">\([x+1, n]\)</span> 的部分固定。</li>
+<li>升序操作 <span class="arithmatex">\([x, n]\)</span>，由于下一次升序不会出现 <span class="arithmatex">\(z&lt;x\)</span>，所以 <span class="arithmatex">\([1, x-1]\)</span> 的部分固定。 </li>
+</ol>
 <h3 id="_5">参考代码<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <details class="success" open="open">
 <summary>参考代码</summary>
@@ -2547,74 +2577,74 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
-
-
-<span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">op</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">op</span> <span class="o">=</span> <span class="n">op</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
-
-<span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
-<span class="n">q</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Node</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="c1"># 初始时都是升序</span>
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-    <span class="n">op</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
-    <span class="k">if</span> <span class="n">op</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">q</span> <span class="ow">and</span> <span class="n">q</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">op</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">z</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
-            <span class="n">q</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">z</span> <span class="o">&gt;=</span> <span class="n">q</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">:</span>
-            <span class="c1"># 降序不能出现 z &gt;= x</span>
-            <span class="n">q</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-            <span class="n">q</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-        <span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Node</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">z</span><span class="p">))</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">q</span> <span class="ow">and</span> <span class="n">q</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">op</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">z</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
-            <span class="n">q</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="n">q</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">:</span>
-            <span class="c1"># 升序不能出现 z &lt;= x</span>
-            <span class="n">q</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-            <span class="n">q</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-        <span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Node</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">z</span><span class="p">))</span>
-
-<span class="n">ans</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">num</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span>
-<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">q</span><span class="p">:</span>
-    <span class="n">op</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">op</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">x</span>
-    <span class="k">if</span> <span class="n">op</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># 后缀被固定</span>
-        <span class="k">while</span> <span class="n">l</span> <span class="o">&lt;=</span> <span class="n">r</span> <span class="ow">and</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">:</span>
-            <span class="n">ans</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="o">=</span> <span class="n">num</span>
-            <span class="n">r</span> <span class="o">-=</span> <span class="mi">1</span>
-            <span class="n">num</span> <span class="o">-=</span> <span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">while</span> <span class="n">l</span> <span class="o">&lt;=</span> <span class="n">r</span> <span class="ow">and</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span>
-            <span class="n">ans</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">num</span>
-            <span class="n">l</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="n">num</span> <span class="o">-=</span> <span class="mi">1</span>
-    <span class="k">if</span> <span class="n">l</span> <span class="o">&gt;</span> <span class="n">r</span><span class="p">:</span>
-        <span class="k">break</span>
-<span class="c1"># 处理最后剩下的 [l, r]</span>
-<span class="k">if</span> <span class="n">q</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">op</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">while</span> <span class="n">l</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">:</span>
-        <span class="n">ans</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">num</span>
-        <span class="n">l</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">num</span> <span class="o">-=</span> <span class="mi">1</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="k">while</span> <span class="n">l</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">:</span>
-        <span class="n">ans</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="o">=</span> <span class="n">num</span>
-        <span class="n">r</span> <span class="o">-=</span> <span class="mi">1</span>
-        <span class="n">num</span> <span class="o">-=</span> <span class="mi">1</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">ans</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
-</code></pre></div>
+<p>```python
+from typing import List</p>
 </div>
 </div>
 </div>
 </details>
+<p>​  <br />
+        class Node:
+            def <strong>init</strong>(self, op:int, x:int) -&gt; None:
+                self.op = op
+                self.x = x</p>
+<pre><code>    n, m = map(int, input().split())
+    q = []
+    q.append(Node(1, 1)) # 初始时都是升序
+    for _ in range(m):
+        op, z = map(int, input().split())
+        if op == 0:
+            if q and q[-1].op == 0:
+                z = max(z, q[-1].x)
+                q.pop()
+            while len(q) &gt;= 2 and z &gt;= q[-2].x:
+                # 降序不能出现 z &gt;= x
+                q.pop()
+                q.pop()
+            q.append(Node(op, z))
+        else:
+            if q and q[-1].op == 1:
+                z = min(z, q[-1].x)
+                q.pop()
+            while len(q) &gt;= 2 and z &lt;= q[-2].x:
+                # 升序不能出现 z &lt;= x
+                q.pop()
+                q.pop()
+            q.append(Node(op, z))
+
+    ans = [0] * (n+1)
+    num, l, r = n, 1, n
+    for p in q:
+        op = p.op
+        x = p.x
+        if op == 0: # 后缀被固定
+            while l &lt;= r and r &gt; x:
+                ans[r] = num
+                r -= 1
+                num -= 1
+        else:
+            while l &lt;= r and l &lt; x:
+                ans[l] = num
+                l += 1
+                num -= 1
+        if l &gt; r:
+            break
+    # 处理最后剩下的 [l, r]
+    if q[-1].op == 0:
+        while l &lt;= r:
+            ans[l] = num
+            l += 1
+            num -= 1
+    else:
+        while l &lt;= r:
+            ans[r] = num
+            r -= 1
+            num -= 1
+
+    for i in range(1, n+1):
+        print(ans[i], end = ' ')
+    ```
+</code></pre>
 
   <hr>
 <div class="md-source-file">

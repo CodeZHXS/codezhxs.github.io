@@ -2422,7 +2422,7 @@
 <details class="note">
 <summary>正确思路</summary>
 <p>进一步发现，上述代码实质通过合并相同的步长来减少循环次数，而我们可以发现，只有相同的 <span class="arithmatex">\(A_i\)</span> 值可以合并，所以没有必要用 <code>map</code> 存储所有经过这个点的步长，只需要存储相同的步长有多少。</p>
-<p>换言之，我们仍然让点 <span class="arithmatex">\(i\)</span> 不断的向后传播，知道碰到和 <span class="arithmatex">\(A_i\)</span> 相同的 <span class="arithmatex">\(A_j\)</span>，此时中止 <span class="arithmatex">\(i\)</span> 的传播，后续由 <span class="arithmatex">\(j\)</span> 代为传播。</p>
+<p>换言之，我们仍然让点 <span class="arithmatex">\(i\)</span> 不断的向后传播，直到碰到和 <span class="arithmatex">\(A_i\)</span> 相同的 <span class="arithmatex">\(A_j\)</span>，此时中止 <span class="arithmatex">\(i\)</span> 的传播，后续由 <span class="arithmatex">\(j\)</span> 代为传播。</p>
 <p>最终 AC 代码出乎意料的简单。</p>
 </details>
 <details class="success">
@@ -2511,7 +2511,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-05</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-25</span>
       
         <br>
         创建日期:
