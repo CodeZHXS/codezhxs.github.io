@@ -8,6 +8,7 @@ site_description: 陈裕杰的个人网站
 nav:
   - 算法:
     - algorithm/index.md
+    - ABC347(A-E): algorithm/AtCoder/abc347.md
     - ABC343(A-G): algorithm/AtCoder/abc343.md
     - ABC342(A-G): algorithm/AtCoder/abc342.md
     - ABC341(A-G): algorithm/AtCoder/abc341.md
