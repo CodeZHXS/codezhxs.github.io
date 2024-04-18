@@ -1851,8 +1851,8 @@
 <h2 id="a-divisible"><a href="https://atcoder.jp/contests/abc347/tasks/abc347_a">A - Divisible</a><a class="headerlink" href="#a-divisible" title="Permanent link">&para;</a></h2>
 <details class="abstract" open="open">
 <summary>题目大意</summary>
-</details>
 <p>给你 <span class="arithmatex">\(N\)</span> 个整数 <span class="arithmatex">\(A = (A_1, A_2, \cdots, A_N)\)</span> 和一个整数 <span class="arithmatex">\(K\)</span> ，如果 <span class="arithmatex">\(A_i\)</span> 是 <span class="arithmatex">\(K\)</span> 的倍数，输出 <span class="arithmatex">\(\frac{A_i}{K}\)</span>。</p>
+</details>
 <details class="success">
 <summary>参考代码</summary>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">C++</label><label for="__tabbed_1_2">Java</label></div>
@@ -1902,8 +1902,8 @@
 <h2 id="b-substring"><a href="https://atcoder.jp/contests/abc347/tasks/abc347_b">B - Substring</a><a class="headerlink" href="#b-substring" title="Permanent link">&para;</a></h2>
 <details class="abstract" open="open">
 <summary>题目大意</summary>
-</details>
 <p>给你一个字符串 <span class="arithmatex">\(S\)</span>，求出 <span class="arithmatex">\(S\)</span> 有多少个不同的子串。</p>
+</details>
 <p>??? Success 参考代码"</p>
 <pre><code>=== "C++"
 
@@ -1963,11 +1963,10 @@
 <h2 id="c-ideal-holidays"><a href="https://atcoder.jp/contests/abc347/tasks/abc347_c">C - Ideal Holidays</a><a class="headerlink" href="#c-ideal-holidays" title="Permanent link">&para;</a></h2>
 <details class="abstract" open="open">
 <summary>题目大意</summary>
-</details>
 <p>假设一个星期有 <span class="arithmatex">\(A+B\)</span> 天，其中前 <span class="arithmatex">\(A(A \le 10^9)\)</span> 天是假期，接下来的 <span class="arithmatex">\(B(B \le 10^9)\)</span> 天是工作日。有 <span class="arithmatex">\(N(N \le 2 \times 10^5)\)</span> 个计划，其中第 <span class="arithmatex">\(i\)</span> 个计划是在 <span class="arithmatex">\(D_i\)</span> 天后。你忘记了今天是一星期中哪一天。问：是否存在一种可能，使得这 <span class="arithmatex">\(N\)</span> 个计划都能在假日完成？</p>
+</details>
 <details class="note">
 <summary>解题思路</summary>
-</details>
 <p>每一天我们实际只关心是一个星期的第几天，所以我们计算所有的 <span class="arithmatex">\(D_i \bmod (A+B)\)</span> ，然后将得到的结果取最小值和最大值，令 <span class="arithmatex">\(l = \min\limits_{i = 1} ^ N\{D_i \bmod (A+B)\}\)</span>，<span class="arithmatex">\(r = \max\limits_{i = 1} ^ N\{D_i \bmod (A+B)\}\)</span>，则如果 <span class="arithmatex">\(r-l+1 \le A\)</span> 即可。因为我们可以将 <span class="arithmatex">\(l\)</span> 对应的那一天视为第一天假期，则 <span class="arithmatex">\(r\)</span> 对应的部分一定不会超过 <span class="arithmatex">\(A\)</span>。</p>
 <p>这是我一开始的做法，后来发现 WA 了一个点，考虑下面这个样例：</p>
 <div class="highlight"><pre><span></span><code>4 4 5
@@ -1976,6 +1975,7 @@
 <p>这个样例应该输出 <code>Yes</code>，原因是可以将 <code>1</code> 对应第三天假期，这样，在新的星期中，<code>8</code> 和 <code>9</code> 对应的就是假期的第一天和第二天。</p>
 <p>所以我们可以发现，第一天假期不一定是 <span class="arithmatex">\(l\)</span> 对应的那一天，在上面这个例子中，将 <span class="arithmatex">\(8\)</span> 视为假期的第一天，此时序列相当于 <code>8 9 10 11</code>，此时判断的就是 <code>11</code> 和 <code>8</code> 的长度。</p>
 <p>因此处理出所有的 <span class="arithmatex">\(D_i \bmod (A+B)\)</span> ，然后排序，接着枚举哪一天应该成为假期的第一天，假设枚举到 <span class="arithmatex">\(i\)</span>，这上一天就是 <span class="arithmatex">\(i-1\)</span>, 判断两者的长度，只要有一个满足即可。</p>
+</details>
 <details class="success">
 <summary>参考代码</summary>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">C++</label><label for="__tabbed_2_2">Java</label></div>
@@ -2061,20 +2061,20 @@
 <h2 id="d-popcount-and-xor"><a href="https://atcoder.jp/contests/abc347/tasks/abc347_d">D - Popcount and XOR</a><a class="headerlink" href="#d-popcount-and-xor" title="Permanent link">&para;</a></h2>
 <details class="abstract" open="open">
 <summary>题目大意</summary>
-</details>
 <p>给你三个数字 <span class="arithmatex">\(a(a \le 60)\)</span>，<span class="arithmatex">\(b(b \le 60)\)</span> 和 <span class="arithmatex">\(C(C \le 2^{60})\)</span>，问：是否存在数对 <span class="arithmatex">\((X, Y)\)</span> 满足下列所有条件。</p>
 <ul>
 <li><span class="arithmatex">\(0 \le X &lt; 2^{60}\)</span></li>
-<li><span class="arithmatex">\(0 \le Y &lt; 2^{60}\)</span>​</li>
-<li><span class="arithmatex">\(X\)</span> 的二进制中有 <span class="arithmatex">\(a\)</span> 个 <span class="arithmatex">\(1\)</span>​</li>
-<li><span class="arithmatex">\(Y\)</span> 的二进制中有 <span class="arithmatex">\(b\)</span> 个 <span class="arithmatex">\(1\)</span>​</li>
-<li><span class="arithmatex">\(X \oplus Y = C\)</span>​</li>
+<li><span class="arithmatex">\(0 \le Y &lt; 2^{60}\)</span></li>
+<li><span class="arithmatex">\(X\)</span> 的二进制中有 <span class="arithmatex">\(a\)</span> 个 <span class="arithmatex">\(1\)</span></li>
+<li><span class="arithmatex">\(Y\)</span> 的二进制中有 <span class="arithmatex">\(b\)</span> 个 <span class="arithmatex">\(1\)</span></li>
+<li><span class="arithmatex">\(X \oplus Y = C\)</span></li>
 </ul>
+</details>
 <details class="note">
 <summary>解题思路</summary>
-</details>
 <p>先将 <span class="arithmatex">\(C\)</span> 对应的二进制数组处理出来，然后定义 <span class="arithmatex">\(dp[i][x][y]\)</span> 表示是否存在满足 <span class="arithmatex">\(C\)</span> 的前 <span class="arithmatex">\(i\)</span> 位的前提下，<span class="arithmatex">\(X\)</span> 用了 <span class="arithmatex">\(x\)</span> 个 <span class="arithmatex">\(1\)</span>，<span class="arithmatex">\(Y\)</span> 用了 <span class="arithmatex">\(y\)</span> 个 <span class="arithmatex">\(1\)</span> 的方案。则初始时 <span class="arithmatex">\(dp[0][0][0] = 1\)</span>，转移的时候根据 <span class="arithmatex">\(C\)</span> 的数位分类，如果 <span class="arithmatex">\(C_i=1\)</span> 则 <span class="arithmatex">\(X_iY_i = 10\)</span> 或者 <span class="arithmatex">\(X_iY_i = 01\)</span>，如果 <span class="arithmatex">\(C_i = 0\)</span> 则 <span class="arithmatex">\(X_iY_i = 00\)</span> 或者 <span class="arithmatex">\(X_iY_i = 11\)</span>。</p>
 <p>需要注意的是不一定要恰好用完所有的 <span class="arithmatex">\(1\)</span>，因为 <span class="arithmatex">\(C\)</span> 是有可能存在前导 <span class="arithmatex">\(0\)</span> 的，而前导 <span class="arithmatex">\(0\)</span> 可以由两个 <span class="arithmatex">\(1\)</span> 异或得到。</p>
+</details>
 <details class="success">
 <summary>参考代码</summary>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">C++</label><label for="__tabbed_3_2">Java</label></div>
@@ -2239,8 +2239,7 @@
 <h2 id="e-set-add-query"><a href="https://atcoder.jp/contests/abc347/tasks/abc347_e">E - Set Add Query</a><a class="headerlink" href="#e-set-add-query" title="Permanent link">&para;</a></h2>
 <details class="abstract" open="open">
 <summary>题目大意</summary>
-</details>
-<p>你需要维护一个长度为 <span class="arithmatex">\(N(N \le 2 \times 10^5)\)</span> 的序列 <span class="arithmatex">\(A = (A_1, A_2, \cdots, A_N)\)</span> 和一个集合 <span class="arithmatex">\(S\)</span> 。 初始的时候，<span class="arithmatex">\(A\)</span> 中的所有数字都是 <span class="arithmatex">\(0\)</span>，集合 <span class="arithmatex">\(S\)</span> 也为空。有 <span class="arithmatex">\(Q(Q \le 2 \times 10^5)\)</span> 个操作，每个操作给你一个数字 <span class="arithmatex">\(x_i(1 \le x_i \le N)\)</span>​，然后执行：</p>
+<p>你需要维护一个长度为 <span class="arithmatex">\(N(N \le 2 \times 10^5)\)</span> 的序列 <span class="arithmatex">\(A = (A_1, A_2, \cdots, A_N)\)</span> 和一个集合 <span class="arithmatex">\(S\)</span> 。 初始的时候，<span class="arithmatex">\(A\)</span> 中的所有数字都是 <span class="arithmatex">\(0\)</span>，集合 <span class="arithmatex">\(S\)</span> 也为空。有 <span class="arithmatex">\(Q(Q \le 2 \times 10^5)\)</span> 个操作，每个操作给你一个数字 <span class="arithmatex">\(x_i(1 \le x_i \le N)\)</span>，然后执行：</p>
 <ol>
 <li>
 <ul>
@@ -2251,11 +2250,12 @@
 <li>遍历 <span class="arithmatex">\(S\)</span> 中所有的数字 <span class="arithmatex">\(x\)</span>，然后给 <span class="arithmatex">\(A_x\)</span> 加上集合 <span class="arithmatex">\(S\)</span> 的大小 <span class="arithmatex">\(|S|\)</span>。</li>
 </ol>
 <p>问：在 <span class="arithmatex">\(Q\)</span> 次操作后，序列 <span class="arithmatex">\(A\)</span> 的内容是？</p>
+</details>
 <details class="note">
 <summary>解题思路</summary>
-</details>
 <p>考虑追踪每个数字在集合中存活的时间，当数字 <span class="arithmatex">\(x\)</span> 加入集合，一直到这个数字被删去，中间 <span class="arithmatex">\(|S|\)</span> 都会对 <span class="arithmatex">\(A_x\)</span> 产生影响，而这个区间是连续的。显然要维护一个 <span class="arithmatex">\(|S|\)</span> 变化的前缀和，然后记录一下数字上一次加入的时间，用 <code>last[x]</code> 表示 <code>x</code> 上一次加入集合的时间，如果 <code>last[x] == 0</code> 表示 <code>x</code> 不在集合中。当元素被删去时，查找出对应的前缀和，一次性加上去就好。这样每次操作的时间复杂度就是 <span class="arithmatex">\(O(1)\)</span> 的。</p>
 <p><span class="arithmatex">\(Q\)</span> 次操作后，还需要对集合中剩下的所有元素再加一遍。 </p>
+</details>
 <details class="success">
 <summary>参考代码</summary>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">C++</label><label for="__tabbed_4_2">Java</label></div>
@@ -2353,7 +2353,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-18</span>
       
         <br>
         创建日期:
