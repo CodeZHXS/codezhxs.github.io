@@ -62,6 +62,7 @@ nav:
 # 不会渲染的页面
 exclude_docs: |
   /dev/cpp/
+  /archive/missing-semester.md
 
 # 会渲染但隐藏起来的页面 可以避免nav警告
 not_in_nav: |
