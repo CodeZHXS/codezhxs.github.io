@@ -8,6 +8,7 @@ site_description: 陈裕杰的个人网站
 nav:
   - 算法:
     - algorithm/index.md
+    - ABC351(A-G): algorithm/AtCoder/abc351.md
     - ABC347(A-E): algorithm/AtCoder/abc347.md
     - ABC343(A-G): algorithm/AtCoder/abc343.md
     - ABC342(A-G): algorithm/AtCoder/abc342.md
@@ -43,11 +44,13 @@ nav:
     - 开发环境配置: 
       - 我的PowerShell配置: dev/env/win/my_powershell.md
       - 在Windows中安装gcc: dev/env/win/gcc.md
-      - VMware安装Linux教程: dev/env/win/vmware.md
+      - VMware使用Linux速查: dev/env/win/vmware.md
     - hydro OJ运维: dev/myoj.md
   - 随笔:
     - essay/index.md
     - 日记:
+      - 日记 | 2024-05 : essay/diary/2024-05.md
+      - 日记 | 2024-04 : essay/diary/2024-04.md
       - 日记 | 2023-12 : essay/diary/2023-12.md
       - 日记 | 2023-10 : essay/diary/2023-10.md
   - 归档:

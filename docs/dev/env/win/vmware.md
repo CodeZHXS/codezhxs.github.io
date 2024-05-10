@@ -407,24 +407,93 @@ vi ~/.ssh/authorized_keys
 
 ## 扩容磁盘
 
-参考：[LVM : 扩展文件系统的容量 - sparkdev - 博客园 (cnblogs.com)](https://www.cnblogs.com/sparkdev/p/10142629.html)
+参考：
 
-这两条命令会查看挂载信息
+-   [LVM : 扩展文件系统的容量 - sparkdev - 博客园 (cnblogs.com)](https://www.cnblogs.com/sparkdev/p/10142629.html)
+-   [ubuntu 扩展分区并将剩余空间添加到现有逻辑卷中_ubuntu扩展分区大小 将一个磁盘加到另一个当中-CSDN博客](https://blog.csdn.net/qq_51756940/article/details/130476876#:~:text=使用以下命令打开 parted： sudo parted %2Fdev%2Fsda 打印当前 分区表 ：,分区： (parted) resizepart 3 100% 这将 sda3 分区扩展到最大可能大小。)
 
-```bash
-pvs
-lvdisplay
-```
+1.   首先在 VMware 上扩展硬盘容量。
 
-这条命令挂载所有空间
+2.   将增加的容量扩展到分区中。
 
-```bash
-lvextend -L 37G /dev/ubuntu-vg/ubuntu-lv
-```
+     ```bash
+     parted /dev/sda
+     
+     # 打印分区表 确定要扩展的分区
+     (parted) print 
+     
+     # 我要扩展的分区是 /dev/sda3
+     (parted) resizepart 3 100%
+     
+     # 打印分区表 查看 /dev/sda3 是否扩展成功
+     (parted) print
+     
+     # 退出
+     (parted) q
+     ```
 
-然后动态扩容
+​	通过 `lsblk` 也能查看分区大小是否扩展成功。
 
-```bash
-resize2fs /dev/ubuntu-vg/ubuntu-lv
-```
+3.   将 `dev/sda3` 增加的容量扩展到 `VG` 中
+
+     首先确定 `VG` 名，输入 `pvs`，假设输出是
+
+     ```
+     PV         VG        Fmt  Attr PSize   PFree
+     /dev/sda3  ubuntu-vg lvm2 a--  <38.00g    0
+     ```
+
+     则对应的 `VG` 名是 `ubuntu-vg`。
+
+     输入以下命令进行扩展：
+
+     ```bash
+     pvresize /dev/sda3
+     ```
+
+     再次输入 `pvs`，确定 `PSize` 是否扩展成功。
+
+4.   将 `VG` 增加的容量扩展到 `LV` 中：
+
+     首先确定 `LV Path` ，输入 `lvdisplay`，假设输出是
+
+     ```
+     --- Logical volume ---
+     LV Path                /dev/ubuntu-vg/ubuntu-lv
+     LV Name                ubuntu-lv
+     VG Name                ubuntu-vg
+     LV UUID                yRSVAA-gKW9-eY6U-owBw-IEHX-4Nes-DJ4ie2
+     LV Write Access        read/write
+     LV Creation host, time ubuntu-server, 2023-11-14 14:06:32 +0800
+     LV Status              available
+     # open                 1
+     LV Size                <58.00 GiB
+     Current LE             14847
+     Segments               1
+     Allocation             inherit
+     Read ahead sectors     auto
+     - currently set to     256
+     Block device           253:0
+     ```
+     则对应的 `LV Path` 是 `/dev/ubuntu-vg/ubuntu-lv`。
+     
+     将 `VG` 增加的所有容量扩展到 `LV` 中：
+     
+     ```bash
+     lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
+     ```
+     
+     也可以用 `-L` 参数指定具体的大小，例如这条命令会让 `LV` 变成 78G：
+     
+     ```bash
+     lvextend -L 78G /dev/ubuntu-vg/ubuntu-lv
+     ```
+
+5.   对 `LV` 执行动态扩容命令
+
+     ```bash
+     resize2fs /dev/ubuntu-vg/ubuntu-lv
+     ```
+
+6.   搞定，输入 `lsblk` 和 `df -hT` 确定是否成功。
 
