@@ -26,7 +26,7 @@
     
     
       
-        <title>VMware安装Linux教程 - 陈裕杰的个人网站</title>
+        <title>VMware使用Linux速查 - 陈裕杰的个人网站</title>
       
     
     
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VMware安装Linux教程
+              VMware使用Linux速查
             
           </span>
         </div>
@@ -409,6 +409,8 @@
       
         
       
+        
+      
     
     
     
@@ -452,6 +454,26 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../algorithm/AtCoder/abc351/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ABC351(A-G)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -1273,7 +1295,7 @@
           
   
   <span class="md-ellipsis">
-    VMware安装Linux教程
+    VMware使用Linux速查
   </span>
   
 
@@ -1284,7 +1306,7 @@
         
   
   <span class="md-ellipsis">
-    VMware安装Linux教程
+    VMware使用Linux速查
   </span>
   
 
@@ -1536,6 +1558,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1567,6 +1593,46 @@
             日记
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../essay/diary/2024-05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    日记 | 2024-05
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../essay/diary/2024-04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    日记 | 2024-04
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2012,7 +2078,7 @@
   
 
 
-  <h1>VMware安装Linux教程</h1>
+  <h1>VMware使用Linux速查</h1>
 
 <h2 id="_1">前言<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>虽然 Windows 推出了 WSL2 ，但是我个人还是倾向于在虚拟机上安装 Linux 系统，原因：</p>
@@ -2338,24 +2404,91 @@ vi<span class="w"> </span>~/.ssh/authorized_keys
 </li>
 </ol>
 <h2 id="_7">扩容磁盘<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p>参考：<a href="https://www.cnblogs.com/sparkdev/p/10142629.html">LVM : 扩展文件系统的容量 - sparkdev - 博客园 (cnblogs.com)</a></p>
-<p>这两条命令会查看挂载信息</p>
-<div class="highlight"><pre><span></span><code>pvs
-lvdisplay
+<p>参考：</p>
+<ul>
+<li><a href="https://www.cnblogs.com/sparkdev/p/10142629.html">LVM : 扩展文件系统的容量 - sparkdev - 博客园 (cnblogs.com)</a></li>
+<li>
+<p><a href="https://blog.csdn.net/qq_51756940/article/details/130476876#:~:text=使用以下命令打开 parted： sudo parted %2Fdev%2Fsda 打印当前 分区表 ：,分区： (parted) resizepart 3 100% 这将 sda3 分区扩展到最大可能大小。">ubuntu 扩展分区并将剩余空间添加到现有逻辑卷中_ubuntu扩展分区大小 将一个磁盘加到另一个当中-CSDN博客</a></p>
+</li>
+<li>
+<p>首先在 VMware 上扩展硬盘容量。</p>
+</li>
+<li>
+<p>将增加的容量扩展到分区中。</p>
+<div class="highlight"><pre><span></span><code>parted<span class="w"> </span>/dev/sda
+
+<span class="c1"># 打印分区表 确定要扩展的分区</span>
+<span class="o">(</span>parted<span class="o">)</span><span class="w"> </span>print<span class="w"> </span>
+
+<span class="c1"># 我要扩展的分区是 /dev/sda3</span>
+<span class="o">(</span>parted<span class="o">)</span><span class="w"> </span>resizepart<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">100</span>%
+
+<span class="c1"># 打印分区表 查看 /dev/sda3 是否扩展成功</span>
+<span class="o">(</span>parted<span class="o">)</span><span class="w"> </span>print
+
+<span class="c1"># 退出</span>
+<span class="o">(</span>parted<span class="o">)</span><span class="w"> </span>q
 </code></pre></div>
-<p>这条命令挂载所有空间</p>
-<div class="highlight"><pre><span></span><code>lvextend<span class="w"> </span>-L<span class="w"> </span>37G<span class="w"> </span>/dev/ubuntu-vg/ubuntu-lv
+</li>
+</ul>
+<p>​   通过 <code>lsblk</code> 也能查看分区大小是否扩展成功。</p>
+<ol>
+<li>
+<p>将 <code>dev/sda3</code> 增加的容量扩展到 <code>VG</code> 中</p>
+<p>首先确定 <code>VG</code> 名，输入 <code>pvs</code>，假设输出是</p>
+<div class="highlight"><pre><span></span><code>PV         VG        Fmt  Attr PSize   PFree
+/dev/sda3  ubuntu-vg lvm2 a--  &lt;38.00g    0
 </code></pre></div>
-<p>然后动态扩容</p>
+<p>则对应的 <code>VG</code> 名是 <code>ubuntu-vg</code>。</p>
+<p>输入以下命令进行扩展：</p>
+<div class="highlight"><pre><span></span><code>pvresize<span class="w"> </span>/dev/sda3
+</code></pre></div>
+<p>再次输入 <code>pvs</code>，确定 <code>PSize</code> 是否扩展成功。</p>
+</li>
+<li>
+<p>将 <code>VG</code> 增加的容量扩展到 <code>LV</code> 中：</p>
+<p>首先确定 <code>LV Path</code> ，输入 <code>lvdisplay</code>，假设输出是</p>
+<p><div class="highlight"><pre><span></span><code>--- Logical volume ---
+LV Path                /dev/ubuntu-vg/ubuntu-lv
+LV Name                ubuntu-lv
+VG Name                ubuntu-vg
+LV UUID                yRSVAA-gKW9-eY6U-owBw-IEHX-4Nes-DJ4ie2
+LV Write Access        read/write
+LV Creation host, time ubuntu-server, 2023-11-14 14:06:32 +0800
+LV Status              available
+# open                 1
+LV Size                &lt;58.00 GiB
+Current LE             14847
+Segments               1
+Allocation             inherit
+Read ahead sectors     auto
+- currently set to     256
+Block device           253:0
+</code></pre></div>
+ 则对应的 <code>LV Path</code> 是 <code>/dev/ubuntu-vg/ubuntu-lv</code>。</p>
+<p>将 <code>VG</code> 增加的所有容量扩展到 <code>LV</code> 中：</p>
+<div class="highlight"><pre><span></span><code>lvextend<span class="w"> </span>-l<span class="w"> </span>+100%FREE<span class="w"> </span>/dev/ubuntu-vg/ubuntu-lv
+</code></pre></div>
+<p>也可以用 <code>-L</code> 参数指定具体的大小，例如这条命令会让 <code>LV</code> 变成 78G：</p>
+<div class="highlight"><pre><span></span><code>lvextend<span class="w"> </span>-L<span class="w"> </span>78G<span class="w"> </span>/dev/ubuntu-vg/ubuntu-lv
+</code></pre></div>
+</li>
+<li>
+<p>对 <code>LV</code> 执行动态扩容命令</p>
 <div class="highlight"><pre><span></span><code>resize2fs<span class="w"> </span>/dev/ubuntu-vg/ubuntu-lv
 </code></pre></div>
+</li>
+<li>
+<p>搞定，输入 <code>lsblk</code> 和 <code>df -hT</code> 确定是否成功。</p>
+</li>
+</ol>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-10</span>
       
         <br>
         创建日期:
