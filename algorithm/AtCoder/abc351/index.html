@@ -2296,6 +2296,7 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">};</span>
 
+
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
@@ -2321,9 +2322,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </div>
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
 
@@ -2396,12 +2395,15 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+</div>
+</div>
 </details>
 <hr />
 <h2 id="g-hash-on-tree"><a href="https://atcoder.jp/contests/abc351/tasks/abc351_g">G - Hash on Tree</a><a class="headerlink" href="#g-hash-on-tree" title="Permanent link">&para;</a></h2>
 <details class="abstract" open="open">
 <summary>题目大意</summary>
-<p>给你一棵 <span class="arithmatex">\(N(1 \le N \le 2 \times 10^5)\)</span> 个点的树，点 <span class="arithmatex">\(1\)</span> 是树的根节点。第 <span class="arithmatex">\(i\)</span> 个点的权值是 <span class="arithmatex">\(A_i(0 \le A_i \le 998244353)\)</span>。</p>
+<p>给你一棵 <span class="arithmatex">\(N(1 \le N \le 2 \times 10^5)\)</span> 个点的树，点 <span class="arithmatex">\(1\)</span> 是树的根节点。第 <span class="arithmatex">\(i\)</span> 个点的权值是 <span class="arithmatex">\(A_i(0 \le A_i &lt; 998244353)\)</span>。</p>
 <p>定义 <span class="arithmatex">\(f(i)\)</span> 表示以点 <span class="arithmatex">\(i\)</span> 为根的子树的哈希值，<span class="arithmatex">\(f(i)\)</span> 的计算方式为：</p>
 <ul>
 <li>如果点 <span class="arithmatex">\(i\)</span> 是叶子节点，则 <span class="arithmatex">\(f(i) = A_i\)</span>​</li>
@@ -2413,7 +2415,7 @@
 <summary>解题思路</summary>
 <p>首先不考虑修改操作，求出 <span class="arithmatex">\(f(1)\)</span> 就是一个树形 <code>dp</code>。加上修改操作，就是动态 <code>dp</code> 了，先轻重链剖分。</p>
 <p>考虑在 <span class="arithmatex">\(f[i]\)</span> 的转移式中分割出重孩子的部分，定义 <span class="arithmatex">\(j\)</span> 表示点 <span class="arithmatex">\(i\)</span> 的重孩子，且 <span class="arithmatex">\(g[i] = \prod\limits_{c \in s(i) \backslash j} f(c)\)</span>，即 <span class="arithmatex">\(i\)</span> 的所有轻孩子的 <span class="arithmatex">\(f\)</span> 值的乘积</p>
-<p>此时有 <span class="arithmatex">\(f[i] = A[i] + g[i] \times f[j]\)</span>​</p>
+<p>此时有 <span class="arithmatex">\(f[i] = A[i] + g[i] \times f[j]\)</span></p>
 <p>矩阵的形式就是：</p>
 <div class="arithmatex">\[
 \begin{bmatrix}
@@ -2703,7 +2705,7 @@ g[i]    &amp; a[i] \\
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-12</span>
       
         <br>
         创建日期:
