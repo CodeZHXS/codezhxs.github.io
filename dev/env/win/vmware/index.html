@@ -26,7 +26,7 @@
     
     
       
-        <title>VMware使用Linux速查 - 陈裕杰的个人网站</title>
+        <title>VMware-Linux个人使用手册 - 陈裕杰的个人网站</title>
       
     
     
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VMware使用Linux速查
+              VMware-Linux个人使用手册
             
           </span>
         </div>
@@ -1317,7 +1317,7 @@
           
   
   <span class="md-ellipsis">
-    VMware使用Linux速查
+    VMware-Linux个人使用手册
   </span>
   
 
@@ -1328,7 +1328,7 @@
         
   
   <span class="md-ellipsis">
-    VMware使用Linux速查
+    VMware-Linux个人使用手册
   </span>
   
 
@@ -1461,6 +1461,13 @@
         <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     扩容磁盘
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    创建其他用户
   </a>
   
 </li>
@@ -2077,6 +2084,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    创建其他用户
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2100,7 +2114,7 @@
   
 
 
-  <h1>VMware使用Linux速查</h1>
+  <h1>VMware-Linux个人使用手册</h1>
 
 <h2 id="_1">前言<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>虽然 Windows 推出了 WSL2 ，但是我个人还是倾向于在虚拟机上安装 Linux 系统，原因：</p>
@@ -2113,6 +2127,9 @@
 <h2 id="vmware">VMware 的下载与安装<a class="headerlink" href="#vmware" title="Permanent link">&para;</a></h2>
 <p><a href="https://www.vmware.com/cn/products/workstation-pro/workstation-pro-evaluation.html">下载 VMware Workstation Pro | CN</a></p>
 <p>下载安装就可以了，激活的话，网上找激活码。不想找激活码就下载社区版。</p>
+<ul>
+<li>20240517 更新：听说最近 VMware 针对个人用户完全免费了，好耶！</li>
+</ul>
 <h2 id="_2">配置虚拟网卡<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>VMware 提供三种网络模式：桥接模式、主机模式、NAT 模式。</p>
 <p>网上关于三种模式的讲解很多了，我个人比较推荐 NAT 模式，一方面我不用管物理机的 ip 变化，另一方面设置代理之后出口的是同一个 ip，所以只占用 1 个设备。NAT 模式可能会有一点性能损失，但非常小。</p>
@@ -2504,13 +2521,31 @@ Block device           253:0
 <p>搞定，输入 <code>lsblk</code> 和 <code>df -hT</code> 确定是否成功。</p>
 </li>
 </ol>
+<h2 id="_8">创建其他用户<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>虽然我一般都是在 <code>root</code> 用户下，有时候还是会有在其他用户的需求。 <code>Ubuntu</code> 创建新用户其实非常简单，只需在 <code>root</code> 用户中输入两条命令：</p>
+<ol>
+<li>
+<p>创建用户。</p>
+<div class="highlight"><pre><span></span><code>adduser<span class="w"> </span>newuser
+</code></pre></div>
+</li>
+</ol>
+<p>​   输个密码然后剩下的其他信息回车即可。</p>
+<ol>
+<li>
+<p>然后新建用户添加到 <code>sudo</code> 组。</p>
+<div class="highlight"><pre><span></span><code>adduser<span class="w"> </span>newuser<span class="w"> </span>sudo
+</code></pre></div>
+</li>
+</ol>
+<p>没了，使用 <code>sudo su newuser</code> 切换成新用户，<code>sudo su root</code> 切换成 <code>root</code></p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-22</span>
       
         <br>
         创建日期:
