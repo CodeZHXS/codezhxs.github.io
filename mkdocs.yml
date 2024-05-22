@@ -45,7 +45,7 @@ nav:
     - 开发环境配置: 
       - 我的PowerShell配置: dev/env/win/my_powershell.md
       - 在Windows中安装gcc: dev/env/win/gcc.md
-      - VMware使用Linux速查: dev/env/win/vmware.md
+      - VMware-Linux个人使用手册: dev/env/win/vmware.md
     - hydro OJ运维: dev/myoj.md
   - 随笔:
     - essay/index.md

@@ -48,7 +48,7 @@
 | [利苑](https://www.bilibili.com/video/BV1uc411E7W8/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 东城区<br />朝阳区 |      |
 | [一楼一饭店](https://www.bilibili.com/video/BV1qM4y1674s/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 海淀区<br />朝阳区 |      |
 | [肥福拍档](https://www.bilibili.com/video/BV1T24y1T7zD/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |      |
-| [潮堂](https://www.bilibili.com/video/BV12m4y1E7bR/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 朝阳区<br />西城区 |      |
+| [潮堂](https://www.bilibili.com/video/BV1Nj411o7H4/?spm_id_from=333.999.0.0) | 朝阳区<br />西城区 |      |
 
 ---
 
