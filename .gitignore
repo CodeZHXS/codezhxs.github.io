@@ -1,5 +1,5 @@
 # 忽略所有图片文件
-*.png
-*.jpg
-*.jpeg
+# *.png
+# *.jpg
+# *.jpeg
 .DS_Store
