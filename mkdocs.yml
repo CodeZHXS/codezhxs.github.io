@@ -30,7 +30,8 @@ nav:
   - 开发:
     - dev/index.md
     - 数据库与存储:
-      - CMU 15-445: dev/db/15445/buffer_pool_manager.md
+      - CMU 15-445: 
+        - 缓冲池: dev/db/15445/buffer_pool_manager.md
     - Java:
       - 《Java核心技术》笔记:
         - 第2章 Java程序设计环境: dev/java/CoreJava/ch02.md
