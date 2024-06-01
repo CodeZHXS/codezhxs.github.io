@@ -1,4 +1,4 @@
-![Project_1_rk](./Project_1_rk.png)
+![Project_1_rk](../pic/Project_1_rk.png)
 
 ## Project #1 Buffer Pool Manager
 
