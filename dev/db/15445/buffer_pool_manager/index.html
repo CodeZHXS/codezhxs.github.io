@@ -12,24 +12,28 @@
         <meta name="author" content="陈裕杰">
       
       
-        <link rel="canonical" href="https://codezhxs.github.io/dev/db/cmu-15445_note/">
+        <link rel="canonical" href="https://codezhxs.github.io/dev/db/15445/buffer_pool_manager/">
       
       
+        <link rel="prev" href="../../../">
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+        <link rel="next" href="../../../java/CoreJava/ch02/">
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.4.2">
     
     
       
-        <title>Cmu 15445 note - 陈裕杰的个人网站</title>
+        <title>缓冲池 - 陈裕杰的个人网站</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.d451bc0e.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.d451bc0e.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a5377069.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.a5377069.min.css">
       
       
 
@@ -48,11 +52,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../mkdocs/css/unordered-list-symbols.css">
+      <link rel="stylesheet" href="../../../../mkdocs/css/unordered-list-symbols.css">
     
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -81,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lecture-3-database-storage-i" class="md-skip">
+        <a href="#project-1-buffer-pool-manager" class="md-skip">
           跳转至
         </a>
       
@@ -95,7 +99,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../.." title="陈裕杰的个人网站" class="md-header__button md-logo" aria-label="陈裕杰的个人网站" data-md-component="logo">
+    <a href="../../../.." title="陈裕杰的个人网站" class="md-header__button md-logo" aria-label="陈裕杰的个人网站" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -115,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Cmu 15445 note
+              缓冲池
             
           </span>
         </div>
@@ -223,7 +227,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../algorithm/" class="md-tabs__link">
+        <a href="../../../../algorithm/" class="md-tabs__link">
           
   
     
@@ -239,11 +243,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
           
   
     
@@ -263,7 +269,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../essay/" class="md-tabs__link">
+        <a href="../../../../essay/" class="md-tabs__link">
           
   
     
@@ -283,7 +289,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../archive/crypto/" class="md-tabs__link">
+        <a href="../../../../archive/crypto/" class="md-tabs__link">
           
   
     
@@ -303,7 +309,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../others/" class="md-tabs__link">
+        <a href="../../../../others/" class="md-tabs__link">
           
   
     
@@ -338,7 +344,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="陈裕杰的个人网站" class="md-nav__button md-logo" aria-label="陈裕杰的个人网站" data-md-component="logo">
+    <a href="../../../.." title="陈裕杰的个人网站" class="md-nav__button md-logo" aria-label="陈裕杰的个人网站" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -407,6 +413,8 @@
       
         
       
+        
+      
     
     
     
@@ -426,7 +434,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../algorithm/" class="md-nav__link ">
+            <a href="../../../../algorithm/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -458,7 +466,27 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/AtCoder/abc352/" class="md-nav__link">
+      <a href="../../../../algorithm/AtCoder/abc353/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ABC353(A-G)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../algorithm/AtCoder/abc352/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -478,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/AtCoder/abc351/" class="md-nav__link">
+      <a href="../../../../algorithm/AtCoder/abc351/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -498,7 +526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/AtCoder/abc347/" class="md-nav__link">
+      <a href="../../../../algorithm/AtCoder/abc347/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -518,7 +546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/AtCoder/abc343/" class="md-nav__link">
+      <a href="../../../../algorithm/AtCoder/abc343/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -538,7 +566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/AtCoder/abc342/" class="md-nav__link">
+      <a href="../../../../algorithm/AtCoder/abc342/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -558,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/AtCoder/abc341/" class="md-nav__link">
+      <a href="../../../../algorithm/AtCoder/abc341/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -578,7 +606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/AtCoder/abc340/" class="md-nav__link">
+      <a href="../../../../algorithm/AtCoder/abc340/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -598,7 +626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/AtCoder/abc335/" class="md-nav__link">
+      <a href="../../../../algorithm/AtCoder/abc335/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -618,7 +646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/AtCoder/abc334/" class="md-nav__link">
+      <a href="../../../../algorithm/AtCoder/abc334/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -638,7 +666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/AtCoder/abc333/" class="md-nav__link">
+      <a href="../../../../algorithm/AtCoder/abc333/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -658,7 +686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/AtCoder/abc332/" class="md-nav__link">
+      <a href="../../../../algorithm/AtCoder/abc332/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -678,7 +706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/AtCoder/abc312/" class="md-nav__link">
+      <a href="../../../../algorithm/AtCoder/abc312/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -698,7 +726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/AtCoder/abc311/" class="md-nav__link">
+      <a href="../../../../algorithm/AtCoder/abc311/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -718,7 +746,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/AtCoder/abc310/" class="md-nav__link">
+      <a href="../../../../algorithm/AtCoder/abc310/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -738,7 +766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/AtCoder/abc309/" class="md-nav__link">
+      <a href="../../../../algorithm/AtCoder/abc309/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -758,7 +786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/AtCoder/abc308/" class="md-nav__link">
+      <a href="../../../../algorithm/AtCoder/abc308/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -778,7 +806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithm/note/" class="md-nav__link">
+      <a href="../../../../algorithm/note/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -803,6 +831,8 @@
       
   
   
+    
+  
   
     
     
@@ -817,6 +847,8 @@
       
         
       
+        
+      
     
     
     
@@ -824,19 +856,17 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -853,13 +883,217 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             开发
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数据库与存储
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            数据库与存储
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CMU 15-445
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            CMU 15-445
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    缓冲池
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    缓冲池
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#project-1-buffer-pool-manager" class="md-nav__link">
+    Project #1 Buffer Pool Manager
+  </a>
+  
+    <nav class="md-nav" aria-label="Project #1 Buffer Pool Manager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    页面置换
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io" class="md-nav__link">
+    IO 调度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    缓冲池设计
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    实现过程记录
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    优化建议
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
               
             
               
@@ -885,10 +1119,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
         
           
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -899,8 +1133,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             Java
           </label>
@@ -941,10 +1175,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_1" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3_1" >
         
           
-          <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_3_1" id="__nav_2_3_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -955,8 +1189,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_2_1">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_1">
             <span class="md-nav__icon md-icon"></span>
             《Java核心技术》笔记
           </label>
@@ -968,7 +1202,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/CoreJava/ch02/" class="md-nav__link">
+      <a href="../../../java/CoreJava/ch02/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -988,7 +1222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/CoreJava/ch03/" class="md-nav__link">
+      <a href="../../../java/CoreJava/ch03/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1008,7 +1242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/CoreJava/ch04/" class="md-nav__link">
+      <a href="../../../java/CoreJava/ch04/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1028,7 +1262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/CoreJava/ch05/" class="md-nav__link">
+      <a href="../../../java/CoreJava/ch05/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1048,7 +1282,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/CoreJava/ch06/" class="md-nav__link">
+      <a href="../../../java/CoreJava/ch06/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1068,7 +1302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/CoreJava/ch07/" class="md-nav__link">
+      <a href="../../../java/CoreJava/ch07/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1088,7 +1322,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/CoreJava/ch08/" class="md-nav__link">
+      <a href="../../../java/CoreJava/ch08/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1108,7 +1342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/CoreJava/ch09/" class="md-nav__link">
+      <a href="../../../java/CoreJava/ch09/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1151,10 +1385,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3_2" >
         
           
-          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_3_2" id="__nav_2_3_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1165,8 +1399,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_2_2">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_2">
             <span class="md-nav__icon md-icon"></span>
             源码分析
           </label>
@@ -1178,7 +1412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/SourceCode/HashMap/" class="md-nav__link">
+      <a href="../../../java/SourceCode/HashMap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1233,10 +1467,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
         
           
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1247,8 +1481,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
             开发环境配置
           </label>
@@ -1260,7 +1494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../env/win/my_powershell/" class="md-nav__link">
+      <a href="../../../env/win/my_powershell/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1280,7 +1514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../env/win/gcc/" class="md-nav__link">
+      <a href="../../../env/win/gcc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1300,7 +1534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../env/win/vmware/" class="md-nav__link">
+      <a href="../../../env/win/vmware/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1328,7 +1562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../myoj/" class="md-nav__link">
+      <a href="../../../myoj/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1382,7 +1616,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../essay/" class="md-nav__link ">
+            <a href="../../../../essay/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1462,7 +1696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../essay/diary/2024-05/" class="md-nav__link">
+      <a href="../../../../essay/diary/2024-05/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1482,7 +1716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../essay/diary/2024-04/" class="md-nav__link">
+      <a href="../../../../essay/diary/2024-04/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1502,7 +1736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../essay/diary/2023-12/" class="md-nav__link">
+      <a href="../../../../essay/diary/2023-12/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1522,7 +1756,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../essay/diary/2023-10/" class="md-nav__link">
+      <a href="../../../../essay/diary/2023-10/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1604,7 +1838,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../archive/crypto/" class="md-nav__link">
+      <a href="../../../../archive/crypto/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1624,7 +1858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../archive/graph/" class="md-nav__link">
+      <a href="../../../../archive/graph/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1682,7 +1916,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../others/" class="md-nav__link ">
+            <a href="../../../../others/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1714,7 +1948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../others/latex/" class="md-nav__link">
+      <a href="../../../../others/latex/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1734,7 +1968,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../others/BJ_food/" class="md-nav__link">
+      <a href="../../../../others/BJ_food/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1754,7 +1988,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../others/pc/" class="md-nav__link">
+      <a href="../../../../others/pc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1800,31 +2034,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lecture-3-database-storage-i" class="md-nav__link">
-    Lecture #3 Database Storage I
+  <a href="#project-1-buffer-pool-manager" class="md-nav__link">
+    Project #1 Buffer Pool Manager
   </a>
   
-    <nav class="md-nav" aria-label="Lecture #3 Database Storage I">
+    <nav class="md-nav" aria-label="Project #1 Buffer Pool Manager">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mmap" class="md-nav__link">
-    不要使用 mmap
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    数据库存储
+    页面置换
   </a>
   
-    <nav class="md-nav" aria-label="数据库存储">
-      <ul class="md-nav__list">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io" class="md-nav__link">
+    IO 调度
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    堆文件组织
+    缓冲池设计
   </a>
   
 </li>
@@ -1833,9 +2066,18 @@
     </nav>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    实现过程记录
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    优化建议
+  </a>
   
 </li>
       
@@ -1854,7 +2096,7 @@
                   
 
   
-    <a href="https://github.com/CodeZHXS/codezhxs.github.io/edit/main/docs/dev/db/cmu-15445_note.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/CodeZHXS/codezhxs.github.io/edit/main/docs/dev/db/15445/buffer_pool_manager.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1862,72 +2104,119 @@
   
 
 
-  <h1>Cmu 15445 note</h1>
+  <h1>缓冲池</h1>
 
-<p>主要收录笔者在学习 <a href="https://15445.courses.cs.cmu.edu/fall2023/schedule.html">CMU 15-445/645 :: Intro to Database Systems (Fall 2023)</a> 以及阅读教材 <a href="https://item.jd.com/13318646.html#crumb-wrap">《数据库系统概念（原书第7版）》)</a> 记下的笔记。</p>
-<h2 id="lecture-3-database-storage-i">Lecture #3 Database Storage I<a class="headerlink" href="#lecture-3-database-storage-i" title="Permanent link">&para;</a></h2>
-<p>课程主要讲解面向磁盘（非易失性存储介质）的数据库的设计理念。内存的访问速度比磁盘快的多（无论是顺序或者随机都很快）。一般来说数据库的大小远大于内存容量，数据库文件在磁盘中持久化存储。磁盘中随机读取比顺序读取慢，因此 DBMS 要尽可能保证数据在磁盘中顺序读取。</p>
-<p>为了读写这些文件，DBMS 在必要时将其读入内存中，在必要时写回磁盘。</p>
-<p>一些概念：</p>
-<ul>
-<li>
-<p>页面：页面存放数据，当 DBMS 需要特定数据时，实际是读入这条数据所在的页面。</p>
-</li>
-<li>
-<p>页面大小：表示读入一次页面的数据量大小。默认页面大小见下表：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">默认页面大小</th>
-<th style="text-align: center;">DBMS</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;">4KB</td>
-<td style="text-align: center;">SQLite、Oracle、DB2、RocksDB、WiredTiger</td>
-</tr>
-<tr>
-<td style="text-align: center;">8KB</td>
-<td style="text-align: center;">PostgresSQL、SQL Server</td>
-</tr>
-<tr>
-<td style="text-align: center;">16KB</td>
-<td style="text-align: center;">MySQL</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li>
-<p>脏页面：页面被读入内存后如果发生改动，则与磁盘中的页面不一致，这样的页面称为脏页面。</p>
-</li>
-<li>
-<p>干净页面：脏页面写回磁盘中变为干净页面。</p>
-</li>
-</ul>
-<h3 id="mmap">不要使用 mmap<a class="headerlink" href="#mmap" title="Permanent link">&para;</a></h3>
-<p>Andy 用了 30 分钟时间说明 <strong>不要在 DBMS 中使用mmap（操作系统提供的虚拟内存）</strong> ，mmap 对于只读程序是足够的，但对于文件同时被写入的程序，使用 mmap 会复杂很多。</p>
-<p>使用 mmap 的弊端：</p>
+<p><img alt="Project_1_rk" src="../pic/Project_1_rk.png" /></p>
+<h2 id="project-1-buffer-pool-manager">Project #1 Buffer Pool Manager<a class="headerlink" href="#project-1-buffer-pool-manager" title="Permanent link">&para;</a></h2>
+<p><strong>Buffer Pool Manager</strong> 的常见中文翻译有 “缓冲池”、“内存池” 等。</p>
+<p>磁盘数据库需要处理庞大的数据（通常是内存的很多倍），因此任意时刻只能有一部分数据在内存中。而 <strong>Buffer Pool Manager</strong> 就是负责管理这些内存的。</p>
+<p>值得一提的是，Andy 在课上花了很多的时间介绍了操作系统的 <strong>mmap（虚拟内存）</strong> 技术，并且强调绝对不要在数据库设计中使用 mmap。在我看来有以下几点理由：</p>
 <ol>
-<li>事务安全：OS 可能在任意时间将脏页面写回磁盘。</li>
-<li>I/O 停顿：DBMS 不知道哪个页面在内存中，请求不在内存中的页面时会出现 I/O 停顿。</li>
-<li>错误处理：DBMS 需要处理 SIGBUS 信号。</li>
-<li>性能问题。</li>
+<li>事务安全：操作系统会在任意时刻将虚拟内存的页面出页，一旦出页就会把脏页刷回磁盘，但是DBMS的事务涉及到回滚，那么本该回滚的数据被刷回了磁盘就非常棘手。</li>
+<li>性能问题：DBMS 自己管理内存可以对数据页进行更加精细的管控，举个例子，针对 DBMS 的应用场景，可以使用更优秀的页面置换算法，为不同的页面、不同的操作类型规定停留在缓冲池的时间长短。而如果使用 mmap ，一方面其他程序的也会挤占 DBMS 可用的内存大小，另一方面，mmap 的页面置换算法通常实现为 LRU，并不适合 DBMS 的场景，从而导致性能问题（后面会介绍一个 LRU 的例子）。</li>
+<li>
+<p>IO 开销。mmap 什么时候把内存写回磁盘？mmap 很可能在一次写页面的请求中将这个页面多次出页刷回磁盘，造成额外的IO开销。另外，mmap 到底开多少个线程来 IO 数据？如果 DBMS 使用了 mmap 作为缓冲池，就面临着和其他进程抢 mmap IO 线程 的问题。</p>
+</li>
+<li>
+<p>错误处理，mmap 是有可能失败的，如果 DBMS 使用了 mmap 作为缓冲池，就不得不处理 <code>SIGBUS</code> 信号。</p>
+</li>
 </ol>
-<h3 id="_1">数据库存储<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<h4 id="_2">堆文件组织<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p><img alt="file_and_pages" src="./file_and_pages.png" /></p>
+<p>Andy 在课上还说了一句印象深刻的话：</p>
+<blockquote>
+<p>如果我死了，并且我的墓碑上只能写一句话，我会写“永远不要在 DBMS 中使用 mmap”。</p>
+</blockquote>
+<hr />
+<p>虽然一部分冷门的 DMBS 使用了 mmap，但绝大多数 DBMS 自己管理缓冲池。</p>
+<p>我们定义页面为数据在内存和磁盘之间 IO 的基本单位，一个文件由若干个页面组成。在 <strong>Postgres</strong> 中默认页面大小为 <strong>8KB</strong>，<strong>MySQL</strong> 的默认页面大小为 <strong>16KB</strong>。</p>
+<p>缓冲池实际就是一个数组，数组中每个位置可容纳一个页面。</p>
+<p>接下来介绍缓冲池的三个重要部分：</p>
+<h3 id="_1">页面置换<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>后端请求一个页面有三种情况：</p>
+<ul>
+<li>页面在缓冲池中，此时直接返回缓冲池中对应的地址。</li>
+<li>页面不在缓冲池中，但此时缓冲池拥有空闲的空间（空闲是指缓冲池数组中某个没有实际页面数据的位置），则在这个位置读入请求页面，然后返回对应的地址。</li>
+<li>页面不在缓冲池中，此时缓冲池已满，那么我们需要置换一个页面，被置换出去的页面如果脏了就需要写回磁盘。然后，在这个位置上，我们读入页面数据，最后返回对应的地址。</li>
+</ul>
+<p>本节讨论的是第三种情况所使用的页面置换算法，操作系统的页面置换算法有 LRU、FIFO、LFU 等，其中最常见的就是 LRU。</p>
+<p>LRU 算法虽然通用，但在 DBMS 中存在一些问题，例如，一次全表扫描会将缓冲池的所有页面都替换出去，进而导致缓冲池中都是全表扫描的页面，原先的热点页面都没了，这是不可接受的。通常称这个问题为页面污染，也就是不正确的页面污染了缓冲池。</p>
+<p>针对 LRU 的缺陷，大多数 DBMS 都对其进行改进。普通的 LRU 仅仅考虑上次命中页面的时间，而没有考虑页面命中了多少次，就会出现</p>
+<p><strong>Project 1</strong> 选用的页面置换算法为 <strong>LRU-K</strong>，<strong>LRU-K</strong> 额外记录了每个页面（在缓冲池期间）命中的次数。根据次数是否达到了 K 次，将页面分为两个表，其中大于等于 K 次的部分称为热点表，热点表按照 LRU 维护，不足 K 次的部分称为普通表，普通表按照 FIFO 进行维护。在置换页面时，优先从普通表中选择。</p>
+<ul>
+<li>普通的 LRU 实际就是 <strong>LRU-1</strong>  的特化，由于此时 K 为 <span class="arithmatex">\(1\)</span>，相当于只有热点表，而没有普通表。</li>
+<li><strong>MySQL</strong>  中采用的是一种类似 <strong>LRU-2</strong> 的特化方案，除了考虑次数以外，<strong>MySQL</strong> 还会考虑页面在缓冲池中待了多长时间，只有超过一定阈值的页面才能从普通表升级到热点表。</li>
+<li><strong>Postgres</strong> 采用的页面置换算法是 <strong>clock sweep</strong> 算法，表示该算法记录页面命中的次数，同时维护一个指针，这个指针就像中标的指针一样不停的转动，来寻找第一个命中次数为 <span class="arithmatex">\(0\)</span> 的页面，将其置换。如果一个页面次数不为 <span class="arithmatex">\(0\)</span>，则其次数减少 <span class="arithmatex">\(1\)</span>，然后指针向后移动继续寻找。</li>
+</ul>
+<h3 id="io">IO 调度<a class="headerlink" href="#io" title="Permanent link">&para;</a></h3>
+<p>缓冲池需要只在必要时才进行 IO 的调度，具体来说，对于后端的页面请求，我们需要保证在后端释放页面之前页面处于“钉住”(Pinned)，被钉住的页面是无论如何都不能被置换的。</p>
+<p>什么时候才必须执行 IO？</p>
+<ol>
+<li>被置换的页面是脏页面。我们知道被置换的页面一定是没有被后端钉住的页面，但这个页面曾经可能被后端改写过，因而成为脏页面。所以在被置换出去前，必须将脏页面数据写回磁盘。</li>
+<li>新读入页面时，需要从磁盘将页面读到缓冲池中。</li>
+</ol>
+<p>显然，对于情况 1，我们会向 IO 调度发起一次写数据的请求，对于情况 2 则是发起一次读数据的请求。IO 调度就是负责接收 IO 请求，和文件进行读写交互的部分。</p>
+<p>在 IO 调度的优化方面，为了吃满磁盘 IO 的性能，IO 调度需要支持并发的处理 IO 请求。在并发编程时，需要考虑读写数据的一致性，保证多线程 IO 调度和单线程 IO 调度拥有一致的结果。</p>
+<p>此外，大多数 DBMS 会在磁盘 IO 负载较低时，在后台自动将缓冲池的脏页面写回，提高页面置换的速度。</p>
+<h3 id="_2">缓冲池设计<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>回顾一下后端请求页面的三种情况：</p>
+<ul>
+<li>页面在缓冲池中，此时直接返回缓冲池中对应的地址。</li>
+<li>页面不在缓冲池中，但此时缓冲池拥有空闲的空间（空闲是指缓冲池数组中某个没有实际页面数据的位置），则在这个位置读入请求页面，然后返回对应的地址。</li>
+<li>页面不在缓冲池中，此时缓冲池已满，那么我们需要置换一个页面，被置换出去的页面如果脏了就需要写回磁盘。然后，在这个位置上，我们读入页面数据，最后返回对应的地址。</li>
+</ul>
+<p>我们需要知道某个页面是否在缓冲池中，显然，缓冲池还需要维护一个哈希表，建立页面编号到已有缓冲池的映射。对于后端的页面请求，查找哈希表就能得到页面是否在缓冲池中。</p>
+<p>除了哈希表之外，缓冲池还拥有一个巨大的页面数组，在初始化时所有的位置都是空闲位置，再加上刚刚提到的页面置换以及 IO 调度的组件，缓冲池就设计完成了。</p>
+<p>缓冲池最终需要保证交付给后端可用的页面（内存空间），允许后端对页面进行读写。</p>
+<h2 id="_3">实现过程记录<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>大概花了两个星期实现了缓冲池以及优化，最终在课程的 bench-mark 中取得了排名第 1 的成绩，系统基本的功能是非常简单的，只要能梳理出缓冲池的实现即可实现最简单的单线程版本。</p>
+<p>我大概用了 <span class="arithmatex">\(2\)</span> 天的时间完成缓冲池的基础版本，随后的时间都花在了优化、重构、调试上。</p>
+<p>在我对缓冲池的实现以及优化过程中，有比较重要的几个节点：</p>
+<ul>
+<li>第一个单线程可用的基础版本，花了 <span class="arithmatex">\(2\)</span> 天实现，在排行榜中排大概200多位。</li>
+<li>对单线程版本进行重构，思考每个组件是否有更优的实现（从数据结构、C++ 开销、更简洁的逻辑等角度），这个版本耗费 <span class="arithmatex">\(2\)</span> 天，最终在保持单线程不变的情况下，性能排名达到 <span class="arithmatex">\(70\)</span> 位左右（是的，即使只用单线程，仍然能达到这个排名）</li>
+<li>在确保单线程程序优化的差不多的时，我开始将缓冲池改为多线程，这个版本耗费了大概 <span class="arithmatex">\(10\)</span> 天左右，不断的重构、优化、调试确实非常麻烦，经过几次迭代，排名持续上涨，最后终于冲上了排行榜的第 <span class="arithmatex">\(1\)</span>。</li>
+</ul>
+<p>附上排名（截图于2024.05.30）</p>
+<p><img alt="Project_1_rk" src="../pic/Project_1_rk.png" /></p>
+<h2 id="_4">优化建议<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>基于本课程的 Collaboration Policy，我不会在本文公布源码以及我具体做了哪些优化，仅仅给出想要对缓冲池优化的建议，以及前期的准备。</p>
+<ol>
+<li>
+<p>首先，请考虑官方给出的优化建议，在此，我附上简短的翻译：</p>
+<blockquote>
+<ol>
+<li>考虑读取页面的类型，即：默认、扫描、概率分布、索引四种类型的请求。</li>
+<li>允许并发的进行 IO 调度，并保证数据的一致性。</li>
+<li>允许并发在缓冲池中的读取页面。</li>
+<li>不要使用投机取巧的办法。例如，试图突破缓冲池大小的限制，将所有数据都读到缓冲池中。（这一条更像是一种禁止规则）</li>
+<li>在必要时使用无锁队列以及自己的 <code>std::promise</code> 实现。</li>
+</ol>
+</blockquote>
+</li>
+<li>
+<p>如果你不会 <code>C++</code> 并发编程，请参阅 <a href="https://item.jd.com/13517424.html">《C++并发编程实战（第2版）》</a>，这本书内容量很大。请带着自己的思考去读（同时进行必要的实验），更重要的是带着“优化性能”的目的去读。</p>
+</li>
+<li>针对并发性能的提升，无非就是逐步减小锁的粒度，换取更高的并发量。因此，请务必问自己一些问题：<ul>
+<li>哪些地方必须加锁？证明？</li>
+<li>哪些地方没必要加锁？</li>
+<li>哪些地方不加锁会发生冲突？</li>
+<li>冲突能否解决？如果能解决，代价是什么？</li>
+<li><span class="arithmatex">\(\cdots\cdots\)</span></li>
+</ul>
+</li>
+</ol>
+<p>为什么会想优化到排名第 <span class="arithmatex">\(1\)</span> ？并非刻意的攀比，只是想将所学的并发编程应用于实际的场景。在完成第一个单线程版本之后，我知道还可以用多线程进一步优化，所以我列了一些 TODO，每一个 TODO 对应一个优化方式，我做的也仅仅是（按照性能提升的优先级）完成了这些 TODO 而已。</p>
+<p>在优化的过程中免不了碰到高并发环境下的问题，而并发调试是非常痛苦的（尤其是在这个缓冲池的 <strong>bench</strong> 中，当吞吐量高到一定程度之后，甚至连打日志都会影响 bug 的复现），中间一度想过放弃，最终还是坚持下来了，同时积累了一些并发编程调试的经验。事实上，这种逐步提高性能带给我的反馈是很足的，这也是我能坚持下去的原因。</p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-01</span>
       
         <br>
         创建日期:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-21</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-01</span>
       
     
   </small>
@@ -1956,6 +2245,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../../../" class="md-footer__link md-footer__link--prev" aria-label="上一页: 开发">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                开发
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../java/CoreJava/ch02/" class="md-footer__link md-footer__link--next" aria-label="下一页: 第2章 Java程序设计环境">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                第2章 Java程序设计环境
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
@@ -2003,12 +2330,12 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant.progress", "navigation.tabs", "navigation.expand", "navigation.indexes", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.action.edit", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant.progress", "navigation.tabs", "navigation.expand", "navigation.indexes", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.action.edit", "content.code.copy", "content.tabs.link"], "search": "../../../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.726fbb30.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.726fbb30.min.js"></script>
       
-        <script src="../../../mkdocs/javascripts/katex.js"></script>
+        <script src="../../../../mkdocs/javascripts/katex.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
       
