@@ -2112,7 +2112,7 @@
 <p>磁盘数据库需要处理庞大的数据（通常是内存的很多倍），因此任意时刻只能有一部分数据在内存中。而 <strong>Buffer Pool Manager</strong> 就是负责管理这些内存的。</p>
 <p>值得一提的是，Andy 在课上花了很多的时间介绍了操作系统的 <strong>mmap（虚拟内存）</strong> 技术，并且强调绝对不要在数据库设计中使用 mmap。在我看来有以下几点理由：</p>
 <ol>
-<li>事务安全：操作系统会在任意时刻将虚拟内存的页面出页，一旦出页就会把脏页刷回磁盘，但是DBMS的事务涉及到回滚，那么本该回滚的数据被刷回了磁盘就非常棘手。</li>
+<li>事务安全：操作系统会在任意时刻将虚拟内存的页面出页，一旦出页就会把脏页刷回磁盘，但是 DBMS 的事务执行失败时会涉及到回滚，那么本该回滚的数据被刷回了磁盘就非常棘手。</li>
 <li>性能问题：DBMS 自己管理内存可以对数据页进行更加精细的管控，举个例子，针对 DBMS 的应用场景，可以使用更优秀的页面置换算法，为不同的页面、不同的操作类型规定停留在缓冲池的时间长短。而如果使用 mmap ，一方面其他程序的也会挤占 DBMS 可用的内存大小，另一方面，mmap 的页面置换算法通常实现为 LRU，并不适合 DBMS 的场景，从而导致性能问题（后面会介绍一个 LRU 的例子）。</li>
 <li>
 <p>IO 开销。mmap 什么时候把内存写回磁盘？mmap 很可能在一次写页面的请求中将这个页面多次出页刷回磁盘，造成额外的IO开销。另外，mmap 到底开多少个线程来 IO 数据？如果 DBMS 使用了 mmap 作为缓冲池，就面临着和其他进程抢 mmap IO 线程 的问题。</p>
@@ -2144,7 +2144,7 @@
 <ul>
 <li>普通的 LRU 实际就是 <strong>LRU-1</strong>  的特化，由于此时 K 为 <span class="arithmatex">\(1\)</span>，相当于只有热点表，而没有普通表。</li>
 <li><strong>MySQL</strong>  中采用的是一种类似 <strong>LRU-2</strong> 的特化方案，除了考虑次数以外，<strong>MySQL</strong> 还会考虑页面在缓冲池中待了多长时间，只有超过一定阈值的页面才能从普通表升级到热点表。</li>
-<li><strong>Postgres</strong> 采用的页面置换算法是 <strong>clock sweep</strong> 算法，表示该算法记录页面命中的次数，同时维护一个指针，这个指针就像中标的指针一样不停的转动，来寻找第一个命中次数为 <span class="arithmatex">\(0\)</span> 的页面，将其置换。如果一个页面次数不为 <span class="arithmatex">\(0\)</span>，则其次数减少 <span class="arithmatex">\(1\)</span>，然后指针向后移动继续寻找。</li>
+<li><strong>Postgres</strong> 采用的页面置换算法是 <strong>clock sweep</strong> 算法，该算法同样记录页面命中的次数，同时维护一个指针，这个指针就像钟表的指针一样不停的转动，来寻找第一个命中次数为 <span class="arithmatex">\(0\)</span> 的页面，将其置换。如果一个页面次数不为 <span class="arithmatex">\(0\)</span>，则其次数减少 <span class="arithmatex">\(1\)</span>，然后指针向后移动继续寻找。</li>
 </ul>
 <h3 id="io">IO 调度<a class="headerlink" href="#io" title="Permanent link">&para;</a></h3>
 <p>缓冲池需要只在必要时才进行 IO 的调度，具体来说，对于后端的页面请求，我们需要保证在后端释放页面之前页面处于“钉住”(Pinned)，被钉住的页面是无论如何都不能被置换的。</p>
