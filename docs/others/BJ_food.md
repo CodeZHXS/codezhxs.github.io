@@ -79,8 +79,8 @@
 |                             店名                             |        位置        |                             评价                             |
 | :----------------------------------------------------------: | :----------------: | :----------------------------------------------------------: |
 | [潇湘阁](https://www.bilibili.com/video/BV1mx4y1374r/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        | :white_check_mark: 23.09.23北苑店 很不错，价格还行，服务也棒。 |
+| [费大厨辣椒炒肉](https://www.bilibili.com/video/BV1cm4y1h77w/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        | :white_check_mark: 24.05.20华贸店 相对于潇湘阁来说要便宜一点，性价比不错。 |
 | [隐厨](https://www.bilibili.com/video/BV1gx4y177MX/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) | 朝阳区<br />大兴区 |                                                              |
-| [费大厨辣椒炒肉](https://www.bilibili.com/video/BV1cm4y1h77w/?spm_id_from=333.999.0.0&vd_source=d5f565a3bfab469f3f3ab91fe4c39523) |        连锁        |                                                              |
 
 ---
 

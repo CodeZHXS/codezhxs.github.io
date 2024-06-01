@@ -8,6 +8,7 @@ site_description: 陈裕杰的个人网站
 nav:
   - 算法:
     - algorithm/index.md
+    - ABC353(A-G): algorithm/AtCoder/abc353.md
     - ABC352(A-F): algorithm/AtCoder/abc352.md
     - ABC351(A-G): algorithm/AtCoder/abc351.md
     - ABC347(A-E): algorithm/AtCoder/abc347.md
@@ -28,8 +29,8 @@ nav:
   
   - 开发:
     - dev/index.md
-    # - CPP:
-      # - 第1章 开始: dev/cpp/ch1.md
+    - 数据库与存储:
+      - CMU 15-445: dev/db/15445/buffer_pool_manager.md
     - Java:
       - 《Java核心技术》笔记:
         - 第2章 Java程序设计环境: dev/java/CoreJava/ch02.md
