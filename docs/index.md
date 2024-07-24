@@ -6,10 +6,11 @@
 
 点击上方的 :material-weather-night: 按钮切换夜间模式
 
-> 如果有空我会更新博客快捷键说明 -> [参考文档](https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#keyboard-shortcuts-mkdocsyml)
+> 博客快捷键说明 -> [参考文档](https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#keyboard-shortcuts-mkdocsyml)
 
 最近更新：
 
+- (20240724) [ABC361(A-G) 题解](./algorithm/AtCoder/abc361.md)
 - (20240721) [ABC360(A-F) 题解](./algorithm/AtCoder/abc360.md)
 - (20240713) [ABC359(A-G) 题解](./algorithm/AtCoder/abc359.md)
 - (20240620) [ABC358(A-G) 题解](./algorithm/AtCoder/abc358.md)
