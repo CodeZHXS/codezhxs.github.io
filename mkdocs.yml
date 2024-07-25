@@ -38,6 +38,8 @@ nav:
       - CMU 15-445: 
         - 缓冲池: dev/db/15445/buffer_pool_manager.md
     - Java:
+      - 源码分析:
+        - HashMap源码分析: dev/java/SourceCode/HashMap.md
       - 《Java核心技术》笔记:
         - 第2章 Java程序设计环境: dev/java/CoreJava/ch02.md
         - 第3章 Java的基本程序设计结构: dev/java/CoreJava/ch03.md
@@ -47,8 +49,6 @@ nav:
         - 第7章 异常、断言和日志: dev/java/CoreJava/ch07.md
         - 第8章 泛型程序设计: dev/java/CoreJava/ch08.md
         - 第9章 集合: dev/java/CoreJava/ch09.md
-      - 源码分析:
-        - HashMap源码分析: dev/java/SourceCode/HashMap.md
     - 开发环境配置: 
       - 我的PowerShell配置: dev/env/win/my_powershell.md
       - 在Windows中安装gcc: dev/env/win/gcc.md
