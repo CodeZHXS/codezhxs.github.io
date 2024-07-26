@@ -429,6 +429,8 @@
       
         
       
+        
+      
     
     
     
@@ -470,6 +472,26 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abc363/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ABC363(A-F)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -1154,6 +1176,8 @@
       
         
       
+        
+      
     
     
     
@@ -1197,6 +1221,26 @@
   
   <span class="md-ellipsis">
     缓冲池
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/db/15445/hash/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    常见哈希索引方案介绍
   </span>
   
 
@@ -2301,7 +2345,7 @@
 </details>
 <details class="note">
 <summary>解题思路</summary>
-<p>设站在最上面的巨人编号为 <span class="arithmatex">\(x\)</span>，则此时答案为 <span class="arithmatex">\(\sum\limits_{i = 1} ^ N A_i - A_x + B_x\)</span>，而 <span class="arithmatex">\(\sum\limits_{i = 1} ^ N A_i\)</span> 是定制，因此找出 <span class="arithmatex">\(B_x - A_x\)</span> 的最大值即可。</p>
+<p>设站在最上面的巨人编号为 <span class="arithmatex">\(x\)</span>，则此时答案为 <span class="arithmatex">\(\sum\limits_{i = 1} ^ N A_i - A_x + B_x\)</span>，而 <span class="arithmatex">\(\sum\limits_{i = 1} ^ N A_i\)</span> 是定值，因此找出 <span class="arithmatex">\(B_x - A_x\)</span> 的最大值即可。</p>
 </details>
 <details class="success">
 <summary>参考代码</summary>
@@ -2387,7 +2431,7 @@
 <details class="abstract" open="open">
 <summary>题目大意</summary>
 <p>给你一个无向图，图中有 <span class="arithmatex">\(N(2 \le N \le 2 \times 10 ^ 5)\)</span> 个点，初始时，图中没有边。</p>
-<p>接下来，你需要执行 <span class="arithmatex">\(M(1 \le M \le 2 \times 10^5)\)</span> 轮加边点操作，每一轮操作给你两个整数 <span class="arithmatex">\(K_i\)</span> 和 <span class="arithmatex">\(C_i\)</span> 以及一个点的集合 <span class="arithmatex">\(S_i = \{A_{i, 1}, A_{i, 2}, \cdots, A_{i, K_i}\}\)</span>，你需要给集合 <span class="arithmatex">\(S_i\)</span> 中的任意两点都添加一条权值为 <span class="arithmatex">\(C_i\)</span> 的边。</p>
+<p>接下来，你需要执行 <span class="arithmatex">\(M(1 \le M \le 2 \times 10^5)\)</span> 轮加边的操作，每一轮操作给你两个整数 <span class="arithmatex">\(K_i\)</span> 和 <span class="arithmatex">\(C_i\)</span> 以及一个点的集合 <span class="arithmatex">\(S_i = \{A_{i, 1}, A_{i, 2}, \cdots, A_{i, K_i}\}\)</span>，你需要给集合 <span class="arithmatex">\(S_i\)</span> 中的任意两点都添加一条权值为 <span class="arithmatex">\(C_i\)</span> 的边。</p>
 <p>完成 <span class="arithmatex">\(M\)</span> 轮加边操作之后，求出这个图的最小生成树。</p>
 </details>
 <details class="note">
@@ -2504,7 +2548,7 @@
 <p>参考样例 1 即可。</p>
 </li>
 </ul>
-<p>因此我们在枚举的时候，跳过所有的孤立点，同时统计孤立点的数量，对于一个合法的方案，将其记录到每个点点可能的取值当中（用 <code>set</code> 存储）。</p>
+<p>因此我们在枚举的时候，跳过所有的孤立点，同时统计孤立点的数量，对于一个合法的方案，将其记录到每个点可能的取值当中（用 <code>set</code> 存储）。</p>
 <p><code>dfs</code> 结束后，遍历所有的点，如果 <code>set</code> 中只有一个值，则里面的值就是唯一确定的值。</p>
 <p>时间复杂度分析：由于跳过了所有的孤立点，所以最坏情况应该是没有孤立点，且每个连通块的大小都为 <span class="arithmatex">\(2\)</span> 情形，此时相当于两个点绑一起，复杂度就是 <span class="arithmatex">\((\frac{N}{2})!\)</span> </p>
 <p>最终献上实现起来简单粗暴但运行起来仅需 <code>1ms</code> 的代码。</p>
@@ -2645,7 +2689,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-15</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-26</span>
       
         <br>
         创建日期:

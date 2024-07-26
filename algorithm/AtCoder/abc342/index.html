@@ -429,6 +429,8 @@
       
         
       
+        
+      
     
     
     
@@ -470,6 +472,26 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abc363/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ABC363(A-F)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -1161,6 +1183,8 @@
       
         
       
+        
+      
     
     
     
@@ -1204,6 +1228,26 @@
   
   <span class="md-ellipsis">
     缓冲池
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/db/15445/hash/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    常见哈希索引方案介绍
   </span>
   
 
@@ -2947,7 +2991,7 @@ dp[i] = \max\{\frac{1}{D}\sum\limits_{j= 1}^D dp[i+j], cal(i)\}
 <summary>解题思路</summary>
 <p>区间改，肯定要用懒标记的线段树，只不过由于涉及到撤销操作，所以懒标记不能只存一个。</p>
 <p>用 <code>multiset</code> 存储所有这个区间涉及到的懒标记，查询的时候查的就是 <code>multiset</code> 里面的最大值，需要带上区间的懒标记一起输出，删除的时候也是一起删除。</p>
-<p>由于用了懒标记，每次操作最多增加 <span class="arithmatex">\(logN\)</span> 个点，因此空间复杂度是 <span class="arithmatex">\(O(QlogN)\)</span>，单次查询除了在线段树里面找，还需要在红黑树里面找最大，所以单词查询需要的时间复杂度是 <span class="arithmatex">\(O(log^2N)\)</span></p>
+<p>由于用了懒标记，每次操作最多增加 <span class="arithmatex">\(logN\)</span> 个点，因此空间复杂度是 <span class="arithmatex">\(O(QlogN)\)</span>，单次查询除了在线段树里面找，还需要在红黑树里面找最大，所以单次查询需要的时间复杂度是 <span class="arithmatex">\(O(log^2N)\)</span></p>
 </details>
 <details class="success">
 <summary>参考代码</summary>
@@ -3206,7 +3250,7 @@ dp[i] = \max\{\frac{1}{D}\sum\limits_{j= 1}^D dp[i+j], cal(i)\}
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-26</span>
       
         <br>
         创建日期:
