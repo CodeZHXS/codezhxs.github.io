@@ -10,6 +10,8 @@
 
 最近更新：
 
+- (20240726) [数据库常见哈希索引方案](./dev/db/15445/hash.md)
+- (20240726) [ABC363(A-F) 题解](./algorithm/AtCoder/abc363.md)
 - (20240725) [ABC362(A-G) 题解](./algorithm/AtCoder/abc362.md)
 - (20240724) [ABC361(A-G) 题解](./algorithm/AtCoder/abc361.md)
 - (20240721) [ABC360(A-F) 题解](./algorithm/AtCoder/abc360.md)

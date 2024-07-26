@@ -8,6 +8,7 @@ site_description: 陈裕杰的个人网站
 nav:
   - 算法:
     - algorithm/index.md
+    - ABC363(A-F): algorithm/AtCoder/abc363.md
     - ABC362(A-G): algorithm/AtCoder/abc362.md
     - ABC361(A-G): algorithm/AtCoder/abc361.md
     - ABC360(A-F): algorithm/AtCoder/abc360.md
@@ -38,6 +39,7 @@ nav:
     - 数据库与存储:
       - CMU 15-445: 
         - 缓冲池: dev/db/15445/buffer_pool_manager.md
+        - 常见哈希索引方案介绍: dev/db/15445/hash.md
     - Java:
       - 源码分析:
         - HashMap源码分析: dev/java/SourceCode/HashMap.md
