@@ -1,25 +1,33 @@
-Windows 系统的 gcc/g++ 可以安装微软官方的 Visual Studio，也可以自己安装 MinGW，由于我平时编写 C/C++ 都是在 VSCode上，所以选择后者。
+Windows 系统的 gcc/g++ 可以安装微软官方的 Visual Studio，也可以自己安装 MinGW，由于我平时编写 C/C++ 都是在 VSCode上，所以选择后者。网上大多数教程都停留在 MinGW 8 的版本，太老了。本篇博客直接安装最新的 MinGW。
 
-网上大多数教程都停留在 MinGW 8 的版本，太老了，这是我记录这篇博客的原因。
+## MinGW-W64-builds 和 LLVM
+
+进入 **[Downloads - MinGW-w64](https://www.mingw-w64.org/downloads/)**，可以看到支持 Windows 的只有 Cygwin、LLVM-MinGW、MinGW-W64-builds、MSYS2、w64devkit、WinLibs.com。这里我主要推荐两个：LLVM-MinGW 和 MinGW-W64-builds
+
+选择 LLVM 主要有两个原因：
+
+1.   更新速度快，笔者写下本文时 LLVM 已经更新到了 LLVM 19.1.0，是所有预编译版本中最新的。
+2.   同时支持 Windows, Linux, macOS。
+
+但是 LLVM 默认是没有 gdb 的，比较麻烦。
+
+而  MinGW-W64-builds 自带 gdb，轻松省事。总的来说，如果是 MacOS 或者 Ubuntu 我都推荐 LLVM，因为 MacOS 有 Homebrew，Ubuntu 有 apt，安装 gdb 都很轻松。而如果是 Windows 的话还是用 MinGW-W64-builds。
 
 ## 下载 MinGW 安装包
 
-进入 [Downloads - MinGW-w64](https://www.mingw-w64.org/downloads/)，选择 [Mingw-builds](https://www.mingw-w64.org/downloads/#mingw-builds)，会跳转到 github
+点击 **[LLVM-MinGW](https://www.mingw-w64.org/downloads/#llvm-mingw)**，进入 **[Installation: GitHub](https://github.com/mstorsjo/llvm-mingw/releases)**
 
-选择一个 Release，这里我选的是 x86_64-13.2.0-release-posix-seh-ucrt-rt_v11-rev1.7z
+选择 Release，这里我选的是 x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev0.7z
 
-解释一下各个文件的不同：
+解释一下`ucrt` 和 `msvcrt` 的选择，其实就只是运行时库的区别，msvcrt 兼容比较老的版本，而 ucrt 比较新，所以用 ucrt 就好。
 
-1.   `x64-64` 和 `i686`：`x64-64` 表示 64 位， `i686` 表示 32 位。选 64 就好。
-2.   `13.2.0-release`：版本号，选最新的就好。
-3.   `win32` 、`posix`、`mcf`：多线程模型，其实没啥区别，选哪个都一样，据说 `posix` 启用了  c++11/c11的多线程功能。
-4.   `seh` 和 `draft`：结构化异常处理的东西，`seh` 性能好一些支持 64 位，`draft` 兼容性好一些些，64 和 32 都支持。
-5.   `ucrt` 和 `msvcrt` ：`ucrt` 新一点。
+win32 和 posix 是线程模型的区别 Windows 用 win32 就好。
 
-## 环境变量
+## 配置环境变量
 
 找个解压路径解压，例如 `C:\Program Files`，然后添加环境变量：
 
-此电脑（右键) | 属性 | 高级系统设置 | 高级 | 环境变量 | 系统变量（或者用户变量）| Path（双击）| 新建 | `C:\Program Files\mingw64\bin`
+键盘 **Win** |输入 [环境变量] | 编辑系统环境变量|系统变量（或用户变量）| Path（双击）| 新建 | `C:\Program Files\mingw64\bin`
 
-打开终端，输入 `gcc -v` 即可
+打开终端，输入 `gcc -v` 或者 `g++ -v`，显示内容表示安装成功。
+
