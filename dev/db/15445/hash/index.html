@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.4.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.4.2">
     
     
       
@@ -429,6 +429,8 @@
       
         
       
+        
+      
     
     
     
@@ -472,6 +474,26 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../algorithm/AtCoder/abc364/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ABC364(A-F)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -1868,12 +1890,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
     
     
     
@@ -1912,71 +1928,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../essay/diary/2024-05/" class="md-nav__link">
+      <a href="../../../../essay/diary/2024-11/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    日记 | 2024-05
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../essay/diary/2024-04/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    日记 | 2024-04
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../essay/diary/2023-12/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    日记 | 2023-12
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../essay/diary/2023-10/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    日记 | 2023-10
+    日记 | 2024-11
   </span>
   
 
@@ -2363,7 +2319,7 @@
   <h1>常见哈希索引方案介绍</h1>
 
 <h2 id="_1">前言<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>我曾在 <a href="../java/SourceCode/HashMap.md">HashMap源码分析</a> 中分析过 <code>JAVA</code> 中哈希表的实现，<code>HashMap</code> 作为 <code>JDK</code> 的源码，其通用性自然不必多说，我曾一度认为 <code>JDK</code> 的方案非常完美，并且自己也用 C 实现过<code>JDK</code> 的哈希表。在我看来，<code>JDK</code> 的 <code>HashMap</code> 方案有以下优点：</p>
+<p>我曾在 <a href="../../../java/SourceCode/HashMap/">HashMap源码分析</a> 中分析过 <code>JAVA</code> 中哈希表的实现，<code>HashMap</code> 作为 <code>JDK</code> 的源码，其通用性自然不必多说，我曾一度认为 <code>JDK</code> 的方案非常完美，并且自己也用 C 实现过<code>JDK</code> 的哈希表。在我看来，<code>JDK</code> 的 <code>HashMap</code> 方案有以下优点：</p>
 <ol>
 <li>
 <p>同一个桶中，对于较长的链表，将其组织成红黑树。从数据结构的角度考虑，这是一个非常棒的设计，能够保证一定的查询速度，且红黑树在扩容时效率也比较高。</p>
@@ -2499,7 +2455,7 @@
 <figure>
 <p><img alt="out_1" src="../../pic/hash/13.png" width="800" /></p>
 </figure>
-<p>本文一开始所提到的 <code>JDK</code> 的 <code>HashMap</code> 就是采用了这种方案，有关拉链法的更多细节,可以参照我的另一篇博客 <a href="../java/SourceCode/HashMap.md">HashMap源码分析</a> 。</p>
+<p>本文一开始所提到的 <code>JDK</code> 的 <code>HashMap</code> 就是采用了这种方案，有关拉链法的更多细节,可以参照我的另一篇博客 <a href="../../../java/SourceCode/HashMap/">HashMap源码分析</a> 。</p>
 <p><code>HashMap</code> 中针对链表较长的情况会将数据组织成链表，保证查询速度。下面讲讲使用布隆过滤器对哈希表进行优化，对于布隆过滤器的原理可以看看这个视频 <a href="https://www.bilibili.com/video/BV1zK4y1h7pA/?spm_id_from=333.337.search-card.all.click">程序员都必须会的技术，面试必备【布隆过滤器详解】，Redis缓存穿透解决方案</a></p>
 <p>布隆过滤器的初始化需要两个参数：存储的元素个数以及误差率，这两个参数通过一个公式计算出布隆计算器需要多少位以及多少个哈希函数。只需要利用布隆过滤器的性质，在查询哈希表前查一次布隆过滤器即可。</p>
 <h3 id="_8">线性哈希<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
@@ -2564,7 +2520,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-01</span>
       
         <br>
         创建日期:

@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.4.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.4.2">
     
     
       
@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mingw" class="md-skip">
+        <a href="#mingw-w64-builds-llvm" class="md-skip">
           跳转至
         </a>
       
@@ -429,6 +429,8 @@
       
         
       
+        
+      
     
     
     
@@ -472,6 +474,26 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../algorithm/AtCoder/abc364/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ABC364(A-F)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -1648,6 +1670,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#mingw-w64-builds-llvm" class="md-nav__link">
+    MinGW-W64-builds 和 LLVM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#mingw" class="md-nav__link">
     下载 MinGW 安装包
   </a>
@@ -1656,7 +1685,7 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    环境变量
+    配置环境变量
   </a>
   
 </li>
@@ -1794,12 +1823,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
     
     
     
@@ -1838,71 +1861,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../essay/diary/2024-05/" class="md-nav__link">
+      <a href="../../../../essay/diary/2024-11/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    日记 | 2024-05
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../essay/diary/2024-04/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    日记 | 2024-04
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../essay/diary/2023-12/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    日记 | 2023-12
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../essay/diary/2023-10/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    日记 | 2023-10
+    日记 | 2024-11
   </span>
   
 
@@ -2176,6 +2139,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#mingw-w64-builds-llvm" class="md-nav__link">
+    MinGW-W64-builds 和 LLVM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#mingw" class="md-nav__link">
     下载 MinGW 安装包
   </a>
@@ -2184,7 +2154,7 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    环境变量
+    配置环境变量
   </a>
   
 </li>
@@ -2214,30 +2184,32 @@
 
   <h1>在Windows中安装gcc</h1>
 
-<p>Windows 系统的 gcc/g++ 可以安装微软官方的 Visual Studio，也可以自己安装 MinGW，由于我平时编写 C/C++ 都是在 VSCode上，所以选择后者。</p>
-<p>网上大多数教程都停留在 MinGW 8 的版本，太老了，这是我记录这篇博客的原因。</p>
-<h2 id="mingw">下载 MinGW 安装包<a class="headerlink" href="#mingw" title="Permanent link">&para;</a></h2>
-<p>进入 <a href="https://www.mingw-w64.org/downloads/">Downloads - MinGW-w64</a>，选择 <a href="https://www.mingw-w64.org/downloads/#mingw-builds">Mingw-builds</a>，会跳转到 github</p>
-<p>选择一个 Release，这里我选的是 x86_64-13.2.0-release-posix-seh-ucrt-rt_v11-rev1.7z</p>
-<p>解释一下各个文件的不同：</p>
+<p>Windows 系统的 gcc/g++ 可以安装微软官方的 Visual Studio，也可以自己安装 MinGW，由于我平时编写 C/C++ 都是在 VSCode上，所以选择后者。网上大多数教程都停留在 MinGW 8 的版本，太老了。本篇博客直接安装最新的 MinGW。</p>
+<h2 id="mingw-w64-builds-llvm">MinGW-W64-builds 和 LLVM<a class="headerlink" href="#mingw-w64-builds-llvm" title="Permanent link">&para;</a></h2>
+<p>进入 <strong><a href="https://www.mingw-w64.org/downloads/">Downloads - MinGW-w64</a></strong>，可以看到支持 Windows 的只有 Cygwin、LLVM-MinGW、MinGW-W64-builds、MSYS2、w64devkit、WinLibs.com。这里我主要推荐两个：LLVM-MinGW 和 MinGW-W64-builds</p>
+<p>选择 LLVM 主要有两个原因：</p>
 <ol>
-<li><code>x64-64</code> 和 <code>i686</code>：<code>x64-64</code> 表示 64 位， <code>i686</code> 表示 32 位。选 64 就好。</li>
-<li><code>13.2.0-release</code>：版本号，选最新的就好。</li>
-<li><code>win32</code> 、<code>posix</code>、<code>mcf</code>：多线程模型，其实没啥区别，选哪个都一样，据说 <code>posix</code> 启用了  c++11/c11的多线程功能。</li>
-<li><code>seh</code> 和 <code>draft</code>：结构化异常处理的东西，<code>seh</code> 性能好一些支持 64 位，<code>draft</code> 兼容性好一些些，64 和 32 都支持。</li>
-<li><code>ucrt</code> 和 <code>msvcrt</code> ：<code>ucrt</code> 新一点。</li>
+<li>更新速度快，笔者写下本文时 LLVM 已经更新到了 LLVM 19.1.0，是所有预编译版本中最新的。</li>
+<li>同时支持 Windows, Linux, macOS。</li>
 </ol>
-<h2 id="_1">环境变量<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>但是 LLVM 默认是没有 gdb 的，比较麻烦。</p>
+<p>而  MinGW-W64-builds 自带 gdb，轻松省事。总的来说，如果是 MacOS 或者 Ubuntu 我都推荐 LLVM，因为 MacOS 有 Homebrew，Ubuntu 有 apt，安装 gdb 都很轻松。而如果是 Windows 的话还是用 MinGW-W64-builds。</p>
+<h2 id="mingw">下载 MinGW 安装包<a class="headerlink" href="#mingw" title="Permanent link">&para;</a></h2>
+<p>点击 <strong><a href="https://www.mingw-w64.org/downloads/#llvm-mingw">LLVM-MinGW</a></strong>，进入 <strong><a href="https://github.com/mstorsjo/llvm-mingw/releases">Installation: GitHub</a></strong></p>
+<p>选择 Release，这里我选的是 x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev0.7z</p>
+<p>解释一下<code>ucrt</code> 和 <code>msvcrt</code> 的选择，其实就只是运行时库的区别，msvcrt 兼容比较老的版本，而 ucrt 比较新，所以用 ucrt 就好。</p>
+<p>win32 和 posix 是线程模型的区别 Windows 用 win32 就好。</p>
+<h2 id="_1">配置环境变量<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>找个解压路径解压，例如 <code>C:\Program Files</code>，然后添加环境变量：</p>
-<p>此电脑（右键) | 属性 | 高级系统设置 | 高级 | 环境变量 | 系统变量（或者用户变量）| Path（双击）| 新建 | <code>C:\Program Files\mingw64\bin</code></p>
-<p>打开终端，输入 <code>gcc -v</code> 即可</p>
+<p>键盘 <strong>Win</strong> |输入 [环境变量] | 编辑系统环境变量|系统变量（或用户变量）| Path（双击）| 新建 | <code>C:\Program Files\mingw64\bin</code></p>
+<p>打开终端，输入 <code>gcc -v</code> 或者 <code>g++ -v</code>，显示内容表示安装成功。</p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-25</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-01</span>
       
         <br>
         创建日期:
