@@ -1,6 +1,6 @@
 ## 前言
 
-我曾在 [HashMap源码分析](../java/SourceCode/HashMap.md) 中分析过 `JAVA` 中哈希表的实现，`HashMap` 作为 `JDK` 的源码，其通用性自然不必多说，我曾一度认为 `JDK` 的方案非常完美，并且自己也用 C 实现过`JDK` 的哈希表。在我看来，`JDK` 的 `HashMap` 方案有以下优点：
+我曾在 [HashMap源码分析](../../java/SourceCode/HashMap.md) 中分析过 `JAVA` 中哈希表的实现，`HashMap` 作为 `JDK` 的源码，其通用性自然不必多说，我曾一度认为 `JDK` 的方案非常完美，并且自己也用 C 实现过`JDK` 的哈希表。在我看来，`JDK` 的 `HashMap` 方案有以下优点：
 
 1.   同一个桶中，对于较长的链表，将其组织成红黑树。从数据结构的角度考虑，这是一个非常棒的设计，能够保证一定的查询速度，且红黑树在扩容时效率也比较高。
 
@@ -155,7 +155,7 @@
 </figure>
 
 
-本文一开始所提到的 `JDK` 的 `HashMap` 就是采用了这种方案，有关拉链法的更多细节,可以参照我的另一篇博客 [HashMap源码分析](../java/SourceCode/HashMap.md) 。
+本文一开始所提到的 `JDK` 的 `HashMap` 就是采用了这种方案，有关拉链法的更多细节,可以参照我的另一篇博客 [HashMap源码分析](../../java/SourceCode/HashMap.md) 。
 
 `HashMap` 中针对链表较长的情况会将数据组织成链表，保证查询速度。下面讲讲使用布隆过滤器对哈希表进行优化，对于布隆过滤器的原理可以看看这个视频 [程序员都必须会的技术，面试必备【布隆过滤器详解】，Redis缓存穿透解决方案](https://www.bilibili.com/video/BV1zK4y1h7pA/?spm_id_from=333.337.search-card.all.click)
 

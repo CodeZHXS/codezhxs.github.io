@@ -75,6 +75,8 @@ nav:
 exclude_docs: |
   /dev/cpp/
   /archive/missing-semester.md
+  /essay/diary/2023*
+  /essay/diary/2024-0*
 
 # 会渲染但隐藏起来的页面 可以避免nav警告
 not_in_nav: |
@@ -82,6 +84,8 @@ not_in_nav: |
   /others/BJ_food_delete.md
   /others/Hongya_cave.md
   /algorithm/20240325.md
+  /essay/diary/2023*
+  /essay/diary/2024-0*
 
 # [UI]
 ## [top]
