@@ -10,6 +10,7 @@
 
 最近更新：
 
+- (20241107) [ABC367(A-F) 题解](./algorithm/AtCoder/abc367.md)
 - (20241104) [ABC366(A-G) 题解](./algorithm/AtCoder/abc366.md)
 - (20241101) [ABC364(A-F) 题解](./algorithm/AtCoder/abc364.md)
 
