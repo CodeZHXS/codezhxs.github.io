@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://codezhxs.github.io/algorithm/AtCoder/abc364/">
       
       
-        <link rel="prev" href="../../">
+        <link rel="prev" href="../abc366/">
       
       
         <link rel="next" href="../abc363/">
@@ -433,6 +433,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -474,6 +478,46 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abc367/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ABC367(A-F)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abc366/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ABC366(A-G)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -2511,7 +2555,7 @@
 </details>
 <details class="note">
 <summary>解题思路</summary>
-<p>可以发现，这个图是一个二分图，左侧的点集为 <span class="arithmatex">\([1, N]\)</span>，右侧点集为 <span class="arithmatex">\([N+1, N+Q]\)</span>，接下来考虑如何构造最小生成树。如果暴力的用  Kruskal 算法一个个家变，那么每一种类型的边 <span class="arithmatex">\((L_i, R_i, C_i)\)</span>，都要遍历其中的 <span class="arithmatex">\(N\)</span> 个点不断的判断能否加边，这样时间复杂度达到 <span class="arithmatex">\(O(NQ)\)</span>，这是不行的，必须优化这个加边的过程。</p>
+<p>可以发现，这个图是一个二分图，左侧的点集为 <span class="arithmatex">\([1, N]\)</span>，右侧点集为 <span class="arithmatex">\([N+1, N+Q]\)</span>，接下来考虑如何构造最小生成树。如果暴力的用  Kruskal 算法一个个加边，那么每一种类型的边 <span class="arithmatex">\((L_i, R_i, C_i)\)</span>，都要遍历其中的 <span class="arithmatex">\(N\)</span> 个点判断能否加边，时间复杂度达到 <span class="arithmatex">\(O(NQ)\)</span>，这是不行的，必须优化这个加边的过程。</p>
 <p>进一步我们会发现，如果对于 <span class="arithmatex">\([L_i, R_i]\)</span>，中间有一段 <span class="arithmatex">\([L, R]\)</span> 已经连通了，对于这一段只需要有一个点和 <span class="arithmatex">\(N + i\)</span> 连接即可。于是我们可以把相邻的点都用并查集维护起来，遍历 <span class="arithmatex">\([L_i, R_i]\)</span> 的时候按照连通块的最大值进入下一跳就可以了。 </p>
 </details>
 <details class="success">
@@ -2600,7 +2644,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-07</span>
       
         <br>
         创建日期:
@@ -2638,7 +2682,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="上一页: 在这里分享一些算法题解">
+          <a href="../abc366/" class="md-footer__link md-footer__link--prev" aria-label="上一页: ABC366(A-G)">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -2648,7 +2692,7 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                在这里分享一些算法题解
+                ABC366(A-G)
               </div>
             </div>
           </a>
