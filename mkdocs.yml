@@ -8,6 +8,7 @@ site_description: 陈裕杰的个人网站
 nav:
   - 算法:
     - algorithm/index.md
+    - ABC369(A-F): algorithm/AtCoder/abc369.md
     - ABC368(A-G): algorithm/AtCoder/abc368.md
     - ABC367(A-F): algorithm/AtCoder/abc367.md
     - ABC366(A-G): algorithm/AtCoder/abc366.md
@@ -65,6 +66,7 @@ nav:
     - essay/index.md
     - 日记:
       - 日记 | 2024-11 : essay/diary/2024-11.md
+      - 日记 | 2024-12 : essay/diary/2024-12.md
   - 归档:
     - 密码学期末复习: archive/crypto.md
     - 图论期末复习: archive/graph.md
