@@ -10,6 +10,7 @@
 
 最近更新：
 
+- (20241228) [ABC380(A-G) 题解](./algorithm/AtCoder/abc380.md)
 - (20241226) [ABC379(A-G) 题解](./algorithm/AtCoder/abc379.md)
 - (20241224) [ABC378(A-F) 题解](./algorithm/AtCoder/abc378.md)
 - (20241223) [ABC377(A-G) 题解](./algorithm/AtCoder/abc377.md)
