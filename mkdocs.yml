@@ -8,47 +8,50 @@ site_description: 陈裕杰的个人网站
 nav:
   - 算法:
     - algorithm/index.md
-    - ABC380(A-G): algorithm/AtCoder/abc380.md
-    - ABC379(A-G): algorithm/AtCoder/abc379.md
-    - ABC378(A-F): algorithm/AtCoder/abc378.md
-    - ABC377(A-G): algorithm/AtCoder/abc377.md
-    - ABC376(A-G): algorithm/AtCoder/abc376.md
-    - ABC375(A-G): algorithm/AtCoder/abc375.md
-    - ABC374(A-G): algorithm/AtCoder/abc374.md
-    - ABC373(A-G): algorithm/AtCoder/abc373.md
-    - ABC372(A-F): algorithm/AtCoder/abc372.md
-    - ABC371(A-G): algorithm/AtCoder/abc371.md
-    - ABC370(A-F): algorithm/AtCoder/abc370.md
-    - ABC369(A-F): algorithm/AtCoder/abc369.md
-    - ABC368(A-G): algorithm/AtCoder/abc368.md
-    - ABC367(A-F): algorithm/AtCoder/abc367.md
-    - ABC366(A-G): algorithm/AtCoder/abc366.md
-    - ABC364(A-F): algorithm/AtCoder/abc364.md
-    - ABC363(A-F): algorithm/AtCoder/abc363.md
-    - ABC362(A-G): algorithm/AtCoder/abc362.md
-    - ABC361(A-G): algorithm/AtCoder/abc361.md
-    - ABC360(A-F): algorithm/AtCoder/abc360.md
-    - ABC359(A-G): algorithm/AtCoder/abc359.md
-    - ABC358(A-G): algorithm/AtCoder/abc358.md
-    - ABC357(A-G): algorithm/AtCoder/abc357.md
-    - ABC353(A-G): algorithm/AtCoder/abc353.md
-    - ABC352(A-F): algorithm/AtCoder/abc352.md
-    - ABC351(A-G): algorithm/AtCoder/abc351.md
-    - ABC347(A-E): algorithm/AtCoder/abc347.md
-    - ABC343(A-G): algorithm/AtCoder/abc343.md
-    - ABC342(A-G): algorithm/AtCoder/abc342.md
-    - ABC341(A-G): algorithm/AtCoder/abc341.md
-    - ABC340(A-F): algorithm/AtCoder/abc340.md
-    - ABC335(A-F): algorithm/AtCoder/abc335.md
-    - ABC334(A-G): algorithm/AtCoder/abc334.md
-    - ABC333(A-F): algorithm/AtCoder/abc333.md
-    - ABC332(A-G): algorithm/AtCoder/abc332.md
-    - ABC312(A-F): algorithm/AtCoder/abc312.md
-    - ABC311(A-G): algorithm/AtCoder/abc311.md
-    - ABC310(A-F): algorithm/AtCoder/abc310.md
-    - ABC309(A-F): algorithm/AtCoder/abc309.md
-    - ABC308(A-G): algorithm/AtCoder/abc308.md
+    - AtCoder:
+      - ABC381(A-F): algorithm/AtCoder/abc381.md
+      - ABC380(A-G): algorithm/AtCoder/abc380.md
+      - ABC379(A-G): algorithm/AtCoder/abc379.md
+      - ABC378(A-F): algorithm/AtCoder/abc378.md
+      - ABC377(A-G): algorithm/AtCoder/abc377.md
+      - ABC376(A-G): algorithm/AtCoder/abc376.md
+      - ABC375(A-G): algorithm/AtCoder/abc375.md
+      - ABC374(A-G): algorithm/AtCoder/abc374.md
+      - ABC373(A-G): algorithm/AtCoder/abc373.md
+      - ABC372(A-F): algorithm/AtCoder/abc372.md
+      - ABC371(A-G): algorithm/AtCoder/abc371.md
+      - ABC370(A-F): algorithm/AtCoder/abc370.md
+      - ABC369(A-F): algorithm/AtCoder/abc369.md
+      - ABC368(A-G): algorithm/AtCoder/abc368.md
+      - ABC367(A-F): algorithm/AtCoder/abc367.md
+      - ABC366(A-G): algorithm/AtCoder/abc366.md
+      - ABC364(A-F): algorithm/AtCoder/abc364.md
+      - ABC363(A-F): algorithm/AtCoder/abc363.md
+      - ABC362(A-G): algorithm/AtCoder/abc362.md
+      - ABC361(A-G): algorithm/AtCoder/abc361.md
+      - ABC360(A-F): algorithm/AtCoder/abc360.md
+      - ABC359(A-G): algorithm/AtCoder/abc359.md
+      - ABC358(A-G): algorithm/AtCoder/abc358.md
+      - ABC357(A-G): algorithm/AtCoder/abc357.md
+      - ABC353(A-G): algorithm/AtCoder/abc353.md
+      - ABC352(A-F): algorithm/AtCoder/abc352.md
+      - ABC351(A-G): algorithm/AtCoder/abc351.md
+      - ABC347(A-E): algorithm/AtCoder/abc347.md
+      - ABC343(A-G): algorithm/AtCoder/abc343.md
+      - ABC342(A-G): algorithm/AtCoder/abc342.md
+      - ABC341(A-G): algorithm/AtCoder/abc341.md
+      - ABC340(A-F): algorithm/AtCoder/abc340.md
+      - ABC335(A-F): algorithm/AtCoder/abc335.md
+      - ABC334(A-G): algorithm/AtCoder/abc334.md
+      - ABC333(A-F): algorithm/AtCoder/abc333.md
+      - ABC332(A-G): algorithm/AtCoder/abc332.md
+      - ABC312(A-F): algorithm/AtCoder/abc312.md
+      - ABC311(A-G): algorithm/AtCoder/abc311.md
+      - ABC310(A-F): algorithm/AtCoder/abc310.md
+      - ABC309(A-F): algorithm/AtCoder/abc309.md
+      - ABC308(A-G): algorithm/AtCoder/abc308.md
     - 笔记: algorithm/note.md
+    - C++ 算法模板 for VSCode: algorithm/cpp_templete.md
   
   - 开发:
     - dev/index.md
