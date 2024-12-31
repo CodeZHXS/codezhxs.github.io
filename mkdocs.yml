@@ -9,6 +9,7 @@ nav:
   - 算法:
     - algorithm/index.md
     - AtCoder:
+      - ABC382(A-F): algorithm/AtCoder/abc382.md
       - ABC381(A-F): algorithm/AtCoder/abc381.md
       - ABC380(A-G): algorithm/AtCoder/abc380.md
       - ABC379(A-G): algorithm/AtCoder/abc379.md
@@ -50,8 +51,8 @@ nav:
       - ABC310(A-F): algorithm/AtCoder/abc310.md
       - ABC309(A-F): algorithm/AtCoder/abc309.md
       - ABC308(A-G): algorithm/AtCoder/abc308.md
-    - 笔记: algorithm/note.md
     - C++ 算法模板 for VSCode: algorithm/cpp_templete.md
+    - 笔记: algorithm/note.md
   
   - 开发:
     - dev/index.md

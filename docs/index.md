@@ -10,6 +10,7 @@
 
 最近更新：
 
+- (20241231) [ABC382(A-F) 题解](./algorithm/AtCoder/abc382.md)
 - (20241230) [C++ 算法模板 for VSCode](./algorithm/cpp_templete.md)
 - (20241230) [ABC381(A-F) 题解](./algorithm/AtCoder/abc381.md)
 - (20241228) [ABC380(A-G) 题解](./algorithm/AtCoder/abc380.md)
