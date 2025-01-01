@@ -9,6 +9,7 @@ nav:
   - 算法:
     - algorithm/index.md
     - AtCoder:
+      - ABC383(A-F): algorithm/AtCoder/abc383.md
       - ABC382(A-F): algorithm/AtCoder/abc382.md
       - ABC381(A-F): algorithm/AtCoder/abc381.md
       - ABC380(A-G): algorithm/AtCoder/abc380.md
