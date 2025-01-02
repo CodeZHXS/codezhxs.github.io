@@ -9,6 +9,7 @@ nav:
   - 算法:
     - algorithm/index.md
     - AtCoder:
+      - ABC384(A-G): algorithm/AtCoder/abc384.md
       - ABC383(A-F): algorithm/AtCoder/abc383.md
       - ABC382(A-F): algorithm/AtCoder/abc382.md
       - ABC381(A-F): algorithm/AtCoder/abc381.md
@@ -81,8 +82,9 @@ nav:
   - 随笔:
     - essay/index.md
     - 日记:
-      - 日记 | 2024-11 : essay/diary/2024-11.md
+      - 2024模糊总结 & 2025计划: essay/diary/2025-00.md
       - 日记 | 2024-12 : essay/diary/2024-12.md
+      - 日记 | 2024-11 : essay/diary/2024-11.md
   - 归档:
     - 密码学期末复习: archive/crypto.md
     - 图论期末复习: archive/graph.md

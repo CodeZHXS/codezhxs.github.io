@@ -10,6 +10,8 @@
 
 最近更新：
 
+- (20250102) [ABC384(A-G) 题解](./algorithm/AtCoder/abc384.md)
+- (20250102) [2024总结 & 2025计划](./essay/diary/2025-00.md)
 - (20250101) [ABC383(A-F) 题解](./algorithm/AtCoder/abc383.md)
 - (20241231) [ABC382(A-F) 题解](./algorithm/AtCoder/abc382.md)
 - (20241230) [C++ 算法模板 for VSCode](./algorithm/cpp_templete.md)
