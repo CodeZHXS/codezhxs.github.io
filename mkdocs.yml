@@ -64,6 +64,8 @@ nav:
       - CMU 15-445: 
         - 缓冲池: dev/db/15445/buffer_pool_manager.md
         - 常见哈希索引方案介绍: dev/db/15445/hash.md
+      - mini-lsm:
+        - mini-lsm week1 思考小结: /dev/db/mini-lsm/week1.md
     - Java:
       - 源码分析:
         - HashMap源码分析: dev/java/SourceCode/HashMap.md

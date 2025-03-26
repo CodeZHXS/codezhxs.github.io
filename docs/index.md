@@ -10,6 +10,7 @@
 
 最近更新：
 
+- (20250325) [mini-lsm week1 思考小结](./dev/db/mini-lsm/week1.md)
 - (20250109) [ABC386(A-F) 题解](./algorithm/AtCoder/abc386.md)
 - (20250109) [ABC385(A-F) 题解](./algorithm/AtCoder/abc385.md)
 - (20250102) [ABC384(A-G) 题解](./algorithm/AtCoder/abc384.md)
