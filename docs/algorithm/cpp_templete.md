@@ -1,5 +1,96 @@
-## 使用教程
+## 设置
 
+```json
+{
+    // 删除文件不确认
+    "explorer.confirmDelete": false,
+    // 移动文件不确认
+    "explorer.confirmDragAndDrop": false,
+    // 添加希望被忽略的文件,这样一些文件虽然存在于当前工作目录下,但是不会被显示在左侧的文件浏览器里
+    "files.exclude": {
+        // dSYM 文件具有调试信息,普通使用的话不看到它就可以了
+        "**/*.exe": true,
+        "**/*.out": true,
+        ".cph": true,
+        ".clang-format": true,
+    },
+    // 启用 code-runner 快捷键
+    "workspaceKeybindings.code-runner.enable": true,
+    // --------------------------------------------------------------------------------------
+    // Code Runner
+    // To run code:
+    //   use shortcut "Ctrl Opt N" *
+    //   or press F1 and then select/type Run Code,
+    //   or right click the Text Editor and then click Run Code in editor context menu
+    //   or click Run Code button in editor title menu
+    //   or click Run Code button in context menu of file explorer
+    // To stop the running code:
+    //   use shortcut "Ctrl Opt M" *
+    //   or press F1 and then select/type Stop Code Run
+    //   or right click the Output Channel and then click Stop Code Run in context menu
+    "code-runner.executorMap": {
+        // Introduction:
+        //   Make sure the executor PATH of each language is set in the environment variable.
+        //   You could also add entry into "code-runner.executorMap" to set the executor PATH.
+        // Supported customized parameters:
+        //   $workspaceRoot: The path of the folder opened in VS Code
+        //   $dir: The directory of the code file being run
+        //   $fullFileName: The full name of the code file being run
+        //   $fileName: The base name of the code file being run, that is the file without the directory
+        //   $fileNameWithoutExt: The base name of the code file being run without its extension
+        /* ------ 编译、运行只有一个文件的cpp文件 ------ */
+        // 注：路径中有空格不会出现问题
+        "cpp": "clang++ $fullFileName -o $dir\"$fileNameWithoutExt\"\".out\" -W -Wall -O2 -std=c++17 -I$workspaceRoot/lib && $dir\"$fileNameWithoutExt\"\".out\"",
+        // 其中 $fullFileName 是绝对路径，是主文件
+        // 自己决定是否加入 && rm $dir\"$fileNameWithoutExt\"\".out\"（也可以添加"files.exclude"）
+        /* ------ 编译、运行多个cpp文件 ------ */
+        // "cpp": "g++ $fullFileName <file_to_link> -o $dir\"$fileNameWithoutExt\"\".out\" -W -Wall -O2 -std=c++17 && $dir\"$fileNameWithoutExt\"\".out\"",
+        // <file_to_link>的写法：
+        //   一般的，你也可以直接写绝对路径
+        //     \"/path/xxxx.cpp\"
+        //   如果你链接的cpp文件和主文件在一个目录下：
+        //     $dir\"xxxx.cpp\"
+        //   更一般的，如果你链接的cpp文件不和主文件在一个目录下，需要从当前VSCode的工作目录补充相对路径从而形成绝对路径：
+        //     $workspaceRoot\"relative/path/xxxx.cpp\"
+        /* ------ 编译c文件 ------ */
+        "c": "clang $fullFileName -o $dir\"$fileNameWithoutExt\"\".out\" -W -Wall -O2 -std=gnu11 && $dir\"$fileNameWithoutExt\"\".out\"",
+        // "c": "gcc $fullFileName <file_to_link> -o $dir\"$fileNameWithoutExt\"\".out\" -W -Wall -O2 -std=c17 && $dir\"$fileNameWithoutExt\"\".out\"",
+    },
+    // Whether to clear previous output before each run (default is false):
+    "code-runner.clearPreviousOutput": true,
+    // Whether to save all files before running (default is false):
+    "code-runner.saveAllFilesBeforeRun": false,
+    // Whether to save the current file before running (default is false):
+    "code-runner.saveFileBeforeRun": true,
+    // Whether to show extra execution message like [Running] ... and [Done] ... (default is true):
+    "code-runner.showExecutionMessage": true, // cannot see that message is you set "code-runner.runInTerminal" to true
+    // Whether to run code in Integrated Terminal (only support to run whole file in Integrated Terminal, neither untitled file nor code snippet) (default is false):
+    "code-runner.runInTerminal": true, // cannot input data when setting to false
+    // Whether to preserve focus on code editor after code run is triggered (default is true, the code editor will keep focus; when it is false, Terminal or Output Channel will take focus):
+    "code-runner.preserveFocus": false,
+    // Whether to ignore selection to always run entire file. (Default is false)
+    "code-runner.ignoreSelection": true,
+    // 本地 clangd 路径
+    // "clangd.path": "/usr/bin/clangd",
+    "clangd.arguments": [
+        // "--header-insertion=never", // 是否重复插入头文件，用万能头的话设置成never
+        "--query-driver=/usr/bin/clang++", // 将编译的所有工具链都添加进 LSP
+        "--log=verbose"
+    ],
+    // 没有找到 compile_commands.json 时默认的编译器参数是什么
+    "clangd.fallbackFlags": [
+        "-W",
+        "-Wall",
+        "-O2",
+        "-std=c++17",
+        "-I/root/cpp/lib",
+    ],
+}
+```
+
+## 算法模板
+
+使用教程：
 -   在 VSCode 工作区的 `.vscode` 文件夹下创建 `XXX.code-snippets` 文件，其中 `XXX` 表示工作区的名字，例如 `cpp` 工作区，就创建 `cpp.code-snippets`。
 -   复制下列内容，粘贴进去。
 -   使用 `prefix` 字段的快捷键就可以呼出代码模板，例如 `tpdsu` 就可以输出并查集模板。
@@ -60,15 +151,16 @@
 			"public:",
 			"    explicit DSU(int n) : parent_or_size(n, -1) {}",
 			"",
-			"    void merge(int a, int b)",
+			"    int merge(int a, int b)",
 			"    {",
 			"        int x = leader(a), y = leader(b);",
 			"        if (x == y)",
-			"            return;",
+			"            return x;",
 			"        if (-parent_or_size[x] < -parent_or_size[y])",
-			"            std::swap(x, y);",
+			"            swap(x, y);",
 			"        parent_or_size[x] += parent_or_size[y];",
 			"        parent_or_size[y] = x;",
+			"        return x;",
 			"    }",
 			"",
 			"    int leader(int a) { return parent_or_size[a] < 0 ? a : parent_or_size[a] = leader(parent_or_size[a]); }",
@@ -81,7 +173,61 @@
 			"    vector<int> parent_or_size;",
 			"};"
 		],
-		"description": "并查集(按秩合并)"
+		"description": "并查集（按秩合并）"
+	},
+	"并查集(group)": {
+		"prefix": "tpdsu",
+		"body": [
+			"class DSU",
+			"{",
+			"public:",
+			"    explicit DSU(int n) : parent_or_size(n, -1) {}",
+			"",
+			"    int merge(int a, int b)",
+			"    {",
+			"        int x = leader(a), y = leader(b);",
+			"        if (x == y)",
+			"            return x;",
+			"        if (-parent_or_size[x] < -parent_or_size[y])",
+			"            swap(x, y);",
+			"        parent_or_size[x] += parent_or_size[y];",
+			"        parent_or_size[y] = x;",
+			"        return x;",
+			"    }",
+			"",
+			"    int leader(int a) { return parent_or_size[a] < 0 ? a : parent_or_size[a] = leader(parent_or_size[a]); }",
+			"",
+			"    bool same(int a, int b) { return leader(a) == leader(b); }",
+			"",
+			"    int size(int a) { return -parent_or_size[leader(a)]; }",
+			"",
+			"    vector<vector<int>> group()",
+			"    {",
+			"        int n = parent_or_size.size();",
+			"        std::vector<int> leader_buf(n), group_size(n);",
+			"        for (int i = 0; i < n; i++)",
+			"        {",
+			"            leader_buf[i] = leader(i);",
+			"            group_size[leader_buf[i]]++;",
+			"        }",
+			"        std::vector<std::vector<int>> result(n);",
+			"        for (int i = 0; i < n; i++)",
+			"            result[i].reserve(group_size[i]);",
+			"        for (int i = 0; i < n; i++)",
+			"            result[leader_buf[i]].push_back(i);",
+			"        result.erase(",
+			"            std::remove_if(result.begin(), result.end(),",
+			"                           [&](const std::vector<int> &v)",
+			"                           { return v.empty(); }),",
+			"            result.end());",
+			"        return result;",
+			"    }",
+			"",
+			"private:",
+			"    vector<int> parent_or_size;",
+			"};"
+		],
+		"description": "并查集(支持group)"
 	},
 	"扩展欧几里得": {
 		"prefix": "tpexgcd",
@@ -103,6 +249,44 @@
 			"}"
 		],
 		"description": "扩展欧几里得"
+	},
+	"树状数组": {
+		"prefix": "tpfenwick",
+		"body": [
+			"template <typename T>",
+			"class FenwickTree",
+			"{",
+			"public:",
+			"    FenwickTree(int n) : n(n), t(n + 1) {}",
+			"",
+			"    void add(int x, T k)",
+			"    {",
+			"        for (; x <= n; x += lowbit(x))",
+			"            t[x] += k;",
+			"    }",
+			"",
+			"    int lower_bound(T k) const",
+			"    {",
+			"        int x = 0;",
+			"        T sum = 0;",
+			"        for (int i = 1 << __lg(n); i; i >>= 1)",
+			"        {",
+			"            if (x + i > n || sum + t[x + i] >= k)",
+			"                continue;",
+			"            x += i;",
+			"            sum += t[x];",
+			"        }",
+			"        return x + 1;",
+			"    }",
+			"",
+			"private:",
+			"    int n;",
+			"    vector<T> t;",
+			"",
+			"    int lowbit(int x) const { return x & -x; }",
+			"};"
+		],
+		"description": "树状数组"
 	},
 	"TreapSet普通平衡树": {
 		"prefix": "tptreap",
@@ -666,6 +850,7 @@
 	"Dijkstra最短路": {
 		"prefix": "tpdijkstra",
 		"body": [
+			"template <typename T>",
 			"struct Graph",
 			"{",
 			"    struct Edge",
@@ -676,19 +861,20 @@
 			"    int n;",
 			"    vector<vector<Edge>> edge;",
 			"",
-			"    Graph(int n) : n(n), edge(n + 1) {}",
+			"    Graph(int n) : n(n), edge(n) {}",
 			"",
 			"    void add_edge(int u, int v, int w) { edge[u].push_back({v, w}); }",
 			"",
-			"    vector<int> dijkstra(int s) const",
+			"    vector<T> dijkstra(int s) const",
 			"    {",
 			"        struct Node",
 			"        {",
-			"            int u, d;",
+			"            int u;",
+			"            T d;",
 			"            bool operator>(const Node &other) const { return d > other.d; }",
 			"        };",
 			"",
-			"        vector<int> dis(n + 1, numeric_limits<int>::max());",
+			"        vector<T> dis(n, numeric_limits<T>::max());",
 			"        dis[s] = 0;",
 			"        priority_queue<Node, vector<Node>, greater<Node>> heap;",
 			"        heap.push({s, 0});",
@@ -726,7 +912,7 @@
 			"    int n;",
 			"    vector<vector<Edge>> edge;",
 			"",
-			"    Network(int n) : n(n), edge(n + 1) {}",
+			"    Network(int n) : n(n), edge(n) {}",
 			"",
 			"    void add_edge(int u, int v, int w)",
 			"    {",
@@ -738,13 +924,13 @@
 			"",
 			"    int dinic(int s, int t)",
 			"    {",
-			"        vector<int> dep(n + 1);",
-			"        vector<size_t> cur(n + 1);",
+			"        vector<int> dep(n);",
+			"        vector<size_t> cur(n);",
 			"",
 			"        auto bfs = [&]() -> bool",
 			"        {",
-			"            dep.assign(n + 1, -1);",
-			"            cur.assign(n + 1, 0);",
+			"            dep.assign(n, -1);",
+			"            cur.assign(n, 0);",
 			"            dep[s] = 0;",
 			"            queue<int> q;",
 			"            q.push(s);",
@@ -924,7 +1110,89 @@
 			"};"
 		],
 		"description": "莫队查询排序"
-	}
+	},
+	"布尔矩阵": {
+		"prefix": "tpmatrix",
+		"body": [
+			"const int N = $0;",
+			"using RowVec = bitset<N>;",
+			"",
+			"class Matrix",
+			"{",
+			"public:",
+			"    RowVec &operator[](int i) { return a[i]; }",
+			"    const RowVec &operator[](int i) const { return a[i]; }",
+			"",
+			"    Matrix operator*(const Matrix &y) const;",
+			"",
+			"private:",
+			"    array<RowVec, N> a;",
+			"};",
+			"",
+			"RowVec operator*(const RowVec &v, const Matrix &m)",
+			"{",
+			"    RowVec res;",
+			"    for (int j = 0; j < N; j++)",
+			"        if (v[j])",
+			"            res |= m[j];",
+			"    return res;",
+			"}",
+			"",
+			"Matrix Matrix::operator*(const Matrix &y) const",
+			"{",
+			"    Matrix res;",
+			"    for (int i = 0; i < N; i++)",
+			"        res[i] = a[i] * y;",
+			"    return res;",
+			"}",
+			"",
+			"Matrix qpow(Matrix a, LL b)",
+			"{",
+			"    Matrix res;",
+			"    for (int i = 0; i < N; i++)",
+			"        res[i][i] = 1;",
+			"    while (b)",
+			"    {",
+			"        if (b & 1)",
+			"            res = res * a;",
+			"        b >>= 1;",
+			"        a = a * a;",
+			"    }",
+			"    return res;",
+			"}"
+		],
+		"description": "布尔矩阵"
+	},
+	"manacher算法": {
+		"prefix": "tpmanacher",
+		"body": [
+			"int manacher(const string &s, char ch)",
+			"{",
+			"    int n = s.size();",
+			"    int m = 2 * n + 1;",
+			"    string t(m, ch);",
+			"    for (int i = 0, j = 1; i < n; i++, j += 2)",
+			"        t[j] = s[i];",
+			"    vector<int> d(m);",
+			"    int ans = 0;",
+			"    for(int i = 0, l = 0, r = -1; i < m; i++)",
+			"    {",
+			"        int k = i > r ? 1 : min(d[l+r-i], r-i+1);",
+			"        while(i-k >= 0 && i + k < m && t[i-k] == t[i+k])",
+			"            k++;",
+			"        d[i] = k;",
+			"        ans = max(ans, 2 * k - 1);",
+			"        if(i + k - 1 > r)",
+			"        {",
+			"            r = i + k - 1;",
+			"            l = i - k + 1;",
+			"        }",
+			"    }",
+			"    return ans / 2;",
+			"}"
+		],
+		"description": "manacher算法"
+	},
 }
 ```
 

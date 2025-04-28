@@ -55,7 +55,7 @@ nav:
       - ABC310(A-F): algorithm/AtCoder/abc310.md
       - ABC309(A-F): algorithm/AtCoder/abc309.md
       - ABC308(A-G): algorithm/AtCoder/abc308.md
-    - C++ 算法模板 for VSCode: algorithm/cpp_templete.md
+    - VSCode C++ 配置与模板: algorithm/cpp_templete.md
     - 笔记: algorithm/note.md
   
   - 开发:
