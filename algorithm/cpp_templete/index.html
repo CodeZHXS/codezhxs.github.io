@@ -26,7 +26,7 @@
     
     
       
-        <title>C++ 算法模板 for VSCode - 陈裕杰的个人网站</title>
+        <title>VSCode C++ 配置与模板 - 陈裕杰的个人网站</title>
       
     
     
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              C++ 算法模板 for VSCode
+              VSCode C++ 配置与模板
             
           </span>
         </div>
@@ -1507,7 +1507,7 @@
           
   
   <span class="md-ellipsis">
-    C++ 算法模板 for VSCode
+    VSCode C++ 配置与模板
   </span>
   
 
@@ -1518,7 +1518,7 @@
         
   
   <span class="md-ellipsis">
-    C++ 算法模板 for VSCode
+    VSCode C++ 配置与模板
   </span>
   
 
@@ -1539,7 +1539,14 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    使用教程
+    设置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    算法模板
   </a>
   
 </li>
@@ -2776,7 +2783,14 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    使用教程
+    设置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    算法模板
   </a>
   
 </li>
@@ -2804,15 +2818,101 @@
   
 
 
-  <h1>C++ 算法模板 for VSCode</h1>
+  <h1>VSCode C++ 配置与模板</h1>
 
-<h2 id="_1">使用教程<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ul>
-<li>在 VSCode 工作区的 <code>.vscode</code> 文件夹下创建 <code>XXX.code-snippets</code> 文件，其中 <code>XXX</code> 表示工作区的名字，例如 <code>cpp</code> 工作区，就创建 <code>cpp.code-snippets</code>。</li>
-<li>复制下列内容，粘贴进去。</li>
-<li>使用 <code>prefix</code> 字段的快捷键就可以呼出代码模板，例如 <code>tpdsu</code> 就可以输出并查集模板。</li>
-<li>快速生成新模板，参考 <a href="https://snippet-generator.app/?description=&amp;tabtrigger=&amp;snippet=&amp;mode=vscode">snippet generator</a></li>
-</ul>
+<h2 id="_1">设置<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 删除文件不确认</span>
+<span class="w">    </span><span class="nt">&quot;explorer.confirmDelete&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// 移动文件不确认</span>
+<span class="w">    </span><span class="nt">&quot;explorer.confirmDragAndDrop&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// 添加希望被忽略的文件,这样一些文件虽然存在于当前工作目录下,但是不会被显示在左侧的文件浏览器里</span>
+<span class="w">    </span><span class="nt">&quot;files.exclude&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// dSYM 文件具有调试信息,普通使用的话不看到它就可以了</span>
+<span class="w">        </span><span class="nt">&quot;**/*.exe&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;**/*.out&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;.cph&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;.clang-format&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="c1">// 启用 code-runner 快捷键</span>
+<span class="w">    </span><span class="nt">&quot;workspaceKeybindings.code-runner.enable&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// --------------------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="c1">// Code Runner</span>
+<span class="w">    </span><span class="c1">// To run code:</span>
+<span class="w">    </span><span class="c1">//   use shortcut &quot;Ctrl Opt N&quot; *</span>
+<span class="w">    </span><span class="c1">//   or press F1 and then select/type Run Code,</span>
+<span class="w">    </span><span class="c1">//   or right click the Text Editor and then click Run Code in editor context menu</span>
+<span class="w">    </span><span class="c1">//   or click Run Code button in editor title menu</span>
+<span class="w">    </span><span class="c1">//   or click Run Code button in context menu of file explorer</span>
+<span class="w">    </span><span class="c1">// To stop the running code:</span>
+<span class="w">    </span><span class="c1">//   use shortcut &quot;Ctrl Opt M&quot; *</span>
+<span class="w">    </span><span class="c1">//   or press F1 and then select/type Stop Code Run</span>
+<span class="w">    </span><span class="c1">//   or right click the Output Channel and then click Stop Code Run in context menu</span>
+<span class="w">    </span><span class="nt">&quot;code-runner.executorMap&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Introduction:</span>
+<span class="w">        </span><span class="c1">//   Make sure the executor PATH of each language is set in the environment variable.</span>
+<span class="w">        </span><span class="c1">//   You could also add entry into &quot;code-runner.executorMap&quot; to set the executor PATH.</span>
+<span class="w">        </span><span class="c1">// Supported customized parameters:</span>
+<span class="w">        </span><span class="c1">//   $workspaceRoot: The path of the folder opened in VS Code</span>
+<span class="w">        </span><span class="c1">//   $dir: The directory of the code file being run</span>
+<span class="w">        </span><span class="c1">//   $fullFileName: The full name of the code file being run</span>
+<span class="w">        </span><span class="c1">//   $fileName: The base name of the code file being run, that is the file without the directory</span>
+<span class="w">        </span><span class="c1">//   $fileNameWithoutExt: The base name of the code file being run without its extension</span>
+<span class="w">        </span><span class="cm">/* ------ 编译、运行只有一个文件的cpp文件 ------ */</span>
+<span class="w">        </span><span class="c1">// 注：路径中有空格不会出现问题</span>
+<span class="w">        </span><span class="nt">&quot;cpp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;clang++ $fullFileName -o $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot; -W -Wall -O2 -std=c++17 -I$workspaceRoot/lib &amp;&amp; $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// 其中 $fullFileName 是绝对路径，是主文件</span>
+<span class="w">        </span><span class="c1">// 自己决定是否加入 &amp;&amp; rm $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot;（也可以添加&quot;files.exclude&quot;）</span>
+<span class="w">        </span><span class="cm">/* ------ 编译、运行多个cpp文件 ------ */</span>
+<span class="w">        </span><span class="c1">// &quot;cpp&quot;: &quot;g++ $fullFileName &lt;file_to_link&gt; -o $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot; -W -Wall -O2 -std=c++17 &amp;&amp; $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot;&quot;,</span>
+<span class="w">        </span><span class="c1">// &lt;file_to_link&gt;的写法：</span>
+<span class="w">        </span><span class="c1">//   一般的，你也可以直接写绝对路径</span>
+<span class="w">        </span><span class="c1">//     \&quot;/path/xxxx.cpp\&quot;</span>
+<span class="w">        </span><span class="c1">//   如果你链接的cpp文件和主文件在一个目录下：</span>
+<span class="w">        </span><span class="c1">//     $dir\&quot;xxxx.cpp\&quot;</span>
+<span class="w">        </span><span class="c1">//   更一般的，如果你链接的cpp文件不和主文件在一个目录下，需要从当前VSCode的工作目录补充相对路径从而形成绝对路径：</span>
+<span class="w">        </span><span class="c1">//     $workspaceRoot\&quot;relative/path/xxxx.cpp\&quot;</span>
+<span class="w">        </span><span class="cm">/* ------ 编译c文件 ------ */</span>
+<span class="w">        </span><span class="nt">&quot;c&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;clang $fullFileName -o $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot; -W -Wall -O2 -std=gnu11 &amp;&amp; $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// &quot;c&quot;: &quot;gcc $fullFileName &lt;file_to_link&gt; -o $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot; -W -Wall -O2 -std=c17 &amp;&amp; $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot;&quot;,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="c1">// Whether to clear previous output before each run (default is false):</span>
+<span class="w">    </span><span class="nt">&quot;code-runner.clearPreviousOutput&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Whether to save all files before running (default is false):</span>
+<span class="w">    </span><span class="nt">&quot;code-runner.saveAllFilesBeforeRun&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Whether to save the current file before running (default is false):</span>
+<span class="w">    </span><span class="nt">&quot;code-runner.saveFileBeforeRun&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Whether to show extra execution message like [Running] ... and [Done] ... (default is true):</span>
+<span class="w">    </span><span class="nt">&quot;code-runner.showExecutionMessage&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// cannot see that message is you set &quot;code-runner.runInTerminal&quot; to true</span>
+<span class="w">    </span><span class="c1">// Whether to run code in Integrated Terminal (only support to run whole file in Integrated Terminal, neither untitled file nor code snippet) (default is false):</span>
+<span class="w">    </span><span class="nt">&quot;code-runner.runInTerminal&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// cannot input data when setting to false</span>
+<span class="w">    </span><span class="c1">// Whether to preserve focus on code editor after code run is triggered (default is true, the code editor will keep focus; when it is false, Terminal or Output Channel will take focus):</span>
+<span class="w">    </span><span class="nt">&quot;code-runner.preserveFocus&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Whether to ignore selection to always run entire file. (Default is false)</span>
+<span class="w">    </span><span class="nt">&quot;code-runner.ignoreSelection&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// 本地 clangd 路径</span>
+<span class="w">    </span><span class="c1">// &quot;clangd.path&quot;: &quot;/usr/bin/clangd&quot;,</span>
+<span class="w">    </span><span class="nt">&quot;clangd.arguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="c1">// &quot;--header-insertion=never&quot;, // 是否重复插入头文件，用万能头的话设置成never</span>
+<span class="w">        </span><span class="s2">&quot;--query-driver=/usr/bin/clang++&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// 将编译的所有工具链都添加进 LSP</span>
+<span class="w">        </span><span class="s2">&quot;--log=verbose&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="c1">// 没有找到 compile_commands.json 时默认的编译器参数是什么</span>
+<span class="w">    </span><span class="nt">&quot;clangd.fallbackFlags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;-W&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;-Wall&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;-O2&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;-std=c++17&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;-I/root/cpp/lib&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_2">算法模板<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>使用教程：
+-   在 VSCode 工作区的 <code>.vscode</code> 文件夹下创建 <code>XXX.code-snippets</code> 文件，其中 <code>XXX</code> 表示工作区的名字，例如 <code>cpp</code> 工作区，就创建 <code>cpp.code-snippets</code>。
+-   复制下列内容，粘贴进去。
+-   使用 <code>prefix</code> 字段的快捷键就可以呼出代码模板，例如 <code>tpdsu</code> 就可以输出并查集模板。
+-   快速生成新模板，参考 <a href="https://snippet-generator.app/?description=&amp;tabtrigger=&amp;snippet=&amp;mode=vscode">snippet generator</a></p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;C语言默认代码模板&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cyy&quot;</span><span class="p">,</span>
@@ -2867,15 +2967,16 @@
 <span class="w">            </span><span class="s2">&quot;public:&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    explicit DSU(int n) : parent_or_size(n, -1) {}&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    void merge(int a, int b)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int merge(int a, int b)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        int x = leader(a), y = leader(b);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        if (x == y)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            return;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            return x;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        if (-parent_or_size[x] &lt; -parent_or_size[y])&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            std::swap(x, y);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            swap(x, y);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        parent_or_size[x] += parent_or_size[y];&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        parent_or_size[y] = x;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return x;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    int leader(int a) { return parent_or_size[a] &lt; 0 ? a : parent_or_size[a] = leader(parent_or_size[a]); }&quot;</span><span class="p">,</span>
@@ -2888,7 +2989,61 @@
 <span class="w">            </span><span class="s2">&quot;    vector&lt;int&gt; parent_or_size;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;};&quot;</span>
 <span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;并查集(按秩合并)&quot;</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;并查集（按秩合并）&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;并查集(group)&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tpdsu&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;class DSU&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;public:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    explicit DSU(int n) : parent_or_size(n, -1) {}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int merge(int a, int b)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int x = leader(a), y = leader(b);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (x == y)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            return x;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (-parent_or_size[x] &lt; -parent_or_size[y])&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            swap(x, y);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        parent_or_size[x] += parent_or_size[y];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        parent_or_size[y] = x;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return x;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int leader(int a) { return parent_or_size[a] &lt; 0 ? a : parent_or_size[a] = leader(parent_or_size[a]); }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    bool same(int a, int b) { return leader(a) == leader(b); }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int size(int a) { return -parent_or_size[leader(a)]; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;vector&lt;int&gt;&gt; group()&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int n = parent_or_size.size();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        std::vector&lt;int&gt; leader_buf(n), group_size(n);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (int i = 0; i &lt; n; i++)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            leader_buf[i] = leader(i);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            group_size[leader_buf[i]]++;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        std::vector&lt;std::vector&lt;int&gt;&gt; result(n);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (int i = 0; i &lt; n; i++)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            result[i].reserve(group_size[i]);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (int i = 0; i &lt; n; i++)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            result[leader_buf[i]].push_back(i);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        result.erase(&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            std::remove_if(result.begin(), result.end(),&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                           [&amp;](const std::vector&lt;int&gt; &amp;v)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                           { return v.empty(); }),&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            result.end());&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return result;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;private:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;int&gt; parent_or_size;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;};&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;并查集(支持group)&quot;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;扩展欧几里得&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tpexgcd&quot;</span><span class="p">,</span>
@@ -2910,6 +3065,44 @@
 <span class="w">            </span><span class="s2">&quot;}&quot;</span>
 <span class="w">        </span><span class="p">],</span>
 <span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;扩展欧几里得&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;树状数组&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tpfenwick&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;template &lt;typename T&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;class FenwickTree&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;public:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    FenwickTree(int n) : n(n), t(n + 1) {}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void add(int x, T k)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (; x &lt;= n; x += lowbit(x))&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            t[x] += k;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int lower_bound(T k) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int x = 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        T sum = 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (int i = 1 &lt;&lt; __lg(n); i; i &gt;&gt;= 1)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (x + i &gt; n || sum + t[x + i] &gt;= k)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                continue;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            x += i;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            sum += t[x];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return x + 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;private:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int n;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;T&gt; t;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int lowbit(int x) const { return x &amp; -x; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;};&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;树状数组&quot;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;TreapSet普通平衡树&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tptreap&quot;</span><span class="p">,</span>
@@ -3473,6 +3666,7 @@
 <span class="w">    </span><span class="nt">&quot;Dijkstra最短路&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tpdijkstra&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;template &lt;typename T&gt;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;struct Graph&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    struct Edge&quot;</span><span class="p">,</span>
@@ -3483,19 +3677,20 @@
 <span class="w">            </span><span class="s2">&quot;    int n;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    vector&lt;vector&lt;Edge&gt;&gt; edge;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    Graph(int n) : n(n), edge(n + 1) {}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    Graph(int n) : n(n), edge(n) {}&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    void add_edge(int u, int v, int w) { edge[u].push_back({v, w}); }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    vector&lt;int&gt; dijkstra(int s) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;T&gt; dijkstra(int s) const&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        struct Node&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            int u, d;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            int u;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            T d;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            bool operator&gt;(const Node &amp;other) const { return d &gt; other.d; }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        };&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        vector&lt;int&gt; dis(n + 1, numeric_limits&lt;int&gt;::max());&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        vector&lt;T&gt; dis(n, numeric_limits&lt;T&gt;::max());&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        dis[s] = 0;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        priority_queue&lt;Node, vector&lt;Node&gt;, greater&lt;Node&gt;&gt; heap;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        heap.push({s, 0});&quot;</span><span class="p">,</span>
@@ -3533,7 +3728,7 @@
 <span class="w">            </span><span class="s2">&quot;    int n;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    vector&lt;vector&lt;Edge&gt;&gt; edge;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    Network(int n) : n(n), edge(n + 1) {}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    Network(int n) : n(n), edge(n) {}&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    void add_edge(int u, int v, int w)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
@@ -3545,13 +3740,13 @@
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    int dinic(int s, int t)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        vector&lt;int&gt; dep(n + 1);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        vector&lt;size_t&gt; cur(n + 1);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        vector&lt;int&gt; dep(n);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        vector&lt;size_t&gt; cur(n);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        auto bfs = [&amp;]() -&gt; bool&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            dep.assign(n + 1, -1);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            cur.assign(n + 1, 0);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            dep.assign(n, -1);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            cur.assign(n, 0);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            dep[s] = 0;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            queue&lt;int&gt; q;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            q.push(s);&quot;</span><span class="p">,</span>
@@ -3731,7 +3926,89 @@
 <span class="w">            </span><span class="s2">&quot;};&quot;</span>
 <span class="w">        </span><span class="p">],</span>
 <span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;莫队查询排序&quot;</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;布尔矩阵&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tpmatrix&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;const int N = $0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;using RowVec = bitset&lt;N&gt;;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;class Matrix&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;public:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    RowVec &amp;operator[](int i) { return a[i]; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    const RowVec &amp;operator[](int i) const { return a[i]; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    Matrix operator*(const Matrix &amp;y) const;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;private:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    array&lt;RowVec, N&gt; a;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;};&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;RowVec operator*(const RowVec &amp;v, const Matrix &amp;m)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    RowVec res;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    for (int j = 0; j &lt; N; j++)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (v[j])&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            res |= m[j];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    return res;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;Matrix Matrix::operator*(const Matrix &amp;y) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    Matrix res;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    for (int i = 0; i &lt; N; i++)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        res[i] = a[i] * y;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    return res;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;Matrix qpow(Matrix a, LL b)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    Matrix res;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    for (int i = 0; i &lt; N; i++)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        res[i][i] = 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    while (b)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (b &amp; 1)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            res = res * a;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        b &gt;&gt;= 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        a = a * a;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    return res;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;}&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;布尔矩阵&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;manacher算法&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tpmanacher&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;int manacher(const string &amp;s, char ch)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int n = s.size();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int m = 2 * n + 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    string t(m, ch);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    for (int i = 0, j = 1; i &lt; n; i++, j += 2)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        t[j] = s[i];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;int&gt; d(m);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int ans = 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    for(int i = 0, l = 0, r = -1; i &lt; m; i++)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int k = i &gt; r ? 1 : min(d[l+r-i], r-i+1);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        while(i-k &gt;= 0 &amp;&amp; i + k &lt; m &amp;&amp; t[i-k] == t[i+k])&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            k++;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        d[i] = k;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        ans = max(ans, 2 * k - 1);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if(i + k - 1 &gt; r)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            r = i + k - 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            l = i - k + 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    return ans / 2;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;}&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;manacher算法&quot;</span>
+<span class="w">    </span><span class="p">},</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -3740,7 +4017,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2024年12月30日 09:31:42">2024-12-30</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月28日 14:11:14">2025-04-28</span>
       
         <br>
         创建日期:
