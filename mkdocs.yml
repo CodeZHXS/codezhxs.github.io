@@ -60,7 +60,9 @@ nav:
   
   - 开发:
     - dev/index.md
-    - 数据库与存储:
+    - 数据库:
+      - CMU 15-799 | 优化器:
+        - System R 论文精读: dev/db/optimizer/SystemR.md
       - CMU 15-445: 
         - 缓冲池: dev/db/15445/buffer_pool_manager.md
         - 常见哈希索引方案介绍: dev/db/15445/hash.md
