@@ -1,5 +1,7 @@
 ## 设置
 
+### settings.json
+
 ```json
 {
     // 删除文件不确认
@@ -16,31 +18,10 @@
     },
     // 启用 code-runner 快捷键
     "workspaceKeybindings.code-runner.enable": true,
-    // --------------------------------------------------------------------------------------
-    // Code Runner
-    // To run code:
-    //   use shortcut "Ctrl Opt N" *
-    //   or press F1 and then select/type Run Code,
-    //   or right click the Text Editor and then click Run Code in editor context menu
-    //   or click Run Code button in editor title menu
-    //   or click Run Code button in context menu of file explorer
-    // To stop the running code:
-    //   use shortcut "Ctrl Opt M" *
-    //   or press F1 and then select/type Stop Code Run
-    //   or right click the Output Channel and then click Stop Code Run in context menu
     "code-runner.executorMap": {
-        // Introduction:
-        //   Make sure the executor PATH of each language is set in the environment variable.
-        //   You could also add entry into "code-runner.executorMap" to set the executor PATH.
-        // Supported customized parameters:
-        //   $workspaceRoot: The path of the folder opened in VS Code
-        //   $dir: The directory of the code file being run
-        //   $fullFileName: The full name of the code file being run
-        //   $fileName: The base name of the code file being run, that is the file without the directory
-        //   $fileNameWithoutExt: The base name of the code file being run without its extension
         /* ------ 编译、运行只有一个文件的cpp文件 ------ */
         // 注：路径中有空格不会出现问题
-        "cpp": "clang++ $fullFileName -o $dir\"$fileNameWithoutExt\"\".out\" -W -Wall -O2 -std=c++17 -I$workspaceRoot/lib && $dir\"$fileNameWithoutExt\"\".out\"",
+        "cpp": "clang++ $fullFileName -o $workspaceRoot/main.out -W -Wall -O2 -std=c++20 -stdlib=libc++ -I$workspaceRoot/lib && $workspaceRoot/main.out",
         // 其中 $fullFileName 是绝对路径，是主文件
         // 自己决定是否加入 && rm $dir\"$fileNameWithoutExt\"\".out\"（也可以添加"files.exclude"）
         /* ------ 编译、运行多个cpp文件 ------ */
@@ -53,7 +34,7 @@
         //   更一般的，如果你链接的cpp文件不和主文件在一个目录下，需要从当前VSCode的工作目录补充相对路径从而形成绝对路径：
         //     $workspaceRoot\"relative/path/xxxx.cpp\"
         /* ------ 编译c文件 ------ */
-        "c": "clang $fullFileName -o $dir\"$fileNameWithoutExt\"\".out\" -W -Wall -O2 -std=gnu11 && $dir\"$fileNameWithoutExt\"\".out\"",
+        "c": "clang $fullFileName -o $workspaceRoot/main.out -W -Wall -O2 -std=c11 && $workspaceRoot/main.out",
         // "c": "gcc $fullFileName <file_to_link> -o $dir\"$fileNameWithoutExt\"\".out\" -W -Wall -O2 -std=c17 && $dir\"$fileNameWithoutExt\"\".out\"",
     },
     // Whether to clear previous output before each run (default is false):
@@ -72,20 +53,157 @@
     "code-runner.ignoreSelection": true,
     // 本地 clangd 路径
     // "clangd.path": "/usr/bin/clangd",
-    "clangd.arguments": [
-        // "--header-insertion=never", // 是否重复插入头文件，用万能头的话设置成never
-        "--query-driver=/usr/bin/clang++", // 将编译的所有工具链都添加进 LSP
-        "--log=verbose"
-    ],
+    // "clangd.arguments": [
+    //     // "--header-insertion=never", // 是否重复插入头文件，用万能头的话设置成never
+    //     "--query-driver=/usr/bin/clang++", // 将编译的所有工具链都添加进 LSP
+    //     "--log=verbose"
+    // ],
     // 没有找到 compile_commands.json 时默认的编译器参数是什么
     "clangd.fallbackFlags": [
         "-W",
         "-Wall",
         "-O2",
-        "-std=c++17",
+        "-std=c++20",
+        "-stdlib=libc++",
         "-I/root/cpp/lib",
     ],
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "lldb.launch.expressions": "native",
 }
+```
+
+### launch.json
+
+```json
+{
+  // One of the key features of Visual Studio Code is its great debugging support.
+  // VS Code's built-in debugger helps accelerate your edit, compile and debug loop.
+  // VS Code keeps debugging configuration information in a launch.json file
+  // located in a .vscode folder in your workspace (project root folder).
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb", // lldb 表示使用 CodeLLDB 来调试
+      "request": "launch", // 启动调试
+      "name": "C++ Debug", // launch 配置的名字
+      "preLaunchTask": "clang++ compile", // 启动调试任务前先执行 task.json 的 "clang++ compile"
+      "program": "${workspaceFolder}/main.out", // 调试的程序
+      "args": [], // 程序参数
+      "env": {}, // 环境变量
+      "cwd": "${workspaceFolder}",
+      "stopOnEntry": false, // 调试开始时在 main 函数中停止
+      "terminal": "integrated", // 使用 vscode 自带的终端进行调试
+    }
+  ]
+}
+```
+
+### task.json
+
+```json
+{
+  // Tasks in VS Code can be configured to run scripts and start processes
+  // so that many of these existing tools can be used from within VS Code 
+  // without having to enter a command line or write new code.
+  // Workspace or folder specific tasks are configured from the tasks.json file in the .vscode folder for a workspace.
+  "version": "2.0.0",
+  "tasks": [
+    {
+      // The task's label used in the user interface.
+      // Terminal -> Run Task... 看到的名字
+      "label": "clang++ compile",
+      // The task's type. For a custom task, this can either be shell or process.
+      // If shell is specified, the command is interpreted as a shell command (for example: bash, cmd, or PowerShell).
+      // If process is specified, the command is interpreted as a process to execute.
+      "type": "shell", // shell: 输入命令
+      // The actual command to execute.
+      // 因为g++已经在环境变量中了，所以我们这里写命令就行不用写g++的绝对路径
+      "command": "clang++",
+      "args": [
+        "${file}", // 表示当前文件（绝对路径）
+        // 在这里添加你还需要链接的.cpp文件
+        "-o",
+        "${workspaceFolder}/main.out",
+        "-W",
+        "-Wall",
+        "-g",
+        "-std=c++20",
+        "-stdlib=libc++",
+        "-I",
+        "${workspaceFolder}/lib",
+        "-fstandalone-debug",
+      ],
+      // Defines to which execution group this task belongs to.
+      // It supports "build" to add it to the build group and "test" to add it to the test group.
+      // Tasks that belong to the build/test group can be executed by running Run Build/Test Task from the Command Palette (sft cmd P).
+      // Valid values:
+      //   "build",
+      //   {"kind":"build","isDefault":true}, 
+      //   "test",
+      //   {"kind":"test","isDefault":true}, 
+      //   "none".
+      "group": {
+        "kind": "build",
+        "isDefault": true, // Defines if this task is the default task in the group.
+      },
+      // Configures the panel that is used to present the task's output and reads its input.
+      "presentation": {
+        // Controls whether the executed command is echoed to the panel. Default is true.
+        "echo": true, // 打开可以看到编译的命令，把命令本身输出一次
+        // Controls whether the terminal running the task is revealed or not. Default is "always".
+        //   always: Always reveals the terminal when this task is executed.
+        //   silent: Only reveals the terminal if the task exits with an error or the problem matcher finds an error.(会显示错误，但不会显示警告)
+        //   never: Never reveals the terminal when this task is executed.
+        "reveal": "silent", // 控制在集成终端中是否显示。如果没问题那我不希望终端被切换、如果有问题我希望能看到编译过程哪里出错，所以选silent(可能always会好一些)
+        // Controls whether the panel takes focus. Default is false.
+        "focus": false, // 我的理解是：是否将鼠标移过去。因为这个是编译任务，我们不需要输入什么东西，所以选false
+        // Controls if the panel is shared between tasks, dedicated to this task or a new one is created on every run.
+        "panel": "shared", // shared:不同任务的输出使用同一个终端panel（为了少生成几个panel我们选shared）
+        // Controls whether to show the `Terminal will be reused by tasks, press any key to close it` message.
+        "showReuseMessage": true, // 就一句话，你想看就true，不想看就false
+        // Controls whether the terminal is cleared before executing the task.
+        "clear": false, // 还是保留之前的task输出信息比较好。所以不清理
+      },
+      // Other two choices: options & runOptions (cmd I to use IntelliSense)
+      "options": {
+        // The current working directory of the executed program or script. If omitted Code's current workspace root is used.
+        "cwd": "${workspaceFolder}", // 默认就是这个，删掉也没问题
+      },
+      // problemMatcher: 用正则表达式提取g++的输出中的错误信息并将其显示到VS Code下方的Problems窗口
+      // check: https://code.visualstudio.com/docs/editor/tasks#_defining-a-problem-matcher
+      "problemMatcher": {
+        "owner": "cpp",
+        "fileLocation": "absolute",
+        "pattern": {
+          "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5,
+        },
+      },
+      // 官网教程 https://code.visualstudio.com/docs/cpp/config-clang-mac#_build-helloworldcpp 
+      // 提到了另一种problemMatcher，但试了之后好像不起作用，甚至还把我原本的电脑搞出了一些问题……
+    },
+  ]
+}
+```
+
+### .clang-format
+
+```
+BasedOnStyle: LLVM
+UseTab: Never
+IndentWidth: 4
+TabWidth: 4
+BreakBeforeBraces: Allman
+AllowShortIfStatementsOnASingleLine: false
+IndentCaseLabels: false
+ColumnLimit: 0
+AccessModifierOffset: -4
+NamespaceIndentation: All
+FixNamespaceComments: false
 ```
 
 ## 算法模板
@@ -985,22 +1103,16 @@
 		],
 		"description": "网络最大流"
 	},
-	"最小费用最大流": {
+	"最小费用流": {
 		"prefix": "tpmcmf",
 		"body": [
-			"struct Network",
+			"template <typename Cost = int>",
+			"class Network",
 			"{",
-			"    struct Edge",
-			"    {",
-			"        int to, flow, cost, rev_idx;",
-			"    };",
+			"public:",
+			"    Network(int n) : n(n), edge(n), h(n, MAX_COST) {}",
 			"",
-			"    int n;",
-			"    vector<vector<Edge>> edge;",
-			"",
-			"    Network(int n) : n(n), edge(n + 1) {}",
-			"",
-			"    void add_edge(int u, int v, int f, int c)",
+			"    void add_edge(int u, int v, int f, Cost c)",
 			"    {",
 			"        int ui = edge[u].size();",
 			"        int vi = edge[v].size();",
@@ -1008,44 +1120,44 @@
 			"        edge[v].push_back({u, 0, -c, ui});",
 			"    }",
 			"",
-			"    pair<int, int> mcmf(int s, int t)",
+			"    // spfa",
+			"    void init(int s)",
 			"    {",
-			"        vector<int> h(n + 1, numeric_limits<int>::max());",
-			"        vector<int> dis(n + 1, numeric_limits<int>::max());",
-			"        vector<Edge *> from(n + 1);",
-			"",
-			"        auto spfa = [&]() -> bool",
+			"        h[s] = 0;",
+			"        queue<int> q;",
+			"        q.push(s);",
+			"        while (!q.empty())",
 			"        {",
-			"            h[s] = 0;",
-			"            queue<int> q;",
-			"            q.push(s);",
-			"            while (!q.empty())",
+			"            int u = q.front();",
+			"            q.pop();",
+			"            Cost d = h[u];",
+			"            for (auto e : edge[u])",
 			"            {",
-			"                int u = q.front();",
-			"                q.pop();",
-			"                int d = h[u];",
-			"                for (auto e : edge[u])",
+			"                int v = e.to;",
+			"                if (e.flow && d + e.cost < h[v])",
 			"                {",
-			"                    int v = e.to;",
-			"                    if (e.flow && d + e.cost < h[v])",
-			"                    {",
-			"                        h[v] = d + e.cost;",
-			"                        q.push(v);",
-			"                    }",
+			"                    h[v] = d + e.cost;",
+			"                    q.push(v);",
 			"                }",
 			"            }",
-			"            return h[t] != numeric_limits<int>::max();",
-			"        };",
+			"        }",
+			"    }",
+			"",
+			"    pair<Cost, int> slope(int s, int t)",
+			"    {",
+			"        vector<Cost> dis(n, MAX_COST);",
+			"        vector<Edge *> from(n);",
 			"",
 			"        auto dijkstra = [&]() -> bool",
 			"        {",
 			"            struct Node",
 			"            {",
-			"                int u, d;",
+			"                int u;",
+			"                Cost d;",
 			"                bool operator>(const Node &other) const { return d > other.d; }",
 			"            };",
 			"",
-			"            dis.assign(n + 1, numeric_limits<int>::max());",
+			"            dis.assign(n, MAX_COST);",
 			"            dis[s] = 0;",
 			"            priority_queue<Node, vector<Node>, greater<Node>> heap;",
 			"            heap.push({s, 0});",
@@ -1057,7 +1169,8 @@
 			"                    continue;",
 			"                for (auto &e : edge[u])",
 			"                {",
-			"                    int v = e.to, c = e.cost + h[u] - h[v];",
+			"                    int v = e.to;",
+			"                    Cost c = e.cost + h[u] - h[v];",
 			"                    if (e.flow && d + c < dis[v])",
 			"                    {",
 			"                        dis[v] = d + c;",
@@ -1066,39 +1179,69 @@
 			"                    }",
 			"                }",
 			"            }",
-			"            return dis[t] != numeric_limits<int>::max();",
+			"            return dis[t] != MAX_COST;",
 			"        };",
 			"",
-			"        int mincost = 0, maxflow = 0;",
-			"        spfa();",
-			"        while (dijkstra())",
+			"        if (!dijkstra())",
+			"            return {0, 0};",
+			"",
+			"        Cost mincost = 0;",
+			"        int maxflow = 0;",
+			"        for (int u = 0; u < n; u++)",
+			"            h[u] += dis[u];",
+			"        int flow = numeric_limits<int>::max();",
+			"        for (Edge *p = from[t]; p;)",
 			"        {",
-			"            for (int u = 0; u <= n; u++)",
-			"                h[u] += dis[u];",
-			"            int flow = numeric_limits<int>::max();",
-			"            for (Edge *p = from[t]; p;)",
-			"            {",
-			"                flow = min(flow, p->flow);",
-			"                int v = p->to, rev_idx = p->rev_idx;",
-			"                Edge *r = &edge[v][rev_idx];",
-			"                p = from[r->to];",
-			"            }",
-			"            for (Edge *p = from[t]; p;)",
-			"            {",
-			"                int v = p->to, rev_idx = p->rev_idx;",
-			"                Edge *r = &edge[v][rev_idx];",
-			"                p->flow -= flow;",
-			"                r->flow += flow;",
-			"                p = from[r->to];",
-			"            }",
-			"            mincost += h[t] * flow;",
+			"            flow = min(flow, p->flow);",
+			"            int v = p->to, rev_idx = p->rev_idx;",
+			"            Edge *r = &edge[v][rev_idx];",
+			"            p = from[r->to];",
+			"        }",
+			"        for (Edge *p = from[t]; p;)",
+			"        {",
+			"            int v = p->to, rev_idx = p->rev_idx;",
+			"            Edge *r = &edge[v][rev_idx];",
+			"            p->flow -= flow;",
+			"            r->flow += flow;",
+			"            p = from[r->to];",
+			"        }",
+			"        mincost += h[t] * flow;",
+			"        maxflow += flow;",
+			"        return {mincost, maxflow};",
+			"    }",
+			"",
+			"    pair<Cost, int> mcmf(int s, int t)",
+			"    {",
+			"        init(s);",
+			"        Cost mincost = 0;",
+			"        int maxflow = 0;",
+			"        while (true)",
+			"        {",
+			"            auto [cost, flow] = slope(s, t);",
+			"            if (flow == 0)",
+			"                break;",
+			"            mincost += cost;",
 			"            maxflow += flow;",
 			"        }",
 			"        return {mincost, maxflow};",
 			"    }",
+			"",
+			"private:",
+			"    const Cost MAX_COST = numeric_limits<Cost>::max();",
+			"",
+			"    struct Edge",
+			"    {",
+			"        int to, flow;",
+			"        Cost cost;",
+			"        int rev_idx;",
+			"    };",
+			"",
+			"    int n;",
+			"    vector<vector<Edge>> edge;",
+			"    vector<Cost> h;",
 			"};"
 		],
-		"description": "最小费用最大流"
+		"description": "最小费用流"
 	},
 	"莫队查询排序": {
 		"prefix": "tpmo",
