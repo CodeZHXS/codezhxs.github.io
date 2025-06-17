@@ -9,6 +9,7 @@ nav:
   - 算法:
     - algorithm/index.md
     - AtCoder:
+      - ABC391(A-F): algorithm/AtCoder/abc391.md
       - ABC390(A-F): algorithm/AtCoder/abc390.md
       - ABC389(A-F): algorithm/AtCoder/abc389.md
       - ABC388(A-G): algorithm/AtCoder/abc388.md
@@ -65,7 +66,7 @@ nav:
     - dev/index.md
     - 数据库:
       - CMU 15-799 | 优化器:
-        - System R 论文精读: dev/db/optimizer/SystemR.md
+        - System R 论文精读: dev/db/optimizer/SystemR/SystemR.md
       - CMU 15-445: 
         - 缓冲池: dev/db/15445/buffer_pool_manager.md
         - 常见哈希索引方案介绍: dev/db/15445/hash.md
