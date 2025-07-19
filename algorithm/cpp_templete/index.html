@@ -3072,7 +3072,7 @@
 <span class="w">        </span><span class="c1">// 其中 $fullFileName 是绝对路径，是主文件</span>
 <span class="w">        </span><span class="c1">// 自己决定是否加入 &amp;&amp; rm $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot;（也可以添加&quot;files.exclude&quot;）</span>
 <span class="w">        </span><span class="cm">/* ------ 编译、运行多个cpp文件 ------ */</span>
-<span class="w">        </span><span class="c1">// &quot;cpp&quot;: &quot;g++ $fullFileName &lt;file_to_link&gt; -o $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot; -W -Wall -O2 -std=c++17 &amp;&amp; $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot;&quot;,</span>
+<span class="w">        </span><span class="c1">// &quot;cpp&quot;: &quot;g++ $fullFileName &lt;file_to_link&gt; -o $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot; -W -Wall -O2 -std=c++20 &amp;&amp; $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot;&quot;,</span>
 <span class="w">        </span><span class="c1">// &lt;file_to_link&gt;的写法：</span>
 <span class="w">        </span><span class="c1">//   一般的，你也可以直接写绝对路径</span>
 <span class="w">        </span><span class="c1">//     \&quot;/path/xxxx.cpp\&quot;</span>
@@ -3100,11 +3100,11 @@
 <span class="w">    </span><span class="nt">&quot;code-runner.ignoreSelection&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// 本地 clangd 路径</span>
 <span class="w">    </span><span class="c1">// &quot;clangd.path&quot;: &quot;/usr/bin/clangd&quot;,</span>
-<span class="w">    </span><span class="c1">// &quot;clangd.arguments&quot;: [</span>
-<span class="w">    </span><span class="c1">//     // &quot;--header-insertion=never&quot;, // 是否重复插入头文件，用万能头的话设置成never</span>
-<span class="w">    </span><span class="c1">//     &quot;--query-driver=/usr/bin/clang++&quot;, // 将编译的所有工具链都添加进 LSP</span>
-<span class="w">    </span><span class="c1">//     &quot;--log=verbose&quot;</span>
-<span class="w">    </span><span class="c1">// ],</span>
+<span class="w">    </span><span class="nt">&quot;clangd.arguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="c1">// &quot;--header-insertion=never&quot;, // 是否重复插入头文件，用万能头的话设置成never</span>
+<span class="w">        </span><span class="s2">&quot;--query-driver=/usr/bin/clang++&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// 将编译的所有工具链都添加进 LSP</span>
+<span class="w">        </span><span class="s2">&quot;--log=verbose&quot;</span>
+<span class="w">    </span><span class="p">],</span>
 <span class="w">    </span><span class="c1">// 没有找到 compile_commands.json 时默认的编译器参数是什么</span>
 <span class="w">    </span><span class="nt">&quot;clangd.fallbackFlags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="s2">&quot;-W&quot;</span><span class="p">,</span>
@@ -3172,7 +3172,7 @@
 <span class="w">        </span><span class="s2">&quot;-stdlib=libc++&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s2">&quot;-I&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s2">&quot;${workspaceFolder}/lib&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;-fstandalone-debug&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// &quot;-fstandalone-debug&quot;,</span>
 <span class="w">      </span><span class="p">],</span>
 <span class="w">      </span><span class="c1">// Defines to which execution group this task belongs to.</span>
 <span class="w">      </span><span class="c1">// It supports &quot;build&quot; to add it to the build group and &quot;test&quot; to add it to the test group.</span>
@@ -3409,11 +3409,45 @@ FixNamespaceComments: false
 <span class="w">            </span><span class="s2">&quot;class FenwickTree&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;public:&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    FenwickTree(int n) : n(n), t(n + 1) {}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    FenwickTree(int n) : n(n), t(n) {}&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    void add(int x, T k)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        for (; x &lt;= n; x += lowbit(x))&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (; x &lt; n; x += lowbit(x))&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            t[x] += k;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    T range(int l, int r) const { return prefix(r) - prefix(l - 1); }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;private:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int n;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;T&gt; t;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int lowbit(int x) const { return x &amp; -x; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    T prefix(int x) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        T ans = 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (; x; x -= lowbit(x))&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            ans += t[x];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return ans;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;};&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;树状数组&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;树状数组(支持二分)&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tpfenwick&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;template &lt;typename T&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;class FenwickTree&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;public:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    FenwickTree(int n) : n(n), t(n) {}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void add(int x, T k)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (; x &lt; n; x += lowbit(x))&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            t[x] += k;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -3421,9 +3455,9 @@ FixNamespaceComments: false
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        int x = 0;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        T sum = 0;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        for (int i = 1 &lt;&lt; __lg(n); i; i &gt;&gt;= 1)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (int i = 1 &lt;&lt; (int)log2(n); i; i &gt;&gt;= 1)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            if (x + i &gt; n || sum + t[x + i] &gt;= k)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (x + i &gt;= n || sum + t[x + i] &gt;= k)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;                continue;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            x += i;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            sum += t[x];&quot;</span><span class="p">,</span>
@@ -3431,14 +3465,493 @@ FixNamespaceComments: false
 <span class="w">            </span><span class="s2">&quot;        return x + 1;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    T range(int l, int r) const { return prefix(r) - prefix(l - 1); }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;private:&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    int n;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    vector&lt;T&gt; t;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    int lowbit(int x) const { return x &amp; -x; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    T prefix(int x) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        T ans = 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (; x; x -= lowbit(x))&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            ans += t[x];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return ans;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;};&quot;</span>
 <span class="w">        </span><span class="p">],</span>
 <span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;树状数组&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;线段树&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tpsegtree&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;#include &lt;bit&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;template &lt;class S, auto op, auto e&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;class SegTree&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;public:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    explicit SegTree(int n) : SegTree(vector&lt;S&gt;(n, e())) {}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    explicit SegTree(const vector&lt;S&gt; &amp;v) : n(v.size())&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        size = bit_ceil((unsigned int)n);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        d = vector&lt;S&gt;(2 * size, e());&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (int i = 0; i &lt; n; i++)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            d[size + i] = v[i];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (int i = size - 1; i &gt;= 1; i--)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_up(i);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void set(int p, S x)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        p += size;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        d[p] = x;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (p &gt;&gt;= 1; p; p &gt;&gt;= 1)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_up(p);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    S get(int p) const { return d[p + size]; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    S prod(int l, int r) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        S ansl = e(), ansr = e();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (l += size, r += size; l &lt; r; l &gt;&gt;= 1, r &gt;&gt;= 1)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (l &amp; 1)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                ansl = op(ansl, d[l++]);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (r &amp; 1)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                ansr = op(d[--r], ansr);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return op(ansl, ansr);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    S all_prod() const { return d[1]; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;private:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int n, size;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;S&gt; d;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void push_up(int k) { d[k] = op(d[2 * k], d[2 * k + 1]); }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;};&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;线段树&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;线段树(支持二分)&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tpsegtree&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;#include &lt;bit&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;template &lt;class S, auto op, auto e&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;class SegTree&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;public:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    explicit SegTree(int n) : SegTree(vector&lt;S&gt;(n, e())) {}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    explicit SegTree(const vector&lt;S&gt; &amp;v) : n(v.size())&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        size = bit_ceil((unsigned int)n);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        d = vector&lt;S&gt;(2 * size, e());&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (int i = 0; i &lt; n; i++)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            d[size + i] = v[i];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (int i = size - 1; i &gt;= 1; i--)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_up(i);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void set(int p, S x)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        p += size;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        d[p] = x;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (p &gt;&gt;= 1; p; p &gt;&gt;= 1)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_up(p);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    S get(int p) const { return d[p + size]; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    S prod(int l, int r) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        S ans = e();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (l += size, r += size; l &lt; r; l &gt;&gt;= 1, r &gt;&gt;= 1)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (l &amp; 1)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                ans = op(ans, d[l++]);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (r &amp; 1)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                ans = op(d[--r], ans);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return ans;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    S all_prod() const { return d[1]; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    template &lt;bool (*f)(S)&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int max_right(int l) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return max_right(l, [](S x)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                         { return f(x); });&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    template &lt;class F&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int max_right(int l, F f) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (l == n)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            return n;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        l += size;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        S sm = e();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        do&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            while (l % 2 == 0)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                l &gt;&gt;= 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (!f(op(sm, d[l])))&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                while (l &lt; size)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                    l = (2 * l);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                    if (f(op(sm, d[l])))&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                        sm = op(sm, d[l]);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                        l++;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                return l - size;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            sm = op(sm, d[l]);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            l++;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        } while ((l &amp; -l) != l);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return n;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    template &lt;bool (*f)(S)&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int min_left(int r) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return min_left(r, [](S x)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                        { return f(x); });&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    template &lt;class F&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int min_left(int r, F f) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (r == 0)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            return 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        r += size;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        S sm = e();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        do&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            r--;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            while (r &gt; 1 &amp;&amp; (r % 2))&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                r &gt;&gt;= 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (!f(op(d[r], sm)))&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                while (r &lt; size)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                    r = (2 * r + 1);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                    if (f(op(d[r], sm)))&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                        sm = op(d[r], sm);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                        r--;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                return r + 1 - size;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            sm = op(d[r], sm);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        } while ((r &amp; -r) != r);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;private:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int n, size;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;S&gt; d;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void push_up(int k) { d[k] = op(d[2 * k], d[2 * k + 1]); }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;};&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;线段树(支持二分)&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;线段树(动态开点))&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tpdynamicsegtree&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;#include &lt;bit&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;template &lt;class S, auto op, auto e, auto m&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;class DynamicSegTree&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;public:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    explicit DynamicSegTree(int n, int q) : DynamicSegTree&lt;S, op, e, m&gt;(0, n, q) {}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    explicit DynamicSegTree(int beg, int end, int q) : beg(beg), end(end)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int dep = countr_zero(bit_ceil((unsigned int)(end - beg))) + 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int t = countr_zero(bit_floor((unsigned)q));&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int k = (dep - t) * q + (1 &lt;&lt; (t + 1)) - q;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (k &lt; 0)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            k = 1 &lt;&lt; dep;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        d = vector&lt;S&gt;(k, e());&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        ch = vector&lt;pair&lt;int, int&gt;&gt;(k, {0, 0});&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void add(int p, S k) { _add(root, beg, end, p, k); }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    S get(int p) { return _get(root, beg, end, p); }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    S prod(int l, int r) { return _prod(root, beg, end, l, r); }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    S all_prod() const { return d[root]; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    template &lt;bool (*f)(S)&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int max_right(int l) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return max_right(l, [](S x)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                         { return f(x); });&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    template &lt;class F&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int max_right(int l, F f)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        const int INVALID = end;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        S now = e();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        auto _max_right = [&amp;](auto &amp;&amp;self, int p, int beg, int end) -&gt; int&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (!p || end - 1 &lt; l)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                return INVALID;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (beg &gt;= l)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                S ans = d[p];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                if (f(op(now, ans)))&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                    now = op(now, ans);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                    return INVALID;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                if (beg + 1 == end)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                    return beg;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            int mid = (beg + end) / 2;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            int pos = self(self, lch(p), beg, mid);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            return pos == INVALID ? self(self, rch(p), mid, end) : pos;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        };&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return _max_right(_max_right, root, beg, end);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    template &lt;bool (*f)(S)&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int min_left(int r)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return min_left(r, [](S x)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                        { return f(x); });&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    template &lt;class F&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int min_left(int r, F f)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        const int INVALID = beg - 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        S now = e();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        auto _min_right = [&amp;](auto &amp;&amp;self, int p, int beg, int end) -&gt; int&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (!p || beg &gt; r)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                return INVALID;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (end - 1 &lt;= r)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                S ans = d[p];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                if (f(op(ans, now)))&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                    now = op(ans, now);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                    return INVALID;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                if (beg + 1 == end)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                    return beg;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            int mid = (beg + end) / 2;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            int pos = self(self, rch(p), mid, end);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            return pos == INVALID ? self(self, lch(p), beg, mid) : pos;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        };&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return _min_right(_min_right, root, beg, end);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;private:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    const int beg, end;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int root = 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int idx = 2;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;S&gt; d;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;pair&lt;int, int&gt;&gt; ch;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int &amp;lch(int k) { return ch[k].first; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int &amp;rch(int k) { return ch[k].second; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void push_up(int k) { d[k] = op(d[lch(k)], d[rch(k)]); }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    S _get(int p, int beg, int end, int pos)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (!p)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            return e();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (beg + 1 == end)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            return d[p];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int mid = (beg + end) / 2;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return pos &lt; mid ? _get(lch(p), beg, mid, pos) : _get(rch(p), mid, end, pos);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    S _prod(int p, int beg, int end, int l, int r)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (!p || beg &gt; r || end &lt; l)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            return e();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (beg &gt;= l &amp;&amp; end &lt;= r)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            return d[p];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int mid = (beg + end) / 2;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        S ansl = _prod(lch(p), beg, mid, l, r);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        S ansr = _prod(rch(p), mid, end, l, r);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return op(ansl, ansr);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void _add(int &amp;p, int beg, int end, int pos, S k)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (!p)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            p = idx++;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (beg + 1 == end)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            m(d[p], k);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            return;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int mid = (beg + end) / 2;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (pos &lt; mid)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            _add(lch(p), beg, mid, pos, k);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        else&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            _add(rch(p), mid, end, pos, k);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        push_up(p);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;};&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;线段树(动态开点))&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;线段树(区间修改)&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tplazysegtree&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;#include &lt;bit&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;template &lt;class S, S (*op)(S, S), S (*e)(), class F, S (*mapping)(F, S), F (*composition)(F, F), F (*id)()&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;struct LazySegTree&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;public:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    LazySegTree() : LazySegTree(0) {}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    explicit LazySegTree(int n) : LazySegTree(vector&lt;S&gt;(n, e())) {}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    explicit LazySegTree(const vector&lt;S&gt; &amp;v) : n(int(v.size()))&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        size = bit_ceil((unsigned int)(n));&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        log = countr_zero((unsigned int)size);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        d = vector&lt;S&gt;(2 * size, e());&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        lz = vector&lt;F&gt;(size, id());&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (int i = 0; i &lt; n; i++)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            d[size + i] = v[i];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (int i = size - 1; i &gt;= 1; i--)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_up(i);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void set(int p, S x)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        p += size;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (int i = log; i &gt;= 1; i--)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_down(p &gt;&gt; i);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        d[p] = x;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (int i = 1; i &lt;= log; i++)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_up(p &gt;&gt; i);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    S get(int p)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        p += size;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (int i = log; i &gt;= 1; i--)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_down(p &gt;&gt; i);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return d[p];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    S prod(int l, int r)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (l == r)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            return e();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        l += size;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        r += size;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (int i = log; i &gt;= 1; i--)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (((l &gt;&gt; i) &lt;&lt; i) != l)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                push_down(l &gt;&gt; i);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (((r &gt;&gt; i) &lt;&lt; i) != r)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                push_down((r - 1) &gt;&gt; i);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        S ansl = e(), ansr = e();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (; l &lt; r; l &gt;&gt;= 1, r &gt;&gt;= 1)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (l &amp; 1)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                ansl = op(ansl, d[l++]);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (r &amp; 1)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                ansr = op(d[--r], ansr);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return op(ansl, ansr);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    S all_prod() { return d[1]; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void apply(int p, F f)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        p += size;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (int i = log; i &gt;= 1; i--)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_down(p &gt;&gt; i);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        d[p] = mapping(f, d[p]);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (int i = 1; i &lt;= log; i++)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_up(p &gt;&gt; i);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void apply(int l, int r, F f)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (l == r)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            return;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        l += size;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        r += size;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (int i = log; i &gt;= 1; i--)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (((l &gt;&gt; i) &lt;&lt; i) != l)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                push_down(l &gt;&gt; i);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (((r &gt;&gt; i) &lt;&lt; i) != r)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                push_down((r - 1) &gt;&gt; i);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (int x = l, y = r; x &lt; y; x &gt;&gt;= 1, y &gt;&gt;= 1)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (x &amp; 1)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                all_apply(x++, f);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (y &amp; 1)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                all_apply(--y, f);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (int i = 1; i &lt;= log; i++)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (((l &gt;&gt; i) &lt;&lt; i) != l)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                push_up(l &gt;&gt; i);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (((r &gt;&gt; i) &lt;&lt; i) != r)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                push_up((r - 1) &gt;&gt; i);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;private:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int n, size, log;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;S&gt; d;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;F&gt; lz;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void all_apply(int k, F f)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        d[k] = mapping(f, d[k]);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (k &lt; size)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            lz[k] = composition(f, lz[k]);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void push_up(int k) { d[k] = op(d[2 * k], d[2 * k + 1]); }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void push_down(int k)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        all_apply(2 * k, lz[k]);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        all_apply(2 * k + 1, lz[k]);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        lz[k] = id();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;};&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;线段树(区间修改)&quot;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;TreapSet普通平衡树&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tptreap&quot;</span><span class="p">,</span>
@@ -4378,7 +4891,7 @@ FixNamespaceComments: false
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月26日 13:37:26 UTC">2025-05-26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月19日 14:51:15 UTC">2025-07-19</span>
       
         <br>
         创建日期:
