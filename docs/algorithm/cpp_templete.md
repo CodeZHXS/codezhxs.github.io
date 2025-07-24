@@ -1852,3 +1852,69 @@ FixNamespaceComments: false
 }
 ```
 
+## 对拍程序
+
+[testlib/testlib.h at master · MikeMirzayanov/testlib](https://github.com/MikeMirzayanov/testlib/blob/master/testlib.h)
+
+### duipai.cpp
+
+```cpp
+#include <cstdio>
+#include <cstdlib>
+
+using namespace std;
+
+int main()
+{
+    system("clang++ ac.cpp -o ac.out -W -Wall -O2 -std=c++20 -stdlib=libc++ -I/root/cpp/lib");
+    system("clang++ wa.cpp -o wa.out -W -Wall -O2 -std=c++20 -stdlib=libc++ -I/root/cpp/lib");
+    system("clang++ data.cpp -o data.out -W -Wall -O2 -std=c++20 -stdlib=libc++");
+    char data_gen_cmd[64];
+    int seed = 0;
+    while(1)
+    {
+        sprintf(data_gen_cmd, "./data.out %d > ./in.txt 897", seed);
+        printf("%d...\n", seed++);
+        system(data_gen_cmd);
+        system("./ac.out < ./in.txt > ./ac.txt");
+        system("./wa.out < ./in.txt > ./wa.txt");
+        if (system("diff ./ac.txt ./wa.txt"))
+        {
+            system("cat ./in.txt");
+            break;
+        }
+    }
+    return 0;
+}
+```
+
+### data.cpp
+
+```cpp
+#include "testlib.h"
+#include <cstdio>
+#include <iostream>
+
+using namespace std;
+using LL = long long;
+
+int main(int argc, char **argv)
+{
+    registerGen(argc, argv, 1);
+    FILE *fp = freopen("in.txt", "w", stdout);
+    LL n = rnd.next(1ll, (LL)1E15);
+    int m = rnd.next(1, (int)2E5);
+    cout << n << ' ' << m << '\n';
+    while (m--)
+    {
+        int a = rnd.next(2, 300);
+        int b = rnd.next(1, a - 1);
+        cout << a << ' ' << b << '\n';
+    }
+    // println(rnd.next(1, 10));                 /* Random number in the range [1,10]. */
+    // println(rnd.next("[a-zA-Z0-9]{1,1000}")); /* Random word of length [1,1000]. */
+    fclose(fp);
+    return 0;
+}
+```
+
