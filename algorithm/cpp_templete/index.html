@@ -4844,16 +4844,237 @@ FixNamespaceComments: false
 <span class="w">        </span><span class="p">],</span>
 <span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;最小费用流&quot;</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;莫队查询排序&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tpmo&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;莫队算法&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tpmoalgo&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="s2">&quot;struct Query&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;template &lt;class G, class A, void (*op)(G &amp;, int, bool), A (*answer)(const G &amp;)&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;class MoAlgo&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    int l, r, b, id;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    bool operator&lt;(const Query &amp;other) const { return b != other.b ? b &lt; other.b : (r == other.r ? false : ((b &amp; 1) ^ (r &lt; other.r))); }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;public:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    explicit MoAlgo(int n, G g, const vector&lt;pair&lt;int, int&gt;&gt; &amp;intervals) : n(n), m(intervals.size()), g(g)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int sq = sqrt(n);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        query.reserve(m);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (int i = 0; i &lt; m; i++)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            auto [l, r] = intervals[i];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            query.push_back({l, r, l / sq, i});&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        sort(query.begin(), query.end());&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;A&gt; solve()&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        vector&lt;A&gt; ans(m);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int l = 0, r = 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (auto &amp;[ql, qr, _, id] : query)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            while (l &gt; ql)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                op(g, --l, true);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            while (r &lt; qr)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                op(g, r++, true);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            while (l &lt; ql)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                op(g, l++, false);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            while (r &gt; qr)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                op(g, --r, false);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            ans[id] = answer(g);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return ans;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;private:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    struct Query&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int l, r, b, id;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        bool operator&lt;(const Query &amp;other) const { return b != other.b ? b &lt; other.b : (b &amp; 1) ^ (r &lt; other.r); }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    };&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int n, m;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    G g;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;Query&gt; query;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;};&quot;</span>
 <span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;莫队查询排序&quot;</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;莫队算法&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;manacher算法&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tpmanacher&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;int manacher(const string &amp;s, char ch)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int n = s.size();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int m = 2 * n + 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    string t(m, ch);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    for (int i = 0, j = 1; i &lt; n; i++, j += 2)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        t[j] = s[i];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;int&gt; d(m);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int ans = 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    for(int i = 0, l = 0, r = -1; i &lt; m; i++)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int k = i &gt; r ? 1 : min(d[l+r-i], r-i+1);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        while(i-k &gt;= 0 &amp;&amp; i + k &lt; m &amp;&amp; t[i-k] == t[i+k])&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            k++;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        d[i] = k;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        ans = max(ans, 2 * k - 1);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if(i + k - 1 &gt; r)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            r = i + k - 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            l = i - k + 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    return ans / 2;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;}&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;manacher算法&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;KMP&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tpkmp&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;vector&lt;int&gt; get_next(const string &amp;s)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int n = s.size();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;int&gt; next(n);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    for (int i = 1, j = 0; i &lt; n; i++)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        while (j &amp;&amp; s[i] != s[j])&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            j = next[j - 1];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (s[i] == s[j])&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            j++;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        next[i] = j;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    return next;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;KMP&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;modint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tpmint&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;template &lt;int m, bool isp = true&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;class static_modint&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    using mint = static_modint;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    using u32 = unsigned int;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    using u64 = unsigned long long;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    using i32 = int;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    using i64 = long long;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;public:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    static_modint() : _v(0) {}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    static_modint(u32 v) : _v(v % umod()) {}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    static_modint(u64 v) : _v(v % umod()) {}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    static_modint(i32 v)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        i32 x = (i32)(v % (i32)umod());&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (x &lt; 0)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            x += umod();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        _v = (u32)x;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    static_modint(i64 v)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        i64 x = (i64)(v % (i64)umod());&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (x &lt; 0)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            x += umod();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        _v = (u32)x;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    u32 val() const { return _v; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    mint &amp;operator++()&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        _v++;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (_v == umod())&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            _v = 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return *this;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    mint &amp;operator--()&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (_v == 0)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            _v = umod();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        _v--;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return *this;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    mint operator++(int)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        mint result = *this;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        ++*this;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return result;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    mint operator--(int)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        mint result = *this;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        --*this;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return result;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    mint &amp;operator+=(const mint &amp;rhs)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        _v += rhs._v;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (_v &gt;= umod())&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            _v -= umod();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return *this;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    mint &amp;operator-=(const mint &amp;rhs)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        _v -= rhs._v;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (_v &gt;= umod())&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            _v += umod();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return *this;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    mint &amp;operator*=(const mint &amp;rhs)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        u64 z = (u64)_v * (u64)rhs._v;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        _v = (u32)(z % umod());&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return *this;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    mint &amp;operator/=(const mint &amp;rhs) { return *this = *this * rhs.inv(); }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    mint operator+() const { return *this; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    mint operator-() const { return mint(0) - *this; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    mint pow(i64 n) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        mint x = *this, r = 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        while (n)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (n &amp; 1)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                r *= x;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            x *= x;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            n &gt;&gt;= 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return r;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    mint inv() const { return isp ? pow(umod() - 2) : inv_gcd(_v, m); }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    friend mint operator+(const mint &amp;lhs, const mint &amp;rhs) { return mint(lhs) += rhs; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    friend mint operator-(const mint &amp;lhs, const mint &amp;rhs) { return mint(lhs) -= rhs; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    friend mint operator*(const mint &amp;lhs, const mint &amp;rhs) { return mint(lhs) *= rhs; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    friend mint operator/(const mint &amp;lhs, const mint &amp;rhs) { return mint(lhs) /= rhs; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    friend bool operator==(const mint &amp;lhs, const mint &amp;rhs) { return lhs._v == rhs._v; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    friend bool operator!=(const mint &amp;lhs, const mint &amp;rhs) { return lhs._v != rhs._v; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;private:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    u32 _v;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    static constexpr unsigned int umod() { return m; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    static mint inv_gcd(i64 a, i64 b)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        auto exgcd = [](auto &amp;&amp;self, i64 a, i64 b) -&gt; pair&lt;i64, i64&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (b == 0)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                return {1, 0};&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            auto [x, y] = self(self, b, a % b);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            return {y, x - a / b * y};&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        };&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        auto [x, _] = exgcd(exgcd, a, b);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return mint(x);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;};&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;modint&quot;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;布尔矩阵&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tpmatrix&quot;</span><span class="p">,</span>
@@ -4906,36 +5127,6 @@ FixNamespaceComments: false
 <span class="w">            </span><span class="s2">&quot;}&quot;</span>
 <span class="w">        </span><span class="p">],</span>
 <span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;布尔矩阵&quot;</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;manacher算法&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tpmanacher&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="s2">&quot;int manacher(const string &amp;s, char ch)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    int n = s.size();&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    int m = 2 * n + 1;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    string t(m, ch);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    for (int i = 0, j = 1; i &lt; n; i++, j += 2)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        t[j] = s[i];&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    vector&lt;int&gt; d(m);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    int ans = 0;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    for(int i = 0, l = 0, r = -1; i &lt; m; i++)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        int k = i &gt; r ? 1 : min(d[l+r-i], r-i+1);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        while(i-k &gt;= 0 &amp;&amp; i + k &lt; m &amp;&amp; t[i-k] == t[i+k])&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            k++;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        d[i] = k;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        ans = max(ans, 2 * k - 1);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        if(i + k - 1 &gt; r)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            r = i + k - 1;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            l = i - k + 1;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    return ans / 2;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;}&quot;</span>
-<span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;manacher算法&quot;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -5003,7 +5194,7 @@ FixNamespaceComments: false
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月24日 13:40:13 UTC">2025-07-24</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月26日 11:57:41 UTC">2025-07-26</span>
       
         <br>
         创建日期:
