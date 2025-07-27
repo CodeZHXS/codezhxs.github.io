@@ -4389,144 +4389,146 @@ FixNamespaceComments: false
 <span class="w">        </span><span class="p">],</span>
 <span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Treap文艺平衡树&quot;</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;Trie树&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;字典树&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tptrie&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="s2">&quot;struct Trie&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;template &lt;int m, auto get_id&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;class Trie&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    struct Node&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;public:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    explicit Trie(int n) : ne(n, array&lt;int, m&gt;{}) {}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int insert(const string &amp;s) { return insert_path(s).back(); }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;int&gt; insert_path(const string &amp;s)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        unordered_map&lt;char, Node *&gt; ne;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        bool end;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        Node *at_or_new(char ch)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int p = 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        vector&lt;int&gt; path;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        path.reserve(s.size());&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (auto ch : s)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            auto it = ne.find(ch);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            if (it == ne.end())&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                it = ne.insert({ch, new Node()}).first;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            return it-&gt;second;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            p = at_or_new(p, ch);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            path.push_back(p);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        Node *at(char ch) const&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            auto it = ne.find(ch);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            return it == ne.end() ? nullptr : it-&gt;second;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    };&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    Node *root = new Node();&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    void insert(const string &amp;s)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        Node *p = root;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        for(auto ch : s)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p = p-&gt;at_or_new(ch);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        p-&gt;end = true;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return path;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    string search(const string &amp;s)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        Node *p = root;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        for(auto ch : s)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p = p-&gt;at(ch);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int find(const string &amp;s) const { return find_path(s).back(); }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;int&gt; find_path(const string &amp;s) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int p = 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        vector&lt;int&gt; path;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        path.reserve(s.size());&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (auto ch : s)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            p = at(p, ch);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            path.push_back(p);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (!p)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                break;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return path;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;private:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;array&lt;int, m&gt;&gt; ne;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int idx = 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int at_or_new(int p, char ch)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int &amp;q = ne[p][get_id(ch)];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (q == 0)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            q = idx++;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return q;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int at(int p, char ch) const { return ne[p][get_id(ch)]; }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;};&quot;</span>
 <span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Trie树&quot;</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;字典树&quot;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;AC自动机&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tpac&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="s2">&quot;struct AC&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;template &lt;int m, auto get_id&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;class AC&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    struct Node&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;public:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    explicit AC(int n_) : n(n_), ne(n_, array&lt;int, m&gt;{}) {}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int insert(const string &amp;s) { return insert_path(s).back(); }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;int&gt; insert_path(const string &amp;s)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        unordered_map&lt;char, Node *&gt; ne;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        vector&lt;Node *&gt; edge;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        Node *fail;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        vector&lt;int *&gt; pattern_ans;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        int cnt = 0;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        Node *at_or_new(char ch)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            auto it = ne.find(ch);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            if (it == ne.end())&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                it = ne.insert({ch, new Node()}).first;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            return it-&gt;second;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        Node *at(char ch)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            auto it = ne.find(ch);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            if (it == ne.end())&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                it = ne.insert({ch, fail-&gt;at(ch)}).first;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            return it-&gt;second;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    };&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    Node *root = new Node();&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    void insert(int *ans_ptr, const string &amp;s)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        Node *p = root;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        for (auto ch : s)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p = p-&gt;at_or_new(ch);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        p-&gt;pattern_ans.push_back(ans_ptr);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    void search(const string &amp;s)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        Node *now = root;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int p = 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        vector&lt;int&gt; path;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        path.reserve(s.size());&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        for (auto ch : s)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            now = now-&gt;at(ch);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            now-&gt;cnt++;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            p = at_or_new(p, ch);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            path.push_back(p);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        auto dfs = [&amp;](auto &amp;self, Node *u) -&gt; int&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            for (auto v : u-&gt;edge)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                u-&gt;cnt += self(self, v);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            for (auto p : u-&gt;pattern_ans)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                *p += u-&gt;cnt;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            return u-&gt;cnt;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        };&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        dfs(dfs, root);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return path;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    void build()&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;vector&lt;int&gt;&gt; build()&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        queue&lt;Node *&gt; q;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        for (char ch = &#39;a&#39;; ch &lt;= &#39;z&#39;; ch++)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            auto it = root-&gt;ne.find(ch);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            if (it != root-&gt;ne.end())&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        vector&lt;vector&lt;int&gt;&gt; edge(n);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        vector&lt;int&gt; fail(n);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        queue&lt;int&gt; q;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (auto v : ne[0])&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (v)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                q.push(it-&gt;second);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                it-&gt;second-&gt;fail = root;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                root-&gt;edge.push_back(it-&gt;second);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                q.push(v);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                edge[0].push_back(v);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            else&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                root-&gt;ne[ch] = root;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        while (!q.empty())&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            Node *u = q.front();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            int u = q.front();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            int f = fail[u];&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            q.pop();&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            Node *f = u-&gt;fail;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            for (auto [ch, v] : u-&gt;ne)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            for (int i = 0; i &lt; m; i++)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                Node *f_ch = f-&gt;at(ch);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                v-&gt;fail = f_ch;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                f_ch-&gt;edge.push_back(v);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                q.push(v);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                int &amp;v = ne[u][i];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                if (v)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                    fail[v] = ne[f][i];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                    q.push(v);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                    edge[fail[v]].push_back(v);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                else&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                    v = ne[f][i];&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return edge;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;int&gt; get_path(const string &amp;s) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int p = 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        vector&lt;int&gt; path;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        path.reserve(s.size());&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (auto ch : s)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            p = at(p, ch);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            path.push_back(p);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return path;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;private:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int n, idx = 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;array&lt;int, m&gt;&gt; ne;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int at_or_new(int p, char ch)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int &amp;q = ne[p][get_id(ch)];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (q == 0)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            q = idx++;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return q;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int at(int p, char ch) const { return ne[p][get_id(ch)]; }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;};&quot;</span>
 <span class="w">        </span><span class="p">],</span>
 <span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AC自动机&quot;</span>
@@ -4619,13 +4621,16 @@ FixNamespaceComments: false
 <span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dijkstra最短路&quot;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;网络最大流&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tpdinic&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tpdininc&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;template &lt;class Cap&gt;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;struct Network&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    struct Edge&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        int to, flow, rev_idx;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int to;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        Cap flow;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int rev_idx;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    };&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    int n;&quot;</span><span class="p">,</span>
@@ -4633,7 +4638,7 @@ FixNamespaceComments: false
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    Network(int n) : n(n), edge(n) {}&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    void add_edge(int u, int v, int w)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void add_edge(int u, int v, Cap w)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        int ui = edge[u].size();&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        int vi = edge[v].size();&quot;</span><span class="p">,</span>
@@ -4641,7 +4646,7 @@ FixNamespaceComments: false
 <span class="w">            </span><span class="s2">&quot;        edge[v].push_back({u, 0, ui});&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    int dinic(int s, int t)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    Cap dinic(int s, int t)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        vector&lt;int&gt; dep(n);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        vector&lt;size_t&gt; cur(n);&quot;</span><span class="p">,</span>
@@ -4671,11 +4676,11 @@ FixNamespaceComments: false
 <span class="w">            </span><span class="s2">&quot;            return dep[t] != -1;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        };&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        auto dfs = [&amp;](auto &amp;self, int u, int in) -&gt; int&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        auto dfs = [&amp;](auto &amp;self, int u, Cap in) -&gt; Cap&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            if (u == t)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;                return in;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            int out = 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            Cap out = 0;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            for (size_t &amp;i = cur[u]; i &lt; edge[u].size(); i++)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            {&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;                Edge &amp;e = edge[u][i];&quot;</span><span class="p">,</span>
@@ -4683,7 +4688,7 @@ FixNamespaceComments: false
 <span class="w">            </span><span class="s2">&quot;                if (dep[v] == dep[u] + 1 &amp;&amp; e.flow)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;                {&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;                    Edge &amp;r = edge[v][e.rev_idx];&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                    int res = self(self, v, min(in, e.flow));&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                    Cap res = self(self, v, min(in, e.flow));&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;                    e.flow -= res;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;                    r.flow += res;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;                    in -= res;&quot;</span><span class="p">,</span>
@@ -4695,9 +4700,9 @@ FixNamespaceComments: false
 <span class="w">            </span><span class="s2">&quot;            return out;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        };&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        int ans = 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        Cap ans = 0;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        while (bfs())&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            ans += dfs(dfs, s, numeric_limits&lt;int&gt;::max());&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            ans += dfs(dfs, s, numeric_limits&lt;Cap&gt;::max());&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        return ans;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;};&quot;</span>
@@ -5194,7 +5199,7 @@ FixNamespaceComments: false
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月26日 11:57:41 UTC">2025-07-26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月27日 16:18:53 UTC">2025-07-27</span>
       
         <br>
         创建日期:
