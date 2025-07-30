@@ -4007,387 +4007,359 @@ FixNamespaceComments: false
 <span class="w">        </span><span class="p">],</span>
 <span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;线段树(区间修改)&quot;</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;TreapSet普通平衡树&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Treap普通平衡树&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tptreap&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="s2">&quot;template &lt;typename K, typename CMP = less&lt;K&gt;&gt;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;class TreapSet&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;template &lt;typename K&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;class TreapMultiSet&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;public:&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    void insert(K val)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    explicit TreapMultiSet(int q) : key(q + 1), pri(q + 1), size(q + 1), cnt(q + 1), lch(q + 1), rch(q + 1) {}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void insert(K k)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        auto [x, temp] = split_by_val(root, val - 1);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        auto [y, z] = split_by_val(temp, val);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        if (y != nullptr)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            y-&gt;inc();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        auto [x, temp] = split_by_key(root, k - 1);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        auto [y, z] = split_by_key(temp, k);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (y)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            inc(y);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        else&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            y = new Node(val);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            y = new_node(k);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        root = merge(merge(x, y), z);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    void erase(K val)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void erase(K k)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        auto [x, temp] = split_by_val(root, val - 1);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        auto [y, z] = split_by_val(temp, val);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        y-&gt;dec();&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        if (y-&gt;cnt == 0)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            delete y;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            y = nullptr;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        auto [x, temp] = split_by_key(root, k - 1);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        auto [y, z] = split_by_key(temp, k);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        dec(y);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (cnt[y] == 0)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            y = 0;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        root = merge(merge(x, y), z);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    int rank(K val) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int rank(K val)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        auto [x, y] = split_by_val(root, val - 1);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        int ans = get_size(x) + 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        auto [x, y] = split_by_key(root, val - 1);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int ans = size[x] + 1;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        root = merge(x, y);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        return ans;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    K kth_element(int k) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    K kth_element(int k)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        auto [x, y] = split_by_rank(root, k);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        int ans = x-&gt;max_son();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int ans = max_son(x);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        root = merge(x, y);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        return ans;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    K prev_element(K val) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    K prev_element(K val)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        auto [x, y] = split_by_val(root, val - 1);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        K ans = x-&gt;max_son();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        auto [x, y] = split_by_key(root, val - 1);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        K ans = max_son(x);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        root = merge(x, y);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        return ans;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    K next_element(K val) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    K next_element(K val)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        auto [x, y] = split_by_val(root, val);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        K ans = y-&gt;min_son();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        auto [x, y] = split_by_key(root, val);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        K ans = min_son(y);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        root = merge(x, y);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        return ans;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    void debug() const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;K&gt; debug() const&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        auto print = [](auto &amp;self, Node *p) -&gt; void&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        vector&lt;K&gt; ans;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        auto mid_order = [&amp;](auto &amp;self, int p) -&gt; void&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            if (p == nullptr)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (!p)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;                return;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            self(self, p-&gt;lch);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            for (int i = 0; i &lt; p-&gt;cnt; i++)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                cout &lt;&lt; p-&gt;val &lt;&lt; &#39; &#39;;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            self(self, p-&gt;rch);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            self(self, lch[p]);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            for (int i = 0; i &lt; cnt[p]; i++)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                ans.push_back(key[p]);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            self(self, rch[p]);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        };&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        print(print, root);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        cout &lt;&lt; endl;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        mid_order(mid_order, root);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return ans;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;private:&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    struct Node&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;K&gt; key;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;int&gt; pri, size, cnt, lch, rch;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int root = 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int idx = 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int new_node(K k)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        K val;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        int pri;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        int size = 1, cnt = 1;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        Node *lch = nullptr;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        Node *rch = nullptr;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        key[idx] = k;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        pri[idx] = gen_priority();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        size[idx] = cnt[idx] = 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        lch[idx] = rch[idx] = 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return idx++;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        Node(int v) : val(v), pri(gen_priority()) {}&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        static int gen_priority()&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            static mt19937 gen(random_device{}());&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            static uniform_int_distribution&lt;&gt; dis;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            return dis(gen);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        void push_up() { size = cnt + get_size(lch) + get_size(rch); }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        void inc()&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            size++;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            cnt++;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        void dec()&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            size--;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            cnt--;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        int max_son() const&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            const Node *p = this;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            while (p-&gt;rch != nullptr)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                p = p-&gt;rch;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            return p-&gt;val;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        int min_son() const&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            const Node *p = this;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            while (p-&gt;lch != nullptr)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                p = p-&gt;lch;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            return p-&gt;val;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    };&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    CMP less;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    static int get_cnt(Node *p) { return p == nullptr ? 0 : p-&gt;cnt; }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    static int get_size(Node *p) { return p == nullptr ? 0 : p-&gt;size; }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    mutable Node *root = nullptr;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    // 返回的左子树小于等于 val&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    pair&lt;Node *, Node *&gt; split_by_val(Node *p, K val) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    static int gen_priority()&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        if (p == nullptr)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            return {nullptr, nullptr};&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        if (less(p-&gt;val, val))&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        static mt19937 gen(random_device{}());&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        static uniform_int_distribution&lt;&gt; dis;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return dis(gen);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void push_up(int p) { size[p] = cnt[p] + size[lch[p]] + size[rch[p]]; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void inc(int p) { size[p]++, cnt[p]++; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void dec(int p) { size[p]--, cnt[p]--; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int max_son(int p) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        while (rch[p])&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            p = rch[p];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return key[p];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int min_son(int p) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        while (lch[p])&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            p = lch[p];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return key[p];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    // 返回的左子树小于等于 k&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    pair&lt;int, int&gt; split_by_key(int p, K k)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (!p)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            return {0, 0};&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (key[p] &lt; k)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            auto [x, y] = split_by_val(p-&gt;rch, val);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p-&gt;rch = x;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p-&gt;push_up();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            auto [x, y] = split_by_key(rch[p], k);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            rch[p] = x;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_up(p);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            return {p, y};&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        else if (less(val, p-&gt;val))&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        else if (k &lt; key[p])&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            auto [x, y] = split_by_val(p-&gt;lch, val);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p-&gt;lch = y;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p-&gt;push_up();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            auto [x, y] = split_by_key(lch[p], k);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            lch[p] = y;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_up(p);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            return {x, p};&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        else&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            Node *y = p-&gt;rch;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p-&gt;rch = nullptr;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p-&gt;push_up();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            int y = rch[p];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            rch[p] = 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_up(p);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            return {p, y};&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    // 返回的左子树至少有 k 个元素&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    pair&lt;Node *, Node *&gt; split_by_rank(Node *p, int k) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    pair&lt;int, int&gt; split_by_rank(int p, int k)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        if (p == nullptr)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            return {nullptr, nullptr};&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        int lch_size = get_size(p-&gt;lch);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        int mid_cnt = get_cnt(p);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (!p)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            return {0, 0};&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int lch_size = size[lch[p]];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int mid_cnt = cnt[p];&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        if (lch_size + mid_cnt &lt; k)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            auto [x, y] = split_by_rank(p-&gt;rch, k - lch_size - mid_cnt);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p-&gt;rch = x;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p-&gt;push_up();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            auto [x, y] = split_by_rank(rch[p], k - lch_size - mid_cnt);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            rch[p] = x;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_up(p);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            return {p, y};&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        else if (lch_size &gt;= k)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            auto [x, y] = split_by_rank(p-&gt;lch, k);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p-&gt;lch = y;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p-&gt;push_up();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            auto [x, y] = split_by_rank(lch[p], k);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            lch[p] = y;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_up(p);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            return {x, p};&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        else&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            Node *y = p-&gt;rch;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p-&gt;rch = nullptr;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p-&gt;push_up();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            int y = rch[p];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            rch[p] = 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_up(p);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            return {p, y};&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    Node *merge(Node *x, Node *y) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int merge(int x, int y)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        if (x == nullptr)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            return y;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        if (y == nullptr)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            return x;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        if (x-&gt;pri &lt; y-&gt;pri)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (!x || !y)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            return x + y;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (pri[x] &lt; pri[y])&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            x-&gt;rch = merge(x-&gt;rch, y);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            x-&gt;push_up();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            rch[x] = merge(rch[x], y);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_up(x);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            return x;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        else&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            y-&gt;lch = merge(x, y-&gt;lch);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            y-&gt;push_up();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            lch[y] = merge(x, lch[y]);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_up(y);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            return y;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;};&quot;</span>
 <span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TreapSet&quot;</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Treap普通平衡树&quot;</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;Treap文艺平衡树&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Treap文艺平衡树(区间反转)&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tptreap&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="s2">&quot;class Treap&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;template &lt;typename K&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;class LazyRangeTreap&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;{&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;public:&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    Treap(int n)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    explicit LazyRangeTreap(const vector&lt;K&gt; &amp;a) : n(a.size()), key(n + 1), pri(n + 1), size(n + 1), lch(n + 1), rch(n + 1), lazy(n + 1)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        stack&lt;Node *&gt; st;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        for (int i = 1; i &lt;= n; i++)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        stack&lt;int&gt; st;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        for (auto i : a)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            Node *x = new Node(i);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            while (!st.empty() &amp;&amp; st.top()-&gt;pri &gt;= x-&gt;pri)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            int x = new_node(i);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            while (!st.empty() &amp;&amp; pri[st.top()] &gt;= pri[x])&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                st.top()-&gt;push_up();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                push_up(st.top());&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;                st.pop();&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            if (st.empty())&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                x-&gt;lch = root;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                lch[x] = root;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;                root = x;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            else&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                Node *y = st.top();&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                x-&gt;lch = y-&gt;rch;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                y-&gt;rch = x;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                int f = st.top();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                lch[x] = rch[f];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;                rch[f] = x;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            st.push(x);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        while (!st.empty())&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            st.top()-&gt;push_up();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_up(st.top());&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            st.pop();&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    void reverse(int l, int r)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        auto [temp, z] = split_by_rank(root, r);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        auto [x, y] = split_by_rank(temp, l - 1);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        flip(y);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        auto [x, temp] = split_by_rank(root, l);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        auto [y, z] = split_by_rank(temp, r - l);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        all_apply(y);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        root = merge(merge(x, y), z);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    void debug()&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;K&gt; debug()&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        auto print = [](auto &amp;self, Node *p) -&gt; void&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        vector&lt;K&gt; ans;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        auto mid_order = [&amp;](auto &amp;self, int p) -&gt; void&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            if (p == nullptr)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            if (!p)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;                return;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p-&gt;push_down();&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            self(self, p-&gt;lch);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            cout &lt;&lt; p-&gt;val &lt;&lt; &#39; &#39;;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            self(self, p-&gt;rch);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_down(p);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            self(self, lch[p]);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            ans.push_back(key[p]);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            self(self, rch[p]);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        };&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        print(print, root);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        cout &lt;&lt; endl;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        mid_order(mid_order, root);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return ans;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;private:&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    struct Node&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int n;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;K&gt; key;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;int&gt; pri, size, lch, rch;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    vector&lt;bool&gt; lazy;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int root = 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int new_node(K k)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        int val, pri;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        int size = 1;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        bool flag = false;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        Node *lch = nullptr;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        Node *rch = nullptr;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        Node(int v) : val(v), pri(gen_priority()) {}&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        static int gen_priority()&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            static mt19937 gen(random_device{}());&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            static uniform_int_distribution&lt;&gt; dis;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            return dis(gen);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        void push_up() { size = 1 + get_size(lch) + get_size(rch); }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        void push_down()&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            if (flag)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                flip(lch);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                flip(rch);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;                flag = false;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        void reverse()&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            swap(lch, rch);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            flag ^= true;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    };&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    static int get_size(Node *p) { return p == nullptr ? 0 : p-&gt;size; }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    static void flip(Node *p)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        if (p != nullptr)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p-&gt;flag ^= 1;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            swap(p-&gt;lch, p-&gt;rch);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        static int idx = 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        key[idx] = k;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        pri[idx] = gen_priority();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        size[idx] = 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        lch[idx] = rch[idx] = 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return idx++;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    mutable Node *root = nullptr;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    // 返回的左子树有 k 个元素&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    pair&lt;Node *, Node *&gt; split_by_rank(Node *p, int k) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    static int gen_priority()&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        if (p == nullptr)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            return {nullptr, nullptr};&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        p-&gt;push_down();&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        int lch_size = get_size(p-&gt;lch);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        if (lch_size + 1 == k)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        static mt19937 gen(random_device{}());&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        static uniform_int_distribution&lt;&gt; dis;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return dis(gen);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void push_up(int p) { size[p] = 1 + size[lch[p]] + size[rch[p]]; }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void push_down(int p)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (!lazy[p])&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            return;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        all_apply(lch[p]);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        all_apply(rch[p]);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        lazy[p] = false;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    void all_apply(int p)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        swap(lch[p], rch[p]);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        lazy[p] = !lazy[p];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    // 返回的左子树至少有 k 个元素&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    pair&lt;int, int&gt; split_by_rank(int p, int k)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (!p)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            return {0, 0};&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        push_down(p);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int lch_size = size[lch[p]];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        int mid_cnt = 1;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (lch_size + mid_cnt &lt; k)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            Node *y = p-&gt;rch;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p-&gt;rch = nullptr;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p-&gt;push_up();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            auto [x, y] = split_by_rank(rch[p], k - lch_size - mid_cnt);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            rch[p] = x;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_up(p);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            return {p, y};&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        else if (lch_size + 1 &lt; k)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        else if (lch_size &gt;= k)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            auto [x, y] = split_by_rank(p-&gt;rch, k - lch_size - 1);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p-&gt;rch = x;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p-&gt;push_up();&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            return {p, y};&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        else&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            auto [x, y] = split_by_rank(p-&gt;lch, k);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p-&gt;lch = y;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            p-&gt;push_up();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            auto [x, y] = split_by_rank(lch[p], k);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            lch[p] = y;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_up(p);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            return {x, p};&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        else&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            int y = rch[p];&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            rch[p] = 0;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_up(p);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            return {p, y};&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;    Node *merge(Node *x, Node *y) const&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    int merge(int x, int y)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        if (x == nullptr)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            return y;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        if (y == nullptr)&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            return x;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;        if (x-&gt;pri &lt; y-&gt;pri)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (!x || !y)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            return x + y;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        if (pri[x] &lt; pri[y])&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            x-&gt;push_down();&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            x-&gt;rch = merge(x-&gt;rch, y);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            x-&gt;push_up();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_down(x);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            rch[x] = merge(rch[x], y);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_up(x);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            return x;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        else&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        {&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            y-&gt;push_down();&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            y-&gt;lch = merge(x, y-&gt;lch);&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;            y-&gt;push_up();&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_down(y);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            lch[y] = merge(x, lch[y]);&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            push_up(y);&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;            return y;&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;        }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;    }&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;};&quot;</span>
 <span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Treap文艺平衡树&quot;</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Treap文艺平衡树(区间反转)&quot;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;字典树&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tptrie&quot;</span><span class="p">,</span>
@@ -5199,7 +5171,7 @@ FixNamespaceComments: false
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月27日 16:18:53 UTC">2025-07-27</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月30日 16:01:22 UTC">2025-07-30</span>
       
         <br>
         创建日期:
